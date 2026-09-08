@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HF to 2 m manual antenna switch | K4DIA</title>
+<meta name="description" content="A passive one-radio, three-antenna manual RF switch covering HF through 2 meters. Bill of materials, wiring, construction, and the VNA tests that prove it.">
+<link rel="preload" href="../../fonts/IBMPlexSansCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d1b17'/%3E%3Cpath d='M32 10v44M32 22 14 50M32 22l18 28' stroke='%23efe8da' stroke-width='4' fill='none'/%3E%3Ccircle cx='32' cy='10' r='5' fill='%23d8a24a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <span class="brand-call">K4DIA</span>
+    <span class="brand-lines">
+      <span>Field &middot; Build &middot; Learn</span>
+      <span>Radio brings people together</span>
+    </span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../#projects" class="is-here">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag">
+    <strong>Amateur Radio</strong>
+    <span>Curiosity &middot; Experimentation &middot; Real connections</span>
+  </div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../#projects"><i>01</i> Projects</a>
+  <a href="../../#tools"><i>02</i> Tools</a>
+  <a href="../../downloads/"><i>03</i> Downloads</a>
+  <a href="../../#notes"><i>04</i> Notes</a>
+</nav>
+
+<main id="main">
+
+  <section class="pagehead">
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> Antenna switching</p>
+    <p class="eyebrow">RF / Switching <span class="cstat-inline">In progress</span></p>
+    <h1>HF to 2 m manual<br>three-antenna switch</h1>
+    <p class="pagelede">One transceiver, three antennas, one knob. Completely
+      passive: no power supply, no relays, no control wiring, nothing to fail
+      in the dark. Everything below is what it takes to build one and, more to
+      the point, how to prove it works before you key up.</p>
+  </section>
+
+  <section class="section specstrip">
+    <dl class="specs">
+      <div><dt>Range</dt><dd>HF through 2 m</dd></div>
+      <div><dt>Power</dt><dd>~100 W HF and 6 m, 50 W on 2 m</dd></div>
+      <div><dt>Impedance</dt><dd>50 &#8486;</dd></div>
+      <div><dt>Switching</dt><dd>Physical rotary, break before make</dd></div>
+      <div><dt>Connectors</dt><dd>Four chassis N-female</dd></div>
+      <div><dt>External power</dt><dd>None</dd></div>
+    </dl>
+  </section>
+
+  <section class="section">
+    <div class="warn" role="note">
+      <span class="warn-tag">Do not</span>
+      <p><strong>Never rotate the selector while transmitting.</strong> Release
+         PTT and let the transmitter return to receive before changing
+         antennas. The non-shorting switch briefly leaves the radio
+         disconnected as it moves, which is desirable, but it does not make
+         hot switching safe.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">The one part that matters</p><h2>The switch</h2></div>
+    </header>
+    <div class="twocol">
+      <div>
+        <p class="lead-p">An <strong>Electroswitch D4C0112N</strong> ceramic
+           rotary switch, with the adjustable stops set so the shaft reaches
+           only three positions.</p>
+        <p class="caveat">Electroswitch does not specify the D4C0112N as a
+           characterized 146 MHz coaxial component. Its low contact
+           resistance, ceramic body, silver contacts and small size make it
+           appropriate for a home-built switch when the RF connections are
+           kept very short. That is a judgement, not a specification, which is
+           why the VNA tests below are not optional.</p>
+        <p class="links">
+          <a href="https://media.digikey.com/pdf/data%20sheets/electroswitch%20pdfs/D4%20Series.pdf" rel="noopener">D4 series datasheet</a>
+          <a href="https://www.digikey.com/en/products/detail/electroswitch/D4C0112N/514141" rel="noopener">DigiKey</a>
+          <a href="https://www.newark.com/electroswitch/d4c0112n/switch-rotary-sp12t-1-5a-115v/dp/06M4635" rel="noopener">Newark</a>
+        </p>
+      </div>
+      <ul class="ticks">
+        <li>Ceramic insulation</li>
+        <li>Silver-plated brass contacts</li>
+        <li>One pole, up to 12 positions</li>
+        <li>Adjustable position stops</li>
+        <li>Non-shorting, break before make</li>
+        <li>About 3.5 m&#8486; initial contact resistance</li>
+        <li>9 A contact-carrying capacity</li>
+        <li>1,500 VAC dielectric strength between current-carrying components and ground</li>
+        <li>1/4 inch shaft</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">What it costs</p><h2>Bill of materials</h2></div>
+      <p class="sec-note">About $70 to $110<br>Mostly the switch</p>
+    </header>
+    <p class="hint">The enclosure, the N connectors and the coax were already
+       on the shelf, so they are listed as owner-supplied.</p>
+    <div class="tablewrap">
+      <table class="bom">
+        <thead><tr><th scope="col">Qty</th><th scope="col">Component</th><th scope="col">Specification</th><th scope="col">Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Ceramic rotary switch</td><td>Electroswitch D4C0112N</td><td>Selects one of three antennas</td></tr>
+          <tr><td>1</td><td>Pointer knob</td><td>1/4 inch shaft, about 1.5 to 2 in diameter</td><td>Selector control</td></tr>
+          <tr><td>4</td><td>Chassis N-female connectors</td><td>Owner-supplied</td><td>One radio input, three antenna outputs</td></tr>
+          <tr><td>A/R</td><td>50 &#8486; coax</td><td>Owner-supplied, keep each internal run short</td><td>Internal RF connections</td></tr>
+          <tr><td>3</td><td>Static-bleed resistors</td><td>100 k&#8486;, 2 W, metal oxide or carbon composition</td><td>Bleeds static from antenna conductors</td></tr>
+          <tr><td>1</td><td>Copper or brass ground plate</td><td>0.032 to 0.062 in thick</td><td>Common RF ground plane</td></tr>
+          <tr><td>1</td><td>Tinned copper bonding braid</td><td>Short and wide</td><td>Bonds lid and plate to chassis</td></tr>
+          <tr><td>1</td><td>Chassis ground stud</td><td>1/4-20 brass bolt, nuts, flat and internal-tooth washers</td><td>External station ground</td></tr>
+          <tr><td>1 set</td><td>Mounting hardware</td><td>Stainless or brass screws, nuts, internal-tooth washers</td><td>Assembly and bonding</td></tr>
+          <tr><td>1</td><td>Front panel label</td><td>RADIO, ANT 1, ANT 2, ANT 3, and DO NOT SWITCH WHILE TRANSMITTING</td><td>Identification, and the reminder</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">How it goes together</p><h2>Electrical arrangement</h2></div>
+    </header>
+    <p class="hint">Only the coax center conductors are switched. Every
+       connector body and every shield stays bonded to the enclosure and the
+       ground plate, continuously.</p>
+    <figure class="drawing">
+      <svg viewBox="0 0 1120 792" role="img" aria-label="Schematic: the radio center conductor goes to the rotary switch common terminal, and each of three switch positions goes to one antenna connector. A 100 kilohm bleed resistor runs from each antenna center conductor to the RF ground plate, and every connector body bonds to that same plate.">
+  <g class="cadfig">
+  <g class="fx-frame">
+  <rect x="0" y="0" width="1120" height="792" fill="#ffffff" stroke="none" stroke-width="0"/>
+  <rect x="10" y="10" width="1100" height="772" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  </g>
+  <g class="fx-title">
+  <rect x="822" y="734" width="288" height="48" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M822 754L1110 754" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="829" y="748" class="cad" text-anchor="start" font-size="9.5" font-weight="600" fill="#1a1a1a">HF TO 2 M THREE ANTENNA SWITCH</text>
+  <text x="1103" y="748" class="cad" text-anchor="end" font-size="7.5" font-weight="400" fill="#5a5a5a">SCHEMATIC</text>
+  <text x="827" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">DRAWN</text>
+  <text x="827" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">K4DIA</text>
+  <path d="M894 754L894 782" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="899" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SCALE</text>
+  <text x="899" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">NONE</text>
+  <path d="M966 754L966 782" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="971" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">REV</text>
+  <text x="971" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">A</text>
+  <path d="M1038 754L1038 782" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="1043" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SHEET</text>
+  <text x="1043" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1 OF 2</text>
+  </g>
+  <path d="M150 520L900 520" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M150 520L900 520" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M161 520L150 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M172 520L160 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M183 520L171 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M194 520L182 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M205 520L193 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M216 520L204 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M227 520L215 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M238 520L226 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M249 520L237 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M260 520L248 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M271 520L259 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M282 520L270 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M293 520L281 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M304 520L292 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M315 520L303 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M326 520L314 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M337 520L325 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M348 520L336 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M359 520L347 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M370 520L358 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M381 520L369 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M392 520L380 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M403 520L391 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M414 520L402 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M425 520L413 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M436 520L424 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M447 520L435 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M458 520L446 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M469 520L457 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M480 520L468 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M491 520L479 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M502 520L490 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M513 520L501 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M524 520L512 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M535 520L523 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M546 520L534 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M557 520L545 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M568 520L556 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M579 520L567 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M590 520L578 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M601 520L589 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M612 520L600 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M623 520L611 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M634 520L622 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M645 520L633 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M656 520L644 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M667 520L655 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M678 520L666 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M689 520L677 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M700 520L688 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M711 520L699 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M722 520L710 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M733 520L721 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M744 520L732 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M755 520L743 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M766 520L754 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M777 520L765 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M788 520L776 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M799 520L787 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M810 520L798 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M821 520L809 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M832 520L820 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M843 520L831 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M854 520L842 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M865 520L853 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M876 520L864 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M887 520L875 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M898 520L886 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M900 520L897 532" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="908" y="524" class="cad" text-anchor="start" font-size="10" font-weight="600" fill="#1a1a1a">RF GROUND PLATE</text>
+  <circle cx="200" cy="310" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="200" cy="310" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="200" cy="310" r="1.9" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <text x="200" y="343" class="cad" text-anchor="middle" font-size="10.5" font-weight="400" fill="#1a1a1a">RADIO</text>
+  <text x="200" y="288" class="cad" text-anchor="middle" font-size="10.5" font-weight="600" fill="#a8481c">J1</text>
+  <path d="M215 310L400 310" stroke="#a8481c" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="300" y="301" class="cad" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5a5a5a">common</text>
+  <circle cx="400" cy="310" r="3.4" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M400 310L506 218" stroke="#a8481c" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M444 266A62 62 0 0 1 444 354" fill="none" stroke="#5a5a5a" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text x="394" y="344" class="cad" text-anchor="start" font-size="10.5" font-weight="600" fill="#a8481c">S1</text>
+  <text x="452" y="372" class="cad" text-anchor="start" font-size="9" font-weight="400" fill="#5a5a5a">3 POSITION, NON-SHORTING</text>
+  <circle cx="520" cy="210" r="5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M525 210L745 210" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <circle cx="760" cy="210" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="760" cy="210" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="760" cy="210" r="1.9" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <text x="760" y="243" class="cad" text-anchor="middle" font-size="10.5" font-weight="400" fill="#1a1a1a">ANT 1</text>
+  <text x="760" y="188" class="cad" text-anchor="middle" font-size="10.5" font-weight="600" fill="#a8481c">J2</text>
+  <circle cx="720" cy="210" r="2.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M720 210L720 302" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M720 302A8 8 0 0 1 720 318" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M720 318L720 402" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M720 402A8 8 0 0 1 720 418" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M720 418L720 436" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M720 436L720 456L727 459.667L713 467L727 474.333L713 481.667L727 489L713 496.333L720 500L720 520" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <text x="720" y="449" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#a8481c">R1</text>
+  <text x="720" y="515" class="cad" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5a5a5a">100k 2W</text>
+  <circle cx="520" cy="310" r="5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M525 310L745 310" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <circle cx="760" cy="310" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="760" cy="310" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="760" cy="310" r="1.9" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <text x="760" y="343" class="cad" text-anchor="middle" font-size="10.5" font-weight="400" fill="#1a1a1a">ANT 2</text>
+  <text x="760" y="288" class="cad" text-anchor="middle" font-size="10.5" font-weight="600" fill="#a8481c">J3</text>
+  <circle cx="630" cy="310" r="2.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M630 310L630 402" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M630 402A8 8 0 0 1 630 418" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M630 418L630 436" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M630 436L630 456L637 459.667L623 467L637 474.333L623 481.667L637 489L623 496.333L630 500L630 520" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <text x="630" y="449" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#a8481c">R2</text>
+  <text x="630" y="515" class="cad" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5a5a5a">100k 2W</text>
+  <circle cx="520" cy="410" r="5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M525 410L745 410" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <circle cx="760" cy="410" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="760" cy="410" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="760" cy="410" r="1.9" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <text x="760" y="443" class="cad" text-anchor="middle" font-size="10.5" font-weight="400" fill="#1a1a1a">ANT 3</text>
+  <text x="760" y="388" class="cad" text-anchor="middle" font-size="10.5" font-weight="600" fill="#a8481c">J4</text>
+  <circle cx="540" cy="410" r="2.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M540 410L540 436" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M540 436L540 456L547 459.667L533 467L547 474.333L533 481.667L547 489L533 496.333L540 500L540 520" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <text x="540" y="449" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#a8481c">R3</text>
+  <text x="540" y="515" class="cad" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5a5a5a">100k 2W</text>
+  <path d="M775 210L852 210" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="6 3"/>
+  <path d="M775 310L852 310" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="6 3"/>
+  <path d="M775 410L852 410" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="6 3"/>
+  <path d="M852 210L852 520" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="6 3"/>
+  <path d="M200 325L200 520" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="6 3"/>
+  <text x="860" y="204" class="cad" text-anchor="start" font-size="9" font-weight="400" fill="#5a5a5a">CONNECTOR BODIES AND SHIELDS</text>
+  <g class="fx-notes">
+  <text x="150" y="606" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#1a1a1a">NOTES:</text>
+  <text x="150" y="619.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1.</text>
+  <text x="163" y="619.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Only the coaxial centre conductors are switched.</text>
+  <text x="150" y="631" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2.</text>
+  <text x="163" y="631" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">All connector bodies and coax shields bond to the RF ground plate.</text>
+  <text x="150" y="642.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">3.</text>
+  <text x="163" y="642.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">R1 to R3 provide static bleed only. They are not lightning arrestors.</text>
+  <text x="150" y="654" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">4.</text>
+  <text x="163" y="654" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Keep exposed centre conductor under 1/4 in at every switch terminal.</text>
+  <text x="150" y="665.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">5.</text>
+  <text x="163" y="665.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Set the adjustable stops on S1 so only three contacts can be selected.</text>
+  </g>
+</g>
+      </svg>
+      <figcaption>The three bleed resistors are static drains only. They are
+        not lightning arrestors and they do not replace proper external
+        grounding and surge protection at the building entry.</figcaption>
+    </figure>
+
+    <header class="sec-head">
+      <div><p class="eyebrow">Where it sits</p><h2>Physical layout</h2></div>
+    </header>
+    <p class="hint">A compact star with the switch roughly centered between the
+       four connectors, which is what keeps the leads short. If the enclosure
+       will not allow it, the radio-to-common path gets priority for the
+       shortest run.</p>
+    <figure class="drawing">
+      <svg viewBox="0 0 1120 792" role="img" aria-label="Physical layout: the rotary switch sits at the center of the enclosure with antenna one above it, antenna two to the right, antenna three to the left, and the radio connector below, each on a short lead.">
+  <g class="cadfig">
+  <g class="fx-frame">
+  <rect x="0" y="0" width="1120" height="792" fill="#ffffff" stroke="none" stroke-width="0"/>
+  <rect x="10" y="10" width="1100" height="772" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  </g>
+  <g class="fx-title">
+  <rect x="822" y="734" width="288" height="48" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M822 754L1110 754" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="829" y="748" class="cad" text-anchor="start" font-size="9.5" font-weight="600" fill="#1a1a1a">HF TO 2 M THREE ANTENNA SWITCH</text>
+  <text x="1103" y="748" class="cad" text-anchor="end" font-size="7.5" font-weight="400" fill="#5a5a5a">PREFERRED LAYOUT</text>
+  <text x="827" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">DRAWN</text>
+  <text x="827" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">K4DIA</text>
+  <path d="M894 754L894 782" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="899" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SCALE</text>
+  <text x="899" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">NONE</text>
+  <path d="M966 754L966 782" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="971" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">REV</text>
+  <text x="971" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">A</text>
+  <path d="M1038 754L1038 782" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="1043" y="765" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SHEET</text>
+  <text x="1043" y="777" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2 OF 2</text>
+  </g>
+  <rect x="150" y="120" width="460" height="400" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <rect x="164" y="134" width="432" height="372" fill="none" stroke="#5a5a5a" stroke-width="0.7"/>
+  <path d="M380 94L380 546" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <path d="M124 320L636 320" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <circle cx="380" cy="320" r="34" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="380" cy="320" r="3.2" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M380 320L404 296" stroke="#a8481c" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <circle cx="380" cy="182" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="380" cy="182" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M380 197L380 286" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <circle cx="548" cy="320" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="548" cy="320" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M533 320L414 320" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <circle cx="212" cy="320" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="212" cy="320" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M227 320L346 320" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <circle cx="380" cy="458" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="380" cy="458" r="5.5" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M380 443L380 354" stroke="#a8481c" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M380 182L447.647 157.717" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="380" cy="182" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="458" cy="154" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="458" y="157.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">1</text>
+  <path d="M548 320L643.84 280.217" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="548" cy="320" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="654" cy="276" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="654" y="279.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">2</text>
+  <path d="M212 320L116.16 280.217" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="212" cy="320" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="106" cy="276" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="106" y="279.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">3</text>
+  <path d="M380 458L447.647 482.283" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="380" cy="458" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="458" cy="486" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="458" y="489.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">4</text>
+  <path d="M404 296L304.397 261.592" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="404" cy="296" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="294" cy="258" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="294" y="261.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">5</text>
+  <path d="M164 506L116.038 484.5" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="164" cy="506" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="106" cy="480" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="106" y="483.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">6</text>
+  <g class="fx-items">
+  <rect x="770" y="148" width="300" height="98" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M770 162L1070 162" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M804 148L804 246" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="787" y="158" class="cad" text-anchor="middle" font-size="6.5" font-weight="600" fill="#5a5a5a">ITEM</text>
+  <text x="811" y="158" class="cad" text-anchor="start" font-size="6.5" font-weight="600" fill="#5a5a5a">DESCRIPTION</text>
+  <text x="787" y="172" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">1</text>
+  <text x="811" y="172" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">J2  N-type chassis, ANT 1</text>
+  <path d="M770 176L1070 176" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="787" y="186" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">2</text>
+  <text x="811" y="186" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">J3  N-type chassis, ANT 2</text>
+  <path d="M770 190L1070 190" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="787" y="200" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">3</text>
+  <text x="811" y="200" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">J4  N-type chassis, ANT 3</text>
+  <path d="M770 204L1070 204" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="787" y="214" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">4</text>
+  <text x="811" y="214" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">J1  N-type chassis, RADIO</text>
+  <path d="M770 218L1070 218" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="787" y="228" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">5</text>
+  <text x="811" y="228" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">S1  Rotary switch, ceramic, 3 position</text>
+  <path d="M770 232L1070 232" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="787" y="242" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">6</text>
+  <text x="811" y="242" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">RF ground plate, copper or brass</text>
+  </g>
+  <g class="fx-notes">
+  <text x="150" y="588" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#1a1a1a">NOTES:</text>
+  <text x="150" y="601.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1.</text>
+  <text x="163" y="601.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Switch centred between the four connectors, so every internal lead stays short.</text>
+  <text x="150" y="613" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2.</text>
+  <text x="163" y="613" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">If the enclosure will not allow it, J1 to S1 takes priority for the shortest path.</text>
+  <text x="150" y="624.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">3.</text>
+  <text x="163" y="624.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Hole sizes to suit the parts bought. Confirm positions with a full size template before drilling.</text>
+  </g>
+</g>
+      </svg>
+      <figcaption>Rust marks the radio-to-common path, the one that gets the
+        shortest run when the layout has to compromise.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section build">
+    <header class="sec-head">
+      <div><p class="eyebrow">Getting it right</p><h2>Construction</h2></div>
+    </header>
+    <div class="rulesets">
+      <div class="ruleset">
+        <h3>Enclosure and grounding</h3>
+        <ol>
+          <li>Use a conductive metal enclosure wherever possible.</li>
+          <li>If the box is plastic, install a continuous copper or brass ground plate behind all four N connectors and the switch.</li>
+          <li>Remove paint, anodizing and oxidation under every connector flange and grounding point.</li>
+          <li>Use internal-tooth star washers so they bite into bare metal.</li>
+          <li>Bond a removable lid to the chassis with short, wide tinned braid.</li>
+          <li>Bond the ground plate at several points, not through one small wire.</li>
+        </ol>
+      </div>
+      <div class="ruleset">
+        <h3>RF connections</h3>
+        <ol>
+          <li>Keep every internal coax run as short as the box permits.</li>
+          <li>Bring the shield within about 1/4 inch of each switch terminal.</li>
+          <li>Keep exposed center conductor under about 1/4 inch.</li>
+          <li>Bond each shield to the ground plate right beside its terminal.</li>
+          <li>No long hookup wire between the coax and the switch.</li>
+          <li>Do not bundle the three antenna conductors together.</li>
+          <li>Separate the unused switch terminals as much as the layout allows.</li>
+          <li>Secure the coax mechanically so a tug on an external cable cannot stress a joint.</li>
+        </ol>
+      </div>
+      <div class="ruleset">
+        <h3>Switch setup</h3>
+        <ol>
+          <li>Find the common terminal with an ohmmeter.</li>
+          <li>Identify three adjacent fixed contacts.</li>
+          <li>Set the stops so only those three can be selected.</li>
+          <li>Verify break-before-make operation with the ohmmeter.</li>
+          <li>Confirm no position ever connects two antennas at once.</li>
+          <li>Label the positions only after confirming the real contact sequence.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">In order</p><h2>Assembly sequence</h2></div>
+    </header>
+    <ol class="sequence">
+      <li>Lay out the four connectors and the switch before drilling anything.</li>
+      <li>Check internal clearance for the switch body, the coax bend radius, and room to get a soldering iron in.</li>
+      <li>Drill and deburr the connector, switch and grounding holes.</li>
+      <li>Remove coating around every RF grounding surface.</li>
+      <li>Install the N connectors and the rotary switch.</li>
+      <li>Install and bond the RF ground plate.</li>
+      <li>Cut and prepare the internal coax sections.</li>
+      <li>Connect the radio port to the switch common terminal.</li>
+      <li>Connect the three selected contacts to antenna ports 1, 2 and 3.</li>
+      <li>Fit a bleed resistor from each antenna center conductor to the plate.</li>
+      <li>Bond the lid and install the external ground stud.</li>
+      <li>Check every path with an ohmmeter before a radio goes anywhere near it.</li>
+      <li>Run the VNA tests.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Before any radio is connected</p><h2>Continuity checks</h2></div>
+    </header>
+    <div class="tablewrap">
+      <table class="bom">
+        <thead><tr><th scope="col">Position</th><th scope="col">Radio to selected port</th><th scope="col">Radio to other ports</th><th scope="col">Center to chassis</th></tr></thead>
+        <tbody>
+          <tr><td>ANT 1</td><td>Continuity</td><td>Open but for the bleed resistors</td><td>About 100 k&#8486; through the selected port resistor</td></tr>
+          <tr><td>ANT 2</td><td>Continuity</td><td>Open but for the bleed resistors</td><td>About 100 k&#8486; through the selected port resistor</td></tr>
+          <tr><td>ANT 3</td><td>Continuity</td><td>Open but for the bleed resistors</td><td>About 100 k&#8486; through the selected port resistor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat">The exact readings shift with the three installed
+       resistors and the measurement path. What matters is that only one low
+       resistance RF path exists at a time, and that no center conductor is
+       shorted to the chassis.</p>
+  </section>
+
+  <section class="section vna">
+    <header class="sec-head">
+      <div><p class="eyebrow">The part that decides it</p><h2>VNA verification</h2></div>
+      <p class="sec-note">Sweep 1 to 160 MHz<br>Watch 50 and 146 MHz</p>
+    </header>
+    <div class="tests">
+      <article>
+        <h3>Return loss, selected path</h3>
+        <ol>
+          <li>VNA Port 1 to RADIO.</li>
+          <li>Known-good 50 &#8486; termination on the selected antenna port.</li>
+          <li>Leave the other two antenna ports open.</li>
+          <li>Sweep about 1 to 160 MHz.</li>
+          <li>Record return loss or SWR at the amateur bands of interest, especially 50 MHz and 146 MHz.</li>
+        </ol>
+        <p class="target"><span>Target</span> Preferably 1.2:1 SWR or better at 146 MHz, and no sharp unexpected resonance anywhere from HF to 2 m.</p>
+      </article>
+      <article>
+        <h3>Insertion loss</h3>
+        <ol>
+          <li>VNA Port 1 to RADIO.</li>
+          <li>VNA Port 2 to the selected antenna port.</li>
+          <li>Terminate the two unused ports in 50 &#8486;.</li>
+          <li>Sweep 1 to 160 MHz and record S21.</li>
+        </ol>
+        <p class="target"><span>Target</span> Preferably under 0.2 dB at 146 MHz. Expect better on HF.</p>
+      </article>
+      <article>
+        <h3>Isolation</h3>
+        <ol>
+          <li>Keep Port 1 on RADIO.</li>
+          <li>Select one antenna.</li>
+          <li>Move Port 2 to each unselected port in turn.</li>
+          <li>Terminate the selected and remaining ports in 50 &#8486;.</li>
+          <li>Sweep 1 to 160 MHz and record the worst case.</li>
+        </ol>
+        <p class="target"><span>Target</span> Preferably at least 40 dB at 146 MHz.</p>
+      </article>
+    </div>
+    <p class="caveat">If 2 m SWR or isolation disappoints: shorten the exposed
+       center conductors, improve the shield bonding around the switch, and
+       put more physical distance between the antenna port conductors.</p>
+  </section>
+
+  <section class="section terms">
+    <div>
+      <p class="eyebrow">Living with it</p>
+      <h2>Operating notes</h2>
+      <ul class="ticks wide">
+        <li>Never change antennas while transmitting.</li>
+        <li>Reduce power for the first on-air tests.</li>
+        <li>Confirm acceptable SWR into each antenna before full power.</li>
+        <li>The bleed resistors are not lightning protection.</li>
+        <li>Disconnect antennas in severe weather, and use properly grounded surge protection at the building entry.</li>
+      </ul>
+      <p class="fineprint">The finished unit is a passive one-radio,
+         three-antenna selector needing no power supply, control wiring,
+         relays or indicators. Performance through 2 m comes down to short RF
+         paths, continuous shielding, and a low-inductance common ground.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call"><strong>K4DIA</strong><span>Amateur Radio</span></div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+</footer>
+
+<script src="../../site.js"></script>
+</body>
+</html>

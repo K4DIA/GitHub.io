@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portable antenna selection, IC-706MkII | K4DIA</title>
+<meta name="description" content="Four ways to get one portable antenna that covers HF without changing hardware between bands: Buddipole, Icom AH-4, LDG AT-200ProII and LDG RT/RC-100, compared against a $375 budget.">
+<link rel="preload" href="../../fonts/IBMPlexSansCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d1b17'/%3E%3Cpath d='M32 10v44M32 22 14 50M32 22l18 28' stroke='%23efe8da' stroke-width='4' fill='none'/%3E%3Ccircle cx='32' cy='10' r='5' fill='%23d8a24a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <span class="brand-call">K4DIA</span>
+    <span class="brand-lines">
+      <span>Field &middot; Build &middot; Learn</span>
+      <span>Radio brings people together</span>
+    </span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../#projects" class="is-here">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag">
+    <strong>Amateur Radio</strong>
+    <span>Curiosity &middot; Experimentation &middot; Real connections</span>
+  </div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../#projects"><i>01</i> Projects</a>
+  <a href="../../#tools"><i>02</i> Tools</a>
+  <a href="../../downloads/"><i>03</i> Downloads</a>
+  <a href="../../#notes"><i>04</i> Notes</a>
+</nav>
+
+<main id="main">
+
+  <section class="pagehead">
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> Portable antenna selection</p>
+    <p class="eyebrow">Antennas / Decision <span class="cstat-inline">Researched</span></p>
+    <h1>One antenna, every band,<br>without touching it</h1>
+    <p class="pagelede">The requirement was narrow and worth stating plainly:
+      erect one portable antenna once, then change bands from the radio.
+      No moving coil clips, no adjusting whip lengths, no opening links, no
+      putting up a different antenna for every frequency. Budget $375, feeding
+      an Icom IC-706MkII at up to 100 W SSB on HF.</p>
+  </section>
+
+  <section class="section specstrip">
+    <dl class="specs">
+      <div><dt>Radio</dt><dd>Icom IC-706MkII</dd></div>
+      <div><dt>Budget</dt><dd>$375 maximum</dd></div>
+      <div><dt>Power</dt><dd>Up to 100 W SSB, ~50 W for some work</dd></div>
+      <div><dt>Wanted</dt><dd>Regional NVIS and long-haul DX</dd></div>
+      <div><dt>Band change</dt><dd>Electronic, from the radio</dd></div>
+      <div><dt>Use</dt><dd>POTA, field, emergency</dd></div>
+    </dl>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Why this is hard</p><h2>The central problem</h2></div>
+    </header>
+    <p class="hint">NVIS and DX want opposite geometry. A low horizontal
+      radiator produces predominantly high-angle radiation, which is what
+      regional coverage wants. A vertical, a high sloper, or anything with a
+      substantial vertical component produces more low-angle radiation, which
+      is what reaches distance.</p>
+    <figure class="drawing">
+      <svg viewBox="0 0 1120 620" role="img" aria-label="Two elevation pattern plots side by side. The NVIS plot shows a single broad lobe pointing at 90 degrees, straight up. The DX plot shows two narrow lobes at about 20 and 160 degrees, low to the ground on either side. Shapes are illustrative and carry no gain figures.">
+  <g class="cadfig">
+  <g class="fx-frame">
+  <rect x="0" y="0" width="1120" height="620" fill="#ffffff" stroke="none" stroke-width="0"/>
+  <rect x="10" y="10" width="1100" height="600" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  </g>
+  <g class="fx-title">
+  <rect x="754" y="562" width="356" height="48" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M754 582L1110 582" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="761" y="576" class="cad" text-anchor="start" font-size="9.5" font-weight="600" fill="#1a1a1a">RADIATION ANGLE, NVIS AGAINST DX</text>
+  <text x="1103" y="576" class="cad" text-anchor="end" font-size="7.5" font-weight="400" fill="#5a5a5a">ELEVATION PATTERNS</text>
+  <text x="759" y="593" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">PLOTTED</text>
+  <text x="759" y="605" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">K4DIA</text>
+  <path d="M872.667 582L872.667 610" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="877.667" y="593" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">REF</text>
+  <text x="877.667" y="605" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">0 dB AT OUTER RING</text>
+  <path d="M991.333 582L991.333 610" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="996.333" y="593" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">TYPE</text>
+  <text x="996.333" y="605" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">ILLUSTRATIVE</text>
+  </g>
+  <path d="M122 336A178 178 0 0 1 478 336" fill="none" stroke="#c8c8c8" stroke-width="1.4"/>
+  <path d="M148.7 336A151.3 151.3 0 0 1 451.3 336" fill="none" stroke="#c8c8c8" stroke-width="0.7"/>
+  <text x="303" y="194.7" class="cad" text-anchor="start" font-size="8" font-weight="400" fill="#5a5a5a">-3</text>
+  <path d="M175.4 336A124.6 124.6 0 0 1 424.6 336" fill="none" stroke="#c8c8c8" stroke-width="0.7"/>
+  <text x="303" y="221.4" class="cad" text-anchor="start" font-size="8" font-weight="400" fill="#5a5a5a">-6</text>
+  <path d="M211 336A89 89 0 0 1 389 336" fill="none" stroke="#c8c8c8" stroke-width="0.7"/>
+  <text x="303" y="257" class="cad" text-anchor="start" font-size="8" font-weight="400" fill="#5a5a5a">-10</text>
+  <path d="M300 336L478 336" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <text x="493" y="330.5" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">0</text>
+  <path d="M300 336L471.935 289.93" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L454.153 247" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="467.143" y="243" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">30</text>
+  <path d="M300 336L425.865 210.135" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L389 181.847" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="396.5" y="172.357" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">60</text>
+  <path d="M300 336L346.07 164.065" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L300 158" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <text x="300" y="146.5" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">90</text>
+  <path d="M300 336L253.93 164.065" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L211 181.847" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="203.5" y="172.357" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">120</text>
+  <path d="M300 336L174.135 210.135" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L145.847 247" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="132.857" y="243" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">150</text>
+  <path d="M300 336L128.065 289.93" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L122 336" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <text x="107" y="330.5" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">180</text>
+  <path d="M303.56 336L303.555 335.814L303.54 335.628L303.516 335.443L308.769 334.136L320.977 330.379L332.307 325.503L342.686 319.615L352.049 312.826L360.345 305.253L367.532 297.01L373.578 288.218L378.461 278.995L382.171 269.459L384.709 259.728L386.082 249.918L386.311 240.142L385.425 230.509L383.461 221.126L380.467 212.092L376.497 203.503L371.615 195.447L365.89 188.009L359.399 181.261L352.223 175.273L344.452 170.103L336.176 165.803L327.493 162.414L318.502 159.97L309.303 158.494L300 158L290.697 158.494L281.498 159.97L272.507 162.414L263.824 165.803L255.548 170.103L247.777 175.273L240.601 181.261L234.11 188.009L228.385 195.447L223.503 203.503L219.533 212.092L216.539 221.126L214.575 230.509L213.689 240.142L213.918 249.918L215.291 259.728L217.829 269.459L221.539 278.995L226.422 288.218L232.468 297.01L239.655 305.253L247.951 312.826L257.314 319.615L267.693 325.503L279.023 330.379L291.231 334.136L296.484 335.443L296.46 335.628L296.445 335.814L296.44 336" stroke="#a8481c" stroke-width="1.7" fill="none"/>
+  <path d="M100 336L500 336" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M100 336L500 336" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M110 336L101 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M120 336L111 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M130 336L121 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M140 336L131 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M150 336L141 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M160 336L151 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M170 336L161 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M180 336L171 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M190 336L181 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M200 336L191 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M210 336L201 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M220 336L211 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M230 336L221 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M240 336L231 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M250 336L241 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M260 336L251 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M270 336L261 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M280 336L271 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M290 336L281 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M300 336L291 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M310 336L301 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M320 336L311 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M330 336L321 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M340 336L331 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M350 336L341 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M360 336L351 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M370 336L361 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M380 336L371 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M390 336L381 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M400 336L391 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M410 336L401 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M420 336L411 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M430 336L421 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M440 336L431 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M450 336L441 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M460 336L451 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M470 336L461 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M480 336L471 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M490 336L481 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M500 336L491 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="300" y="124" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">NVIS</text>
+  <text x="300" y="370" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">ELEVATION ANGLE, DEGREES</text>
+  <text x="300" y="382" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">A low horizontal radiator.</text>
+  <text x="300" y="394" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">Energy leaves near the vertical and returns close in.</text>
+  <path d="M582 336A178 178 0 0 1 938 336" fill="none" stroke="#c8c8c8" stroke-width="1.4"/>
+  <path d="M608.7 336A151.3 151.3 0 0 1 911.3 336" fill="none" stroke="#c8c8c8" stroke-width="0.7"/>
+  <text x="763" y="194.7" class="cad" text-anchor="start" font-size="8" font-weight="400" fill="#5a5a5a">-3</text>
+  <path d="M635.4 336A124.6 124.6 0 0 1 884.6 336" fill="none" stroke="#c8c8c8" stroke-width="0.7"/>
+  <text x="763" y="221.4" class="cad" text-anchor="start" font-size="8" font-weight="400" fill="#5a5a5a">-6</text>
+  <path d="M671 336A89 89 0 0 1 849 336" fill="none" stroke="#c8c8c8" stroke-width="0.7"/>
+  <text x="763" y="257" class="cad" text-anchor="start" font-size="8" font-weight="400" fill="#5a5a5a">-10</text>
+  <path d="M760 336L938 336" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <text x="953" y="330.5" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">0</text>
+  <path d="M760 336L931.935 289.93" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L914.153 247" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="927.143" y="243" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">30</text>
+  <path d="M760 336L885.865 210.135" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L849 181.847" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="856.5" y="172.357" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">60</text>
+  <path d="M760 336L806.07 164.065" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L760 158" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <text x="760" y="146.5" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">90</text>
+  <path d="M760 336L713.93 164.065" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L671 181.847" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="663.5" y="172.357" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">120</text>
+  <path d="M760 336L634.135 210.135" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L605.847 247" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <text x="592.857" y="243" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">150</text>
+  <path d="M760 336L588.065 289.93" stroke="#c8c8c8" stroke-width="0.55" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L582 336" stroke="#c8c8c8" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <text x="567" y="330.5" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">180</text>
+  <path d="M893.284 336L904.45 328.43L913.503 319.866L920.387 310.597L925.073 300.913L927.562 291.102L927.882 281.452L926.091 272.244L922.273 263.751L916.541 256.238L909.032 249.956L899.908 245.143L889.355 242.018L877.582 240.784L864.817 241.622L851.307 244.693L837.315 250.133L823.122 258.051L809.018 268.532L795.306 281.633L782.296 297.382L770.304 315.777L761.448 332.748L761.276 332.676L761.1 332.614L760.921 332.561L760.74 332.518L760.557 332.484L760.372 332.46L760.186 332.445L760 332.44L759.814 332.445L759.628 332.46L759.443 332.484L759.26 332.518L759.079 332.561L758.9 332.614L758.724 332.676L758.552 332.748L749.696 315.777L737.704 297.382L724.694 281.633L710.982 268.532L696.878 258.051L682.685 250.133L668.693 244.693L655.183 241.622L642.418 240.784L630.645 242.018L620.092 245.143L610.968 249.956L603.459 256.238L597.727 263.751L593.909 272.244L592.118 281.452L592.438 291.102L594.927 300.913L599.613 310.597L606.497 319.866L615.55 328.43L626.716 336" stroke="#a8481c" stroke-width="1.7" fill="none"/>
+  <path d="M560 336L960 336" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M560 336L960 336" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M570 336L561 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M580 336L571 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M590 336L581 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M600 336L591 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M610 336L601 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M620 336L611 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M630 336L621 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M640 336L631 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M650 336L641 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M660 336L651 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M670 336L661 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M680 336L671 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M690 336L681 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M700 336L691 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M710 336L701 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M720 336L711 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M730 336L721 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M740 336L731 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M750 336L741 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M760 336L751 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M770 336L761 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M780 336L771 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M790 336L781 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M800 336L791 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M810 336L801 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M820 336L811 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M830 336L821 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M840 336L831 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M850 336L841 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M860 336L851 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M870 336L861 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M880 336L871 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M890 336L881 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M900 336L891 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M910 336L901 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M920 336L911 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M930 336L921 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M940 336L931 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M950 336L941 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M960 336L951 345" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="760" y="124" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">DX</text>
+  <text x="760" y="370" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">ELEVATION ANGLE, DEGREES</text>
+  <text x="760" y="382" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">A vertical, a sloper, or a strong vertical component.</text>
+  <text x="760" y="394" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">Energy leaves at a low angle and travels.</text>
+  <g class="fx-notes">
+  <text x="34" y="458" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#1a1a1a">PLOT NOTES:</text>
+  <text x="34" y="471.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1.</text>
+  <text x="47" y="471.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Pattern shapes are drawn to compare geometry. They are not modelled results and carry no gain figures.</text>
+  <text x="34" y="483" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2.</text>
+  <text x="47" y="483" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Rings are relative, 0 dB at the outer circle down to -20 dB at the centre. Ground is at 0 and 180 degrees.</text>
+  <text x="34" y="494.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">3.</text>
+  <text x="47" y="494.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">No single fixed portable antenna is optimal for both cases at once.</text>
+  </g>
+</g>
+      </svg>
+      <figcaption>No fixed portable antenna is optimal for both at once. What
+        works is a single inverted-L or sloping wire that produces a mixture
+        of angles, or a modular system whose geometry changes when the mission
+        changes rather than when the frequency does.</figcaption>
+    </figure>
+    <div class="warn" role="note">
+      <span class="warn-tag">Note</span>
+      <p><strong>A tuner changes the impedance presented to the
+         transmitter.</strong> It does not make an electrically short antenna
+         efficient, it does not replace missing radiator length, and it does
+         not guarantee a useful radiation pattern. A low SWR reading is not
+         proof of good radiation.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Four candidates</p><h2>What was considered</h2></div>
+      <p class="sec-note">Published figures<br>Sources at the foot</p>
+    </header>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>Buddipole</h3><span class="verdict miss">Conflicts with the requirement</span></div>
+      <p>A manually adjusted loaded dipole and vertical system. Genuinely good
+         at what it does, which is not this.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>7 to 54 MHz continuous, plus 144 to 148 MHz</li>
+          <li>40 through 6 m, plus 2 m</li>
+          <li>About 16 ft extended, about 22 in packed</li>
+          <li>QRP through 250 W</li>
+          <li>About $279 basic, about $459 deluxe</li>
+        </ul></div>
+        <div><h4>For</h4><ul class="ticks">
+          <li>Highly modular, compact packed</li>
+          <li>Dipole, asymmetric dipole or vertical</li>
+          <li>Includes 2 m</li>
+          <li>No DC power, no radio-specific interface</li>
+          <li>The basic antenna stays within budget if a suitable support is already to hand</li>
+        </ul></div>
+        <div><h4>Against</h4><ul class="ticks">
+          <li>Band changes mean moving clips and adjusting whips</li>
+          <li>An analyzer is strongly recommended for repeatable setup</li>
+          <li>Standard coverage starts at 40 m</li>
+          <li>80 m needs optional low-band parts and is compromised</li>
+          <li>Deluxe package is over budget</li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>Icom AH-4</h3><span class="verdict hit">Closest fit</span></div>
+      <p>A weather-resistant automatic tuner made to live at the antenna
+         feedpoint, controlled natively by the 706.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>3.5 to 54 MHz with a wire at least 7 m / 23 ft</li>
+          <li>7 to 54 MHz with the optional AH-2b whip</li>
+          <li>120 W PEP maximum input, 50 ohm input impedance</li>
+          <li>Tunes in about 2 to 3 s, 15 s worst case</li>
+          <li>45 memories</li>
+          <li>13.8 VDC, under 1 A</li>
+          <li>6.77 x 2.80 x 9.06 in, about 2.65 lb</li>
+        </ul></div>
+        <div><h4>For</h4><ul class="ticks">
+          <li>Native control from the 706 tuner connector</li>
+          <li>Hold the radio's TUNER button and it goes</li>
+          <li>Mounted at the feedpoint, minimising loss in a mismatched coaxial feed line</li>
+          <li>Takes a long wire directly</li>
+          <li>Made to sit outdoors</li>
+        </ul></div>
+        <div><h4>Against</h4><ul class="ticks">
+          <li>No official 160 m</li>
+          <li>No 2 m</li>
+          <li>Needs coax plus the Icom four-conductor control cable</li>
+          <li>Control cable run limited to about 10 m / 32.8 ft, using the proper shielded extension and matching coax</li>
+          <li>It is a tuner: wire, counterpoise, support and cable still needed</li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>LDG AT-200ProII</h3><span class="verdict part">Best tuner, wrong place</span></div>
+      <p>A general purpose automatic desk or go-box tuner that sits beside the
+         radio and feeds a coax-fed antenna.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>1.8 to 54 MHz</li>
+          <li>250 W SSB, 200 W CW, 150 W FT8, 125 W other digital, 100 W on 6 m</li>
+          <li>About 6 to 1,000 ohms, to 4,000 with the optional 4:1 balun</li>
+          <li>Two antenna outputs, 4,000 memories total, 2,000 for each output</li>
+          <li>0.2 to 15 s full tune, about 0.2 s from memory</li>
+          <li>9.5 x 7 x 2.25 in, about 2.5 lb, 11 to 16 VDC at up to 1 A</li>
+        </ul></div>
+        <div><h4>For</h4><ul class="ticks">
+          <li>Official 160 through 6 m</li>
+          <li>Higher power and digital ratings than the AH-4</li>
+          <li>Two switchable antenna outputs</li>
+          <li>Forward, reflected and SWR displays</li>
+          <li>The optional IC-PAC cable connects to an Icom AH-3 or AH-4 compatible tuner port, supplies control and DC, and LDG lists the IC-706 as supported</li>
+        </ul></div>
+        <div><h4>Against</h4><ul class="ticks">
+          <li>Not weather resistant</li>
+          <li>Lives beside the radio, not at the feedpoint</li>
+          <li>Feeding a highly mismatched antenna through coax, it protects the transmitter while the coax still sees high SWR and the extra loss</li>
+          <li>Includes no antenna</li>
+          <li>Random wire and open line need external matching hardware</li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>LDG RT/RC-100</h3><span class="verdict hit">If 160 m matters</span></div>
+      <p>LDG's answer to the AH-4: a remote tuner at the feedpoint, powered and
+         controlled over the coax itself.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>1.8 to 54 MHz</li>
+          <li>125 W SSB peak, 100 W CW, 75 W FT8, 50 W other digital, 50 W on 6 m</li>
+          <li>About 4 to 800 ohms, to 3,200 with the optional 4:1 balun</li>
+          <li>Over 2,000 memories</li>
+          <li>RT-100 about 1.25 lb, weather resistant but not immersible</li>
+          <li>About $299.99 observed</li>
+        </ul></div>
+        <div><h4>For</h4><ul class="ticks">
+          <li>Feedpoint mounting keeps the loss off the coax</li>
+          <li>Official 160 through 6 m</li>
+          <li>No outdoor control cable: power and control ride the coax</li>
+          <li>Brand agnostic</li>
+          <li>Fits within the budget when combined with inexpensive wire and hardware</li>
+        </ul></div>
+        <div><h4>Against</h4><ul class="ticks">
+          <li>Long wire or balanced feed may need an external balun or unun</li>
+          <li>No native AH-4 style control through the 706 tuner port</li>
+          <li>Lower digital power limits than the AT-200ProII</li>
+          <li>Still no 2 m</li>
+          <li>A short radiator stays inefficient on 160 m however good the match</li>
+        </ul></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Side by side</p><h2>The decision table</h2></div>
+    </header>
+    <div class="tablewrap">
+      <table class="bom compare">
+        <thead><tr><th scope="col">Requirement</th><th scope="col">Buddipole</th><th scope="col">Icom AH-4</th><th scope="col">LDG AT-200ProII</th><th scope="col">LDG RT/RC-100</th></tr></thead>
+        <tbody>
+          <tr><td>Within $375 as offered or used</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes, about $300 new</td></tr>
+          <tr><td>Includes a radiator</td><td class="y">Yes</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr><td>No physical adjustment between HF bands</td><td class="n">No</td><td class="y">Yes</td><td class="m">With a suitable antenna</td><td class="m">With a suitable antenna</td></tr>
+          <tr><td>Remote feedpoint tuning</td><td class="n">No</td><td class="y">Yes</td><td class="n">Station side</td><td class="y">Yes</td></tr>
+          <tr><td>Native IC-706 control</td><td class="n">No</td><td class="y">Yes</td><td class="m">With IC-PAC</td><td class="n">Uses the RC-100 controller</td></tr>
+          <tr><td>160 m tuner coverage</td><td class="n">No</td><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>80 m coverage</td><td class="m">Optional, compromised</td><td class="y">Yes, with 23 ft or more of wire</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>6 m coverage</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>2 m coverage</td><td class="y">Yes</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr><td>Weather resistant</td><td class="m">The antenna itself</td><td class="y">Yes</td><td class="n">No</td><td class="y">Yes</td></tr>
+          <tr><td>Best role</td><td>Compact adjustable antenna</td><td>706 remote wire coupler</td><td>Shack and go-box tuner</td><td>Universal remote tuner</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">The antenna itself</p><h2>One wire, put up once</h2></div>
+    </header>
+    <p class="hint">For either the AH-4 or the RT/RC-100: a single 55 to 70 ft
+      wire as an inverted-L. Up the mast first, then out. Remote tuner at the
+      bottom, counterpoise on the ground, and the far end kept away from
+      anywhere a person can reach it.</p>
+    <figure class="drawing">
+      <svg viewBox="0 0 1120 660" role="img" aria-label="Dimensioned elevation of the inverted-L: 23 to 30 feet of wire up a mast, then 30 to 40 feet running level or sloping down to an end insulator, 55 to 70 feet of wire in total. A remote tuner sits at the foot of the mast with coax to the radio, and counterpoise wires spread along the ground.">
+  <g class="cadfig">
+  <g class="fx-frame">
+  <rect x="0" y="0" width="1120" height="660" fill="#ffffff" stroke="none" stroke-width="0"/>
+  <rect x="10" y="10" width="1100" height="640" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  </g>
+  <g class="fx-title">
+  <rect x="822" y="602" width="288" height="48" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M822 622L1110 622" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="829" y="616" class="cad" text-anchor="start" font-size="9.5" font-weight="600" fill="#1a1a1a">ONE WIRE INVERTED L</text>
+  <text x="1103" y="616" class="cad" text-anchor="end" font-size="7.5" font-weight="400" fill="#5a5a5a">ELEVATION, 80 TO 6 M</text>
+  <text x="827" y="633" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">DRAWN</text>
+  <text x="827" y="645" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">K4DIA</text>
+  <path d="M894 622L894 650" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="899" y="633" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SCALE</text>
+  <text x="899" y="645" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">NONE</text>
+  <path d="M966 622L966 650" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="971" y="633" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">REV</text>
+  <text x="971" y="645" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">A</text>
+  <path d="M1038 622L1038 650" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="1043" y="633" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SHEET</text>
+  <text x="1043" y="645" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1 OF 1</text>
+  </g>
+  <path d="M60 470L1060 470" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M60 470L1060 470" stroke="#1a1a1a" stroke-width="1.4" fill="none" stroke-linecap="square"/>
+  <path d="M72 470L60 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M84 470L71 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M96 470L83 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M108 470L95 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M120 470L107 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M132 470L119 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M144 470L131 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M156 470L143 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M168 470L155 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M180 470L167 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M192 470L179 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M204 470L191 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M216 470L203 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M228 470L215 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M240 470L227 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M252 470L239 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M264 470L251 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M276 470L263 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M288 470L275 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M300 470L287 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M312 470L299 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M324 470L311 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M336 470L323 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M348 470L335 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M360 470L347 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M372 470L359 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M384 470L371 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M396 470L383 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M408 470L395 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M420 470L407 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M432 470L419 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M444 470L431 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M456 470L443 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M468 470L455 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M480 470L467 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M492 470L479 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M504 470L491 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M516 470L503 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M528 470L515 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M540 470L527 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M552 470L539 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M564 470L551 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M576 470L563 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M588 470L575 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M600 470L587 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M612 470L599 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M624 470L611 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M636 470L623 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M648 470L635 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M660 470L647 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M672 470L659 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M684 470L671 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M696 470L683 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M708 470L695 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M720 470L707 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M732 470L719 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M744 470L731 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M756 470L743 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M768 470L755 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M780 470L767 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M792 470L779 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M804 470L791 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M816 470L803 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M828 470L815 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M840 470L827 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M852 470L839 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M864 470L851 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M876 470L863 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M888 470L875 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M900 470L887 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M912 470L899 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M924 470L911 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M936 470L923 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M948 470L935 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M960 470L947 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M972 470L959 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M984 470L971 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M996 470L983 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M1008 470L995 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M1020 470L1007 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M1032 470L1019 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M1044 470L1031 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M1056 470L1043 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <path d="M1060 470L1055 483" stroke="#5a5a5a" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <rect x="205" y="150" width="10" height="320" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M210 116L210 498" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <path d="M210 436L210 150" stroke="#a8481c" stroke-width="1.9" fill="none" stroke-linecap="square"/>
+  <path d="M210 150L810 246" stroke="#a8481c" stroke-width="1.9" fill="none" stroke-linecap="square"/>
+  <circle cx="810" cy="246" r="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M204 150L124 150" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M204 470L124 470" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M120 164L120 155.525" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M120 150L122.223 156.108L117.777 156.108Z" fill="#5a5a5a"/>
+  <path d="M120 456L120 464.475" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M120 470L117.777 463.892L122.223 463.892Z" fill="#5a5a5a"/>
+  <path d="M120 150L120 470" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <rect x="91.4" y="302.8" width="57.2" height="11" fill="#ffffff" transform="rotate(-90 120 310)"/>
+  <text x="120" y="310" class="cad" text-anchor="middle" font-size="10" font-weight="400" fill="#1a1a1a" transform="rotate(-90 120 310)">23 TO 30 FT</text>
+  <path d="M210 144L210 100" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M810 144L810 100" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M224 104L215.525 104" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M210 104L216.108 101.777L216.108 106.223Z" fill="#5a5a5a"/>
+  <path d="M796 104L804.475 104" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M810 104L803.892 106.223L803.892 101.777Z" fill="#5a5a5a"/>
+  <path d="M210 104L810 104" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <rect x="421.6" y="96.8" width="176.8" height="11" fill="#ffffff"/>
+  <text x="510" y="107.4" class="cad" text-anchor="middle" font-size="10" font-weight="400" fill="#1a1a1a">30 TO 40 FT, LEVEL OR SLOPING DOWN</text>
+  <text x="510" y="84" class="cad" text-anchor="middle" font-size="10" font-weight="400" fill="#5a5a5a">55 TO 70 FT OF WIRE IN TOTAL</text>
+  <rect x="166" y="436" width="88" height="34" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="210" y="458" class="cad" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1a1a">TUNER</text>
+  <path d="M254 453L400 453" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="322" y="445" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">COAX</text>
+  <rect x="400" y="436" width="104" height="34" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="452" y="458" class="cad" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1a1a">RADIO</text>
+  <path d="M210 473L70 486" stroke="#5a5a5a" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M210 473L114 494" stroke="#5a5a5a" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M210 473L338 484" stroke="#5a5a5a" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M210 473L398 492" stroke="#5a5a5a" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M210 473L282 496" stroke="#5a5a5a" stroke-width="0.9" fill="none" stroke-linecap="square"/>
+  <path d="M810 246L891.682 215.813" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="810" cy="246" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="902" cy="212" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="902" y="215.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">1</text>
+  <path d="M398 492L499.641 528.3" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="398" cy="492" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="510" cy="532" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="510" y="535.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">2</text>
+  <path d="M210 453L449.159 411.865" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="210" cy="453" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="460" cy="410" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="460" y="413.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">3</text>
+  <g class="fx-items">
+  <rect x="700" y="502" width="344" height="56" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M700 516L1044 516" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M734 502L734 558" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="717" y="512" class="cad" text-anchor="middle" font-size="6.5" font-weight="600" fill="#5a5a5a">ITEM</text>
+  <text x="741" y="512" class="cad" text-anchor="start" font-size="6.5" font-weight="600" fill="#5a5a5a">DESCRIPTION</text>
+  <text x="717" y="526" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">1</text>
+  <text x="741" y="526" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">End insulator. Keep this end clear of people and paths.</text>
+  <path d="M700 530L1044 530" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="717" y="540" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">2</text>
+  <text x="741" y="540" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Counterpoise, 50 to 100 ft of wire on or just above the ground.</text>
+  <path d="M700 544L1044 544" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="717" y="554" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">3</text>
+  <text x="741" y="554" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Remote tuner at the feedpoint.</text>
+  </g>
+  <g class="fx-notes">
+  <text x="60" y="522" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#1a1a1a">NOTES:</text>
+  <text x="60" y="535.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1.</text>
+  <text x="73" y="535.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Erected once. Bands are changed electronically at the radio.</text>
+  <text x="60" y="547" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2.</text>
+  <text x="73" y="547" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Lengths are the recommended range, not a cut list.</text>
+  </g>
+</g>
+      </svg>
+      <figcaption>Erected once, then retuned electronically when the band
+        changes. That is the whole point of the arrangement.</figcaption>
+    </figure>
+
+    <div class="expect">
+      <h3>What to expect from it, band by band</h3>
+      <dl class="bandlist">
+        <div><dt>80 m</dt><dd>The horizontal part gives high-angle regional coverage, the vertical part contributes some lower angle.</dd></div>
+        <div><dt>40 m</dt><dd>A useful mixture of regional and longer haul.</dd></div>
+        <div><dt>30 to 10 m</dt><dd>An increasingly complicated multi-lobe pattern, still useful portable.</dd></div>
+        <div><dt>6 m</dt><dd>It may tune, but a dedicated 6 m radiator gives a more predictable pattern.</dd></div>
+        <div><dt>160 m</dt><dd>An LDG tuner may match 55 to 70 ft of wire, but it stays electrically short and inefficient. More wire and a better return path help materially.</dd></div>
+      </dl>
+      <p class="caveat">This is a compromise antenna. It will not equal a low
+        full-size NVIS dipole and a full-size quarter-wave DX vertical at the
+        same time. What it buys is operational agility.</p>
+    </div>
+  </section>
+
+  <section class="section build">
+    <header class="sec-head">
+      <div><p class="eyebrow">How each one is actually wired up</p><h2>Practical configurations</h2></div>
+    </header>
+    <div class="rulesets">
+      <div class="ruleset">
+        <h3>AH-4, for 80 through 6 m</h3>
+        <p class="ruleset-note">The recommended arrangement.</p>
+        <ol>
+          <li>Icom AH-4 at the antenna.</li>
+          <li>55 to 70 ft insulated radiator wire.</li>
+          <li>23 to 30 ft fiberglass support, or a suitable tree.</li>
+          <li>Counterpoise totalling about 50 to 100 ft.</li>
+          <li>50 ohm coax back to the radio.</li>
+          <li>Icom four-conductor shielded control cable to the TUNER socket.</li>
+          <li>Change frequency, hold TUNER, transmit once it tunes.</li>
+        </ol>
+      </div>
+      <div class="ruleset">
+        <h3>AT-200ProII, as a go-box tuner</h3>
+        <p class="ruleset-note">Bigger footprint, more capability.</p>
+        <ol>
+          <li>About an 88 ft non-resonant doublet: two 44 ft legs.</li>
+          <li>Parallel transmission line from the center.</li>
+          <li>External 4:1 balun at the tuner.</li>
+          <li>AT-200ProII beside the radio.</li>
+          <li>Optional LDG IC-PAC cable to the 706.</li>
+          <li>Once up, it stays up while the tuner retunes electronically.</li>
+        </ol>
+      </div>
+      <div class="ruleset">
+        <h3>RT/RC-100, when 160 m matters</h3>
+        <p class="ruleset-note">One coax does everything.</p>
+        <ol>
+          <li>RT-100 at the feedpoint.</li>
+          <li>RC-100 controller and bias tee beside the radio.</li>
+          <li>One coax carries RF, DC and control.</li>
+          <li>External balun or unun chosen for the documented configuration.</li>
+          <li>The longest practical inverted-L or sloping wire, over 70 ft if 160 m is the goal.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">The band none of them cover</p><h2>Two meters</h2></div>
+    </header>
+    <div class="twocol">
+      <div>
+        <p class="lead-p">Neither the AH-4 nor either LDG tuner covers 2 m. The
+          Buddipole can be configured for it, but that means changing its
+          arrangement, which is the thing this whole exercise was trying to
+          avoid.</p>
+        <p>The 706 has a separate VHF/UHF antenna port, so the least
+          disruptive answer is a small dedicated 2 m antenna left permanently
+          connected: a roll-up J-pole, a quarter-wave whip, or a small
+          magnetic mount.</p>
+      </div>
+      <p class="caveat">Asking one radiator to cover 1.8 MHz through 148 MHz
+        efficiently is a frequency ratio above 80 to 1. A separate compact VHF
+        antenna is the better answer technically and operationally.</p>
+    </div>
+  </section>
+
+  <section class="section vna">
+    <header class="sec-head">
+      <div><p class="eyebrow">The answer</p><h2>Recommendation</h2></div>
+      <p class="sec-note">In order<br>For the stated requirement</p>
+    </header>
+    <ol class="ranked">
+      <li>
+        <span class="rank">01</span>
+        <div><h3>Icom AH-4</h3>
+          <p>For 80 through 6 m and the strongest integration with the 706.
+             One 55 to 70 ft inverted-L. Tunes at the feedpoint, weather
+             resistant, no physical adjustment when the band changes.</p></div>
+      </li>
+      <li>
+        <span class="rank">02</span>
+        <div><h3>LDG RT/RC-100</h3>
+          <p>If official 160 m tuner coverage matters. Longest practical
+             inverted-L or sloping wire with the right external matching, and
+             the remote feedpoint placement, still inside budget.</p></div>
+      </li>
+      <li>
+        <span class="rank">03</span>
+        <div><h3>LDG AT-200ProII</h3>
+          <p>If a versatile indoor or go-box tuner is also wanted. Most tuner
+             power, the displays, two antenna outputs, official 160 through
+             6 m. Pair it with a deliberately chosen broadband antenna.</p></div>
+      </li>
+      <li>
+        <span class="rank">04</span>
+        <div><h3>Buddipole</h3>
+          <p>Only if compact mechanical modularity and native 2 m outweigh
+             automatic band changes. A capable antenna that needs the most
+             physical fiddling as the band moves.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section terms">
+    <div>
+      <p class="eyebrow">Before you transmit</p>
+      <h2>Operating notes</h2>
+      <ul class="ticks wide">
+        <li>Start tuning and testing at reduced power.</li>
+        <li>Do not transmit while anyone can touch the radiator, the counterpoise, the tuner output, or the wire ends.</li>
+        <li>High RF voltage exists at the far end of an end-fed or inverted-L wire.</li>
+        <li>Keep antennas and supports well away from overhead electrical conductors.</li>
+        <li>Check current FCC band privileges and RF exposure requirements for where you are operating.</li>
+        <li>Observe the maker's mode-specific power limits, especially for FT8 and other high duty cycle digital modes.</li>
+        <li>A low SWR match does not prove good radiation efficiency.</li>
+      </ul>
+      <p class="fineprint">Prices and availability change. Confirm the included
+        cables, accessories, condition and return policy before buying new or
+        used. Figures above are the published ones as found during research,
+        not measurements.</p>
+      <h3 class="srchead">Sources</h3>
+      <ul class="srclist">
+        <li><a href="https://www.icomamerica.com/lineup/options/AH-4/" rel="noopener">Icom AH-4 specifications</a></li>
+        <li><a href="https://www.icomamerica.com/support/manual/1385/" rel="noopener">Icom AH-4 manual</a></li>
+        <li><a href="https://www.ldgelectronics.com/at-200-proii" rel="noopener">LDG AT-200ProII</a></li>
+        <li><a href="https://www.ldgelectronics.com/ic-pac-interface-cable" rel="noopener">LDG IC-PAC interface cable</a></li>
+        <li><a href="https://www.ldgelectronics.com/rt/rc-100" rel="noopener">LDG RT/RC-100</a></li>
+        <li><a href="https://www.buddipole.com/buddipole.html" rel="noopener">Buddipole standard antenna</a></li>
+        <li><a href="https://www.buddipole.com/debupa.html" rel="noopener">Buddipole Deluxe package</a></li>
+        <li><a href="https://www.buddipole.com/lowbandcoil.html" rel="noopener">Buddipole low-band coil</a></li>
+        <li><a href="https://www.marines.mil/Portals/1/MCRP%203-40.3C%20With%20Erratum%20z.pdf" rel="noopener">USMC Antenna Handbook, MCRP 3-40.3C, NVIS discussion</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call"><strong>K4DIA</strong><span>Amateur Radio</span></div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+</footer>
+
+<script src="../../site.js"></script>
+</body>
+</html>

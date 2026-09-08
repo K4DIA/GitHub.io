@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RadioBerry V2 portable HF radio | K4DIA</title>
+<meta name="description" content="A self-contained 3 to 5 watt HF software-defined radio built around a Raspberry Pi 4 and a RadioBerry V2 Beta5, with a real VFO knob, a relay filter bank and an internal LiFePO4 battery.">
+<link rel="preload" href="../../fonts/IBMPlexSansCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d1b17'/%3E%3Cpath d='M32 10v44M32 22 14 50M32 22l18 28' stroke='%23efe8da' stroke-width='4' fill='none'/%3E%3Ccircle cx='32' cy='10' r='5' fill='%23d8a24a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <span class="brand-call">K4DIA</span>
+    <span class="brand-lines"><span>Field &middot; Build &middot; Learn</span><span>Radio brings people together</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../#projects" class="is-here">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag"><strong>Amateur Radio</strong><span>Curiosity &middot; Experimentation &middot; Real connections</span></div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../#projects"><i>01</i> Projects</a>
+  <a href="../../#tools"><i>02</i> Tools</a>
+  <a href="../../downloads/"><i>03</i> Downloads</a>
+  <a href="../../#notes"><i>04</i> Notes</a>
+</nav>
+
+<main id="main">
+  <section class="pagehead">
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> RadioBerry V2</p>
+    <p class="eyebrow">SDR / Construction <span class="cstat-inline">Planning and parts</span></p>
+    <h1>RadioBerry V2 Beta5<br>5 W portable HF radio</h1>
+    <p class="pagelede">A self-contained HF software-defined radio in a Hammond
+      instrument case: a Raspberry Pi 4 already on the shelf, a RadioBerry V2
+      Beta5 HAT, a 4.3 inch touchscreen, and a real weighted VFO knob because
+      a radio you tune with a mouse is not a radio you want in the field.
+      Three to five watts out, an internal battery, and a relay-selected
+      harmonic filter bank.</p>
+  </section>
+
+  <section class="section specstrip">
+    <dl class="specs">
+      <div><dt>Output</dt><dd>About 3 to 5 W</dd></div>
+      <div><dt>Enclosure</dt><dd>Hammond 1458VG4, vented steel, 10 x 8 x 4 in</dd></div>
+      <div><dt>Brains</dt><dd>Raspberry Pi 4, piHPSDR</dd></div>
+      <div><dt>Front end</dt><dd>RadioBerry V2, AD9866 12-bit</dd></div>
+      <div><dt>Battery</dt><dd>12.8 V 6 Ah LiFePO4, internal</dd></div>
+      <div><dt>Remaining cost</dt><dd>About $900, hold $1,000</dd></div>
+    </dl>
+  </section>
+
+  <section class="section">
+    <div class="warn" role="note">
+      <span class="warn-tag">Correction</span>
+      <p><strong>The PA runs on 8.4 V, not 12 V.</strong> An earlier plan called
+         for a 12 V PA regulator. That is wrong for this exact AURSINC board,
+         whose listing allows roughly 6 to 8 V and recommends 8.4 V. Use a
+         regulated 8.4 V rail, such as the Pololu D42V55F8. Do not put 12 to
+         13.8 V into it.</p>
+    </div>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">What it looks like from the operator's chair</p><h2>Front panel</h2></div>
+      <p class="sec-note">Display centered<br>VFO to the right</p>
+    </header>
+    <figure class="drawing">
+      <svg viewBox="0 0 1120 780" role="img" aria-label="Front panel drawing, panel shown at its 10 by 4 inch proportion with balloon callouts numbered 1 to 8 keyed to an item table: status lamps, AF gain, RF gain, the 4.3 inch touchscreen, five soft keys, the VFO, VFO select and the multifunction encoder.">
+  <g class="cadfig">
+  <g class="fx-frame">
+  <rect x="0" y="0" width="1120" height="780" fill="#ffffff" stroke="none" stroke-width="0"/>
+  <rect x="10" y="10" width="1100" height="760" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  </g>
+  <g class="fx-title">
+  <rect x="822" y="722" width="288" height="48" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M822 742L1110 742" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="829" y="736" class="cad" text-anchor="start" font-size="9.5" font-weight="600" fill="#1a1a1a">RADIOBERRY V2 PORTABLE HF</text>
+  <text x="1103" y="736" class="cad" text-anchor="end" font-size="7.5" font-weight="400" fill="#5a5a5a">FRONT PANEL ARRANGEMENT</text>
+  <text x="827" y="753" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">DRAWN</text>
+  <text x="827" y="765" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">K4DIA</text>
+  <path d="M894 742L894 770" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="899" y="753" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SCALE</text>
+  <text x="899" y="765" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">NONE</text>
+  <path d="M966 742L966 770" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="971" y="753" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">STATUS</text>
+  <text x="971" y="765" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">PROPOSED</text>
+  <path d="M1038 742L1038 770" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="1043" y="753" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SHEET</text>
+  <text x="1043" y="765" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1 OF 2</text>
+  </g>
+  <rect x="110" y="92" width="900" height="360" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  <rect x="126" y="108" width="868" height="328" fill="none" stroke="#5a5a5a" stroke-width="0.7"/>
+  <path d="M80 272L1040 272" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <path d="M110 86L110 48" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M1010 86L1010 48" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M124 52L115.525 52" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M110 52L116.108 49.7769L116.108 54.2231Z" fill="#5a5a5a"/>
+  <path d="M996 52L1004.48 52" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M1010 52L1003.89 54.2231L1003.89 49.7769Z" fill="#5a5a5a"/>
+  <path d="M110 52L1010 52" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <rect x="547" y="44.8" width="26" height="11" fill="#ffffff"/>
+  <text x="560" y="55.4" class="cad" text-anchor="middle" font-size="10" font-weight="400" fill="#1a1a1a">10 IN</text>
+  <path d="M104 92L66 92" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M104 452L66 452" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <path d="M62 106L62 97.525" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M62 92L64.2231 98.108L59.7769 98.108Z" fill="#5a5a5a"/>
+  <path d="M62 438L62 446.475" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/><path d="M62 452L59.7769 445.892L64.2231 445.892Z" fill="#5a5a5a"/>
+  <path d="M62 92L62 452" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <rect x="51.6" y="264.8" width="20.8" height="11" fill="#ffffff" transform="rotate(-90 62 272)"/>
+  <text x="62" y="272" class="cad" text-anchor="middle" font-size="10" font-weight="400" fill="#1a1a1a" transform="rotate(-90 62 272)">4 IN</text>
+  <rect x="435" y="176" width="250" height="156" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M560 80L560 464" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <text x="560" y="258" class="cad" text-anchor="middle" font-size="10" font-weight="400" fill="#5a5a5a">4.3 IN DSI, 480 x 800</text>
+  <rect x="435" y="348" width="42" height="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <rect x="485" y="348" width="42" height="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <rect x="535" y="348" width="42" height="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <rect x="585" y="348" width="42" height="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <rect x="635" y="348" width="42" height="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="206" cy="198" r="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="206" cy="198" r="3" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M164 198L248 198" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <circle cx="206" cy="306" r="30" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="206" cy="306" r="3" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M164 306L248 306" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <circle cx="144" cy="132" r="7" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="144" cy="160" r="7" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="144" cy="188" r="7" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="860" cy="232" r="58" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <circle cx="860" cy="232" r="44" fill="none" stroke="#5a5a5a" stroke-width="0.7"/>
+  <circle cx="860" cy="232" r="3" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <path d="M786 232L934 232" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <path d="M860 158L860 306" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square" stroke-dasharray="9 3 2 3"/>
+  <circle cx="804" cy="350" r="14" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <circle cx="906" cy="348" r="20" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M144 160L67.7927 121.01" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="144" cy="160" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="58" cy="116" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="58" y="119.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">1</text>
+  <path d="M206 198L68.2881 145.893" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="206" cy="198" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="58" cy="142" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="58" y="145.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">2</text>
+  <path d="M206 306L67.5109 386.473" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="206" cy="306" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="58" cy="392" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="58" y="395.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">3</text>
+  <path d="M560 206L522.944 72.5987" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="560" cy="206" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="520" cy="62" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="520" y="65.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">4</text>
+  <path d="M555 363L649.019 477.499" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="555" cy="363" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="656" cy="486" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="656" y="489.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">5</text>
+  <path d="M860 232L962.101 71.2848" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="860" cy="232" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="968" cy="62" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="968" y="65.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">6</text>
+  <path d="M804 350L748.44 475.936" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="804" cy="350" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="744" cy="486" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="744" y="489.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">7</text>
+  <path d="M906 348L971.024 476.19" stroke="#5a5a5a" stroke-width="0.7" fill="none" stroke-linecap="square"/>
+  <circle cx="906" cy="348" r="1.6" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+  <circle cx="976" cy="486" r="11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="976" y="489.6" class="cad" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1a1a">8</text>
+  <g class="fx-items">
+  <rect x="600" y="520" width="364" height="126" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M600 534L964 534" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <path d="M634 520L634 646" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="617" y="530" class="cad" text-anchor="middle" font-size="6.5" font-weight="600" fill="#5a5a5a">ITEM</text>
+  <text x="641" y="530" class="cad" text-anchor="start" font-size="6.5" font-weight="600" fill="#5a5a5a">DESCRIPTION</text>
+  <text x="617" y="544" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">1</text>
+  <text x="641" y="544" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Status lamps: power, transmit, fault / SWR</text>
+  <path d="M600 548L964 548" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="558" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">2</text>
+  <text x="641" y="558" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">AF gain, Bourns PEC11R encoder</text>
+  <path d="M600 562L964 562" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="572" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">3</text>
+  <text x="641" y="572" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">RF gain, Bourns PEC11R encoder</text>
+  <path d="M600 576L964 576" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="586" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">4</text>
+  <text x="641" y="586" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Waveshare 4.3 in DSI touchscreen</text>
+  <path d="M600 590L964 590" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="600" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">5</text>
+  <text x="641" y="600" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Soft keys, five off</text>
+  <path d="M600 604L964 604" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="614" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">6</text>
+  <text x="641" y="614" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">VFO, Bourns ENC1J optical, 128 ppr, weighted knob</text>
+  <path d="M600 618L964 618" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="628" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">7</text>
+  <text x="641" y="628" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">VFO select, momentary</text>
+  <path d="M600 632L964 632" stroke="#c8c8c8" stroke-width="0.6" fill="none" stroke-linecap="square"/>
+  <text x="617" y="642" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#1a1a1a">8</text>
+  <text x="641" y="642" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Multifunction encoder, PEC11R</text>
+  </g>
+  <g class="fx-notes">
+  <text x="60" y="524" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#1a1a1a">NOTES:</text>
+  <text x="60" y="537.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1.</text>
+  <text x="73" y="537.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Panel proportion 10 x 4 in, Hammond 1458VG4.</text>
+  <text x="60" y="549" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2.</text>
+  <text x="73" y="549" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Hole sizes to suit the parts actually bought.</text>
+  <text x="60" y="560.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">3.</text>
+  <text x="73" y="560.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Confirm every position with a full size template before any metal is cut.</text>
+  <text x="60" y="572" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">4.</text>
+  <text x="73" y="572" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Mic, phones and CW key on the lower edge or the rear panel.</text>
+  <text x="60" y="583.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">5.</text>
+  <text x="73" y="583.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Antenna, DC in, charge jack, USB, ground stud and exhaust on the rear.</text>
+  </g>
+</g>
+      </svg>
+      <figcaption>Microphone, headphones and the CW key go on the lower edge or
+        the rear panel depending on how the mechanical clearances land.
+        Antenna, DC input, charge jack, USB service port, ground stud and the
+        cooling exhaust all live on the back.</figcaption>
+    </figure>
+    <p class="caveat">The battery, the Pi and RadioBerry stack, the PA, the
+      filter board and the power electronics make this tight. Verify every
+      position with full-size paper templates before drilling anything.
+      Reserve about 135 x 90 mm for the filter board once SMA connectors,
+      coax bends and mounting clearance are allowed for.</p>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">How the signal and the power move</p><h2>System architecture</h2></div>
+    </header>
+    <figure class="drawing">
+      <svg viewBox="0 0 1120 640" role="img" aria-label="System block diagram in three bands. RF path, transmit left to right: RadioBerry V2 exciter, 3 to 5 watt PA, LPF bank, SWR bridge, antenna, with a dashed receive return that goes back through the filters and past the PA. Computer and front panel: the Raspberry Pi running piHPSDR, fed by a USB audio adapter and an RP2040 front panel controller, which also carries the 3 bit filter select line. Power: battery or external supply through a fused EXT OFF BAT selector into a 5 volt rail and a separate 8.4 volt rail for the PA alone.">
+  <g class="cadfig">
+  <g class="fx-frame">
+  <rect x="0" y="0" width="1120" height="640" fill="#ffffff" stroke="none" stroke-width="0"/>
+  <rect x="10" y="10" width="1100" height="620" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  </g>
+  <g class="fx-title">
+  <rect x="822" y="582" width="288" height="48" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.4"/>
+  <path d="M822 602L1110 602" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="829" y="596" class="cad" text-anchor="start" font-size="9.5" font-weight="600" fill="#1a1a1a">RADIOBERRY V2 PORTABLE HF</text>
+  <text x="1103" y="596" class="cad" text-anchor="end" font-size="7.5" font-weight="400" fill="#5a5a5a">SYSTEM BLOCK DIAGRAM</text>
+  <text x="827" y="613" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">DRAWN</text>
+  <text x="827" y="625" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">K4DIA</text>
+  <path d="M894 602L894 630" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="899" y="613" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SCALE</text>
+  <text x="899" y="625" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">NONE</text>
+  <path d="M966 602L966 630" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="971" y="613" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">REV</text>
+  <text x="971" y="625" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">A</text>
+  <path d="M1038 602L1038 630" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/>
+  <text x="1043" y="613" class="cad" text-anchor="start" font-size="6.5" font-weight="400" fill="#5a5a5a">SHEET</text>
+  <text x="1043" y="625" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2 OF 2</text>
+  </g>
+  <path d="M44 58L1076 58" stroke="#c8c8c8" stroke-width="0.8" fill="none" stroke-linecap="square"/>
+  <text x="50" y="51" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#5a5a5a">RF PATH  -  TRANSMIT LEFT TO RIGHT</text>
+  <rect x="60" y="78" width="150" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="135" y="103" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">RadioBerry V2</text>
+  <text x="135" y="119" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">AD9866 exciter</text>
+  <rect x="250" y="78" width="140" height="56" fill="#eef1f4" stroke="#a8481c" stroke-width="1.4"/>
+  <text x="320" y="103" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">3 to 5 W PA</text>
+  <text x="320" y="119" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">8.4 V only</text>
+  <rect x="430" y="78" width="140" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="500" y="103" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">LPF bank</text>
+  <text x="500" y="119" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">7 positions</text>
+  <rect x="610" y="78" width="140" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="680" y="109" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">SWR bridge</text>
+  <rect x="790" y="78" width="120" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="850" y="109" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Antenna</text>
+  <path d="M210 106L244.475 106" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M250 106L243.892 108.223L243.892 103.777Z" fill="#1a1a1a"/>
+  <path d="M390 106L424.475 106" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M430 106L423.892 108.223L423.892 103.777Z" fill="#1a1a1a"/>
+  <path d="M570 106L604.475 106" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M610 106L603.892 108.223L603.892 103.777Z" fill="#1a1a1a"/>
+  <path d="M750 106L784.475 106" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M790 106L783.892 108.223L783.892 103.777Z" fill="#1a1a1a"/>
+  <path d="M850 134L850 168L135 168L135 140" stroke="#5a5a5a" stroke-width="1" fill="none" stroke-dasharray="7 4"/>
+  <path d="M135 136L137.223 142.108L132.777 142.108Z" fill="#5a5a5a"/>
+  <text x="492" y="163" class="cad" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5a5a5a">RECEIVE, BACK THROUGH THE FILTERS AND PAST THE PA</text>
+  <path d="M44 214L1076 214" stroke="#c8c8c8" stroke-width="0.8" fill="none" stroke-linecap="square"/>
+  <text x="50" y="207" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#5a5a5a">COMPUTER AND FRONT PANEL</text>
+  <rect x="60" y="234" width="150" height="96" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="135" y="279" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Raspberry Pi 4</text>
+  <text x="135" y="295" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">piHPSDR</text>
+  <path d="M135 234L135 210L135 140" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <path d="M135 234L132.777 227.892L137.223 227.892Z" fill="#1a1a1a"/>
+  <rect x="272" y="234" width="150" height="40" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="347" y="257" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">USB audio</text>
+  <path d="M272 254L215.525 254" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M210 254L216.108 251.777L216.108 256.223Z" fill="#1a1a1a"/>
+  <rect x="272" y="290" width="150" height="40" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="347" y="307" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">RP2040</text>
+  <text x="347" y="323" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">front panel</text>
+  <path d="M272 310L215.525 310" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M210 310L216.108 307.777L216.108 312.223Z" fill="#1a1a1a"/>
+  <rect x="486" y="234" width="168" height="40" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="570" y="257" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Mic and phones</text>
+  <path d="M486 254L427.525 254" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M422 254L428.108 251.777L428.108 256.223Z" fill="#1a1a1a"/>
+  <rect x="486" y="290" width="168" height="40" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="570" y="313" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">VFO, keys, PTT</text>
+  <path d="M486 310L427.525 310" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M422 310L428.108 307.777L428.108 312.223Z" fill="#1a1a1a"/>
+  <path d="M347 290L347 196L500 196L500 140" stroke="#5a5a5a" stroke-width="1" fill="none" stroke-dasharray="7 4"/>
+  <path d="M500 136L502.223 142.108L497.777 142.108Z" fill="#5a5a5a"/>
+  <text x="512" y="192" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#5a5a5a">3 BIT FILTER SELECT.  TX INHIBITED WHILE SWITCHING</text>
+  <path d="M44 384L1076 384" stroke="#c8c8c8" stroke-width="0.8" fill="none" stroke-linecap="square"/>
+  <text x="50" y="377" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#5a5a5a">POWER</text>
+  <rect x="60" y="404" width="156" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="138" y="429" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Battery 12.8 V</text>
+  <text x="138" y="445" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">or 13.8 V external</text>
+  <path d="M216 432L256.475 432" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M262 432L255.892 434.223L255.892 429.777Z" fill="#1a1a1a"/>
+  <rect x="262" y="404" width="168" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="346" y="429" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">EXT / OFF / BAT</text>
+  <text x="346" y="445" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">fused, protected</text>
+  <path d="M430 432L470.475 432" stroke="#1a1a1a" stroke-width="1" fill="none" stroke-linecap="square"/><path d="M476 432L469.892 434.223L469.892 429.777Z" fill="#1a1a1a"/>
+  <rect x="476" y="404" width="150" height="56" fill="#eef1f4" stroke="#1a1a1a" stroke-width="1.4"/>
+  <text x="551" y="429" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">5 V rail</text>
+  <text x="551" y="445" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">Pi, display, RB</text>
+  <rect x="690" y="404" width="150" height="56" fill="#eef1f4" stroke="#a8481c" stroke-width="1.4"/>
+  <text x="765" y="429" class="cad" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">8.4 V rail</text>
+  <text x="765" y="445" class="cad" text-anchor="middle" font-size="9" font-weight="400" fill="#5a5a5a">the PA alone</text>
+  <path d="M452 432L452 376L765 376L765 400" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <path d="M765 404L762.777 397.892L767.223 397.892Z" fill="#1a1a1a"/>
+  <text x="858" y="436" class="cad" text-anchor="start" font-size="9" font-weight="600" fill="#a8481c">NEVER 12 TO 13.8 V INTO THIS PA</text>
+  <g class="fx-notes">
+  <text x="60" y="502" class="cad" text-anchor="start" font-size="8.5" font-weight="600" fill="#1a1a1a">NOTES:</text>
+  <text x="60" y="515.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">1.</text>
+  <text x="73" y="515.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">Receive uses the same filter bank and bypasses the PA.</text>
+  <text x="60" y="527" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">2.</text>
+  <text x="73" y="527" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">The RP2040 carries the front panel to the Pi over USB and also sets the filter bank.</text>
+  <text x="60" y="538.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">3.</text>
+  <text x="73" y="538.5" class="cad" text-anchor="start" font-size="8.5" font-weight="400" fill="#1a1a1a">The 8.4 V rail feeds the PA and nothing else.</text>
+  </g>
+</g>
+      </svg>
+      <figcaption>Transmit runs left to right: RadioBerry, PA, filter bank, SWR
+        bridge, antenna. Receive comes back the other way through the same
+        filter bank and past the PA. The RP2040 carries the front panel in over
+        USB and also sets the filter bank, holding transmit inhibited while the
+        relays move.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">The three parts that decide the build</p><h2>Key modules</h2></div>
+    </header>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>RadioBerry V2</h3><span class="verdict part">Perpetual beta</span></div>
+      <p>AURSINC or PA3GSB-compatible, preferably with the Cyclone 10LP
+         10CL025 FPGA. A direct-conversion SDR transceiver HAT for the Pi 4.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>AD9866 12-bit mixed-signal front end</li>
+          <li>Maximum receive bandwidth about 384 kHz</li>
+          <li>Bare transmit output about 10 dBm</li>
+          <li>Planning price $159.99</li>
+        </ul></div>
+        <div><h4>Watch for</h4><ul class="ticks">
+          <li>Confirm the exact FPGA marking before loading gateware</li>
+          <li>Software images, gateware and GPIO behavior all need validating before permanent integration</li>
+          <li>A linear PA is required for any normal QRP output</li>
+        </ul></div>
+        <div><h4>Where</h4>
+          <p class="linknote"><a href="https://www.aursinc.com/products/aursinc-sdr-radioberry-v2-0-hf-sdr-transceiver-pi-hat-for-raspberry-pi-4-radio-card-rpi-4-hat-analog-devices-ad9866-10cl016-12-bit-broadband-modem-for-ham-radio-sdr-transceiver" rel="noopener">AURSINC product page</a></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>The 3 to 5 W PA</h3><span class="verdict miss">Biggest project risk</span></div>
+      <p>Sold as the <strong>AURSINC RadioBerry Preamp Board V2</strong>, which
+         is a misleading name: it is a transmit power amplifier and receive
+         routing board, not a receive preamplifier.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>1 to 50 MHz, about 3 to 5 W out</li>
+          <li>SMA RF connections, SSB, AM and FM</li>
+          <li>Recommended supply 8.4 V, allowed roughly 6 to 8 V</li>
+          <li>Includes three SMA jumpers, stacking hardware, power lead</li>
+          <li>Listed at $78.99</li>
+        </ul></div>
+        <div><h4>Availability</h4><ul class="ticks">
+          <li>AURSINC showed sold out during this research</li>
+          <li>Amazon showed the GOOZEEZOO version with no featured offer</li>
+          <li>A Newegg listing at about $131.99 carried contradictory compatibility information and is not recommended</li>
+          <li>Ask AURSINC directly for the 3 to 5 W, 6 to 8.4 V version</li>
+        </ul></div>
+        <div><h4>If it stays unavailable</h4><ul class="ticks">
+          <li>About 10 dBm drive sensitivity</li>
+          <li>Linear 1 to 30 MHz, 3 to 5 W out</li>
+          <li>Hardware TX enable or bias control</li>
+          <li>RX bypass or external T/R switching</li>
+          <li>Stable into 50 ohms, adequately cooled</li>
+        </ul></div>
+      </div>
+      <p class="caveat">A substitute needs a separate T/R relay, sequenced PA
+        enable, and confirmed compatibility with RadioBerry TX/RX timing. Do
+        not pick one by advertised wattage. Do not pay the inflated Newegg
+        price without written confirmation of Pi 4 and Beta5 compatibility.</p>
+    </article>
+
+    <article class="candidate">
+      <div class="cand-head"><h3>The $80 filter bank</h3><span class="verdict hit">Settled</span></div>
+      <p>An assembled seven-position low-pass filter board, bought off eBay. It
+         is the transmit harmonic filter and nothing else. It does not replace
+         the PA.</p>
+      <div class="cand-grid">
+        <div><h4>Published</h4><ul class="ticks">
+          <li>Seventh-order Chebyshev</li>
+          <li>20 W continuous, 40 W at about 30 percent duty</li>
+          <li>50 ohm SMA in and out</li>
+          <li>Under 0.5 dB insertion loss on all bands</li>
+          <li>Better than 35 dB return loss</li>
+          <li>3.3 V or 5 V binary selection</li>
+          <li>Amidon T50 cores, Takamisawa relays, NP0 capacitors</li>
+          <li>120 x 75 mm</li>
+        </ul></div>
+        <div><h4>What that costs you</h4>
+          <p class="linknote">At the worst stated 0.5 dB, 5 W in gives about
+            4.46 W out:</p>
+          <p class="calc">5 W &times; 10<sup>(&minus;0.5/10)</sup> &asymp; 4.46 W</p>
+          <p class="linknote">It replaces the previously planned QRP Labs relay
+            board, six individual filter modules, the relay driver assembly and
+            all the interconnect wiring.</p>
+        </div>
+        <div><h4>Before wiring</h4><ul class="ticks">
+          <li>Get the seller's exact three-bit truth table</li>
+          <li>Do not assume the binary code order</li>
+          <li>Establish a safe default filter</li>
+          <li>Inhibit transmit while switching</li>
+        </ul></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Which filter for which band</p><h2>Filter allocation</h2></div>
+    </header>
+    <div class="tablewrap">
+      <table class="bom">
+        <thead><tr><th scope="col">LPF cutoff</th><th scope="col">Amateur bands</th></tr></thead>
+        <tbody>
+          <tr><td>2.5 MHz</td><td>160 m</td></tr>
+          <tr><td>5 MHz</td><td>80 m</td></tr>
+          <tr><td>8.6 MHz</td><td>60 and 40 m</td></tr>
+          <tr><td>15.5 MHz</td><td>30 and 20 m</td></tr>
+          <tr><td>25 MHz</td><td>17 and 15 m</td></tr>
+          <tr><td>35 MHz</td><td>12 and 10 m</td></tr>
+          <tr><td>55 MHz</td><td>6 m, normally unused on this build</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ruleset" style="margin-top:1.4rem">
+      <h3>Firmware rules for the filter bank</h3>
+      <ol>
+        <li>Map the operating frequency to the right cutoff.</li>
+        <li>Use the seller's truth table exactly.</li>
+        <li>Disable PA bias and PTT before changing the relay address.</li>
+        <li>Let the relays settle before enabling RF drive.</li>
+        <li>If the software state is uncertain, select the next safer lower-frequency filter.</li>
+        <li>Inhibit transmit if the requested band has no valid filter.</li>
+        <li>Store the last valid filter state only if power-up stays safe.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">The real VFO question</p><h2>A knob, not a mouse</h2></div>
+    </header>
+    <div class="twocol">
+      <div>
+        <p class="lead-p">This design has a physical VFO. It needs no Si5351 or
+          analog oscillator: the frequency synthesis lives inside the
+          RadioBerry and the SDR software. The knob is an encoder that sends
+          tuning commands to piHPSDR.</p>
+        <ul class="ticks wide">
+          <li>Bourns ENC1J-D28-L00128L optical quadrature encoder, 128 pulses per revolution, $54.50</li>
+          <li>A weighted 38 to 45 mm knob</li>
+          <li>A separate momentary VFO-select button, because the optical encoder has no push switch</li>
+          <li>Adafruit KB2040 RP2040 USB controller, $8.95</li>
+          <li>74LVC14A Schmitt trigger for clean encoder edges</li>
+          <li>Short shielded USB-C to USB-A cable to the Pi</li>
+        </ul>
+      </div>
+      <p class="caveat">Three cheaper Bourns PEC11R encoders with integrated
+        push switches handle AF gain, RF gain and the multifunction control.
+        The RP2040 has enough I/O for the VFO, the encoders, the soft keys,
+        the status outputs and the three filter address lines.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Everything, grouped</p><h2>Purchasing list</h2></div>
+      <p class="sec-note">One radio<br>Pi already owned</p>
+    </header>
+    <div class="partsgroups">
+      <details open><summary>Computer, SDR and display</summary><ul class="parts">
+        <li><b>1</b> Raspberry Pi 4 Model B <em>already owned</em></li>
+        <li><b>1</b> RadioBerry V2 Beta5 HAT, preferably 10CL025</li>
+        <li><b>1</b> 2x20 long-pin stacking header, if the final stack needs it</li>
+        <li><b>1</b> 64 GB high-endurance A2 microSD card</li>
+        <li><b>1</b> RadioBerry-compatible 3 to 5 W PA board, or an approved substitute</li>
+        <li><b>1</b> RadioBerry heatsink set</li>
+        <li><b>1</b> Waveshare 4.3 in DSI capacitive touchscreen, 480x800, such as the 4.3-DSI-TOUCH-A / SKU 34353</li>
+        <li><b>1</b> Short 15-pin DSI ribbon cable for the Pi 4</li>
+        <li><b>1</b> Custom display bezel</li>
+        <li><b>1</b> About 1 mm closed-cell neoprene display gasket</li>
+      </ul></details>
+      <details><summary>VFO and front-panel controls</summary><ul class="parts">
+        <li><b>1</b> Bourns ENC1J-D28-L00128L optical encoder</li>
+        <li><b>1</b> 38 to 45 mm tuning knob with the right shaft bore</li>
+        <li><b>1</b> Momentary VFO-select pushbutton</li>
+        <li><b>1</b> Adafruit KB2040 RP2040 USB controller</li>
+        <li><b>3</b> Bourns PEC11R-4215F-S0024 encoders with push switches</li>
+        <li><b>3</b> 18 to 22 mm secondary knobs</li>
+        <li><b>5</b> Momentary soft-key switches, and 5 matching caps</li>
+        <li><b>1</b> 74LVC14A Schmitt-trigger buffer</li>
+        <li><b>10</b> 10 k&#8486; 1% pull-up resistors</li>
+        <li><b>10</b> 100 nF X7R debounce and bypass capacitors</li>
+        <li><b>1</b> Short shielded USB-C to USB-A cable</li>
+        <li><b>1</b> Custom front-panel control PCB</li>
+      </ul></details>
+      <details><summary>RF path and filtering</summary><ul class="parts">
+        <li><b>1</b> Seven-position 20 W LPF board, 120 x 75 mm</li>
+        <li><b>1</b> Bidirectional 5 to 10 W HF SWR bridge PCB</li>
+        <li><b>2</b> FT50-43 transformer cores for the bridge</li>
+        <li><b>2</b> BAT54S detector diodes</li>
+        <li><b>1</b> ADS1115 four-channel I2C ADC module</li>
+        <li><b>1</b> 50 &#8486; BNC female chassis connector, such as the Amphenol 31-221-RFX</li>
+        <li><b>1</b> About 1 m RG-316/U internal coax</li>
+        <li><b>6</b> SMA male connectors for RG-316, for three short assemblies</li>
+        <li><b>1</b> Optional broadcast-band high-pass filter for strong AM environments</li>
+        <li><b>1</b> Optional second receive-only antenna connector</li>
+      </ul></details>
+      <details><summary>Audio, microphone, PTT and keying</summary><ul class="parts">
+        <li><b>1</b> USB audio adapter with stereo out and mic in, Adafruit 1475 or a good CM108</li>
+        <li><b>1</b> GX16-8 shielded panel microphone socket, and 1 matching cable plug</li>
+        <li><b>1</b> Hand microphone with PTT</li>
+        <li><b>1</b> 3.5 mm switched TRS headphone jack</li>
+        <li><b>1</b> 3.5 mm TRS CW key jack</li>
+        <li><b>1</b> 8 &#8486;, 2 to 3 W, 50 to 66 mm internal speaker</li>
+        <li><b>1</b> Low-EMI class-AB speaker amplifier, such as an LM4865M on a custom PCB</li>
+        <li><b>1</b> Custom microphone, PTT and audio PCB</li>
+        <li><b>1</b> LTV-817 or equivalent PTT optocoupler</li>
+        <li><b>2</b> Optional 600:600 &#8486; audio isolation transformers, only if testing shows they are needed</li>
+        <li>About 2 m shielded twisted pair for microphone and audio</li>
+      </ul></details>
+      <details><summary>Power and battery</summary><ul class="parts">
+        <li><b>1</b> Bioenno BLF-1206A 12.8 V 6 Ah LiFePO4 with internal protection, $79.99</li>
+        <li><b>1</b> Bioenno BPC-1502DC 14.6 V 2 A LiFePO4 charger</li>
+        <li><b>1</b> Anderson Powerpole PP15/30 external input panel mount</li>
+        <li><b>1</b> 5.5 x 2.1 mm center-positive charging jack, verified against the actual charger plug</li>
+        <li><b>1</b> EXT-OFF-BAT DPDT source selector, 10 A DC minimum</li>
+        <li><b>2</b> Inline ATO/ATC fuse holders, <b>4</b> 5 A fuses, two fitted and two spare</li>
+        <li><b>1</b> SMBJ18A unidirectional TVS diode</li>
+        <li><b>1</b> IRF4905 or lower-resistance P-channel reverse-polarity MOSFET</li>
+        <li><b>1</b> Pololu D42V55F5 5 V 6 A regulator</li>
+        <li><b>1</b> Pololu D42V55F8 8.4 V regulator for the PA, $31.95</li>
+        <li><b>2</b> 5 A minimum low-DCR DC common-mode chokes</li>
+        <li><b>4</b> 470 &micro;F 25 V low-ESR electrolytics, <b>6</b> 1 &micro;F 50 V X7R, <b>10</b> 100 nF 50 V X7R</li>
+        <li><b>4</b> 3 to 6 A ferrite beads with useful impedance at 100 MHz</li>
+        <li><b>1</b> Custom fused power distribution PCB</li>
+        <li><b>1</b> Aluminum battery strap with neoprene pad</li>
+        <li>About 2 m each red and black 16 AWG, and 3 m each 20 to 22 AWG</li>
+      </ul></details>
+      <details><summary>Enclosure, cooling and shielding</summary><ul class="parts">
+        <li><b>1</b> Hammond 1458VG4 vented instrument enclosure, black vented steel shell with removable aluminum front and rear panels, Mouser 546-1458VG4, $79.75</li>
+        <li><b>1</b> Spare front panel, or custom 0.064 in aluminum prototype panel</li>
+        <li><b>1</b> Internal 1 to 1.5 mm aluminum RF partition</li>
+        <li><b>1</b> Bonded tinplate or aluminum shield cover for the DC/DC section</li>
+        <li><b>1</b> Noctua NF-A4x10 5 V or equivalent 40 x 10 mm low-noise fan, plus guard and filter</li>
+        <li><b>1</b> Low-profile Pi heatsink that clears the RadioBerry stack</li>
+        <li>About 0.5 m of 10 to 15 mm copper grounding braid</li>
+        <li><b>1</b> Roll of 25 mm conductive copper foil tape</li>
+        <li><b>1</b> External 1/4-20 ground stud set with wing nut</li>
+        <li>M2.5 and M3 standoff, screw and star-washer assortments</li>
+        <li>Cable tie, adhesive mount and heat-shrink assortments</li>
+      </ul></details>
+      <details><summary>Connectors, wiring and finishing</summary><ul class="parts">
+        <li><b>1</b> Shielded panel USB-A extension for service use</li>
+        <li><b>1</b> Optional shielded RJ45 panel feedthrough</li>
+        <li><b>1</b> JST-XH housing, header and crimp assortment</li>
+        <li><b>1</b> Mix 31 clamp-on and sleeve ferrite assortment</li>
+        <li><b>1</b> 24 to 26 AWG stranded hookup wire assortment</li>
+        <li><b>1</b> Status LED set: green power, red TX, amber fault, plus <b>3</b> 1 k&#8486; resistors</li>
+        <li><b>1</b> Engraved, UV-printed or laminated panel label set</li>
+      </ul></details>
+      <details><summary>Optional upgrades</summary><ul class="parts">
+        <li>GNSS receiver with PPS and matching active antenna</li>
+        <li>DS3231 real-time clock module</li>
+        <li>Folding carrying handle</li>
+        <li>Second receive or transverter SMA connector</li>
+        <li>Separate RX antenna input</li>
+      </ul></details>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Two rails, one selector</p><h2>Power architecture</h2></div>
+    </header>
+    <div class="twocol">
+      <div>
+        <p class="lead-p">Either the internal 12.8 V LiFePO4 or an external
+          13.8 V supply, chosen by a manual EXT-OFF-BAT switch. Manual
+          selection stops the battery and the supply backfeeding each other.</p>
+        <p>Each source gets its own fuse. The selected source passes through
+          reverse-polarity and transient protection, then splits into a
+          filtered 5 V rail for the Pi, display, RadioBerry logic, RP2040,
+          filter relays and audio, and a filtered 8.4 V rail for the PA alone.</p>
+      </div>
+      <div class="warn" role="note">
+        <span class="warn-tag">Battery</span>
+        <p>Charging comes only from the dedicated 14.6 V LiFePO4 charger, with
+          the radio switched off in the initial design. <strong>Do not use an
+          ordinary lead-acid or lithium-ion charger.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section build">
+    <header class="sec-head">
+      <div><p class="eyebrow">Keeping the noise out of the receiver</p><h2>RF and EMI practice</h2></div>
+    </header>
+    <div class="rulesets">
+      <div class="ruleset"><h3>Layout</h3><ol>
+        <li>Short RG-316 for every internal RF connection.</li>
+        <li>Keep the PA, filter bank and SWR bridge together in the RF section.</li>
+        <li>Bond the antenna connector directly to the metal rear panel.</li>
+        <li>Aluminum partition between the RF section and the Pi, display and DC/DC section.</li>
+        <li>Bonded shield cover over the switching regulators.</li>
+      </ol></div>
+      <div class="ruleset"><h3>Wiring</h3><ol>
+        <li>Keep DSI, USB, fan and audio wiring away from the PA input and the RadioBerry RX nodes.</li>
+        <li>Ferrites on DSI, USB, fan and power leads where testing shows common-mode noise.</li>
+        <li>One intentional chassis and RF ground strategy, not random multiple audio grounds.</li>
+        <li>Sense PTT through an optocoupler or a similarly protected input, and keep the hardware TX-inhibit line independent of software where practical.</li>
+        <li>Star washers or other gas-tight bonding on painted panels.</li>
+      </ol></div>
+      <div class="ruleset"><h3>Cooling</h3><ol>
+        <li>Temperature-control the fan if practical.</li>
+        <li>Ensure continuous cooling for extended digital transmission.</li>
+        <li>Forced air and verified bias for prolonged duty cycles.</li>
+        <li>The listing mentions about 2.4 to 2.5 V bias for extended continuous transmit, but the actual board documentation governs.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">What is left to spend</p><h2>Cost</h2></div>
+      <p class="sec-note">Excludes antenna, feed line, labor<br>and premium cosmetic machining</p>
+    </header>
+    <div class="tablewrap">
+      <table class="bom">
+        <thead><tr><th scope="col">Build level</th><th scope="col">Expected, before tax and shipping</th></tr></thead>
+        <tbody>
+          <tr><td>Complete radio with internal battery and the $80 filter bank</td><td>$805 to $955</td></tr>
+          <tr><td>Radio without the internal battery and charger</td><td>$680 to $800</td></tr>
+          <tr><td>Recommended working cash allowance after shipping and tax</td><td>About $1,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablewrap" style="margin-top:1.2rem">
+      <table class="bom">
+        <thead><tr><th scope="col">Major contributor</th><th scope="col">Approximate</th></tr></thead>
+        <tbody>
+          <tr><td>RadioBerry V2</td><td>$159.99</td></tr>
+          <tr><td>AURSINC 3 to 5 W PA, if available</td><td>$78.99</td></tr>
+          <tr><td>Hammond enclosure</td><td>$79.75</td></tr>
+          <tr><td>Assembled LPF bank</td><td>$80.00</td></tr>
+          <tr><td>4.3 in display and mounting</td><td>$50 to $75</td></tr>
+          <tr><td>Optical VFO and controller</td><td>$75 to $100</td></tr>
+          <tr><td>Battery and charger</td><td>$105 to $120</td></tr>
+          <tr><td>Remaining controls, audio, power, PCBs, wiring and hardware</td><td>About $175 to $260</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat">Custom PCBs bought at minimum quantities, and shipping
+      from several suppliers, are the largest variables.</p>
+  </section>
+
+  <section class="section vna">
+    <header class="sec-head">
+      <div><p class="eyebrow">Order of operations</p><h2>Buy, then build, then test</h2></div>
+    </header>
+    <div class="tests">
+      <article>
+        <h3>Purchase order</h3>
+        <ol>
+          <li>RadioBerry V2 Beta5, FPGA version confirmed.</li>
+          <li>The PA, because availability is the biggest risk.</li>
+          <li>The $80 filter board.</li>
+          <li>The 4.3 in display.</li>
+          <li>The enclosure, only after full-size templates confirm the layout.</li>
+          <li>Optical VFO and RP2040 controller.</li>
+          <li>Power modules, battery and charger.</li>
+          <li>Audio hardware, connectors, switches, finishing parts.</li>
+          <li>Custom PCBs last, after prototype wiring confirms the pin assignments.</li>
+        </ol>
+      </article>
+      <article>
+        <h3>Bring-up sequence</h3>
+        <ol>
+          <li>Pi and RadioBerry on the bench, no PA.</li>
+          <li>Confirm reception, gateware, piHPSDR, display and network.</li>
+          <li>Verify the VFO and every front-panel input through the RP2040.</li>
+          <li>Test all filter states at low level with the VNA. Record the real truth table.</li>
+          <li>Verify the 5 V and 8.4 V rails into dummy loads before any radio board is connected.</li>
+          <li>Connect the PA, confirm bias and enable sequencing into a 50 &#8486; dummy load.</li>
+          <li>Minimum drive first. Check output power, current, stability.</li>
+          <li>Sweep and confirm the filter for every supported band.</li>
+          <li>Measure harmonics and spurious output with proper attenuation.</li>
+          <li>Calibrate the forward and reflected detectors.</li>
+          <li>Test microphone, PTT, speaker, headphones, CW keying.</li>
+          <li>Thermal testing at the real voice and digital duty cycles.</li>
+          <li>Repeat receiver noise testing with display, fan and DC/DC running.</li>
+          <li>Only then, an antenna.</li>
+        </ol>
+      </article>
+      <article>
+        <h3>Commissioning equipment</h3>
+        <p class="target"><span>Owned</span> Excluded from the project cost.</p>
+        <ol>
+          <li>Current-limited 0 to 15 V, 5 A or larger bench supply.</li>
+          <li>Digital multimeter.</li>
+          <li>50 &#8486; dummy load, 20 W continuous or better.</li>
+          <li>Accurate low-power HF wattmeter.</li>
+          <li>VNA covering HF to at least 100 MHz.</li>
+          <li>Spectrum analyzer to at least 200 MHz.</li>
+          <li>3, 6, 10 and 20 dB attenuators with adequate power ratings.</li>
+        </ol>
+      </article>
+    </div>
+    <p class="caveat">Never connect the transmitter to an antenna until PA
+      stability, filter selection and harmonic performance have been confirmed
+      into a dummy load.</p>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Where it stands</p><h2>Decided, and still open</h2></div>
+    </header>
+    <div class="twocol">
+      <div>
+        <h3 class="srchead">Decided</h3>
+        <ul class="ticks wide">
+          <li>RadioBerry V2 Beta5 rather than Hermes, to hold the cost down</li>
+          <li>The Raspberry Pi 4 already owned</li>
+          <li>A 4.3 in DSI touchscreen</li>
+          <li>The Hammond 1458VG4</li>
+          <li>A physical optical-encoder VFO</li>
+          <li>An RP2040 USB controller for the front panel</li>
+          <li>The $80 assembled seven-position filter board</li>
+          <li>An internal 6 Ah LiFePO4, if it fits mechanically</li>
+          <li>An 8.4 V rail for this exact PA</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="srchead">Still to confirm</h3>
+        <ul class="ticks wide">
+          <li>PA availability and exact Beta5 compatibility</li>
+          <li>The exact RadioBerry FPGA and its gateware</li>
+          <li>PA connector and enable/bias pin assignments</li>
+          <li>The filter three-bit truth table and power-up default</li>
+          <li>Final display mechanical drawing and bezel cutout</li>
+          <li>Internal placement and battery clearance</li>
+          <li>Final microphone connector pinout</li>
+          <li>SWR bridge design and calibration constants</li>
+          <li>piHPSDR front-panel and HID command mapping</li>
+          <li>Whether 6 m is supported well enough to justify wiring the 55 MHz filter position</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section terms">
+    <div>
+      <p class="eyebrow">Where this lands</p>
+      <h2>Bottom line</h2>
+      <p>The $80 filter board is electrically well suited and is a cleaner
+        answer than assembling the earlier QRP Labs filter system. The
+        RadioBerry stays the exciter and receiver, a separate AURSINC-style
+        board supplies the 3 to 5 W, and the filter bank removes transmit
+        harmonics before the SWR bridge and the antenna.</p>
+      <p>The blocker is PA availability, not the filter board. Do not
+        substitute an arbitrary HF amplifier until drive level, linearity, T/R
+        switching and bias sequencing have all been verified.</p>
+      <p class="fineprint">With the Pi and the test equipment already on hand,
+        plan on roughly $900 for the remaining parts and keep $1,000 available
+        to absorb shipping, tax, PCB minimum quantities and small hardware.
+        The microphone connector uses a project-specific pinout: label it
+        clearly and do not imply compatibility with Icom, Yaesu, Kenwood or
+        military handset wiring without an adapter.</p>
+      <h3 class="srchead">Sources</h3>
+      <ul class="srclist">
+        <li><a href="https://www.mouser.com/ProductDetail/Hammond-Manufacturing/1458VG4" rel="noopener">Hammond 1458VG4 at Mouser</a></li>
+        <li><a href="https://www.aursinc.com/products/aursinc-sdr-radioberry-v2-0-hf-sdr-transceiver-pi-hat-for-raspberry-pi-4-radio-card-rpi-4-hat-analog-devices-ad9866-10cl016-12-bit-broadband-modem-for-ham-radio-sdr-transceiver" rel="noopener">AURSINC RadioBerry V2</a></li>
+        <li><a href="https://www.aursinc.com/products/aursinc-radioberry-preamp-board-v2-a-addition-to-turn-the-radioberry-into-a-small-qrp-radio-output-1-5w-3w-for-hf-power-ampfier-10w-100w-pa-for-raspberry-pi-4-4b" rel="noopener">AURSINC RadioBerry Preamp Board V2, the PA</a></li>
+        <li><a href="https://www.digikey.com/en/products/detail/bourns-inc/ENC1J-D28-L00128L/1089391" rel="noopener">Bourns ENC1J optical encoder at DigiKey</a></li>
+        <li><a href="https://www.adafruit.com/product/5302" rel="noopener">Adafruit KB2040</a></li>
+        <li><a href="https://www.pololu.com/product/5575" rel="noopener">Pololu D42V55F8 8.4 V regulator</a></li>
+        <li><a href="https://www.bioennopower.com/products/12v-6ah-lifepo4-battery-pvc" rel="noopener">Bioenno 12 V 6 Ah LiFePO4</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call"><strong>K4DIA</strong><span>Amateur Radio</span></div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+</footer>
+<script src="../../site.js"></script>
+</body>
+</html>
