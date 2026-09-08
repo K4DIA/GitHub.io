@@ -9,6 +9,7 @@ styles.css          the whole design
 site.js             the menu and the dial
 fonts/              IBM Plex, self-hosted, SIL Open Font License
 logbook/            the Field Record generator, runs in the visitor's browser
+downloads/          the downloads page and the printable PDFs behind it
 CNAME               k4dia.com
 ```
 
@@ -24,6 +25,12 @@ install. Pushing to `main` publishes.
 
 Photographs go in the three project cards, replacing the ruled placeholder
 blocks marked `Photo to come`.
+
+Nothing on the site links to a page that does not exist. A card with nothing
+behind it yet carries a status instead of a link, which is why the projects
+say `In progress` or `Concept` rather than offering a file that is not
+written. Keep it that way: a dead link costs more trust than an empty
+section.
 
 ## The logbook
 

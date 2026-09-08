@@ -655,3 +655,118 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   html { scroll-behavior: auto; }
   * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ------------------------------------------------------------ inner pages */
+.pagehead {
+  padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.1rem, 3.4vw, 3rem) 0;
+}
+.pagehead h1 {
+  margin: 0;
+  font: 700 clamp(2.6rem, 6vw, 4.6rem)/.92 var(--display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+.pagelede {
+  max-width: 44rem;
+  margin: 1.1rem 0 0;
+  font-size: clamp(1rem, 1.7vw, 1.16rem);
+  color: var(--ink-mid);
+}
+
+.hint {
+  max-width: 56rem;
+  margin: 0 0 1.8rem;
+  color: var(--ink-mid);
+  font-size: .94rem;
+}
+.hint a { color: var(--rust); }
+
+/* The file list is a spec sheet, not a card wall: what it is, how long it
+   runs, how big the file is, and one button. */
+.filelist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.filelist li {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--paper-line);
+}
+.filelist li:last-child { border-bottom: 1px solid var(--paper-line); }
+.filelist p { margin: 0 0 1.1rem; font-size: .9rem; color: var(--ink-mid); max-width: 52rem; }
+
+.fmeta {
+  display: grid; gap: .4rem; align-content: start;
+  font: 400 .62rem/1 var(--mono);
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.ftype {
+  justify-self: start;
+  padding: .45rem .6rem;
+  color: var(--rust);
+  border: 1px solid rgba(184,80,31,.45);
+  font-weight: 600;
+}
+
+.dlbtn {
+  display: inline-block;
+  padding: .8rem 1.4rem;
+  background: var(--rust); color: #fbf6ea;
+  font: 600 .7rem/1 var(--mono);
+  letter-spacing: .16em; text-transform: uppercase;
+  text-decoration: none;
+}
+.dlbtn:hover { background: var(--rust-deep); }
+
+.printing {
+  display: grid; grid-template-columns: minmax(0, 34%) minmax(0, 1fr);
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  background: var(--olive); color: var(--sand);
+}
+.printing h2 { color: #f0e9d6; }
+.printing .eyebrow { color: var(--amber); }
+.printing-copy p { color: #cbc4ae; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; align-content: start; }
+.steps li {
+  display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(0,0,0,.2);
+  border: 1px solid rgba(0,0,0,.28);
+  font-size: .86rem; color: #c0b9a4;
+}
+.steps span { font: 400 .68rem/1.6 var(--mono); letter-spacing: .14em; color: var(--amber); }
+.steps strong { display: block; font: 600 .95rem/1.4 var(--sans); color: #f0e9d6; }
+
+.terms { background: var(--paper-warm); }
+.terms p { max-width: 52rem; color: var(--ink-mid); }
+.terms a { color: var(--rust); }
+.fineprint { font-size: .82rem; color: var(--ink-faint); margin-top: 1rem; }
+
+@media (max-width: 720px) {
+  .filelist li { grid-template-columns: 1fr; }
+  .fmeta { grid-auto-flow: column; justify-content: start; gap: 1rem; align-items: center; }
+  .printing { grid-template-columns: 1fr; }
+  .steps li { grid-template-columns: 2.2rem 1fr; }
+}
+
+/* A card with nothing to link to says so, rather than offering a link that
+   goes nowhere. */
+.cstat {
+  margin: auto 0 0;
+  font-size: .8rem;
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+.cstat span {
+  display: inline-block;
+  margin-right: .45rem;
+  padding: .25rem .5rem;
+  font: 600 .6rem/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--rust);
+  border: 1px solid rgba(184,80,31,.4);
+}
+.cstat.standalone { margin-top: 1.2rem; max-width: 34rem; }
+.notes .cstat { color: #4a4433; }
+.notes .cstat span { color: #6b3116; border-color: rgba(107,49,22,.45); }
