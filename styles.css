@@ -470,7 +470,7 @@ h3 {
   color: var(--ink-faint);
 }
 
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
 .card {
   display: grid; grid-template-columns: 40% 1fr; align-items: stretch;
   gap: 1rem;
