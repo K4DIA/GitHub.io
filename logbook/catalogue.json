@@ -1,0 +1,1161 @@
+{
+ "defaults": {
+  "color": true,
+  "deployments": 26,
+  "license_class": "general",
+  "trim": "personal"
+ },
+ "license_classes": [
+  {
+   "key": "novice",
+   "label": "Novice"
+  },
+  {
+   "key": "technician",
+   "label": "Technician"
+  },
+  {
+   "key": "general",
+   "label": "General"
+  },
+  {
+   "key": "advanced",
+   "label": "Advanced"
+  },
+  {
+   "key": "extra",
+   "label": "Extra"
+  }
+ ],
+ "limits": {
+  "deployments": [
+   1,
+   60
+  ],
+  "pages_per_deployment": 4
+ },
+ "parts": [
+  {
+   "key": "cover",
+   "label": "Front and back covers"
+  },
+  {
+   "key": "half_title",
+   "label": "Half title page"
+  },
+  {
+   "key": "title",
+   "label": "Title page"
+  },
+  {
+   "key": "copyright",
+   "label": "Copyright, licence and build date"
+  },
+  {
+   "key": "contents",
+   "label": "Contents"
+  },
+  {
+   "key": "how_to_use",
+   "label": "How to use this book"
+  },
+  {
+   "key": "this_station",
+   "label": "This Station, your own details"
+  },
+  {
+   "key": "go_kit",
+   "label": "Go-Kit manifest"
+  },
+  {
+   "key": "part_one",
+   "label": "Part One, the whole field reference"
+  },
+  {
+   "key": "band_plan",
+   "label": "The band plan drawn for your licence"
+  },
+  {
+   "key": "repeaters",
+   "label": "Repeater and net pages"
+  },
+  {
+   "key": "radios",
+   "label": "Radio quick reference cards"
+  },
+  {
+   "key": "part_two",
+   "label": "Part Two, the deployment log"
+  },
+  {
+   "key": "deployment_howto",
+   "label": "How a deployment is recorded"
+  },
+  {
+   "key": "deployment_index",
+   "label": "Deployment index"
+  },
+  {
+   "key": "part_three",
+   "label": "Part Three, station records"
+  },
+  {
+   "key": "colophon",
+   "label": "Colophon and sources"
+  }
+ ],
+ "presets": [
+  {
+   "include": {
+    "parts": {
+     "band_plan": true,
+     "colophon": true,
+     "contents": true,
+     "copyright": true,
+     "cover": true,
+     "deployment_howto": true,
+     "deployment_index": true,
+     "go_kit": true,
+     "half_title": true,
+     "how_to_use": true,
+     "part_one": true,
+     "part_three": true,
+     "part_two": true,
+     "radios": true,
+     "repeaters": true,
+     "this_station": true,
+     "title": true
+    },
+    "records": [
+     "equipment",
+     "repairs",
+     "antennas",
+     "battery",
+     "qsl",
+     "was",
+     "dxcc",
+     "activations",
+     "nets",
+     "overflow",
+     "notes"
+    ],
+    "reference": [
+     "BANDS",
+     "FREQS",
+     "OPS",
+     "PHON",
+     "AWARDS",
+     "TIME",
+     "GRID",
+     "PROP",
+     "ANT",
+     "POWER",
+     "SAFE",
+     "SECT",
+     "PFX",
+     "CHECK"
+    ]
+   },
+   "key": "full",
+   "note": "Everything."
+  },
+  {
+   "include": {
+    "parts": {
+     "band_plan": true,
+     "colophon": true,
+     "contents": true,
+     "copyright": true,
+     "cover": true,
+     "deployment_howto": true,
+     "deployment_index": true,
+     "go_kit": false,
+     "half_title": true,
+     "how_to_use": false,
+     "part_one": true,
+     "part_three": false,
+     "part_two": true,
+     "radios": true,
+     "repeaters": true,
+     "this_station": true,
+     "title": true
+    },
+    "records": [],
+    "reference": [
+     "BANDS",
+     "FREQS",
+     "OPS",
+     "PHON",
+     "AWARDS",
+     "TIME",
+     "CHECK"
+    ]
+   },
+   "key": "field",
+   "note": "The reference you use on site, without the station records."
+  },
+  {
+   "include": {
+    "parts": {
+     "band_plan": false,
+     "colophon": true,
+     "contents": true,
+     "copyright": true,
+     "cover": true,
+     "deployment_howto": false,
+     "deployment_index": true,
+     "go_kit": false,
+     "half_title": true,
+     "how_to_use": false,
+     "part_one": false,
+     "part_three": false,
+     "part_two": true,
+     "radios": false,
+     "repeaters": false,
+     "this_station": false,
+     "title": true
+    },
+    "records": [],
+    "reference": []
+   },
+   "key": "log-only",
+   "note": "Covers, title, contents and the deployments."
+  },
+  {
+   "include": {
+    "parts": {
+     "band_plan": true,
+     "colophon": true,
+     "contents": true,
+     "copyright": true,
+     "cover": true,
+     "deployment_howto": false,
+     "deployment_index": false,
+     "go_kit": true,
+     "half_title": true,
+     "how_to_use": true,
+     "part_one": true,
+     "part_three": false,
+     "part_two": false,
+     "radios": true,
+     "repeaters": true,
+     "this_station": true,
+     "title": true
+    },
+    "records": [],
+    "reference": [
+     "BANDS",
+     "FREQS",
+     "OPS",
+     "PHON",
+     "AWARDS",
+     "TIME",
+     "GRID",
+     "PROP",
+     "ANT",
+     "POWER",
+     "SAFE",
+     "SECT",
+     "PFX",
+     "CHECK"
+    ]
+   },
+   "key": "reference-only",
+   "note": "Part One, with nothing to write in."
+  }
+ ],
+ "radios": [
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Menu items worth knowing",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "kx2",
+   "maker": "Elecraft",
+   "name": "KX2",
+   "verified": "Compiled from the Elecraft KX2 Owner's Manual rev B2 and the Elecraft product page, September 2026. Not checked against a radio."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Menu items worth knowing",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "kx3",
+   "maker": "Elecraft",
+   "name": "KX3",
+   "verified": "Compiled from the Elecraft KX3 Owner's Manual rev C5, its errata rev C5-4, and the Elecraft product page, September 2026. Not checked against a radio."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Set mode groups",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ic7000",
+   "maker": "Icom",
+   "name": "IC-7000",
+   "verified": "Compiled from the Icom IC-7000 Instruction Manual and published specifications, September 2026. Not checked against a radio. The reset procedures could not be read and are left out."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Where the field settings live",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ic705",
+   "maker": "Icom",
+   "name": "IC-705",
+   "verified": "Compiled from the Icom IC-705 Basic Manual, Advanced Manual and CI-V Reference Guide, September 2026. Not checked against a radio."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Quick set",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Fault finding",
+    "Operating notes",
+    "CI-V and computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ic706mk2",
+   "maker": "Icom",
+   "name": "IC-706MKII",
+   "verified": "Written from the radio and its manual by K4DIA. Menu behavior differs on the MKIIG."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Touch key rows",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ic7100",
+   "maker": "Icom",
+   "name": "IC-7100",
+   "verified": "Compiled from the Icom IC-7100 Instruction Manual and published specifications, September 2026. Not checked against a radio. Figures adjusted to the US model. The reset procedures could not be read and are left out."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ic7300",
+   "maker": "Icom",
+   "name": "IC-7300",
+   "verified": "Compiled from the Icom IC-7300 Basic Manual and Icom's published specifications, September 2026. Not checked against a radio. Figures adjusted to the US model. Menu paths vary by firmware."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "xiegu_g90",
+   "maker": "Xiegu",
+   "name": "G90",
+   "verified": "Compiled from the Xiegu G90 Operation Manual version 1.00.01, September 2026. Not checked against a radio. The manual documents no reset and no repeater operation, so neither appears here."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Menu pages",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "xiegu_x5105",
+   "maker": "Xiegu",
+   "name": "X5105",
+   "verified": "Compiled from the Xiegu X5105 Operation Manual version 3.0, September 2026. Not checked against a radio. The manual documents no factory reset and no repeater operation."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Menu map",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "Computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "xiegu_x6100",
+   "maker": "Xiegu",
+   "name": "X6100",
+   "verified": "Compiled from the Xiegu X6100 Operation Manual, September 2026. Not checked against a radio. Stock firmware only. The manual documents no repeater operation."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Function rows",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Operating notes",
+    "CAT and computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ft818",
+   "maker": "Yaesu",
+   "name": "FT-818ND",
+   "verified": "Compiled from the Yaesu FT-818ND Operating Manual, September 2026. Not checked against a radio. The reset procedures could not be read and are left out."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Multi-function rows",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Menu items worth knowing",
+    "Operating notes",
+    "CAT and computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ft857d",
+   "maker": "Yaesu",
+   "name": "FT-857D",
+   "verified": "Compiled from the Yaesu FT-857D Operating Manual, September 2026. Not checked against a radio. Only part of the numbered menu could be read; the rest is left out."
+  },
+  {
+   "blocks": [
+    "Specifications",
+    "Operating notes",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ft891",
+   "maker": "Yaesu",
+   "name": "FT-891",
+   "verified": "Compiled from Yaesu's published specifications, September 2026. Not checked against a radio, and the operating manual was not read, so the panel is left for you to fill in."
+  },
+  {
+   "blocks": [
+    "Menu and panel keys",
+    "Multi-function rows",
+    "Filters",
+    "Specifications",
+    "Common operations",
+    "Menu items worth knowing",
+    "Operating notes",
+    "CAT and computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ft897d",
+   "maker": "Yaesu",
+   "name": "FT-897D",
+   "verified": "Compiled from the Yaesu FT-897D Operating Manual, September 2026. Not checked against a radio. Only part of the numbered menu could be read; the rest is left out."
+  },
+  {
+   "blocks": [
+    "Filters",
+    "Specifications",
+    "Operating notes",
+    "CAT and computer control",
+    "Station settings",
+    "Memory plan"
+   ],
+   "id": "ft991a",
+   "maker": "Yaesu",
+   "name": "FT-991A",
+   "verified": "Compiled from the Yaesu FT-991A CAT Operation Reference Manual and Yaesu's published specifications, September 2026. The operating manual could not be read, so the panel keys and the operating procedures are absent from this card rather than guessed. Write yours in below."
+  }
+ ],
+ "records": [
+  {
+   "key": "equipment",
+   "title": "Equipment Register"
+  },
+  {
+   "key": "repairs",
+   "title": "Modification and Repair Log"
+  },
+  {
+   "key": "antennas",
+   "title": "Antenna Build Sheets"
+  },
+  {
+   "key": "battery",
+   "title": "Battery and Power Log"
+  },
+  {
+   "key": "qsl",
+   "title": "QSL and Confirmation Tracker"
+  },
+  {
+   "key": "was",
+   "title": "Worked All States"
+  },
+  {
+   "key": "dxcc",
+   "title": "Entities and Continents Worked"
+  },
+  {
+   "key": "activations",
+   "title": "Parks and Summits Activated"
+  },
+  {
+   "key": "nets",
+   "title": "Nets, Schedules, and Contacts"
+  },
+  {
+   "key": "overflow",
+   "title": "Overflow QSO Sheets"
+  },
+  {
+   "key": "notes",
+   "title": "Field Notes"
+  }
+ ],
+ "reference": [
+  {
+   "tag": "BANDS",
+   "title": "US Band Plan and Privileges"
+  },
+  {
+   "tag": "FREQS",
+   "title": "Calling Frequencies and Watering Holes"
+  },
+  {
+   "tag": "OPS",
+   "title": "Signal Reports, Q Signals, and Prosigns"
+  },
+  {
+   "tag": "PHON",
+   "title": "Phonetics and Working the Exchange"
+  },
+  {
+   "tag": "AWARDS",
+   "title": "Activation and Award Requirements"
+  },
+  {
+   "tag": "TIME",
+   "title": "Time and the Zulu Day"
+  },
+  {
+   "tag": "GRID",
+   "title": "Maidenhead Grid Squares"
+  },
+  {
+   "tag": "PROP",
+   "title": "Propagation for the Field Operator"
+  },
+  {
+   "tag": "ANT",
+   "title": "Antenna Math for the Field"
+  },
+  {
+   "tag": "POWER",
+   "title": "Power Budget, Battery, and Wiring"
+  },
+  {
+   "tag": "SAFE",
+   "title": "RF Exposure and Field Safety"
+  },
+  {
+   "tag": "SECT",
+   "title": "ARRL and RAC Sections"
+  },
+  {
+   "tag": "PFX",
+   "title": "Common Callsign Prefixes"
+  },
+  {
+   "tag": "CHECK",
+   "title": "Pre-Deployment and Teardown Checklists"
+  }
+ ],
+ "section_names": {
+  "AK": "Alaska",
+  "AL": "Alabama",
+  "AR": "Arkansas",
+  "AZ": "Arizona",
+  "CO": "Colorado",
+  "CT": "Connecticut",
+  "DE": "Delaware",
+  "EB": "East Bay",
+  "EMA": "Eastern Massachusetts",
+  "ENY": "Eastern New York",
+  "EPA": "Eastern Pennsylvania",
+  "EWA": "Eastern Washington",
+  "GA": "Georgia",
+  "IA": "Iowa",
+  "ID": "Idaho",
+  "IL": "Illinois",
+  "IN": "Indiana",
+  "KS": "Kansas",
+  "KY": "Kentucky",
+  "LA": "Louisiana",
+  "LAX": "Los Angeles",
+  "MDC": "Maryland-DC",
+  "ME": "Maine",
+  "MI": "Michigan",
+  "MN": "Minnesota",
+  "MO": "Missouri",
+  "MS": "Mississippi",
+  "MT": "Montana",
+  "NC": "North Carolina",
+  "ND": "North Dakota",
+  "NE": "Nebraska",
+  "NFL": "Northern Florida",
+  "NH": "New Hampshire",
+  "NLI": "New York City-Long Island",
+  "NM": "New Mexico",
+  "NNJ": "Northern New Jersey",
+  "NNY": "Northern New York",
+  "NTX": "North Texas",
+  "NV": "Nevada",
+  "OH": "Ohio",
+  "OK": "Oklahoma",
+  "OR": "Oregon",
+  "ORG": "Orange",
+  "PAC": "Pacific",
+  "PR": "Puerto Rico",
+  "RI": "Rhode Island",
+  "SB": "Santa Barbara",
+  "SC": "South Carolina",
+  "SCV": "Santa Clara Valley",
+  "SD": "South Dakota",
+  "SDG": "San Diego",
+  "SF": "San Francisco",
+  "SFL": "Southern Florida",
+  "SJV": "San Joaquin Valley",
+  "SNJ": "Southern New Jersey",
+  "STX": "South Texas",
+  "SV": "Sacramento Valley",
+  "TN": "Tennessee",
+  "UT": "Utah",
+  "VA": "Virginia",
+  "VI": "US Virgin Islands",
+  "VT": "Vermont",
+  "WCF": "West Central Florida",
+  "WI": "Wisconsin",
+  "WMA": "Western Massachusetts",
+  "WNY": "Western New York",
+  "WPA": "Western Pennsylvania",
+  "WTX": "West Texas",
+  "WV": "West Virginia",
+  "WWA": "Western Washington",
+  "WY": "Wyoming"
+ },
+ "states": [
+  {
+   "code": "AL",
+   "name": "Alabama",
+   "sections": [
+    "AL"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "AK",
+   "name": "Alaska",
+   "sections": [
+    "AK"
+   ],
+   "time_zone": "America/Anchorage"
+  },
+  {
+   "code": "AS",
+   "name": "American Samoa",
+   "sections": [
+    "PAC"
+   ],
+   "time_zone": "Pacific/Pago_Pago"
+  },
+  {
+   "code": "AZ",
+   "name": "Arizona",
+   "sections": [
+    "AZ"
+   ],
+   "time_zone": "America/Phoenix"
+  },
+  {
+   "code": "AR",
+   "name": "Arkansas",
+   "sections": [
+    "AR"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "CA",
+   "name": "California",
+   "sections": [
+    "SV",
+    "EB",
+    "LAX",
+    "ORG",
+    "SB",
+    "SCV",
+    "SDG",
+    "SF",
+    "SJV"
+   ],
+   "time_zone": "America/Los_Angeles"
+  },
+  {
+   "code": "CO",
+   "name": "Colorado",
+   "sections": [
+    "CO"
+   ],
+   "time_zone": "America/Denver"
+  },
+  {
+   "code": "CT",
+   "name": "Connecticut",
+   "sections": [
+    "CT"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "DE",
+   "name": "Delaware",
+   "sections": [
+    "DE"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "DC",
+   "name": "District of Columbia",
+   "sections": [
+    "MDC"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "FL",
+   "name": "Florida",
+   "sections": [
+    "NFL",
+    "SFL",
+    "WCF"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "GA",
+   "name": "Georgia",
+   "sections": [
+    "GA"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "GU",
+   "name": "Guam",
+   "sections": [
+    "PAC"
+   ],
+   "time_zone": "Pacific/Guam"
+  },
+  {
+   "code": "HI",
+   "name": "Hawaii",
+   "sections": [
+    "PAC"
+   ],
+   "time_zone": "Pacific/Honolulu"
+  },
+  {
+   "code": "ID",
+   "name": "Idaho",
+   "sections": [
+    "ID"
+   ],
+   "time_zone": "America/Boise"
+  },
+  {
+   "code": "IL",
+   "name": "Illinois",
+   "sections": [
+    "IL"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "IN",
+   "name": "Indiana",
+   "sections": [
+    "IN"
+   ],
+   "time_zone": "America/Indiana/Indianapolis"
+  },
+  {
+   "code": "IA",
+   "name": "Iowa",
+   "sections": [
+    "IA"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "KS",
+   "name": "Kansas",
+   "sections": [
+    "KS"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "KY",
+   "name": "Kentucky",
+   "sections": [
+    "KY"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "LA",
+   "name": "Louisiana",
+   "sections": [
+    "LA"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "ME",
+   "name": "Maine",
+   "sections": [
+    "ME"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "MD",
+   "name": "Maryland",
+   "sections": [
+    "MDC"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "MA",
+   "name": "Massachusetts",
+   "sections": [
+    "EMA",
+    "WMA"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "MI",
+   "name": "Michigan",
+   "sections": [
+    "MI"
+   ],
+   "time_zone": "America/Detroit"
+  },
+  {
+   "code": "MN",
+   "name": "Minnesota",
+   "sections": [
+    "MN"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "MS",
+   "name": "Mississippi",
+   "sections": [
+    "MS"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "MO",
+   "name": "Missouri",
+   "sections": [
+    "MO"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "MT",
+   "name": "Montana",
+   "sections": [
+    "MT"
+   ],
+   "time_zone": "America/Denver"
+  },
+  {
+   "code": "NE",
+   "name": "Nebraska",
+   "sections": [
+    "NE"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "NV",
+   "name": "Nevada",
+   "sections": [
+    "NV"
+   ],
+   "time_zone": "America/Los_Angeles"
+  },
+  {
+   "code": "NH",
+   "name": "New Hampshire",
+   "sections": [
+    "NH"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "NJ",
+   "name": "New Jersey",
+   "sections": [
+    "NNJ",
+    "SNJ"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "NM",
+   "name": "New Mexico",
+   "sections": [
+    "NM"
+   ],
+   "time_zone": "America/Denver"
+  },
+  {
+   "code": "NY",
+   "name": "New York",
+   "sections": [
+    "WNY",
+    "ENY",
+    "NLI",
+    "NNY"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "NC",
+   "name": "North Carolina",
+   "sections": [
+    "NC"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "ND",
+   "name": "North Dakota",
+   "sections": [
+    "ND"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "MP",
+   "name": "Northern Mariana Islands",
+   "sections": [
+    "PAC"
+   ],
+   "time_zone": "Pacific/Saipan"
+  },
+  {
+   "code": "OH",
+   "name": "Ohio",
+   "sections": [
+    "OH"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "OK",
+   "name": "Oklahoma",
+   "sections": [
+    "OK"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "OR",
+   "name": "Oregon",
+   "sections": [
+    "OR"
+   ],
+   "time_zone": "America/Los_Angeles"
+  },
+  {
+   "code": "PA",
+   "name": "Pennsylvania",
+   "sections": [
+    "EPA",
+    "WPA"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "PR",
+   "name": "Puerto Rico",
+   "sections": [
+    "PR"
+   ],
+   "time_zone": "America/Puerto_Rico"
+  },
+  {
+   "code": "RI",
+   "name": "Rhode Island",
+   "sections": [
+    "RI"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "SC",
+   "name": "South Carolina",
+   "sections": [
+    "SC"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "SD",
+   "name": "South Dakota",
+   "sections": [
+    "SD"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "TN",
+   "name": "Tennessee",
+   "sections": [
+    "TN"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "TX",
+   "name": "Texas",
+   "sections": [
+    "NTX",
+    "STX",
+    "WTX"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "VI",
+   "name": "US Virgin Islands",
+   "sections": [
+    "VI"
+   ],
+   "time_zone": "America/Puerto_Rico"
+  },
+  {
+   "code": "UT",
+   "name": "Utah",
+   "sections": [
+    "UT"
+   ],
+   "time_zone": "America/Denver"
+  },
+  {
+   "code": "VT",
+   "name": "Vermont",
+   "sections": [
+    "VT"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "VA",
+   "name": "Virginia",
+   "sections": [
+    "VA"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "WA",
+   "name": "Washington",
+   "sections": [
+    "EWA",
+    "WWA"
+   ],
+   "time_zone": "America/Los_Angeles"
+  },
+  {
+   "code": "WV",
+   "name": "West Virginia",
+   "sections": [
+    "WV"
+   ],
+   "time_zone": "America/New_York"
+  },
+  {
+   "code": "WI",
+   "name": "Wisconsin",
+   "sections": [
+    "WI"
+   ],
+   "time_zone": "America/Chicago"
+  },
+  {
+   "code": "WY",
+   "name": "Wyoming",
+   "sections": [
+    "WY"
+   ],
+   "time_zone": "America/Denver"
+  }
+ ]
+}

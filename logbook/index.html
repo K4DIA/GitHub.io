@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIELD RECORD, build your logbook</title>
+<meta name="description" content="Build a printable portable-operating logbook for your own station. Everything happens in your browser.">
+<style>
+  :root {
+    --ink: #16181c;
+    --paper: #f7f5f1;
+    --panel: #ffffff;
+    --line: #d8d3c9;
+    --slate: #2f4356;
+    --amber: #c8801a;
+    --muted: #6b665e;
+    --bad: #9c2f2f;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 20px 80px; }
+
+  header.masthead {
+    background: var(--slate);
+    color: #f2efe9;
+    padding: 34px 0 30px;
+    border-bottom: 3px solid var(--amber);
+  }
+  header.masthead .wrap { padding-bottom: 0; }
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  header.masthead p { margin: 10px 0 0; max-width: 62ch; color: #cfd8e0; }
+
+  h2 {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: 0 0 4px;
+  }
+  .rule { height: 2px; background: var(--amber); margin-bottom: 16px; }
+
+  section.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 22px 24px;
+    margin: 26px 0;
+  }
+  .hint { color: var(--muted); font-size: 14px; margin: 0 0 16px; max-width: 68ch; }
+
+  .grid { display: grid; gap: 16px 20px; grid-template-columns: repeat(2, 1fr); }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 700px) { .grid, .grid.three { grid-template-columns: 1fr; } }
+
+  label.field { display: block; font-size: 13px; }
+  label.field span {
+    display: block; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 5px;
+  }
+  input[type=text], input[type=number], select {
+    width: 100%; padding: 9px 10px; font-size: 15px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 0;
+  }
+  input:focus, select:focus, button:focus {
+    outline: 2px solid var(--amber); outline-offset: 1px;
+  }
+  .note { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .note.warn { color: var(--bad); }
+
+  .checks { display: grid; gap: 6px 18px; grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 700px) { .checks { grid-template-columns: 1fr; } }
+  .check { display: flex; gap: 9px; align-items: flex-start; font-size: 14px; padding: 3px 0; }
+  .check input { margin-top: 3px; flex: none; }
+  .check .pages { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .preset-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  button.preset {
+    border: 1px solid var(--line); background: #fff; padding: 7px 13px;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; color: var(--slate);
+  }
+  button.preset:hover { border-color: var(--slate); }
+  button.preset[aria-pressed=true] {
+    background: var(--slate); color: #fff; border-color: var(--slate);
+  }
+
+  details.radio { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  details.radio:last-of-type { border-bottom: 0; }
+  details.radio summary { cursor: pointer; display: flex; gap: 9px; align-items: baseline; }
+  details.radio summary::-webkit-details-marker { display: none; }
+  details.radio .maker { color: var(--muted); font-size: 13px; }
+  details.radio .prov { font-size: 13px; color: var(--muted); margin: 6px 0 4px 26px; max-width: 72ch; }
+  details.radio .blocks { font-size: 12px; color: var(--muted); margin: 0 0 6px 26px; }
+
+  .actions {
+    position: sticky; bottom: 0; background: var(--paper);
+    border-top: 1px solid var(--line); padding: 16px 0 18px; margin-top: 26px;
+  }
+  .actions .inner { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  button.go {
+    background: var(--slate); color: #fff; border: 0; padding: 13px 26px;
+    font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer;
+  }
+  button.go:disabled { background: #9aa5ae; cursor: default; }
+  .count { font-size: 14px; color: var(--muted); }
+  .count strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  .bar { height: 4px; background: var(--line); margin-top: 12px; display: none; }
+  .bar.on { display: block; }
+  .bar i { display: block; height: 100%; width: 12%; background: var(--amber);
+           animation: slide 1.4s ease-in-out infinite; }
+  @keyframes slide { 0% { margin-left: 0 } 50% { margin-left: 88% } 100% { margin-left: 0 } }
+
+  #status { font-size: 14px; color: var(--muted); margin-top: 10px; min-height: 1.5em; }
+  #status.bad { color: var(--bad); }
+
+  .result { display: none; border: 1px solid var(--slate); padding: 18px 20px; margin-top: 18px; background: #fff; }
+  .result.on { display: block; }
+  .result a.dl {
+    display: inline-block; margin-top: 10px; background: var(--amber); color: #fff;
+    padding: 11px 22px; text-decoration: none; letter-spacing: 0.12em;
+    text-transform: uppercase; font-size: 13px;
+  }
+  .result dl { display: grid; grid-template-columns: max-content 1fr; gap: 3px 16px;
+               margin: 0 0 6px; font-size: 14px; }
+  .result dt { color: var(--muted); }
+  .result dd { margin: 0; }
+
+  footer { color: var(--muted); font-size: 13px; margin-top: 40px; }
+  footer a { color: var(--slate); }
+  noscript { display: block; padding: 20px; background: #fff; border: 1px solid var(--bad); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>Field Record</h1>
+    <p>A printable logbook for portable operating, built around the outing
+       rather than the contact. Describe your station, choose what goes in,
+       and take the PDF away.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<noscript>
+  This page builds the book in your browser, so it needs JavaScript. Without
+  it, the project also builds from the command line: the repository has the
+  instructions.
+</noscript>
+
+<section class="card">
+  <h2>Your station</h2><div class="rule"></div>
+  <p class="hint">Nothing here is sent anywhere. The book is put together
+     inside this browser tab, and your callsign never leaves it.</p>
+  <div class="grid">
+    <label class="field"><span>Name, as you want it printed</span>
+      <input type="text" id="name" placeholder="Your Name" autocomplete="name"></label>
+    <label class="field"><span>Callsign</span>
+      <input type="text" id="callsign" placeholder="N0CALL" spellcheck="false"></label>
+    <label class="field"><span>License class</span>
+      <select id="license_class"></select>
+      <span class="note">The band plan is drawn showing what you may transmit
+        on. Everything above your class is outlined instead of filled.</span>
+    </label>
+    <label class="field"><span>State</span>
+      <select id="state"></select>
+      <span class="note" id="state-note"></span>
+    </label>
+    <label class="field" id="section-wrap" hidden><span>ARRL section</span>
+      <select id="arrl_section"></select>
+      <span class="note">Your state holds more than one. Pick yours, or leave
+        it blank and write it in.</span>
+    </label>
+    <label class="field"><span>Grid square</span>
+      <input type="text" id="grid" placeholder="FN31" spellcheck="false" maxlength="6"></label>
+    <label class="field"><span>Club, if you want it on the title page</span>
+      <input type="text" id="club" placeholder=""></label>
+    <label class="field"><span>Deployments in this volume</span>
+      <input type="number" id="deployments" value="26" min="1" max="60" step="1">
+      <span class="note">Four pages each. 26 is a season of weekends.</span>
+      <span class="note warn" id="dep-note"></span>
+    </label>
+  </div>
+</section>
+
+<section class="card">
+  <h2>What goes in</h2><div class="rule"></div>
+  <p class="hint">Start from one of these, then change anything you like.</p>
+  <div class="preset-row" id="presets"></div>
+  <p class="hint" id="preset-note"></p>
+  <div class="checks" id="parts"></div>
+</section>
+
+<section class="card">
+  <h2>Field reference sections</h2><div class="rule"></div>
+  <p class="hint">Part One, the material you reach for on site.
+    <button type="button" class="preset" data-all="reference">All</button>
+    <button type="button" class="preset" data-none="reference">None</button>
+  </p>
+  <div class="checks" id="reference"></div>
+</section>
+
+<section class="card">
+  <h2>Station records</h2><div class="rule"></div>
+  <p class="hint">Part Three, the part that outlives the volume.
+    <button type="button" class="preset" data-all="records">All</button>
+    <button type="button" class="preset" data-none="records">None</button>
+  </p>
+  <div class="checks" id="records"></div>
+</section>
+
+<section class="card">
+  <h2>Radio quick reference</h2><div class="rule"></div>
+  <p class="hint">Open a radio to see where its card came from before you put
+    it in a book you will trust in the field. Only one card was written from a
+    radio on a bench; the rest were restated from the makers' own manuals, and
+    each says so.</p>
+  <div id="radios"></div>
+</section>
+
+<section class="card">
+  <h2>Your repeaters and nets</h2><div class="rule"></div>
+  <p class="hint">Optional. A Chirp export works with no editing, and so does
+    any CSV with a column of output frequencies. Leave these empty and the
+    repeater pages come through as ruled grids to fill in as you work the
+    machines. The files are read in this tab and not uploaded.</p>
+  <div class="grid">
+    <label class="field"><span>Repeaters, CSV</span>
+      <input type="file" id="repeaters" accept=".csv,text/csv"></label>
+    <label class="field"><span>Nets, CSV</span>
+      <input type="file" id="nets" accept=".csv,text/csv"></label>
+  </div>
+</section>
+
+<div class="actions">
+  <div class="inner">
+    <button class="go" id="go" disabled>Build my logbook</button>
+    <span class="count">About <strong id="pagecount">&mdash;</strong> pages,
+      <strong id="sheetcount">&mdash;</strong> sheets printed both sides</span>
+  </div>
+  <div class="bar" id="bar"><i></i></div>
+  <div id="status">Starting the generator.</div>
+  <div class="result" id="result">
+    <dl id="result-facts"></dl>
+    <a class="dl" id="download" href="#" download>Download the PDF</a>
+  </div>
+</div>
+
+<footer>
+  <p>Set in IBM Plex under the SIL Open Font License. Licensed
+     CC BY-NC-SA 4.0: print it, give it away, do not sell it.</p>
+  <p>Frequency allocations, program requirements and exposure rules were
+     compiled from the sources named in the book's colophon. The operator, not
+     the book, is responsible for lawful operation.</p>
+</footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,11 +1,36 @@
-# K4DIA Field Notes
+# K4DIA
 
-A static amateur-radio website for K4DIA. The production-ready files are in `dist/` and can be uploaded directly to a GitHub Pages repository.
+The site at [k4dia.com](https://k4dia.com). Static files, served by GitHub
+Pages, no build step.
 
-## Structure
+```
+index.html          the front page
+styles.css          the whole design
+site.js             the menu and the dial
+fonts/              IBM Plex, self-hosted, SIL Open Font License
+logbook/            the Field Record generator, runs in the visitor's browser
+CNAME               k4dia.com
+```
 
-- `dist/index.html` — homepage and site content
-- `dist/styles.css` — complete visual design and responsive layout
-- `dist/site.js` — lightweight page behavior
+Nothing here calls out to a third party. The fonts are served from this
+domain rather than from Google, and the logbook generator builds its PDF
+inside the visitor's own browser, so no callsign or repeater list is ever
+sent anywhere.
 
-Replace placeholder links as project pages and downloads are added.
+## Editing
+
+Open the files and change them. There is nothing to compile and nothing to
+install. Pushing to `main` publishes.
+
+Photographs go in the three project cards, replacing the ruled placeholder
+blocks marked `Photo to come`.
+
+## The logbook
+
+`logbook/` is generated from the FIELD RECORD project. To update it, rebuild
+the payload there and copy the folder across:
+
+```
+python3 measure_pages.py > pagesizes.json
+python3 web/build_payload.py
+```
