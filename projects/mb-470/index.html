@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MB-470 HF/UHF radio | K4DIA</title>
+<meta name="description" content="A superheterodyne HF through UHF radio designed from scratch since 2015, built on years of operating, maintaining and repairing the URC-94 and the GRC-171(V)2.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../brand/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <img class="brand-logo" src="../../brand/logo.png" width="640" height="166"
+         alt="K4DIA" fetchpriority="high" decoding="async">
+    <span class="brand-lines"><span>Field &middot; Build &middot; Learn</span><span>Radio brings people together</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../#projects" class="is-here">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#articles">Articles</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag"><strong>Amateur Radio</strong><span>Curiosity &middot; Experimentation &middot; Real connections</span></div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../#projects"><i>01</i> Projects</a>
+  <a href="../../#tools"><i>02</i> Tools</a>
+  <a href="../../downloads/"><i>03</i> Downloads</a>
+  <a href="../../#articles"><i>04</i> Articles</a>
+  <a href="../../#notes"><i>05</i> Notes</a>
+</nav>
+
+<main id="main">
+  <section class="pagehead">
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> MB-470</p>
+    <p class="eyebrow">Radio design <span class="cstat-inline">In design</span></p>
+    <h1>MB-470<br>HF through UHF</h1>
+    <p class="pagelede">A radio of my own, drawn from scratch and deliberately
+      superheterodyne rather than software defined. Ten years of sketching,
+      calculating and revising, built on what I learned keeping a URC-94 and a
+      GRC-171 running, and on what carrying a PRC-150 taught me about how a
+      radio should sit in the hand.</p>
+  </section>
+
+  <section class="section photosec">
+    <figure class="photo wide">
+      <img src="mb470-sheet.webp" width="1600" height="800"
+           alt="Design sheet for the MB-470. A black rack-eared transceiver seen from the front: an N-type antenna jack marked 50 ohm on the left with a GPS jack beside it, a backlit display reading MB-470, CH 001, 14.250.00 USB, TX 20W, a sixteen-key pad in the centre, CLR and SQL controls either side of it, PWR and CHAN knobs on the right, and circular AUX and MIC connectors at the lower corners. Below, three smaller views: front left perspective, right side, and rear showing the power connector marked 10 to 32 VDC and a finned heatsink."
+           loading="lazy" decoding="async">
+      <figcaption><strong>Design render, not a photograph.</strong> This is the
+        MB-470 as currently drawn. No unit has been built yet, which is exactly
+        what the last section of this page is about. The panel layout, the
+        connector choices and the case are all design decisions carried over
+        from the equipment described below.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section specstrip">
+    <dl class="specs">
+      <div><dt>Architecture</dt><dd>Superheterodyne, by choice</dd></div>
+      <div><dt>Coverage</dt><dd>HF through UHF</dd></div>
+      <div><dt>Started</dt><dd>2015</dd></div>
+      <div><dt>Stage</dt><dd>Design, moving to hardware</dd></div>
+      <div><dt>Panel, as drawn</dt><dd>N-type 50 &#8486;, GPS, AUX, MIC, 16-key pad</dd></div>
+      <div><dt>Supply, as drawn</dt><dd>10 to 32 V DC</dd></div>
+    </dl>
+  </section>
+
+  <section class="section">
+    <div class="prose narrow">
+
+      <h2>The URC-94</h2>
+
+      <p>I have years of experience operating, maintaining, and repairing the
+        URC-94 radio set, and when it comes to HF radios, the URC-94 is still
+        the love of my life. It is an absolute tank and a drama queen at the
+        same time. When she breaks, she tends to break hard. But when she is
+        properly maintained and cared for, she will run seemingly forever.</p>
+
+      <p>Her antenna coupler can be every bit as temperamental, particularly
+        when dealing with spark-gap issues and capacitor failures. In my
+        experience, many of those problems were not inherent design flaws, but
+        the result of poor environmental sealing, pressurization, or
+        maintenance practices. When the system is properly maintained, it is
+        remarkably capable.</p>
+
+      <h2>Five days at twenty watts</h2>
+
+      <p>The URC-94's cousin, the GRC-171(V)2, is equally impressive. I once
+        operated one at essentially a 100 percent duty cycle for five straight
+        days, transmitting continuously at 20 watts. It never stopped. No
+        faults, no blown components, no significant failures. Experiences like
+        that gave me a tremendous appreciation for how these radios were
+        engineered and how much margin was designed into them.</p>
+
+      <p>Over the years, I took the intimate knowledge I gained from
+        operating, troubleshooting, and repairing these two radios and began
+        applying it to a radio design of my own, intended to cover HF through
+        UHF. I deliberately chose a traditional superheterodyne architecture
+        rather than an SDR approach.</p>
+
+      <h2>What the manpacks taught me</h2>
+
+      <p>I have also spent plenty of time carrying and operating the PRC-150
+        and PRC-117 series radios, and I developed a different kind of
+        appreciation for them. They are durable bricks that can take a
+        beating, but their mobility, packaging, ergonomics, and overall
+        physical design are what really influenced me. Much of the inspiration
+        for the form and field usability of my own radio comes from those
+        systems.</p>
+
+      <p>Since around 2015, I have been brainstorming, sketching,
+        calculating, revising, and slowly working my way toward a complete
+        radio design.</p>
+
+      <h2>Why superheterodyne</h2>
+
+      <p>There is something about the architecture of a well-designed
+        superheterodyne radio that I genuinely love. I appreciate being able to
+        understand the signal path circuit by circuit and stage by stage. I
+        appreciate design details such as deriving a true sidetone sample from
+        the transmit audio at the T/R switching point and feeding that actual
+        sample back to the operator's headset. Those details may seem small,
+        but they demonstrate how thoughtfully some of these systems were
+        engineered around both the signal and the person operating the
+        radio.</p>
+
+      <p>That is not meant as criticism of modern radio design. Modern SDR
+        architecture is remarkable in its own right, and software-defined
+        systems achieve an entirely different kind of simplicity, flexibility,
+        and capability. My preference for superheterodyne architecture is
+        simply rooted in what I enjoy about radio engineering: understanding
+        and designing the physical signal chain and knowing exactly what is
+        happening to the signal as it moves through each stage.</p>
+
+      <h2>Where it stands</h2>
+
+      <p>After more than a decade of thinking about this radio, drawing it,
+        doing the math, changing things, and applying lessons learned from the
+        equipment I have worked on, pencil, paper, calculations and schematics
+        are no longer enough.</p>
+
+      <p class="kicker">If I want to find out whether the radio I have been
+        designing since 2015 actually works the way I believe it will, I have
+        to start putting real money into hardware and bring it to life.</p>
+
+    </div>
+  </section>
+
+  <section class="section terms">
+    <div>
+      <p class="eyebrow">Still to come</p>
+      <h2>What goes up next</h2>
+      <ul class="ticks wide">
+        <li>The block diagram: the full signal chain, stage by stage, receive and transmit.</li>
+        <li>Front panel and chassis drawings, including the hole schedule and the machined faceplate.</li>
+        <li>The band plan and the filter and mixer scheme behind HF through UHF coverage.</li>
+        <li>The sidetone path, taken off the transmit audio at the T/R switch rather than generated separately.</li>
+        <li>A parts and cost breakdown as hardware starts getting bought.</li>
+      </ul>
+      <p class="fineprint">This is the first entry on the MB-470, not the whole
+        of it. The design has been in progress since 2015 and the pages here
+        will follow it as it moves off paper.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call">
+    <img class="foot-logo" src="../../brand/logo-light.png" width="640" height="166"
+         alt="K4DIA" loading="lazy" decoding="async">
+    <span>Amateur Radio</span>
+  </div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+</footer>
+<script src="../../site.js"></script>
+</body>
+</html>

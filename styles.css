@@ -1404,3 +1404,8 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   .panel-list { display: none; }
   .plate { padding: .55rem .8rem; }
 }
+
+/* A full-width plate drawing or design sheet, rather than a part on the page. */
+.photo.wide img { max-width: 60rem; aspect-ratio: auto; }
+.prose.narrow { max-width: 40rem; margin-top: 0; }
+.prose .kicker strong, .photo figcaption strong { color: var(--ink); }
