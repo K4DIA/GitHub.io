@@ -1030,3 +1030,228 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   font-family: Calibri, Carlito, "Segoe UI", Arial, Helvetica, sans-serif;
   letter-spacing: 0;
 }
+
+/* ------------------------------------------------------------------ article */
+/* A written piece, not a build sheet. One measure, generous leading, and the
+   long body held shut until the reader asks for it. */
+.article {
+  padding: clamp(1.4rem, 4vw, 2.6rem) clamp(1.1rem, 3.4vw, 3rem) clamp(3rem, 7vw, 5rem);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.article-hero {
+  margin: 0 0 clamp(1.6rem, 4vw, 2.6rem);
+  background: var(--paper-warm);
+  border: 1px solid var(--paper-line);
+}
+.article-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  padding: clamp(1rem, 3vw, 2.4rem);
+}
+.article-hero figcaption {
+  margin: 0;
+  padding: .85rem clamp(1rem, 3vw, 1.6rem);
+  border-top: 1px solid var(--paper-line);
+  font-size: .8rem;
+  color: var(--ink-faint);
+}
+
+.articlehead { max-width: 52rem; }
+.articlehead h1 {
+  margin: .2rem 0 0;
+  font: 700 clamp(2.3rem, 5.4vw, 4.2rem)/.94 var(--display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+.articlehead .pagelede { margin-top: 1rem; }
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.2rem;
+  margin: 1.4rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--paper-line);
+  font: 400 .66rem/1.4 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.byline span:first-child { color: var(--ink); }
+
+.prose { max-width: 40rem; margin-top: clamp(1.6rem, 4vw, 2.4rem); }
+.prose p { margin: 0 0 1.15em; font-size: 1.03rem; line-height: 1.72; color: var(--ink-soft); }
+.prose h2 {
+  margin: 2.4rem 0 .9rem;
+  font: 700 clamp(1.35rem, 2.6vw, 1.75rem)/1.1 var(--display);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.prose q { quotes: "\201C" "\201D"; font-style: italic; }
+.prose .kicker {
+  margin-top: 1.8rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--rust);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.prose .tablewrap { max-width: none; margin: 1.8rem 0 .6rem; }
+.prose table.bom { min-width: 40rem; }
+.prose table.bom caption {
+  text-align: left;
+  padding-bottom: .7rem;
+  font: 400 .62rem/1 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.prose table.bom.cmp tr td:first-child {
+  font-family: var(--sans);
+  font-size: .85rem;
+  color: var(--ink);
+  white-space: normal;
+  font-weight: 600;
+}
+/* A numbered list inside an article is a numbered list. The site's .steps is a
+   different component entirely (dark panel, no markers), so this gets its own
+   name and draws its own numerals. */
+.prose ol.steplist { list-style: none; counter-reset: steplist; margin: 0 0 1.6rem; padding: 0; }
+.prose ol.steplist li {
+  counter-increment: steplist;
+  position: relative;
+  padding-left: 2.6rem;
+  margin-bottom: .8rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  font-size: 1.01rem;
+  background: none;
+  border: 0;
+}
+.prose ol.steplist li::before {
+  content: counter(steplist) ".";
+  position: absolute;
+  left: 0;
+  top: .45em;
+  font: 600 .8rem/1 var(--mono);
+  letter-spacing: .04em;
+  color: var(--rust);
+}
+/* Ordinary lists in an article keep their markers whatever else is on the page. */
+.prose ul:not([class]) { margin: 0 0 1.4rem; padding-left: 1.3rem; list-style: disc; }
+.prose ol:not([class]) { margin: 0 0 1.4rem; padding-left: 1.3rem; list-style: decimal; }
+.prose li { color: var(--ink-soft); }
+.prose .refs-head { font-size: 1.05rem; letter-spacing: .12em; }
+.prose ol.refs {
+  margin: 0;
+  padding-left: 1.3rem;
+  font-size: .84rem;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+.prose ol.refs li { margin-bottom: .7rem; }
+.prose ol.refs a { color: var(--rust); word-break: break-word; }
+
+/* Held shut. The class only lands when JS runs, so with scripting off the
+   whole piece is simply there. */
+.prose.more.is-clamped {
+  position: relative;
+  max-height: 13rem;
+  overflow: hidden;
+}
+.prose.more.is-clamped::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 9rem;
+  background: linear-gradient(to bottom, rgba(239,232,218,0) 0%, var(--paper) 82%);
+  pointer-events: none;
+}
+
+.readmore-wrap { margin: 0; }
+.readmore-wrap:not(.is-ready) { display: none; }
+.readmore {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .95rem 1.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+  font: 600 .68rem/1 var(--mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  transition: background .18s ease;
+}
+.readmore:hover { background: var(--rust); }
+.readmore:focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
+.readmore::after { content: "\2193"; font-size: .9rem; }
+.readmore-wrap.is-open .readmore::after { content: "\2191"; }
+.readmore .rm-shut { display: none; }
+.readmore-wrap.is-open .readmore .rm-open { display: none; }
+.readmore-wrap.is-open .readmore .rm-shut { display: inline; }
+
+@media print {
+  .prose.more.is-clamped { max-height: none !important; overflow: visible !important; }
+  .prose.more.is-clamped::after { display: none !important; }
+  .readmore-wrap { display: none !important; }
+}
+
+/* --------------------------------------------------------- article listing */
+/* One card, image left, so a reader can tell at a glance that this is
+   something to read rather than something to download. */
+.artlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.4rem; }
+.artcard {
+  display: grid;
+  grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+  gap: clamp(1.2rem, 3vw, 2.4rem);
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--paper-line);
+  background: var(--paper-warm);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .18s ease, background .18s ease;
+}
+.artcard:hover { border-color: var(--rust); background: #ece4d2; }
+.artcard:focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
+.artshot { display: block; background: var(--paper); border: 1px solid var(--paper-line); }
+.artshot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; padding: .8rem; }
+.artcopy { display: block; }
+.arttag {
+  display: block;
+  margin-bottom: .55rem;
+  font: 600 .62rem/1 var(--mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+.arttag span { color: var(--ink-faint); font-weight: 400; margin-left: .7rem; }
+.arth3 {
+  display: block;
+  margin-bottom: .6rem;
+  font: 700 clamp(1.25rem, 2.4vw, 1.75rem)/1.08 var(--display);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.artcard:hover .arth3 { color: var(--rust); }
+.artdek { display: block; margin-bottom: .9rem; font-size: .92rem; line-height: 1.6; color: var(--ink-mid); max-width: 40rem; }
+.artgo {
+  display: inline-block;
+  font: 600 .64rem/1 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rust);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: .25rem;
+}
+@media (max-width: 640px) {
+  .artcard { grid-template-columns: 1fr; }
+}
