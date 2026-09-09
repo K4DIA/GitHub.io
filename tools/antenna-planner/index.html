@@ -1,6 +1,16 @@
 <!DOCTYPE html>
+<!--
+  Portable antenna field planner
+  © 2026 Tony "K4DIA" Pelfanio — k4dia.com
+  Licensed CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  Credit the author, do not sell it, share alike.
+  Includes React (MIT, © Meta Platforms). Fonts under the SIL Open Font License.
+-->
 <html><head>
 <meta charset="utf-8">
+<meta name="author" content="Tony &quot;K4DIA&quot; Pelfanio">
+<meta name="copyright" content="© 2026 Tony &quot;K4DIA&quot; Pelfanio">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="a/dd4cc0a9.js"></script>
 </head>
@@ -2935,5 +2945,978 @@ input,select,textarea,td,th,output,code,kbd,samp{font-family:'K4 Mono',ui-monosp
 #k4-topo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.55;}
 #k4-topo svg{position:absolute;inset:0;width:100%;height:100%;}
 body>*:not(#k4-topo){position:relative;z-index:1;}
+
+/* the sign key that iOS's decimal keypad does not give you */
+.k4-sign{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:44px;min-height:44px;margin-left:.4rem;
+  border:1px solid var(--color-accent);border-radius:var(--radius-md);
+  background:transparent;color:var(--color-accent);
+  font:600 1.1rem/1 'K4 Mono',ui-monospace,monospace;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;flex:0 0 auto;
+}
+.k4-sign:active{background:var(--color-accent);color:#fbf6ea;}
+.k4t{margin:var(--space-6,30px) 0 0;}
+.k4t-head h2{font-family:var(--font-heading);font-weight:600;font-size:1.5rem;margin:0 0 var(--space-1,5px);}
+.k4t-sub{font-family:var(--font-heading);font-weight:600;font-size:1.15rem;margin:var(--space-6,30px) 0 var(--space-1,5px);}
+.k4t-note{font-size:.9rem;color:var(--color-neutral-700);margin:0 0 var(--space-3,15px);text-wrap:pretty;}
+.k4t-bar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem;}
+.k4t-btn,.k4t-sel{
+  min-height:48px;padding:0 1rem;border-radius:var(--radius-md,3px);
+  border:1px solid var(--color-accent);background:transparent;color:var(--color-accent);
+  font-family:var(--font-body);font-size:.95rem;cursor:pointer;
+}
+.k4t-btn.primary{background:var(--color-accent);color:#fbf6ea;border-color:var(--color-accent);}
+.k4t-sel{background:transparent;}
+.k4t-status{font-size:.82rem;color:var(--color-neutral-700);margin:0 0 .5rem;min-height:1.2em;text-wrap:pretty;}
+.k4t-map{display:block;width:100%;aspect-ratio:1/1;max-height:70vh;border:1px solid var(--color-divider);
+  background:#fff;touch-action:none;border-radius:var(--radius-md,3px);}
+.k4t-mask{display:block;width:100%;height:190px;border:1px solid var(--color-divider);background:#fff;
+  border-radius:var(--radius-md,3px);}
+.k4t-read{margin-top:.8rem;}
+.k4t-row{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid var(--color-divider);}
+.k4t-k{font-size:.9rem;color:var(--color-neutral-700);}
+.k4t-v{font-family:'K4 Mono',ui-monospace,monospace;font-size:.95rem;color:var(--color-text);text-align:right;}
+#k4-colophon{
+  margin:var(--space-8,40px) 0 0;padding:var(--space-4,20px) var(--space-4,20px) var(--space-8,40px);
+  border-top:1px solid var(--color-divider);
+}
+#k4-colophon .k4-c-line{font-size:.85rem;line-height:1.6;color:var(--color-text);margin:0 0 .6rem;text-wrap:pretty;}
+#k4-colophon .k4-c-line strong{font-weight:600;}
+#k4-colophon .k4-c-fine{font-size:.76rem;line-height:1.55;color:var(--color-neutral-700);margin:0 0 .5rem;text-wrap:pretty;}
+#k4-colophon a{color:var(--color-accent);}
+@media print{
+  #k4-colophon{border-top:1px solid #999;page-break-inside:avoid;}
+  #k4-colophon .k4-c-line,#k4-colophon .k4-c-fine{color:#000;}
+}
 </style>
+<script>
+/* Copyright, licence and credits. Always on screen at the foot of the tool,
+   and deliberately not marked fp-noprint so it comes out on the deployment
+   card as well: a printed sheet handed to somebody should say whose it is. */
+(function () {
+  'use strict';
+  var YEAR = 2026;
+  function build() {
+    if (document.getElementById('k4-colophon')) return;
+    var f = document.createElement('footer');
+    f.id = 'k4-colophon';
+    f.innerHTML =
+      '<p class="k4-c-line"><strong>© ' + YEAR + ' Tony &ldquo;K4DIA&rdquo; Pelfanio.</strong> ' +
+      'Portable antenna field planner, k4dia.com. All rights reserved except as licensed below.</p>' +
+      '<p class="k4-c-line">Licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" ' +
+      'rel="license noopener" target="_blank">CC BY-NC-SA 4.0</a>. ' +
+      'Use it, print it, hand it to somebody at a club meeting, change it to suit your own station. ' +
+      'Credit the author, do not sell it, and pass on any changes under the same terms.</p>' +
+      '<p class="k4-c-fine">Every figure here is a planning estimate from an analytical model, not a ' +
+      'measurement and not a substitute for modelling the antenna you actually built. ' +
+      'Terrain, where loaded, comes from USGS 3DEP. The operator, not the calculator, is responsible ' +
+      'for lawful operation and for safe installation.</p>' +
+      '<p class="k4-c-fine">Includes React (MIT, © Meta Platforms). Set in IBM Plex and Source Serif ' +
+      'under the SIL Open Font License.</p>';
+    (document.querySelector('main') || document.body).appendChild(f);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(build, 1600); });
+  else setTimeout(build, 1600);
+  setTimeout(build, 4000);
+}());
+
+</script>
+<script>
+/* Terrain around the deployment site.
+   Two jobs: show the ground you are standing in, with a real distance
+   reference, and turn it into the number that matters for RF, which is how
+   high the skyline sits in every direction compared with the antenna's
+   take-off angle. Everything is on the four-thirds earth, the same one the
+   path profile uses. */
+(function (root) {
+  'use strict';
+
+  var EARTH_M = 6371008.8;
+  var K = 4 / 3;                       // effective earth for refraction
+  var FT = 0.3048;
+
+  /* Metres per degree at this latitude, flat-earth local approximation.
+     Good to well under a metre over the tens of kilometres this view covers. */
+  function metresPerDegree(latDeg) {
+    var lat = latDeg * Math.PI / 180;
+    return {
+      lat: 111132.92 - 559.82 * Math.cos(2 * lat) + 1.175 * Math.cos(4 * lat),
+      lon: 111412.84 * Math.cos(lat) - 93.5 * Math.cos(3 * lat),
+    };
+  }
+
+  /* A square of sample points centred on the site. n must be odd so the
+     antenna lands exactly on the middle sample. */
+  function gridPoints(centreLat, centreLon, radiusM, n) {
+    if (n % 2 === 0) n += 1;
+    var m = metresPerDegree(centreLat);
+    var pts = [];
+    var half = (n - 1) / 2;
+    for (var row = 0; row < n; row += 1) {
+      for (var col = 0; col < n; col += 1) {
+        var north = ((half - row) / half) * radiusM;     // row 0 is the top, i.e. north
+        var east = ((col - half) / half) * radiusM;
+        pts.push([centreLon + east / m.lon, centreLat + north / m.lat]);
+      }
+    }
+    return { points: pts, n: n, spacingM: (2 * radiusM) / (n - 1) };
+  }
+
+  /* Earth curvature drop over a ground distance, four-thirds earth. */
+  function curvatureDropM(distanceM) {
+    return (distanceM * distanceM) / (2 * K * EARTH_M);
+  }
+
+  /* Bilinear sample of the grid in metres east/north of the centre. */
+  function sampleAt(grid, eastM, northM) {
+    var half = (grid.n - 1) / 2;
+    var col = half + eastM / grid.spacingM;
+    var row = half - northM / grid.spacingM;
+    if (col < 0 || row < 0 || col > grid.n - 1 || row > grid.n - 1) return null;
+    var c0 = Math.floor(col), r0 = Math.floor(row);
+    var c1 = Math.min(c0 + 1, grid.n - 1), r1 = Math.min(r0 + 1, grid.n - 1);
+    var fc = col - c0, fr = row - r0;
+    var v00 = grid.z[r0 * grid.n + c0], v10 = grid.z[r0 * grid.n + c1];
+    var v01 = grid.z[r1 * grid.n + c0], v11 = grid.z[r1 * grid.n + c1];
+    if (v00 == null || v10 == null || v01 == null || v11 == null) return null;
+    return (v00 * (1 - fc) + v10 * fc) * (1 - fr) + (v01 * (1 - fc) + v11 * fc) * fr;
+  }
+
+  /* The skyline, as an elevation angle, once around the compass.
+     For each azimuth we walk outward and keep the highest angle the ground
+     subtends at the antenna, dropping the far ground for earth curvature.
+     A negative result means the ground falls away and the horizon is below
+     level, which is what you want off the side of a hill. */
+  function horizonMask(grid, antennaHeightFt, opts) {
+    opts = opts || {};
+    var stepDeg = opts.stepDeg || 2;
+    var eyeM = (grid.centreElevM || 0) + (antennaHeightFt || 0) * FT;
+    var maxR = opts.maxRangeM || (grid.spacingM * (grid.n - 1)) / 2;
+    var stepR = Math.max(grid.spacingM * 0.5, maxR / 240);
+    var out = [];
+    for (var az = 0; az < 360; az += stepDeg) {
+      var rad = az * Math.PI / 180;
+      var sin = Math.sin(rad), cos = Math.cos(rad);   // az 0 = north
+      var best = -Infinity, bestR = 0, bestZ = null;
+      for (var r = stepR; r <= maxR + 1e-6; r += stepR) {
+        var z = sampleAt(grid, r * sin, r * cos);
+        if (z == null) continue;
+        var angle = Math.atan2(z - curvatureDropM(r) - eyeM, r) * 180 / Math.PI;
+        if (angle > best) { best = angle; bestR = r; bestZ = z; }
+      }
+      if (best === -Infinity) { best = 0; }
+      out.push({ azimuth_deg: az, angle_deg: best, range_m: bestR, elevation_m: bestZ });
+    }
+    return out;
+  }
+
+  function maskAt(mask, azimuthDeg) {
+    if (!mask.length) return null;
+    var a = ((azimuthDeg % 360) + 360) % 360;
+    var step = 360 / mask.length;
+    var i = Math.floor(a / step) % mask.length;
+    var j = (i + 1) % mask.length;
+    var f = (a - i * step) / step;
+    return mask[i].angle_deg * (1 - f) + mask[j].angle_deg * f;
+  }
+
+  function reliefStats(grid) {
+    var min = Infinity, max = -Infinity;
+    for (var i = 0; i < grid.z.length; i += 1) {
+      var v = grid.z[i];
+      if (v == null || !isFinite(v)) continue;
+      if (v < min) min = v;
+      if (v > max) max = v;
+    }
+    if (min === Infinity) return { min: 0, max: 0, relief: 0 };
+    return { min: min, max: max, relief: max - min };
+  }
+
+  /* A contour interval that gives roughly 8 to 14 lines across the relief,
+     chosen from the intervals a real map would use. */
+  function contourInterval(relief) {
+    var candidates = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500];
+    for (var i = 0; i < candidates.length; i += 1) {
+      if (relief / candidates[i] <= 14) return candidates[i];
+    }
+    return 1000;
+  }
+
+  root.TerrainCore = {
+    EARTH_M: EARTH_M, K: K, FT: FT,
+    metresPerDegree: metresPerDegree,
+    gridPoints: gridPoints,
+    curvatureDropM: curvatureDropM,
+    sampleAt: sampleAt,
+    horizonMask: horizonMask,
+    maskAt: maskAt,
+    reliefStats: reliefStats,
+    contourInterval: contourInterval,
+  };
+}(typeof window !== 'undefined' ? window : globalThis));
+
+/* The deployment-area terrain panel: shaded relief with contours, a real
+   distance reference, pinch zoom and pan, and the skyline chart that turns
+   the ground into an RF answer. Plain DOM and canvas so it does not depend
+   on the planner's framework. */
+(function () {
+  'use strict';
+  var T = window.TerrainCore;
+  var FT = 0.3048;
+  var C = {
+    ink: '#1d1b17', soft: '#6f6a5c', mute: '#a29a83', line: '#d4c9ae',
+    paper: '#efe8da', white: '#ffffff', rust: '#b8501f', olive: '#3f4732', amber: '#d8a24a',
+  };
+  var RAMP = [[246,241,230],[226,214,186],[201,181,140],[168,148,108],[124,110,80],[86,76,56]];
+
+  function lerpRamp(t) {
+    t = Math.max(0, Math.min(1, t));
+    var x = t * (RAMP.length - 1), i = Math.floor(x), f = x - i;
+    var a = RAMP[i], b = RAMP[Math.min(i + 1, RAMP.length - 1)];
+    return [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f];
+  }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  /* ---- elevation sources ------------------------------------------------ */
+
+  var USGS = 'https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/getSamples';
+
+  async function fetchGrid(lat, lon, radiusM, n, onProgress) {
+    var g = T.gridPoints(lat, lon, radiusM, n);
+    var z = new Array(g.points.length).fill(null);
+    var CHUNK = 400;
+    for (var start = 0; start < g.points.length; start += CHUNK) {
+      var slice = g.points.slice(start, start + CHUNK);
+      if (onProgress) onProgress(start, g.points.length);
+      var body = new URLSearchParams({
+        geometry: JSON.stringify({ points: slice, spatialReference: { wkid: 4326 } }),
+        geometryType: 'esriGeometryMultipoint',
+        returnFirstValueOnly: 'true',
+        interpolation: 'RSP_BilinearInterpolation',
+        f: 'json',
+      });
+      var res = await fetch(USGS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error('USGS 3DEP returned ' + res.status);
+      var payload = await res.json();
+      if (payload.error) throw new Error(payload.error.message || 'USGS 3DEP refused the request');
+      var got = 0;
+      (payload.samples || []).forEach(function (s) {
+        var v = Number(s.value);
+        if (isFinite(v) && v > -9000) { z[start + Number(s.locationId)] = v; got += 1; }
+      });
+      if (!got) throw new Error('No elevation returned for this area. 3DEP covers the US and its territories.');
+    }
+    var grid = { n: g.n, spacingM: g.spacingM, z: z, centreLat: lat, centreLon: lon, radiusM: radiusM };
+    grid.centreElevM = grid.z[((g.n - 1) / 2) * g.n + (g.n - 1) / 2];
+    return grid;
+  }
+
+  /* ---- drawing ---------------------------------------------------------- */
+
+  function hillshade(grid, r, c) {
+    var n = grid.n, s = grid.spacingM;
+    var z = function (rr, cc) {
+      rr = Math.max(0, Math.min(n - 1, rr)); cc = Math.max(0, Math.min(n - 1, cc));
+      var v = grid.z[rr * n + cc]; return v == null ? 0 : v;
+    };
+    var dzdx = ((z(r-1,c+1) + 2*z(r,c+1) + z(r+1,c+1)) - (z(r-1,c-1) + 2*z(r,c-1) + z(r+1,c-1))) / (8 * s);
+    var dzdy = ((z(r+1,c-1) + 2*z(r+1,c) + z(r+1,c+1)) - (z(r-1,c-1) + 2*z(r-1,c) + z(r-1,c+1))) / (8 * s);
+    var slope = Math.atan(Math.sqrt(dzdx*dzdx + dzdy*dzdy));
+    var aspect = Math.atan2(dzdy, -dzdx);
+    var az = 315 * Math.PI / 180, alt = 45 * Math.PI / 180;    // light from the north-west
+    var v = Math.cos(alt) * Math.sin(slope) * Math.cos(az - aspect) + Math.sin(alt) * Math.cos(slope);
+    return Math.max(0, Math.min(1, v));
+  }
+
+  /* Marching squares, the same method the site's contour plate uses. */
+  function contourSegments(grid, level) {
+    var n = grid.n, out = [];
+    var at = function (r, c) { var v = grid.z[r*n+c]; return v == null ? NaN : v; };
+    for (var r = 0; r < n - 1; r += 1) {
+      for (var c = 0; c < n - 1; c += 1) {
+        var v = [at(r,c), at(r,c+1), at(r+1,c+1), at(r+1,c)];
+        if (v.some(isNaN)) continue;
+        var idx = (v[0] > level ? 8 : 0) | (v[1] > level ? 4 : 0) | (v[2] > level ? 2 : 0) | (v[3] > level ? 1 : 0);
+        if (idx === 0 || idx === 15) continue;
+        var p = function (a, b, pa, pb) {
+          var t = (level - v[a]) / (v[b] - v[a]);
+          return [pa[0] + (pb[0]-pa[0]) * t, pa[1] + (pb[1]-pa[1]) * t];
+        };
+        var TL=[c,r], TR=[c+1,r], BR=[c+1,r+1], BL=[c,r+1];
+        var top=function(){return p(0,1,TL,TR);}, right=function(){return p(1,2,TR,BR);};
+        var bottom=function(){return p(3,2,BL,BR);}, left=function(){return p(0,3,TL,BL);};
+        var segs = {1:[[left,bottom]],2:[[bottom,right]],3:[[left,right]],4:[[top,right]],
+                    5:[[top,left],[bottom,right]],6:[[top,bottom]],7:[[top,left]],
+                    8:[[top,left]],9:[[top,bottom]],10:[[top,right],[left,bottom]],
+                    11:[[top,right]],12:[[left,right]],13:[[bottom,right]],14:[[left,bottom]]}[idx];
+        (segs||[]).forEach(function (pair) { out.push([pair[0](), pair[1]()]); });
+      }
+    }
+    return out;
+  }
+
+  function niceRing(metres) {
+    var c = [50,100,200,250,500,1000,2000,2500,5000,10000,20000,25000,50000];
+    for (var i = 0; i < c.length; i += 1) if (metres <= c[i]) return c[i];
+    return 100000;
+  }
+  /* Heights are heights: never expressed in miles, however tall the hill. */
+  function fmtElev(m, imperial) {
+    if (!isFinite(m)) return '\u2014';
+    return imperial ? Math.round(m / FT) + ' ft' : Math.round(m) + ' m';
+  }
+  function fmtDist(m, imperial) {
+    if (imperial) {
+      var ft = m / FT;
+      if (ft < 1500) return Math.round(ft) + ' ft';
+      return (m / 1609.344).toFixed(m / 1609.344 < 10 ? 1 : 0) + ' mi';
+    }
+    return m < 1000 ? Math.round(m) + ' m' : (m/1000).toFixed(m/1000 < 10 ? 1 : 0) + ' km';
+  }
+
+  window.TerrainView = {
+    C: C, RAMP: RAMP, lerpRamp: lerpRamp, el: el,
+    fetchGrid: fetchGrid, hillshade: hillshade, contourSegments: contourSegments,
+    niceRing: niceRing, fmtDist: fmtDist, fmtElev: fmtElev, USGS: USGS,
+  };
+}());
+
+/* The panel that gets injected into the planner's Site tab. */
+(function () {
+  'use strict';
+  var T = window.TerrainCore, V = window.TerrainView, C = V.C, el = V.el;
+  var FT = 0.3048;
+
+  var state = {
+    grid: null, mask: null, radiusM: 3000, viewRadiusM: 3000,
+    centre: { x: 0, y: 0 },          // pan offset in metres, east/north
+    imperial: true, status: '', busy: false, err: '',
+  };
+
+  function plan() {
+    // read whatever the planner currently has; fall back to sensible values
+    var s = window.__k4PlannerState || {};
+    return {
+      lat: Number(s.tx_lat), lon: Number(s.tx_lon),
+      heightFt: Number(s.feedpoint_height_ft) || 30,
+      bearing: Number(s.target_bearing_deg),
+      takeoff: Number(s.takeoff_deg),
+    };
+  }
+
+  /* ---------- the map ---------- */
+  function drawMap(cv) {
+    var g = state.grid, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (!(w > 0 && h > 0)) return;          // hidden tab: nothing to draw on
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    var ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = C.white; ctx.fillRect(0, 0, w, h);
+    if (!g) return;
+
+    var side = Math.min(w, h);
+    var R = state.viewRadiusM;                       // metres from centre to the nearer edge
+    var mToPx = (side / 2) / R;
+    var cx = w / 2, cy = h / 2;
+    var st = T.reliefStats(g);
+    var span = Math.max(1, st.relief);
+
+    /* The raster fills the whole viewport rather than a fixed square in the
+       middle, so panning past the edge of the loaded ground shows paper
+       instead of leaving a floating block of terrain behind. */
+    /* putImageData writes device pixels and ignores the canvas transform, so
+       the raster is built at device resolution and the sample coordinates are
+       converted back through the ratio. Building it at CSS size instead lands
+       the whole picture in one corner on any screen above 1x. */
+    var iw = cv.width, ih = cv.height;
+    var img = ctx.createImageData(iw, ih);
+    var half = (g.n - 1) / 2;
+    for (var py = 0; py < ih; py += 1) {
+      for (var px = 0; px < iw; px += 1) {
+        var eastM = (px / dpr - cx) / mToPx + state.centre.x;
+        var northM = (cy - py / dpr) / mToPx + state.centre.y;
+        var z = T.sampleAt(g, eastM, northM);
+        var o = (py * iw + px) * 4;
+        if (z == null) { img.data[o]=243; img.data[o+1]=238; img.data[o+2]=227; img.data[o+3]=255; continue; }
+        var col = V.lerpRamp((z - st.min) / span);
+        var sh = V.hillshade(g, Math.round(half - northM/g.spacingM), Math.round(half + eastM/g.spacingM));
+        var k = 0.55 + 0.55 * sh;
+        img.data[o]   = Math.max(0, Math.min(255, col[0] * k));
+        img.data[o+1] = Math.max(0, Math.min(255, col[1] * k));
+        img.data[o+2] = Math.max(0, Math.min(255, col[2] * k));
+        img.data[o+3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+
+    /* Mark where the loaded data stops, so a blank corner reads as "no data
+       loaded out here" rather than "flat ground". */
+    var edge = g.radiusM * mToPx;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(29,27,23,.35)'; ctx.setLineDash([3,4]); ctx.lineWidth = 1;
+    ctx.strokeRect(cx - state.centre.x*mToPx - edge, cy + state.centre.y*mToPx - edge, edge*2, edge*2);
+    ctx.setLineDash([]); ctx.restore();
+
+    // contours
+    var interval = T.contourInterval(st.relief);
+    ctx.lineWidth = 1;
+    for (var lev = Math.ceil(st.min/interval)*interval; lev <= st.max; lev += interval) {
+      var index = Math.round(lev / interval);
+      ctx.strokeStyle = (index % 5 === 0) ? 'rgba(60,52,38,.55)' : 'rgba(90,80,60,.30)';
+      ctx.lineWidth = (index % 5 === 0) ? 1.3 : 0.8;
+      ctx.beginPath();
+      V.contourSegments(g, lev).forEach(function (seg) {
+        var half=(g.n-1)/2;
+        var p = seg.map(function (pt) {
+          var e=(pt[0]-half)*g.spacingM, n=(half-pt[1])*g.spacingM;
+          return [cx + (e - state.centre.x)*mToPx, cy - (n - state.centre.y)*mToPx];
+        });
+        ctx.moveTo(p[0][0], p[0][1]); ctx.lineTo(p[1][0], p[1][1]);
+      });
+      ctx.stroke();
+    }
+
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, 0, w, h); ctx.clip();
+
+    // range rings, the distance reference
+    var ring = V.niceRing(R / 2.2);
+    ctx.font = '11px "K4 Mono", ui-monospace, monospace';
+    for (var d = ring; d <= R * 1.5; d += ring) {
+      var pr = d * mToPx;
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(29,27,23,.30)'; ctx.setLineDash([4,4]); ctx.lineWidth = 1;
+      ctx.arc(cx - state.centre.x*mToPx, cy + state.centre.y*mToPx, pr, 0, Math.PI*2); ctx.stroke();
+      ctx.setLineDash([]);
+      var lx = cx - state.centre.x*mToPx, ly = cy + state.centre.y*mToPx - pr;
+      ctx.fillStyle = 'rgba(29,27,23,.72)';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+      ctx.fillText(V.fmtDist(d, state.imperial), lx, ly - 2);
+    }
+
+    // the target bearing
+    var p0 = plan();
+    if (isFinite(p0.bearing)) {
+      var rad = p0.bearing * Math.PI/180;
+      var ox = cx - state.centre.x*mToPx, oy = cy + state.centre.y*mToPx;
+      ctx.strokeStyle = C.rust; ctx.lineWidth = 1.6; ctx.setLineDash([7,5]);
+      ctx.beginPath(); ctx.moveTo(ox, oy);
+      ctx.lineTo(ox + Math.sin(rad)*side, oy - Math.cos(rad)*side); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // the antenna
+    var ax = cx - state.centre.x*mToPx, ay = cy + state.centre.y*mToPx;
+    ctx.fillStyle = C.rust; ctx.beginPath(); ctx.arc(ax, ay, 5, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = C.white; ctx.lineWidth = 2; ctx.stroke();
+    ctx.restore();
+
+    // north arrow
+    ctx.strokeStyle = C.ink; ctx.fillStyle = C.ink; ctx.lineWidth = 1.4;
+    var nx = w - 20, ny = 26;
+    ctx.beginPath(); ctx.moveTo(nx, ny+16); ctx.lineTo(nx, ny-8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(nx, ny-13); ctx.lineTo(nx-4, ny-5); ctx.lineTo(nx+4, ny-5); ctx.closePath(); ctx.fill();
+    ctx.font = '10px "K4 Mono", ui-monospace, monospace'; ctx.textAlign='center'; ctx.textBaseline='top';
+    ctx.fillText('N', nx, ny+18);
+
+    // scale bar
+    var barM = V.niceRing(R/3), barPx = barM * mToPx;
+    var bx = 16, by = h - 22;
+    ctx.strokeStyle = C.ink; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx+barPx, by); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(bx, by-4); ctx.lineTo(bx, by+4);
+    ctx.moveTo(bx+barPx, by-4); ctx.lineTo(bx+barPx, by+4); ctx.stroke();
+    ctx.textAlign='left'; ctx.textBaseline='bottom';
+    ctx.fillStyle = C.ink; ctx.fillText(V.fmtDist(barM, state.imperial), bx, by-6);
+  }
+
+  /* ---------- the skyline ---------- */
+  function drawMask(cv) {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (!(w > 0 && h > 0)) return;
+    cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+    var ctx = cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.fillStyle = C.white; ctx.fillRect(0,0,w,h);
+    var m = state.mask; if (!m) return;
+    var L = 42, Rm = 12, Tp = 14, B = 26;
+    var pw = w - L - Rm, ph = h - Tp - B;
+    var lo = Math.min(-2, Math.floor(Math.min.apply(null, m.map(function(d){return d.angle_deg;})) - 1));
+    var hi = Math.max(10, Math.ceil(Math.max.apply(null, m.map(function(d){return d.angle_deg;})) + 2));
+    var X = function(az){ return L + (az/360)*pw; };
+    var Y = function(a){ return Tp + ph - ((a-lo)/(hi-lo))*ph; };
+
+    ctx.font = '10px "K4 Mono", ui-monospace, monospace';
+    ctx.strokeStyle = C.line; ctx.fillStyle = C.soft; ctx.lineWidth = 1;
+    for (var a = Math.ceil(lo/5)*5; a <= hi; a += 5) {
+      ctx.beginPath(); ctx.moveTo(L, Y(a)); ctx.lineTo(L+pw, Y(a)); ctx.stroke();
+      ctx.textAlign='right'; ctx.textBaseline='middle'; ctx.fillText(a+'°', L-6, Y(a));
+    }
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    [['N',0],['E',90],['S',180],['W',270],['N',360]].forEach(function(p){
+      ctx.fillStyle=C.soft; ctx.fillText(p[0], X(p[1]), Tp+ph+6);
+      ctx.strokeStyle=C.line; ctx.beginPath(); ctx.moveTo(X(p[1]),Tp); ctx.lineTo(X(p[1]),Tp+ph); ctx.stroke();
+    });
+    // level
+    ctx.strokeStyle='rgba(29,27,23,.45)'; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(L,Y(0)); ctx.lineTo(L+pw,Y(0)); ctx.stroke(); ctx.setLineDash([]);
+
+    // the skyline itself
+    ctx.beginPath();
+    m.concat([{azimuth_deg:360, angle_deg:m[0].angle_deg}]).forEach(function(d,i){
+      var x=X(d.azimuth_deg), y=Y(d.angle_deg);
+      i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+    });
+    ctx.lineTo(X(360),Y(lo)); ctx.lineTo(X(0),Y(lo)); ctx.closePath();
+    ctx.fillStyle='rgba(63,71,50,.30)'; ctx.fill();
+    ctx.beginPath();
+    m.concat([{azimuth_deg:360, angle_deg:m[0].angle_deg}]).forEach(function(d,i){
+      var x=X(d.azimuth_deg), y=Y(d.angle_deg); i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+    });
+    ctx.strokeStyle=C.olive; ctx.lineWidth=1.6; ctx.stroke();
+
+    // the antenna's take-off angle
+    var p0 = plan();
+    if (isFinite(p0.takeoff)) {
+      ctx.strokeStyle=C.rust; ctx.lineWidth=1.6; ctx.setLineDash([6,4]);
+      ctx.beginPath(); ctx.moveTo(L,Y(p0.takeoff)); ctx.lineTo(L+pw,Y(p0.takeoff)); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle=C.rust; ctx.textAlign='left'; ctx.textBaseline='bottom';
+      ctx.fillText('take-off '+p0.takeoff.toFixed(0)+'°', L+4, Y(p0.takeoff)-3);
+    }
+    if (isFinite(p0.bearing)) {
+      ctx.strokeStyle=C.rust; ctx.lineWidth=1; ctx.globalAlpha=.7;
+      ctx.beginPath(); ctx.moveTo(X(((p0.bearing%360)+360)%360),Tp); ctx.lineTo(X(((p0.bearing%360)+360)%360),Tp+ph); ctx.stroke();
+      ctx.globalAlpha=1;
+    }
+  }
+
+  window.TerrainPanel = { state: state, drawMap: drawMap, drawMask: drawMask, plan: plan };
+}());
+
+/* Panel chrome: controls, gestures, and the numbers underneath. */
+(function () {
+  'use strict';
+  var T = window.TerrainCore, V = window.TerrainView, P = window.TerrainPanel;
+  var C = V.C, el = V.el, S = P.state;
+  var mapCv, maskCv, statusEl, readoutEl, radiusEl;
+
+  function redraw() { if (mapCv) P.drawMap(mapCv); if (maskCv) P.drawMask(maskCv); paintReadout(); }
+
+  function paintReadout() {
+    if (!readoutEl) return;
+    readoutEl.innerHTML = '';
+    var g = S.grid;
+    if (!g) return;
+    var st = T.reliefStats(g), p = P.plan();
+    var rows = [
+      ['Ground at the antenna', V.fmtElev(g.centreElevM, S.imperial)],
+      ['Lowest in view', V.fmtElev(st.min, S.imperial)],
+      ['Highest in view', V.fmtElev(st.max, S.imperial)],
+      ['Relief', V.fmtElev(st.relief, S.imperial)],
+      ['Contour interval', V.fmtElev(T.contourInterval(st.relief), S.imperial)],
+    ];
+    if (S.mask && isFinite(p.bearing)) {
+      var toTarget = T.maskAt(S.mask, p.bearing);
+      rows.push(['Skyline toward the target', toTarget.toFixed(1) + '°']);
+      if (isFinite(p.takeoff)) {
+        var clear = p.takeoff - toTarget;
+        rows.push(['Take-off clears it by', (clear >= 0 ? '+' : '') + clear.toFixed(1) + '°']);
+      }
+    }
+    if (S.mask) {
+      var worst = S.mask.reduce(function (a, b) { return b.angle_deg > a.angle_deg ? b : a; });
+      rows.push(['Highest skyline', worst.angle_deg.toFixed(1) + '\u00b0 at ' + Math.round(worst.azimuth_deg) + '\u00b0, ' + V.fmtDist(worst.range_m, S.imperial) + ' out']);
+    }
+    rows.forEach(function (r) {
+      var row = el('div', 'k4t-row');
+      row.appendChild(el('span', 'k4t-k', r[0]));
+      row.appendChild(el('span', 'k4t-v', r[1]));
+      readoutEl.appendChild(row);
+    });
+  }
+
+  function setStatus(msg, isErr) {
+    if (!statusEl) return;
+    statusEl.textContent = msg || '';
+    statusEl.style.color = isErr ? C.rust : C.soft;
+  }
+
+  async function load() {
+    var p = P.plan();
+    if (!isFinite(p.lat) || !isFinite(p.lon) || (p.lat === 0 && p.lon === 0)) {
+      setStatus('Set the TX latitude and longitude on the Path tab first. Remember the sign key for a western longitude.', true);
+      return;
+    }
+    S.busy = true;
+    setStatus('Asking USGS 3DEP for the ground around ' + p.lat.toFixed(5) + ', ' + p.lon.toFixed(5) + '…');
+    try {
+      var grid = await V.fetchGrid(p.lat, p.lon, S.radiusM, 61, function (done, total) {
+        setStatus('Reading elevation, ' + Math.round(100 * done / total) + '%…');
+      });
+      S.grid = grid;
+      S.viewRadiusM = S.radiusM;
+      S.centre = { x: 0, y: 0 };
+      S.mask = T.horizonMask(grid, p.heightFt, { stepDeg: 2 });
+      setStatus('USGS 3DEP · ' + (2 * S.radiusM / 1000).toFixed(1) + ' km across · ' + grid.n + ' by ' + grid.n + ' samples, ' + Math.round(grid.spacingM) + ' m apart');
+      redraw();
+    } catch (e) {
+      setStatus(String(e.message || e), true);
+    } finally { S.busy = false; }
+  }
+
+  function useSynthetic(fn, label) {   // for tests and for the offline demo
+    var n = 61, radius = S.radiusM;
+    var g = { n: n, spacingM: (2*radius)/(n-1), z: new Array(n*n), radiusM: radius };
+    var half = (n-1)/2;
+    for (var r = 0; r < n; r += 1) for (var c = 0; c < n; c += 1) {
+      g.z[r*n+c] = fn((c-half)*g.spacingM, (half-r)*g.spacingM);
+    }
+    g.centreElevM = g.z[half*n+half];
+    S.grid = g; S.viewRadiusM = radius; S.centre = {x:0,y:0};
+    S.mask = T.horizonMask(g, P.plan().heightFt, { stepDeg: 2 });
+    setStatus(label || 'Sample terrain');
+    redraw();
+  }
+
+  function gestures(cv) {
+    var pts = new Map(), lastDist = 0, lastMid = null;
+    cv.style.touchAction = 'none';
+    cv.addEventListener('pointerdown', function (e) {
+      cv.setPointerCapture(e.pointerId);
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pts.size === 2) { lastDist = spread(); lastMid = mid(); }
+    });
+    cv.addEventListener('pointermove', function (e) {
+      if (!pts.has(e.pointerId)) return;
+      var prev = pts.get(e.pointerId);
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      var side = Math.min(cv.clientWidth, cv.clientHeight);
+      var mToPx = (side/2) / S.viewRadiusM;
+      if (pts.size === 1) {
+        S.centre.x -= (e.clientX - prev.x) / mToPx;
+        S.centre.y += (e.clientY - prev.y) / mToPx;
+        redraw();
+      } else if (pts.size === 2) {
+        var d = spread();
+        if (lastDist > 0 && d > 0) {
+          S.viewRadiusM = clampRadius(S.viewRadiusM * (lastDist / d));
+          lastDist = d;
+          redraw();
+        }
+      }
+    });
+    ['pointerup','pointercancel','pointerleave'].forEach(function (t) {
+      cv.addEventListener(t, function (e) { pts.delete(e.pointerId); lastDist = 0; });
+    });
+    cv.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      S.viewRadiusM = clampRadius(S.viewRadiusM * (e.deltaY > 0 ? 1.12 : 1/1.12));
+      redraw();
+    }, { passive: false });
+    function spread() {
+      var a = [...pts.values()];
+      return Math.hypot(a[0].x-a[1].x, a[0].y-a[1].y);
+    }
+    function mid() {
+      var a = [...pts.values()];
+      return { x:(a[0].x+a[1].x)/2, y:(a[0].y+a[1].y)/2 };
+    }
+  }
+  function clampRadius(r) {
+    var max = S.grid ? S.grid.radiusM * 1.4 : 20000;
+    return Math.max(120, Math.min(max, r));
+  }
+
+  function build(host) {
+    var wrap = el('section', 'k4t');
+    var head = el('div', 'k4t-head');
+    head.appendChild(el('h2', null, 'Terrain around the site'));
+    wrap.appendChild(head);
+    wrap.appendChild(el('p', 'k4t-note',
+      'The ground you are standing in, from USGS 3DEP. Pinch or scroll to zoom, drag to pan. Ridges, saddles and draws come from the elevation data; you do not add them by hand.'));
+
+    var bar = el('div', 'k4t-bar');
+    var loadBtn = el('button', 'k4t-btn primary', 'Load terrain');
+    loadBtn.type = 'button'; loadBtn.addEventListener('click', load);
+    bar.appendChild(loadBtn);
+
+    radiusEl = el('select', 'k4t-sel');
+    [[1000,'1 km across'],[3000,'3 km'],[6000,'6 km'],[12000,'12 km'],[24000,'24 km']].forEach(function (o) {
+      var op = el('option', null, o[1]); op.value = o[0];
+      if (o[0] === S.radiusM) op.selected = true;
+      radiusEl.appendChild(op);
+    });
+    radiusEl.addEventListener('change', function () { S.radiusM = Number(radiusEl.value); });
+    bar.appendChild(radiusEl);
+
+    var unit = el('button', 'k4t-btn', S.imperial ? 'feet' : 'metres');
+    unit.type='button';
+    unit.addEventListener('click', function () { S.imperial = !S.imperial; unit.textContent = S.imperial?'feet':'metres'; redraw(); });
+    bar.appendChild(unit);
+
+    var reset = el('button','k4t-btn','Reset view'); reset.type='button';
+    reset.addEventListener('click', function(){ S.centre={x:0,y:0}; S.viewRadiusM=S.grid?S.grid.radiusM:S.radiusM; redraw(); });
+    bar.appendChild(reset);
+    wrap.appendChild(bar);
+
+    statusEl = el('p','k4t-status','Nothing loaded yet.');
+    wrap.appendChild(statusEl);
+
+    mapCv = el('canvas','k4t-map');
+    wrap.appendChild(mapCv);
+    gestures(mapCv);
+
+    wrap.appendChild(el('h3','k4t-sub','Skyline from the antenna'));
+    wrap.appendChild(el('p','k4t-note',
+      'How high the ground stands in every direction, on the four-thirds earth, seen from the feed point. Where the skyline sits above your take-off angle, that path is into the hill.'));
+    maskCv = el('canvas','k4t-mask');
+    wrap.appendChild(maskCv);
+
+    readoutEl = el('div','k4t-read');
+    wrap.appendChild(readoutEl);
+
+    host.appendChild(wrap);
+    window.addEventListener('resize', function () {
+      if (window.__k4TerrainRedraw) window.__k4TerrainRedraw(); else redraw();
+    });
+    return wrap;
+  }
+
+  window.TerrainUI = { build: build, load: load, redraw: redraw, useSynthetic: useSynthetic, setStatus: setStatus };
+}());
+
+/* Reads the planner's current numbers out of its own UI and parks the terrain
+   panel on the Site tab. Deliberately does not reach inside the framework:
+   it reads what is on screen, caching each value as it appears, because the
+   tabs swap their content in and out. */
+(function () {
+  'use strict';
+  var cache = { tx_lat: NaN, tx_lon: NaN, feedpoint_height_ft: 30,
+                target_bearing_deg: NaN, takeoff_deg: NaN };
+  window.__k4PlannerState = cache;
+
+  function rowText(node) {
+    var r = node.closest('label, tr, li, div');
+    for (var i = 0; r && i < 4; i += 1) {
+      var t = (r.textContent || '').replace(/\s+/g, ' ').trim();
+      if (t && t.length < 90) return t;
+      r = r.parentElement;
+    }
+    return '';
+  }
+
+  function readInputs() {
+    var inputs = document.querySelectorAll('input[type="number"]');
+    for (var i = 0; i < inputs.length; i += 1) {
+      var t = rowText(inputs[i]);
+      var v = parseFloat(inputs[i].value);
+      if (!isFinite(v)) continue;
+      if (/TX latitude/i.test(t)) cache.tx_lat = v;
+      else if (/TX longitude/i.test(t)) cache.tx_lon = v;
+      else if (/Feed height/i.test(t)) cache.feedpoint_height_ft = v;
+      else if (/Target bearing/i.test(t)) cache.target_bearing_deg = v;
+    }
+  }
+
+  /* The results list prints "Take-off angle   14°" as plain text. */
+  function readResults() {
+    var nodes = document.querySelectorAll('div, li, tr');
+    for (var i = 0; i < nodes.length; i += 1) {
+      var n = nodes[i];
+      if (n.children.length > 4) continue;
+      var t = (n.textContent || '').replace(/\s+/g, ' ').trim();
+      if (t.length > 60) continue;
+      var m = t.match(/Take-?off angle\s*(-?\d+(?:\.\d+)?)\s*°/i);
+      if (m) { cache.takeoff_deg = parseFloat(m[1]); return; }
+    }
+  }
+
+  /* Which tab is showing. Each tab control is a button with an icon and a
+     label nested inside it, and the planner paints the live one, so match the
+     label leaf, walk up to its button, and read that. Sniffing the page text
+     was unreliable: the printable card repeats the site headings. */
+  var TABS = ['Setup', 'Site', 'Signal', 'Path', 'Plan'];
+  function activeTab() {
+    var all = document.querySelectorAll('span, div, em, i, b');
+    var live = null;
+    for (var i = 0; i < all.length; i += 1) {
+      var n = all[i];
+      if (n.children.length) continue;
+      var t = (n.textContent || '').trim();
+      if (TABS.indexOf(t) === -1) continue;
+      var btn = n.closest('button');
+      if (!btn) continue;
+      var bg = getComputedStyle(btn).backgroundColor;
+      if (bg && !/rgba\(0,\s*0,\s*0,\s*0\)|^transparent$/.test(bg)) live = t;
+    }
+    return live;
+  }
+  function siteTabVisible() {
+    var t = activeTab();
+    if (t) return t === 'Site';
+    // nothing painted yet: fall back to the Site tab's own heading
+    var hs = document.querySelectorAll('h1, h2, h3');
+    for (var i = 0; i < hs.length; i += 1) {
+      if (/^overhead plan$/i.test((hs[i].textContent || '').trim())) return true;
+    }
+    return false;
+  }
+
+  var panel = null, wasShown = null, drawing = false, queued = false;
+
+  /* Drawing writes canvas width and height, which is itself a DOM mutation.
+     Redrawing from inside the observer therefore feeds back on itself, so the
+     observer only ever decides visibility, and a redraw happens once, on the
+     transition into view. */
+  var lastScan = 0;
+  function place() {
+    if (drawing) return;
+    if (!panel) return;
+    /* Scanning the document is not free, and the observer fires constantly
+       while the planner re-renders, so the read is throttled. Visibility is
+       still decided on every call, which is the cheap part. */
+    var now = Date.now();
+    if (now - lastScan > 700) { lastScan = now; readInputs(); readResults(); }
+    var show = siteTabVisible();
+    if (show === wasShown) return;
+    wasShown = show;
+    panel.style.display = show ? '' : 'none';
+    if (show) redrawSafely();
+  }
+
+  function redrawSafely() {
+    if (drawing) { queued = true; return; }
+    drawing = true;
+    try { window.TerrainUI.redraw(); } catch (e) { /* a hidden tab has no canvas to draw on */ }
+    // let the mutations from drawing settle before listening again
+    setTimeout(function () {
+      drawing = false;
+      if (queued) { queued = false; redrawSafely(); }
+    }, 60);
+  }
+  window.__k4TerrainRedraw = redrawSafely;
+
+  function boot() {
+    if (panel) return;
+    var host = document.querySelector('main') || document.body;
+    var mount = document.createElement('div');
+    mount.id = 'k4-terrain-mount';
+    mount.style.padding = '0 var(--space-4, 20px) var(--space-8, 40px)';
+    host.appendChild(mount);
+    panel = window.TerrainUI.build(mount);
+    place();
+    var pending = null;
+    new MutationObserver(function () {
+      if (pending) return;
+      pending = setTimeout(function () { pending = null; place(); }, 120);
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    setInterval(place, 900);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(boot, 1500); });
+  else setTimeout(boot, 1500);
+}());
+
+</script>
+<script>
+/* Coordinate sign entry.
+   iOS gives inputmode="decimal" a keypad with no minus key, so a western
+   longitude or a southern latitude simply cannot be typed on a phone. Every
+   such field gets a sign key of its own, and the field also accepts N/S/E/W
+   so a pasted "79.98694 W" lands correctly. */
+(function () {
+  'use strict';
+  var COORD = /(latitude|longitude)/i;
+
+  function fire(input) {
+    ['input', 'change'].forEach(function (type) {
+      input.dispatchEvent(new Event(type, { bubbles: true }));
+    });
+  }
+
+  function setValue(input, text) {
+    var d = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value');
+    if (d && d.set) d.set.call(input, text); else input.value = text;
+    fire(input);
+  }
+
+  function labelFor(input) {
+    var row = input.closest('label, tr, li, div');
+    for (var i = 0; row && i < 4; i += 1) {
+      var t = (row.textContent || '').slice(0, 80);
+      if (COORD.test(t)) return t;
+      row = row.parentElement;
+    }
+    return '';
+  }
+
+  function flip(input) {
+    var raw = String(input.value || '').trim();
+    var n = parseFloat(raw);
+    if (!isFinite(n)) { setValue(input, '-'); return; }
+    setValue(input, String(-n));
+  }
+
+  function decorate(input) {
+    if (input.dataset.k4sign === '1') return;
+    if (!COORD.test(labelFor(input))) return;
+    input.dataset.k4sign = '1';
+
+    // a pasted or dictated "79.9 W" should still come out negative
+    input.addEventListener('blur', function () {
+      var raw = String(input.value || '');
+      var m = raw.match(/^\s*(-?\d+(?:\.\d+)?)\s*([NSEWnsew])\s*$/);
+      if (!m) return;
+      var v = parseFloat(m[1]);
+      var hemi = m[2].toUpperCase();
+      if ((hemi === 'W' || hemi === 'S') && v > 0) v = -v;
+      setValue(input, String(v));
+    });
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'k4-sign';
+    btn.textContent = '±';
+    btn.setAttribute('aria-label', 'Flip the sign of this coordinate');
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      flip(input);
+      input.focus();
+    });
+    if (input.parentNode) input.parentNode.insertBefore(btn, input.nextSibling);
+  }
+
+  function scan() {
+    var list = document.querySelectorAll('input[type="number"], input[inputmode="decimal"]');
+    for (var i = 0; i < list.length; i += 1) decorate(list[i]);
+  }
+
+  function start() {
+    scan();
+    // the planner re-renders its rows, so re-attach when it does
+    new MutationObserver(function () { scan(); })
+      .observe(document.body, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+  setTimeout(scan, 1200);
+  setTimeout(scan, 3000);
+}());
+
+</script>
 </body></html>
