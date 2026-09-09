@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 888" class="dwg" role="img" aria-labelledby="dgt dgd">
+<title id="dgt">The same eight pins, wired six different ways</title>
+<desc id="dgd">A chart of microphone connector pin assignments. Five amateur radio families and the OHIS standard run down the left, pin numbers 1 to 8 across the top. The cells show which pin carries microphone audio, push to talk and ground. No two rows agree, and the two Yaesu rows differ from each other.</desc>
+<rect width="1600" height="888" fill="#efe8da"/>
+<text x="40" y="46" class="hd">THE SAME EIGHT PINS</text>
+<text x="40" y="82" class="sub">Microphone audio, push-to-talk and ground, as six different products place them on an eight-pin connector.</text>
+<text x="516.0" y="112" class="pinno" text-anchor="middle">1</text>
+<text x="656.0" y="112" class="pinno" text-anchor="middle">2</text>
+<text x="796.0" y="112" class="pinno" text-anchor="middle">3</text>
+<text x="936.0" y="112" class="pinno" text-anchor="middle">4</text>
+<text x="1076.0" y="112" class="pinno" text-anchor="middle">5</text>
+<text x="1216.0" y="112" class="pinno" text-anchor="middle">6</text>
+<text x="1356.0" y="112" class="pinno" text-anchor="middle">7</text>
+<text x="1496.0" y="112" class="pinno" text-anchor="middle">8</text>
+<text x="40" y="112" class="colhd">PIN</text>
+<text x="40" y="156" class="grp">8-PIN ROUND</text>
+<line x1="452" y1="150" x2="1560" y2="150" stroke="#d4c9ae" stroke-width="1"/>
+<text x="40" y="206" class="brand">ICOM</text>
+<text x="40" y="230" class="model">IC-1201, IC-1271, IC-1275</text>
+<rect x="452" y="172" width="128" height="84" fill="#b8501f"/>
+<text x="516.0" y="220.0" class="cell" text-anchor="middle" fill="#fbf6ea">MIC</text>
+<rect x="592" y="172" width="128" height="84" fill="#e7dfcd"/>
+<line x1="647.0" y1="214.0" x2="665.0" y2="214.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="732" y="172" width="128" height="84" fill="#e7dfcd"/>
+<line x1="787.0" y1="214.0" x2="805.0" y2="214.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="872" y="172" width="128" height="84" fill="#e7dfcd"/>
+<line x1="927.0" y1="214.0" x2="945.0" y2="214.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1012" y="172" width="128" height="84" fill="#3f4732"/>
+<text x="1076.0" y="220.0" class="cell" text-anchor="middle" fill="#fbf6ea">PTT</text>
+<rect x="1152" y="172" width="128" height="84" fill="#d9d0b6"/>
+<text x="1216.0" y="220.0" class="cell" text-anchor="middle" fill="#1d1b17">GND</text>
+<rect x="1292" y="172" width="128" height="84" fill="#d9d0b6"/>
+<text x="1356.0" y="220.0" class="cell" text-anchor="middle" fill="#1d1b17">GND</text>
+<rect x="1432" y="172" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1487.0" y1="214.0" x2="1505.0" y2="214.0" stroke="#a29a83" stroke-width="2"/>
+<text x="40" y="300" class="brand">KENWOOD</text>
+<text x="40" y="324" class="model">TM-201, TM-221, TM-231</text>
+<rect x="452" y="266" width="128" height="84" fill="#b8501f"/>
+<text x="516.0" y="314.0" class="cell" text-anchor="middle" fill="#fbf6ea">MIC</text>
+<rect x="592" y="266" width="128" height="84" fill="#3f4732"/>
+<text x="656.0" y="314.0" class="cell" text-anchor="middle" fill="#fbf6ea">PTT</text>
+<rect x="732" y="266" width="128" height="84" fill="#e7dfcd"/>
+<line x1="787.0" y1="308.0" x2="805.0" y2="308.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="872" y="266" width="128" height="84" fill="#e7dfcd"/>
+<line x1="927.0" y1="308.0" x2="945.0" y2="308.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1012" y="266" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1067.0" y1="308.0" x2="1085.0" y2="308.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1152" y="266" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1207.0" y1="308.0" x2="1225.0" y2="308.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1292" y="266" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1347.0" y1="308.0" x2="1365.0" y2="308.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1432" y="266" width="128" height="84" fill="#d9d0b6"/>
+<text x="1496.0" y="314.0" class="cell" text-anchor="middle" fill="#1d1b17">GND</text>
+<text x="40" y="394" class="brand">YAESU</text>
+<text x="40" y="418" class="model">FT-840, FT-990, FT-2200</text>
+<rect x="452" y="360" width="128" height="84" fill="#e7dfcd"/>
+<line x1="507.0" y1="402.0" x2="525.0" y2="402.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="592" y="360" width="128" height="84" fill="#e7dfcd"/>
+<line x1="647.0" y1="402.0" x2="665.0" y2="402.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="732" y="360" width="128" height="84" fill="#e7dfcd"/>
+<line x1="787.0" y1="402.0" x2="805.0" y2="402.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="872" y="360" width="128" height="84" fill="#e7dfcd"/>
+<line x1="927.0" y1="402.0" x2="945.0" y2="402.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1012" y="360" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1067.0" y1="402.0" x2="1085.0" y2="402.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1152" y="360" width="128" height="84" fill="#3f4732"/>
+<text x="1216.0" y="408.0" class="cell" text-anchor="middle" fill="#fbf6ea">PTT</text>
+<rect x="1292" y="360" width="128" height="84" fill="#d9d0b6"/>
+<text x="1356.0" y="408.0" class="cell" text-anchor="middle" fill="#1d1b17">GND</text>
+<rect x="1432" y="360" width="128" height="84" fill="#b8501f"/>
+<text x="1496.0" y="408.0" class="cell" text-anchor="middle" fill="#fbf6ea">MIC</text>
+<text x="40" y="488" class="brand">YAESU</text>
+<text x="40" y="512" class="model">FT-2400, FT-2500</text>
+<rect x="452" y="454" width="128" height="84" fill="#e7dfcd"/>
+<line x1="507.0" y1="496.0" x2="525.0" y2="496.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="592" y="454" width="128" height="84" fill="#e7dfcd"/>
+<line x1="647.0" y1="496.0" x2="665.0" y2="496.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="732" y="454" width="128" height="84" fill="#3f4732"/>
+<text x="796.0" y="502.0" class="cell" text-anchor="middle" fill="#fbf6ea">PTT</text>
+<rect x="872" y="454" width="128" height="84" fill="#b8501f"/>
+<text x="936.0" y="502.0" class="cell" text-anchor="middle" fill="#fbf6ea">MIC</text>
+<rect x="1012" y="454" width="128" height="84" fill="#d9d0b6"/>
+<text x="1076.0" y="502.0" class="cell" text-anchor="middle" fill="#1d1b17">GND</text>
+<rect x="1152" y="454" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1207.0" y1="496.0" x2="1225.0" y2="496.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1292" y="454" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1347.0" y1="496.0" x2="1365.0" y2="496.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1432" y="454" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1487.0" y1="496.0" x2="1505.0" y2="496.0" stroke="#a29a83" stroke-width="2"/>
+<text x="40" y="576" class="grp">8-POSITION MODULAR</text>
+<line x1="452" y1="570" x2="1560" y2="570" stroke="#d4c9ae" stroke-width="1"/>
+<text x="40" y="626" class="brand">ICOM</text>
+<text x="40" y="650" class="model">IC-706, IC-706MKII, IC-2000</text>
+<rect x="452" y="592" width="128" height="84" fill="#e7dfcd"/>
+<line x1="507.0" y1="634.0" x2="525.0" y2="634.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="592" y="592" width="128" height="84" fill="#e7dfcd"/>
+<line x1="647.0" y1="634.0" x2="665.0" y2="634.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="732" y="592" width="128" height="84" fill="#e7dfcd"/>
+<line x1="787.0" y1="634.0" x2="805.0" y2="634.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="872" y="592" width="128" height="84" fill="#3f4732"/>
+<text x="936.0" y="640.0" class="cell" text-anchor="middle" fill="#fbf6ea">PTT</text>
+<rect x="1012" y="592" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1067.0" y1="634.0" x2="1085.0" y2="634.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="1152" y="592" width="128" height="84" fill="#b8501f"/>
+<text x="1216.0" y="640.0" class="cell" text-anchor="middle" fill="#fbf6ea">MIC</text>
+<rect x="1292" y="592" width="128" height="84" fill="#d9d0b6"/>
+<text x="1356.0" y="640.0" class="cell" text-anchor="middle" fill="#1d1b17">GND</text>
+<rect x="1432" y="592" width="128" height="84" fill="#e7dfcd"/>
+<line x1="1487.0" y1="634.0" x2="1505.0" y2="634.0" stroke="#a29a83" stroke-width="2"/>
+<rect x="34" y="682" width="1532" height="92" fill="none" stroke="#d8a24a" stroke-width="2"/>
+<text x="40" y="720" class="brand">OHIS v0.3</text>
+<text x="40" y="744" class="model">the proposed standard</text>
+<rect x="452" y="686" width="128" height="84" fill="#d8a24a"/>
+<text x="516.0" y="734.0" class="cell" text-anchor="middle" fill="#1d1b17">5V</text>
+<rect x="592" y="686" width="128" height="84" fill="#3f4732"/>
+<text x="656.0" y="734.0" class="cell" text-anchor="middle" fill="#fbf6ea">PTT</text>
+<rect x="732" y="686" width="128" height="84" fill="#d9d0b6"/>
+<text x="796.0" y="734.0" class="cell" text-anchor="middle" fill="#1d1b17">MIC G</text>
+<rect x="872" y="686" width="128" height="84" fill="#918366"/>
+<text x="936.0" y="734.0" class="cell" text-anchor="middle" fill="#1d1b17">HP L</text>
+<rect x="1012" y="686" width="128" height="84" fill="#d9d0b6"/>
+<text x="1076.0" y="734.0" class="cell" text-anchor="middle" fill="#1d1b17">HP G</text>
+<rect x="1152" y="686" width="128" height="84" fill="#b8501f"/>
+<text x="1216.0" y="734.0" class="cell" text-anchor="middle" fill="#fbf6ea">MIC</text>
+<rect x="1292" y="686" width="128" height="84" fill="#d9d0b6"/>
+<text x="1356.0" y="734.0" class="cell" text-anchor="middle" fill="#1d1b17">PWR G</text>
+<rect x="1432" y="686" width="128" height="84" fill="#918366"/>
+<text x="1496.0" y="734.0" class="cell" text-anchor="middle" fill="#1d1b17">HP R</text>
+<rect x="40" y="810" width="34" height="22" fill="#b8501f"/>
+<text x="84" y="826" class="leg">microphone audio</text>
+<rect x="242.0" y="810" width="34" height="22" fill="#3f4732"/>
+<text x="286.0" y="826" class="leg">push-to-talk</text>
+<rect x="412.0" y="810" width="34" height="22" fill="#d9d0b6"/>
+<text x="456.0" y="826" class="leg">ground</text>
+<rect x="534.0" y="810" width="34" height="22" fill="#d8a24a"/>
+<text x="578.0" y="826" class="leg">accessory power</text>
+<rect x="728.0" y="810" width="34" height="22" fill="#918366"/>
+<text x="772.0" y="826" class="leg">headphone audio</text>
+<rect x="922.0" y="810" width="34" height="22" fill="#e7dfcd"/>
+<line x1="930.0" y1="821" x2="948.0" y2="821" stroke="#a29a83" stroke-width="2"/>
+<text x="966.0" y="826" class="leg">not used / not published</text>
+<text x="40" y="872" class="src">Radio pin assignments from the Tigertronics radio wiring table. OHIS row from the Open Headset Interconnect Standard v0.3. The model families shown are examples, not every radio a manufacturer has shipped.</text>
+<style>
+  .hd    { font: 700 44px "Plex Cond", "Helvetica Neue Condensed", Impact, sans-serif; fill: #1d1b17; }
+  .sub   { font: 400 19px "Plex Sans", -apple-system, sans-serif; fill: #4a463d; }
+  .grp   { font: 600 13px "Plex Mono", ui-monospace, Menlo, monospace; letter-spacing: .18em; fill: #666155; }
+  .brand { font: 700 25px "Plex Cond", "Helvetica Neue Condensed", Impact, sans-serif; fill: #1d1b17; }
+  .model { font: 400 14px "Plex Mono", ui-monospace, Menlo, monospace; fill: #666155; }
+  .pinno { font: 600 15px "Plex Mono", ui-monospace, Menlo, monospace; letter-spacing: .1em; fill: #666155; }
+  .colhd { font: 600 13px "Plex Mono", ui-monospace, Menlo, monospace; letter-spacing: .18em; fill: #666155; }
+  .cell  { font: 600 17px "Plex Mono", ui-monospace, Menlo, monospace; letter-spacing: .06em; }
+  .leg   { font: 400 15px "Plex Sans", -apple-system, sans-serif; fill: #4a463d; }
+  .src   { font: 400 13px "Plex Sans", -apple-system, sans-serif; fill: #666155; }
+</style>
+</svg>

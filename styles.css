@@ -1110,6 +1110,22 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   object-fit: contain;
   padding: clamp(1rem, 3vw, 2.4rem);
 }
+/* A drawing done as inline SVG rather than a photograph. Inline so it can use
+   the site's own faces: an SVG loaded through an img tag cannot fetch a
+   webfont and falls back to system type. It keeps its own aspect ratio. */
+.article-hero > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: clamp(.9rem, 2.6vw, 2rem);
+}
+/* Shrunk to a phone the cell labels are a few pixels tall and the drawing is
+   decorative rather than readable. Let it keep a legible size and scroll
+   sideways instead, the same way the wide tables do. */
+@media (max-width: 820px) {
+  .article-hero:has(> svg) { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .article-hero > svg { min-width: 700px; }
+}
 .article-hero figcaption {
   margin: 0;
   padding: .85rem clamp(1rem, 3vw, 1.6rem);
@@ -1203,6 +1219,16 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
 .prose ol:not([class]) { margin: 0 0 1.4rem; padding-left: 1.3rem; list-style: decimal; }
 .prose li { color: var(--ink-soft); }
 .prose .refs-head { font-size: 1.05rem; letter-spacing: .12em; }
+
+/* Footnote markers. Set straight after a closing quote the number touches the
+   quote mark and reads as punctuation rather than a reference, and the link
+   underline runs into it as well. Give it air, drop the underline until it is
+   hovered, and zero the line-height so a marker never opens up the leading of
+   the line it sits on. */
+.prose sup { font-size: .68em; line-height: 0; vertical-align: super; margin-left: .16em; }
+.prose q + sup { margin-left: .26em; }
+.prose sup a { text-decoration: none; color: var(--rust-ink); }
+.prose sup a:hover, .prose sup a:focus { text-decoration: underline; }
 .prose ol.refs {
   margin: 0;
   padding-left: 1.3rem;
