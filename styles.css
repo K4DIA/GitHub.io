@@ -120,6 +120,13 @@ h3 {
   display: flex; align-items: center; gap: .95rem;
   text-decoration: none;
 }
+/* The logo does the job the typeset callsign used to. Height is fixed so the
+   masthead keeps its rhythm; width follows the artwork. */
+.brand-logo {
+  display: block;
+  height: 2.05rem;
+  width: auto;
+}
 .brand-call {
   font: 700 1.9rem/1 var(--display);
   letter-spacing: .01em;
@@ -632,7 +639,8 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   background: var(--ink); color: var(--sand-dim);
   font: 400 .78rem/1.5 var(--sans);
 }
-.foot-call { display: flex; align-items: baseline; gap: .9rem; }
+.foot-call { display: flex; align-items: center; gap: .9rem; }
+.foot-logo { display: block; height: 1.6rem; width: auto; }
 .foot-call strong { font: 700 1.5rem/1 var(--display); color: #f0e9d6; }
 .foot-call span { font: 400 .58rem/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; }
 .site-foot p { margin: 0; }
@@ -1329,3 +1337,11 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   max-width: 44rem;
 }
 .section.photosec { padding-top: clamp(1.2rem, 3vw, 2.2rem); padding-bottom: 0; }
+
+@media (max-width: 1180px) {
+  .brand-logo { height: 1.8rem; }
+}
+@media (max-width: 720px) {
+  .brand-logo { height: 1.55rem; }
+  .foot-logo { height: 1.35rem; }
+}
