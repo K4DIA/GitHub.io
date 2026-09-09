@@ -5,16 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FIELD RECORD, build your logbook</title>
 <meta name="description" content="Build a printable portable-operating logbook for your own station. Everything happens in your browser.">
+<link rel="icon" type="image/png" sizes="32x32" href="../brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../brand/favicon-180.png">
 <style>
+  /* The faces the rest of the site is set in. Declared here rather than
+     pulled in from styles.css because this page is deliberately standalone:
+     it has to build a book with no network, so it carries its own of
+     everything. */
+  @font-face { font-family: "Plex Cond"; src: url("fonts/IBMPlexSansCondensed-Bold.woff2") format("woff2");
+    font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Plex Cond"; src: url("fonts/IBMPlexSansCondensed-SemiBold.woff2") format("woff2");
+    font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Plex Sans"; src: url("fonts/IBMPlexSans-Regular.woff2") format("woff2");
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Plex Sans"; src: url("fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+    font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2");
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-SemiBold.woff2") format("woff2");
+    font-weight: 600; font-style: normal; font-display: swap; }
+
+  /* The token names below are this page's own and are left alone so the rest
+     of the stylesheet did not need rewriting, but every value now comes from
+     styles.css. --slate used to be a navy that appears nowhere else on the
+     site; it is the olive now. */
   :root {
-    --ink: #16181c;
-    --paper: #f7f5f1;
-    --panel: #ffffff;
-    --line: #d8d3c9;
-    --slate: #2f4356;
-    --amber: #c8801a;
-    --muted: #6b665e;
-    --bad: #9c2f2f;
+    --ink: #1d1b17;
+    --paper: #efe8da;
+    --panel: #f7f3e8;
+    --line: #d4c9ae;
+    --slate: #3f4732;
+    --amber: #b8501f;
+    --muted: #5f5a4d;
+    --bad: #8f3316;
+    --sand: #d9d0b6;
+    --mono: "Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: "Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --display: "Plex Cond", "Helvetica Neue Condensed", Impact, sans-serif;
   }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
@@ -22,29 +49,37 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
+    font: 16px/1.55 var(--sans);
   }
   .wrap { max-width: 940px; margin: 0 auto; padding: 0 20px 80px; }
 
   header.masthead {
     background: var(--slate);
-    color: #f2efe9;
+    color: #f4efe3;
     padding: 34px 0 30px;
     border-bottom: 3px solid var(--amber);
   }
   header.masthead .wrap { padding-bottom: 0; }
+  .backhome {
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 18px; text-decoration: none;
+  }
+  .backhome img { display: block; height: 26px; width: auto; }
+  .backhome span {
+    font: 600 11px/1 var(--mono); letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--sand);
+  }
+  .backhome:hover span { color: #f4efe3; }
   h1 {
     margin: 0;
-    font-size: 30px;
-    letter-spacing: 0.16em;
-    font-weight: 600;
+    font: 700 40px/0.95 var(--display);
+    letter-spacing: 0.02em;
     text-transform: uppercase;
   }
-  header.masthead p { margin: 10px 0 0; max-width: 62ch; color: #cfd8e0; }
+  header.masthead p { margin: 12px 0 0; max-width: 62ch; color: #d8d2c0; }
 
   h2 {
-    font-size: 13px;
+    font: 600 13px/1 var(--mono);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--slate);
@@ -65,13 +100,22 @@
   @media (max-width: 700px) { .grid, .grid.three { grid-template-columns: 1fr; } }
 
   label.field { display: block; font-size: 13px; }
-  label.field span {
-    display: block; letter-spacing: 0.08em; text-transform: uppercase;
+  /* Only the caption is set as a small-caps label. This used to catch every
+     span inside the label, so the explanatory notes underneath came out as
+     long uppercase mono sentences, and a sentence in caps is markedly slower
+     to read than the same sentence in sentence case. */
+  label.field > span:first-child {
+    display: block; font: 600 11px/1.3 var(--mono);
+    letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--muted); margin-bottom: 5px;
   }
+  label.field > span.note { display: block; text-transform: none; letter-spacing: 0; }
+  /* Controls do not inherit type by default, which is how this page ended up
+     rendering its form in Arial while everything around it was Plex. */
+  input, select, button, textarea { font-family: inherit; }
   input[type=text], input[type=number], select {
-    width: 100%; padding: 9px 10px; font-size: 15px;
-    border: 1px solid var(--line); background: #fff; color: var(--ink);
+    width: 100%; padding: 9px 10px; font: 400 15px/1.4 var(--mono);
+    border: 1px solid var(--line); background: #fbf8f1; color: var(--ink);
     border-radius: 0;
   }
   input:focus, select:focus, button:focus {
@@ -88,13 +132,13 @@
 
   .preset-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
   button.preset {
-    border: 1px solid var(--line); background: #fff; padding: 7px 13px;
-    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--line); background: #fbf8f1; padding: 7px 13px;
+    font: 600 13px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
     cursor: pointer; color: var(--slate);
   }
   button.preset:hover { border-color: var(--slate); }
   button.preset[aria-pressed=true] {
-    background: var(--slate); color: #fff; border-color: var(--slate);
+    background: var(--slate); color: #f4efe3; border-color: var(--slate);
   }
 
   details.radio { border-bottom: 1px solid var(--line); padding: 8px 0; }
@@ -111,11 +155,11 @@
   }
   .actions .inner { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
   button.go {
-    background: var(--slate); color: #fff; border: 0; padding: 13px 26px;
-    font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    background: var(--amber); color: #fbf6ea; border: 0; padding: 13px 26px;
+    font: 600 14px/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase;
     cursor: pointer;
   }
-  button.go:disabled { background: #9aa5ae; cursor: default; }
+  button.go:disabled { background: #a29a83; cursor: default; }
   .count { font-size: 14px; color: var(--muted); }
   .count strong { color: var(--ink); font-variant-numeric: tabular-nums; }
 
@@ -128,10 +172,10 @@
   #status { font-size: 14px; color: var(--muted); margin-top: 10px; min-height: 1.5em; }
   #status.bad { color: var(--bad); }
 
-  .result { display: none; border: 1px solid var(--slate); padding: 18px 20px; margin-top: 18px; background: #fff; }
+  .result { display: none; border: 1px solid var(--slate); padding: 18px 20px; margin-top: 18px; background: #fbf8f1; }
   .result.on { display: block; }
   .result a.dl {
-    display: inline-block; margin-top: 10px; background: var(--amber); color: #fff;
+    display: inline-block; margin-top: 10px; background: var(--amber); color: #fbf6ea;
     padding: 11px 22px; text-decoration: none; letter-spacing: 0.12em;
     text-transform: uppercase; font-size: 13px;
   }
@@ -142,13 +186,17 @@
 
   footer { color: var(--muted); font-size: 13px; margin-top: 40px; }
   footer a { color: var(--slate); }
-  noscript { display: block; padding: 20px; background: #fff; border: 1px solid var(--bad); }
+  noscript { display: block; padding: 20px; background: #fbf8f1; border: 1px solid var(--bad); }
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap">
+    <a class="backhome" href="../">
+      <img src="../brand/logo-light.png" width="640" height="166" alt="K4DIA">
+      <span>Back to the site</span>
+    </a>
     <h1>Field Record</h1>
     <p>A printable logbook for portable operating, built around the outing
        rather than the contact. Describe your station, choose what goes in,
@@ -272,6 +320,16 @@
 
 </div>
 
+<script>
+  /* Registered here rather than in app.js so a failure to register can never
+     stop the generator loading. Offline is a bonus; the page works without
+     it. */
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+  }
+</script>
 <script src="app.js"></script>
 </body>
 </html>

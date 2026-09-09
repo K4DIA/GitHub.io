@@ -10,9 +10,15 @@
 // because some static hosts serve an unknown extension as plain text, and a
 // worker refused for its content type is a hard thing to diagnose.
 
-// One line to change if you would rather serve Pyodide yourself than lean on
-// a CDN. Point it at a directory holding a Pyodide release.
-const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/";
+// The Python runtime is served from this site, not from a CDN. A logbook is
+// a field tool, and the field is where the signal is worst; a generator that
+// needs a working connection to a third party is a generator that fails in
+// the car park. Everything it needs is in pyodide/ beside this file, so the
+// only thing between an operator and a book is this site itself, and after
+// one visit the service worker means not even that.
+//
+// Point this at a directory holding any Pyodide release to move it.
+const PYODIDE = "pyodide/";
 
 let pyodide = null;
 let webapi = null;
@@ -21,18 +27,34 @@ let ready = false;
 const say = (text) => self.postMessage({ type: "status", text });
 
 async function boot() {
-  say("Fetching the Python runtime. This is the slow part, and it is cached "
+  say("Starting the Python runtime. This is the slow part, and it is kept "
       + "afterwards.");
-  const { loadPyodide } = await import(PYODIDE + "pyodide.mjs");
-  pyodide = await loadPyodide({ indexURL: PYODIDE });
+  const runtime = new URL(PYODIDE, self.location.href).href;
+  let loadPyodide;
+  try {
+    ({ loadPyodide } = await import(runtime + "pyodide.mjs"));
+  } catch (err) {
+    // Whatever the browser says here is about module resolution and means
+    // nothing to an operator standing at a tailgate.
+    throw new Error("The Python runtime would not load. It is served from "
+      + "this site, so this usually means the page was opened from a folder "
+      + "rather than over the web, or the first visit never finished "
+      + "downloading. Open the logbook once with a connection and it will "
+      + "work without one afterwards.");
+  }
+  pyodide = await loadPyodide({ indexURL: runtime });
 
   const manifest = await grab("manifest.json").then((r) => r.json());
 
-  say("Installing the PDF library.");
-  await pyodide.loadPackage("micropip");
-  const micropip = pyodide.pyimport("micropip");
-  await micropip.install(new URL(manifest.wheel, self.location.href).href);
-  micropip.destroy();
+  say("Loading the PDF library.");
+  // loadPackage takes wheel URLs directly. Going through micropip would have
+  // meant fetching micropip itself, and then letting it resolve reportlab's
+  // dependencies over the network, which is the very thing being removed.
+  // Resolving them here instead means the list is explicit and auditable:
+  // reportlab imports PIL at import time, so Pillow is not optional.
+  const wheels = (manifest.wheels || [manifest.wheel])
+    .map((w) => new URL(w, self.location.href).href);
+  await pyodide.loadPackage(wheels);
 
   say("Unpacking the book.");
   const zip = await grab(manifest.payload).then((r) => r.arrayBuffer());

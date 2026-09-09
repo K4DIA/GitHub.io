@@ -2344,15 +2344,41 @@ class Component extends DCLogic {
     const X = (km) => chart.left + (km / Math.max(totalKm, 1e-9)) * (chart.right - chart.left);
     const Y = (m) => chart.bottom - ((m - low) / Math.max(high - low, 1e-9)) * (chart.bottom - chart.top);
 
-    // elevation grid
+    /* Elevation grid.
+       The step used to be picked from a fixed ladder that stopped at 200 m,
+       so the axis stayed at 200 m spacing however tall it got. On a long
+       path the earth bulge dominates the scale: at 9000 km the midpoint sits
+       about 1200 km above the chord, so the axis spanned 1.5 million metres
+       and the loop drew seven and a half thousand gridlines and seven and a
+       half thousand labels on top of each other. Choose a round step that
+       lands somewhere near eight lines instead, whatever the range. */
     const range = high - low;
-    const gridStep = range > 800 ? 200 : (range > 400 ? 100 : (range > 150 ? 50 : 20));
+    const niceStep = (span, target) => {
+      const raw = span / target;
+      const magnitude = 10 ** Math.floor(Math.log10(Math.max(raw, 1e-9)));
+      const scaled = raw / magnitude;
+      const step = scaled <= 1 ? 1 : scaled <= 2 ? 2 : scaled <= 2.5 ? 2.5 : scaled <= 5 ? 5 : 10;
+      return step * magnitude;
+    };
+    const gridStep = Math.max(1, niceStep(range, 8));
+    /* Past a few thousand metres the labels are wider than the gutter they
+       sit in, so switch to kilometres rather than let five and six figure
+       numbers run under the plot. */
+    const useKm = gridStep >= 1000;
+    /* A 2.5 m step lands on halves, so rounding the label would print 3 on
+       the line drawn at 2.5. Follow the step, not the value. */
+    const decimals = (step) => (Number.isInteger(step) ? 0 : 1);
+    const axisLabel = (m) => {
+      if (!useKm) return m.toFixed(decimals(gridStep));
+      const km = m / 1000;
+      return `${km.toFixed(decimals(gridStep / 1000))}k`;
+    };
     ctx.strokeStyle = C.grid; ctx.lineWidth = C.weight;
     ctx.fillStyle = C.mute;
     for (let m = Math.ceil(low / gridStep) * gridStep; m < high; m += gridStep) {
       const y = Y(m);
       ctx.beginPath(); ctx.moveTo(chart.left, y); ctx.lineTo(chart.right, y); ctx.stroke();
-      ctx.fillText(`${m}`, 6, y + 4);
+      ctx.fillText(axisLabel(m), 6, y + 4);
     }
     for (let i = 1; i < 5; i += 1) {
       const x = chart.left + ((chart.right - chart.left) * i) / 5;
@@ -2427,7 +2453,13 @@ class Component extends DCLogic {
         ctx.fillStyle = C.accent2;
         ctx.beginPath(); ctx.arc(x, Y(obstacle.m), 4, 0, Math.PI * 2); ctx.fill();
       }
-      const text = `${analysis.worst_clearance_m >= 0 ? 'clear' : 'blocked'} ${Math.abs(analysis.worst_clearance_m).toFixed(0)} m · ${analysis.diffraction_loss_db.toFixed(1)} dB`;
+      /* Same reason as the axis: on a long path this is the earth bulge and
+         runs to seven figures, which is unreadable as metres. */
+      const gap = Math.abs(analysis.worst_clearance_m);
+      const gapText = gap >= 10000 ? `${(gap / 1000).toFixed(0)} km`
+        : gap >= 1000 ? `${(gap / 1000).toFixed(1)} km`
+        : `${gap.toFixed(0)} m`;
+      const text = `${analysis.worst_clearance_m >= 0 ? 'clear' : 'blocked'} ${gapText} · ${analysis.diffraction_loss_db.toFixed(1)} dB`;
       const width = ctx.measureText(text).width;
       const bx = Math.max(chart.left + 2, Math.min(x + 6, chart.right - width - 8));
       ctx.fillStyle = C.plate;

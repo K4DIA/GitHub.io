@@ -5,5 +5,10 @@
  "payload_sha256": "f035303e57a77ed347d620acd414f24d49eb62d1305a47f448db767afeef6447",
  "reference_sections": 14,
  "station_records": 11,
- "wheel": "vendor/reportlab-5.0.1-py3-none-any.whl"
+ "wheel": "vendor/reportlab-5.0.1-py3-none-any.whl",
+ "wheels": [
+  "vendor/pillow-12.2.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+  "vendor/reportlab-5.0.1-py3-none-any.whl"
+ ],
+ "runtime": "pyodide/"
 }

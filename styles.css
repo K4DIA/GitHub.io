@@ -24,15 +24,21 @@
   --ink:        #1d1b17;
   --ink-soft:   #262420;
   --ink-mid:    #4a463d;
-  --ink-faint:  #6f6a5c;
+  --ink-faint:  #666155;   /* lifted to clear 4.5:1 on the paper grounds */
   --rust:       #b8501f;
   --rust-deep:  #963f16;
   --olive:      #3f4732;
   --olive-lo:   #333a29;
   --olive-hi:   #4c5540;
   --sand:       #d9d0b6;
-  --sand-dim:   #a29a83;
+  --sand-dim:   #cfcabe;   /* lifted to clear 4.5:1 on the olive plate */
   --amber:      #d8a24a;
+  /* Ink-only variants. The fills, rules and borders keep the brand values
+     above; small text needs more separation from its ground than a 10 px
+     label gets at those values, so it uses these instead. Both were solved
+     against the darkest and lightest grounds each one actually lands on. */
+  --rust-ink:   #a1461b;
+  --amber-ink:  #e7c690;
   --shadow:     0 18px 40px rgba(29,27,23,.22);
   --mono: "Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: "Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -70,7 +76,7 @@ a { color: inherit; }
   font: 600 .68rem/1.2 var(--mono);
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--rust-ink);
 }
 
 h2 {
@@ -387,7 +393,7 @@ h3 {
     0 0 0 rgba(0,0,0,0);
   transform: translateY(1px);
 }
-.index-row:hover b, .index-row.is-active b { color: var(--amber); }
+.index-row:hover b, .index-row.is-active b { color: var(--amber-ink); }
 
 .waveform { width: 100%; height: 20px; margin-top: .5rem; opacity: .8; }
 
@@ -484,7 +490,7 @@ h3 {
 .logbook-art svg { width: 100%; height: auto; }
 .logbook h2 { color: #f2ebd9; }
 .logbook p { color: #c3bca9; max-width: 46rem; }
-.logbook .eyebrow { color: var(--amber); }
+.logbook .eyebrow { color: var(--amber-ink); }
 
 .logbook-points {
   display: grid; gap: .35rem;
@@ -531,7 +537,7 @@ h3 {
   margin-top: auto;
   font: 600 .7rem/1 var(--mono);
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--rust); text-decoration: none;
+  color: var(--rust-ink); text-decoration: none;
 }
 .card-copy a:hover { text-decoration: underline; }
 
@@ -561,7 +567,7 @@ h3 {
   background: var(--olive); color: var(--sand);
 }
 .tools h2 { color: #f0e9d6; }
-.tools .eyebrow { color: var(--amber); }
+.tools .eyebrow { color: var(--amber-ink); }
 .tools-intro p { color: #cbc4ae; }
 
 .tool-rows { display: grid; gap: .8rem; align-content: start; }
@@ -579,14 +585,14 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   display: grid; place-items: center;
   width: 3.2rem; height: 2.5rem;
   font: 600 .64rem/1 var(--mono); letter-spacing: .12em;
-  color: var(--amber);
+  color: var(--amber-ink);
   border: 1px solid rgba(216,162,74,.45);
 }
 .tool-row span strong { display: block; font: 600 .95rem/1.3 var(--sans); color: #f0e9d6; }
 .tool-row span { font-size: .84rem; color: #c0b9a4; }
 .tool-row em {
   font: 600 .66rem/1 var(--mono); font-style: normal;
-  letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+  letter-spacing: .16em; text-transform: uppercase; color: var(--amber-ink);
 }
 .tool-row em.soon { color: var(--sand-dim); }
 
@@ -598,7 +604,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
 .dl i {
   display: block; margin-bottom: .8rem;
   font: 400 .68rem/1 var(--mono); font-style: normal;
-  letter-spacing: .16em; color: var(--rust);
+  letter-spacing: .16em; color: var(--rust-ink);
 }
 .dl p { margin: 0 0 1rem; font-size: .88rem; color: var(--ink-mid); }
 .dl a {
@@ -672,7 +678,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
     letter-spacing: .18em; text-transform: uppercase;
     border-bottom: 1px solid rgba(217,208,182,.14);
   }
-  .mainnav-mobile a i { font-style: normal; color: var(--rust); }
+  .mainnav-mobile a i { font-style: normal; color: var(--rust-ink); }
   .hero { grid-template-columns: 1fr; }
   .panel { max-width: 560px; }
   .logbook, .tools, .notes { grid-template-columns: 1fr; }
@@ -730,7 +736,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   color: var(--ink-mid);
   font-size: .94rem;
 }
-.hint a { color: var(--rust); }
+.hint a { color: var(--rust-ink); }
 
 /* The file list is a spec sheet, not a card wall: what it is, how long it
    runs, how big the file is, and one button. */
@@ -754,7 +760,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
 .ftype {
   justify-self: start;
   padding: .45rem .6rem;
-  color: var(--rust);
+  color: var(--rust-ink);
   border: 1px solid rgba(184,80,31,.45);
   font-weight: 600;
 }
@@ -775,7 +781,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   background: var(--olive); color: var(--sand);
 }
 .printing h2 { color: #f0e9d6; }
-.printing .eyebrow { color: var(--amber); }
+.printing .eyebrow { color: var(--amber-ink); }
 .printing-copy p { color: #cbc4ae; }
 .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; align-content: start; }
 .steps li {
@@ -785,12 +791,12 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   border: 1px solid rgba(0,0,0,.28);
   font-size: .86rem; color: #c0b9a4;
 }
-.steps span { font: 400 .68rem/1.6 var(--mono); letter-spacing: .14em; color: var(--amber); }
+.steps span { font: 400 .68rem/1.6 var(--mono); letter-spacing: .14em; color: var(--amber-ink); }
 .steps strong { display: block; font: 600 .95rem/1.4 var(--sans); color: #f0e9d6; }
 
 .terms { background: var(--paper-warm); }
 .terms p { max-width: 52rem; color: var(--ink-mid); }
-.terms a { color: var(--rust); }
+.terms a { color: var(--rust-ink); }
 .fineprint { font-size: .82rem; color: var(--ink-faint); margin-top: 1rem; }
 
 @media (max-width: 720px) {
@@ -815,7 +821,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   font: 600 .6rem/1 var(--mono);
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--rust-ink);
   border: 1px solid rgba(184,80,31,.4);
 }
 .cstat.standalone { margin-top: 1.2rem; max-width: 34rem; }
@@ -829,7 +835,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--ink-faint);
 }
-.crumb a { color: var(--rust); text-decoration: none; }
+.crumb a { color: var(--rust-ink); text-decoration: none; }
 .crumb a:hover { text-decoration: underline; }
 .crumb span { margin: 0 .5rem; }
 
@@ -886,7 +892,7 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
 .links a {
   font: 600 .66rem/1 var(--mono);
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--rust); text-decoration: none;
+  color: var(--rust-ink); text-decoration: none;
   border-bottom: 1px solid currentColor; padding-bottom: 3px;
 }
 
@@ -932,7 +938,7 @@ table.bom tr:hover td { background: rgba(184,80,31,.045); }
 
 .vna { background: var(--olive); color: var(--sand); }
 .vna h2 { color: #f0e9d6; }
-.vna .eyebrow { color: var(--amber); }
+.vna .eyebrow { color: var(--amber-ink); }
 .vna .sec-head { border-bottom-color: rgba(217,208,182,.25); }
 .vna .sec-note { color: var(--sand-dim); }
 .vna .caveat { color: var(--sand-dim); border-left-color: rgba(217,208,182,.3); }
@@ -945,7 +951,7 @@ table.bom tr:hover td { background: rgba(184,80,31,.045); }
 .target span {
   display: inline-block; margin-right: .5rem; padding: .22rem .45rem;
   font: 600 .58rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
-  color: var(--amber); border: 1px solid rgba(216,162,74,.45);
+  color: var(--amber-ink); border: 1px solid rgba(216,162,74,.45);
 }
 
 @media (max-width: 1024px) {
@@ -987,7 +993,7 @@ table.bom tr:hover td { background: rgba(184,80,31,.045); }
 }
 .verdict.hit { color: #2f4a26; border: 1px solid rgba(63,71,50,.5); background: rgba(63,71,50,.09); }
 .verdict.part { color: #7a5a17; border: 1px solid rgba(122,90,23,.45); background: rgba(216,162,74,.12); }
-.verdict.miss { color: var(--rust); border: 1px solid rgba(184,80,31,.4); background: rgba(184,80,31,.07); }
+.verdict.miss { color: var(--rust-ink); border: 1px solid rgba(184,80,31,.4); background: rgba(184,80,31,.07); }
 
 .cand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
 .cand-grid h4 {
@@ -1000,7 +1006,7 @@ table.bom tr:hover td { background: rgba(184,80,31,.045); }
 
 table.compare td.y, table.compare td.n, table.compare td.m { font-family: var(--mono); font-size: .76rem; }
 table.compare td.y { color: #2f4a26; }
-table.compare td.n { color: var(--rust); }
+table.compare td.n { color: var(--rust-ink); }
 table.compare td.m { color: var(--ink-faint); }
 table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; color: var(--ink); white-space: normal; }
 
@@ -1008,7 +1014,7 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
 .expect h3 { margin-bottom: 1rem; }
 .bandlist { margin: 0; display: grid; gap: .6rem; }
 .bandlist > div { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; align-items: baseline; }
-.bandlist dt { font: 600 .72rem/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--rust); }
+.bandlist dt { font: 600 .72rem/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--rust-ink); }
 .bandlist dd { margin: 0; font-size: .88rem; color: var(--ink-mid); }
 
 .ruleset-note { margin: -.5rem 0 .9rem; font-size: .78rem; color: var(--ink-faint); font-style: italic; }
@@ -1019,13 +1025,13 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   padding: 1.2rem 1.4rem;
   background: rgba(0,0,0,.2); border: 1px solid rgba(0,0,0,.28);
 }
-.rank { font: 700 1.6rem/1 var(--display); color: var(--amber); }
+.rank { font: 700 1.6rem/1 var(--display); color: var(--amber-ink); }
 .ranked h3 { margin: 0 0 .4rem; color: #f0e9d6; }
 .ranked p { margin: 0; font-size: .88rem; color: #c0b9a4; }
 
 .srchead { margin: 1.8rem 0 .8rem; font: 600 .62rem/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); }
 .srclist { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
-.srclist a { font-size: .84rem; color: var(--rust); }
+.srclist a { font-size: .84rem; color: var(--rust-ink); }
 .dwg .tinyw { font: 600 9px var(--mono); letter-spacing: .14em; fill: #e6dcc4; }
 
 @media (max-width: 900px) {
@@ -1041,15 +1047,15 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   font: 600 .72rem/1 var(--mono);
   letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
 }
-.partsgroups summary::marker { color: var(--rust); }
+.partsgroups summary::marker { color: var(--rust-ink); }
 .partsgroups details[open] summary { border-bottom: 1px solid var(--paper-line); }
 .parts { list-style: none; margin: 0; padding: .9rem 1.2rem 1.1rem; display: grid; gap: .35rem; }
 .parts li { font-size: .84rem; color: var(--ink-mid); padding-left: 2.6rem; text-indent: -2.6rem; }
-.parts b { display: inline-block; min-width: 1.8rem; font: 600 .72rem/1 var(--mono); color: var(--rust); }
+.parts b { display: inline-block; min-width: 1.8rem; font: 600 .72rem/1 var(--mono); color: var(--rust-ink); }
 .parts em { font-style: normal; color: var(--ink-faint); font-size: .78rem; }
 
 .linknote { margin: 0 0 .6rem; font-size: .82rem; color: var(--ink-mid); }
-.linknote a { color: var(--rust); }
+.linknote a { color: var(--rust-ink); }
 .calc {
   margin: 0 0 .7rem; padding: .6rem .8rem;
   background: var(--paper-warm); border-left: 2px solid var(--rust);
@@ -1190,7 +1196,7 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   top: .45em;
   font: 600 .8rem/1 var(--mono);
   letter-spacing: .04em;
-  color: var(--rust);
+  color: var(--rust-ink);
 }
 /* Ordinary lists in an article keep their markers whatever else is on the page. */
 .prose ul:not([class]) { margin: 0 0 1.4rem; padding-left: 1.3rem; list-style: disc; }
@@ -1205,7 +1211,7 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   color: var(--ink-faint);
 }
 .prose ol.refs li { margin-bottom: .7rem; }
-.prose ol.refs a { color: var(--rust); word-break: break-word; }
+.prose ol.refs a { color: var(--rust-ink); word-break: break-word; }
 
 /* Held shut. The class only lands when JS runs, so with scripting off the
    whole piece is simply there. */
@@ -1281,7 +1287,7 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   font: 600 .62rem/1 var(--mono);
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--rust-ink);
 }
 .arttag span { color: var(--ink-faint); font-weight: 400; margin-left: .7rem; }
 .arth3 {
@@ -1292,14 +1298,14 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   text-transform: uppercase;
   color: var(--ink);
 }
-.artcard:hover .arth3 { color: var(--rust); }
+.artcard:hover .arth3 { color: var(--rust-ink); }
 .artdek { display: block; margin-bottom: .9rem; font-size: .92rem; line-height: 1.6; color: var(--ink-mid); max-width: 40rem; }
 .artgo {
   display: inline-block;
   font: 600 .64rem/1 var(--mono);
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--rust-ink);
   border-bottom: 1px solid currentColor;
   padding-bottom: .25rem;
 }
@@ -1425,5 +1431,5 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   color: var(--ink-faint);
   text-align: center;
 }
-.shot-credit a { color: var(--rust); text-decoration: none; border-bottom: 1px solid currentColor; }
+.shot-credit a { color: var(--rust-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
 .shot-credit a:hover { color: var(--rust-deep); }
