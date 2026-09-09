@@ -691,7 +691,10 @@ a.tool-row:hover { background: rgba(0,0,0,.34); }
   .tagline-rule { width: 48px; }
   .tool-row { grid-template-columns: 3.2rem 1fr; row-gap: .6rem; }
   .tool-row em { grid-column: 2; justify-self: start; }
-  .panel-body { grid-template-columns: 1fr; justify-items: center; }
+  /* One column below 1180. Stretch, not centre: centring shrink-wraps the
+     channel list to its text and leaves the plate half empty. */
+  .panel-body { grid-template-columns: 1fr; justify-items: stretch; }
+  .panel-body > .dial { justify-self: center; }
   .panel-foot { flex-direction: column; align-items: flex-start; }
   .card { grid-template-columns: 1fr; }
   .shot { min-height: 150px; }
@@ -1344,4 +1347,60 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
 @media (max-width: 720px) {
   .brand-logo { height: 1.55rem; }
   .foot-logo { height: 1.35rem; }
+}
+
+/* ---------------------------------------------------- the panel on a phone */
+/* The desktop faceplate is a bench instrument: a column of channels beside a
+   tuning dial. On a phone that becomes an 800px green slab, so the panel is
+   rebuilt as a handheld: a preset keypad two across, with a small dial under
+   it. Same hardware, different chassis. */
+@media (max-width: 720px) {
+  .panel { padding: 1.15rem 1.15rem 1.05rem; border-radius: 12px; }
+  .screw { width: 11px; height: 11px; }
+  .screw-tl { top: 10px; left: 10px; }
+  .screw-tr { top: 10px; right: 10px; }
+  .screw-bl { bottom: 10px; left: 10px; }
+  .screw-br { bottom: 10px; right: 10px; }
+
+  .panel-head { padding: 0 .1rem .7rem; gap: .7rem; }
+  .panel-head h2 { font-size: 1.2rem; }
+  .panel-head span:last-child { font-size: .5rem; letter-spacing: .16em; }
+
+  /* one column, so the keypad finally uses the full width of the plate */
+  .panel-body { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* presets, two across. The number sits above the label the way it is
+     stencilled on a real keypad, and the arrow goes: a key is the affordance. */
+  .index-rows { grid-template-columns: 1fr 1fr; gap: .45rem; }
+  .index-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: .1rem;
+    padding: .55rem .6rem .6rem;
+    min-height: 3rem;
+    border-radius: 6px;
+  }
+  .index-row i { font-size: .58rem; letter-spacing: .14em; }
+  .index-row span { font-size: .68rem; letter-spacing: .12em; }
+  .index-row b { display: none; }
+  .index-row:last-of-type { grid-column: 1 / -1; }   /* the odd one out spans, on purpose */
+  .waveform { grid-column: 1 / -1; height: 16px; margin-top: .35rem; }
+
+  /* the dial keeps its job, at a size a thumb-held radio would carry */
+  .dial { width: 100%; gap: .35rem; }
+  .dial-stage { width: 104px; height: 104px; }
+  .knob { inset: 12px; }
+  .dial-label { font-size: .5rem; }
+  .dial-ends { max-width: 132px; margin: -.1rem auto 0; font-size: .5rem; }
+
+  /* the maker's plate stays, the four-line list does not: it is the first
+     thing to go when the chassis gets smaller */
+  /* An earlier breakpoint turns this column and left-aligns it; the plate is
+     the only thing left down here, so put it back on one centred row. */
+  .panel-foot {
+    margin-top: .9rem; padding: 0;
+    flex-direction: row; align-items: center; justify-content: center;
+  }
+  .panel-list { display: none; }
+  .plate { padding: .55rem .8rem; }
 }
