@@ -3188,35 +3188,177 @@ body>*:not(#k4-topo){position:relative;z-index:1;}
 
   var USGS = 'https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/getSamples';
 
+  /* 3DEP is slow and has two traps in it, both measured rather than guessed.
+
+     It silently truncates at 1000 samples. Ask for 2000 points and it
+     answers 200 OK with 1000 of them and no error anywhere, so the far
+     half of the grid comes back as holes. Stay under the cap and check
+     the count every time.
+
+     A single call costs 10 to 19 seconds almost regardless of how many
+     points are in it, so the price is per request, not per point. Ten
+     requests one after another is three minutes, which is what the
+     earlier version did, and no phone is going to sit through that.
+     Four at once finish in the time one takes. */
+  var MAX_SAMPLES = 1000;     // hard service cap, exceeded silently
+  var CHUNK = 900;            // under it with room for a rounding error
+  var PARALLEL = 4;           // measured: four together cost what one costs
+  var ATTEMPT_MS = 32000;     // one try that has not answered by now is stuck
+  var ATTEMPTS = 3;
+  var DEADLINE_MS = 75000;    // the whole load, however badly it is going
+
+  var OUT_OF_AREA = 'No elevation data for this spot. USGS 3DEP covers the '
+    + 'United States and its territories. Check the latitude and longitude, '
+    + 'and in particular that a longitude in the Americas is negative: '
+    + 'without the minus sign the site lands on the other side of the world. '
+    + 'Use the plus-minus key beside the field to flip it.';
+
+  function fatal(msg) {
+    var e = new Error(msg);
+    e.fatal = true;            // a real answer we do not like, do not retry
+    return e;
+  }
+
+  function postSamples(points, budgetMs) {
+    var body = new URLSearchParams({
+      geometry: JSON.stringify({ points: points, spatialReference: { wkid: 4326 } }),
+      geometryType: 'esriGeometryMultipoint',
+      returnFirstValueOnly: 'true',
+      interpolation: 'RSP_BilinearInterpolation',
+      f: 'json',
+    });
+    var ac = new AbortController();
+    var timer = setTimeout(function () { ac.abort(); },
+      Math.max(1000, Math.min(ATTEMPT_MS, budgetMs)));
+    return fetch(USGS, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+      signal: ac.signal,
+    }).then(function (res) {
+      if (!res.ok) throw new Error('3DEP returned ' + res.status);
+      return res.json();
+    }).then(function (payload) {
+      if (payload.error) {
+        /* A site outside 3DEP coverage does not come back empty, it comes
+           back as a flat 400 saying "Invalid or missing input parameters",
+           which tells the operator nothing. It is also exactly what a
+           longitude that lost its minus sign produces, since that lands the
+           site in Asia. Say so. */
+        if (Number(payload.error.code) === 400) {
+          throw fatal(OUT_OF_AREA);
+        }
+        throw fatal(payload.error.message || '3DEP refused the request');
+      }
+      return payload;
+    }).finally(function () { clearTimeout(timer); });
+  }
+
+  function sleep(ms) {
+    return new Promise(function (r) { setTimeout(r, ms); });
+  }
+
   async function fetchGrid(lat, lon, radiusM, n, onProgress) {
     var g = T.gridPoints(lat, lon, radiusM, n);
-    var z = new Array(g.points.length).fill(null);
-    var CHUNK = 400;
-    for (var start = 0; start < g.points.length; start += CHUNK) {
-      var slice = g.points.slice(start, start + CHUNK);
-      if (onProgress) onProgress(start, g.points.length);
-      var body = new URLSearchParams({
-        geometry: JSON.stringify({ points: slice, spatialReference: { wkid: 4326 } }),
-        geometryType: 'esriGeometryMultipoint',
-        returnFirstValueOnly: 'true',
-        interpolation: 'RSP_BilinearInterpolation',
-        f: 'json',
-      });
-      var res = await fetch(USGS, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
-      });
-      if (!res.ok) throw new Error('USGS 3DEP returned ' + res.status);
-      var payload = await res.json();
-      if (payload.error) throw new Error(payload.error.message || 'USGS 3DEP refused the request');
-      var got = 0;
-      (payload.samples || []).forEach(function (s) {
-        var v = Number(s.value);
-        if (isFinite(v) && v > -9000) { z[start + Number(s.locationId)] = v; got += 1; }
-      });
-      if (!got) throw new Error('No elevation returned for this area. 3DEP covers the US and its territories.');
+    var total = g.points.length;
+    var z = new Array(total).fill(null);
+
+    /* Even chunks rather than a full-sized run and a short tail, so the
+       workers finish together instead of one straggling. */
+    var chunks = Math.max(1, Math.ceil(total / CHUNK));
+    var per = Math.ceil(total / chunks);
+    var jobs = [];
+    for (var s = 0; s < total; s += per) {
+      jobs.push({ start: s, points: g.points.slice(s, Math.min(s + per, total)) });
     }
+
+    var done = 0;
+    var stop = null;
+    var began = Date.now();
+    if (onProgress) onProgress(0, total);
+
+    function budget() { return DEADLINE_MS - (Date.now() - began); }
+
+    async function attempt(job) {
+      var payload = await postSamples(job.points, budget());
+      var samples = payload.samples || [];
+
+      if (!samples.length) throw fatal(OUT_OF_AREA);
+      if (samples.length >= MAX_SAMPLES && job.points.length > MAX_SAMPLES) {
+        throw fatal('3DEP truncated the request at ' + MAX_SAMPLES + ' points.');
+      }
+
+      var got = 0;
+      for (var i = 0; i < samples.length; i += 1) {
+        var v = Number(samples[i].value);
+        var at = Number(samples[i].locationId);
+        if (isFinite(v) && v > -9000 && at >= 0 && at < job.points.length) {
+          z[job.start + at] = v;
+          got += 1;
+        }
+      }
+      /* A short answer means the service dropped part of it. Worth another
+         go, because the retry usually comes back whole. */
+      if (got < job.points.length) {
+        throw new Error('3DEP answered with ' + got + ' of ' + job.points.length + ' points');
+      }
+    }
+
+    async function run(job) {
+      var last = null;
+      for (var tries = 1; tries <= ATTEMPTS; tries += 1) {
+        if (stop) return;
+        /* However the service is failing, the whole load gets one bounded
+           wait and then says so. Nobody should watch an empty box for two
+           minutes to find out something was broken. */
+        if (budget() <= 1000) {
+          last = last || new Error('it did not answer in time');
+          break;
+        }
+        try {
+          await attempt(job);
+          return;
+        } catch (err) {
+          if (err && err.fatal) throw err;
+          last = err;
+          if (tries < ATTEMPTS && budget() > 2000) await sleep(700 * tries);
+        }
+      }
+      var why = last && last.name === 'AbortError'
+        ? 'it stopped answering'
+        : (last ? last.message : 'it did not answer');
+      throw new Error('Could not read the elevation grid: ' + why
+        + '. USGS 3DEP is often slow and sometimes down. Wait a moment and load it again.');
+    }
+
+    var queue = jobs.slice();
+    async function worker() {
+      while (queue.length) {
+        if (stop) return;
+        var job = queue.shift();
+        try {
+          await run(job);
+        } catch (err) {
+          stop = stop || err;
+          return;
+        }
+        done += job.points.length;
+        if (onProgress) onProgress(done, total);
+      }
+    }
+
+    var lanes = [];
+    for (var w = 0; w < Math.min(PARALLEL, jobs.length); w += 1) lanes.push(worker());
+    await Promise.all(lanes);
+    if (stop) throw stop;
+
+    var missing = 0;
+    for (var k = 0; k < total; k += 1) if (z[k] == null) missing += 1;
+    if (missing > total * 0.02) {
+      throw new Error('The elevation grid came back with holes in it ('
+        + missing + ' of ' + total + ' points missing). Load it again.');
+    }
+
     var grid = { n: g.n, spacingM: g.spacingM, z: z, centreLat: lat, centreLon: lon, radiusM: radiusM };
     grid.centreElevM = grid.z[((g.n - 1) / 2) * g.n + (g.n - 1) / 2];
     return grid;
@@ -3565,7 +3707,12 @@ body>*:not(#k4-topo){position:relative;z-index:1;}
     setStatus('Asking USGS 3DEP for the ground around ' + p.lat.toFixed(5) + ', ' + p.lon.toFixed(5) + '…');
     try {
       var grid = await V.fetchGrid(p.lat, p.lon, S.radiusM, 61, function (done, total) {
-        setStatus('Reading elevation, ' + Math.round(100 * done / total) + '%…');
+        /* The requests go out four at a time and each one takes the better
+           part of twenty seconds, so the figure sits still and then moves in
+           steps. Say what is happening rather than look hung. */
+        setStatus(done === 0
+          ? 'Reading elevation from 3DEP. Half a minute or so, the service is slow.'
+          : 'Reading elevation, ' + Math.round(100 * done / total) + '%…');
       });
       S.grid = grid;
       S.viewRadiusM = S.radiusM;
