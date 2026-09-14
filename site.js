@@ -115,12 +115,23 @@
     s.setAttribute("data-goatcounter", "https://" + GC + ".goatcounter.com/count");
     document.head.appendChild(s);
     if (!box) return;
+    var slot = box.querySelector("b");
     s.addEventListener("load", function () {
       if (!window.goatcounter || !window.goatcounter.visit_count) return;
       window.goatcounter.visit_count({
         append: "#k4-visits b", path: "TOTAL", type: "html", no_branding: true
       });
-      box.hidden = false;
+      // Show the row only once a number actually lands. If the counter is
+      // unreachable or the site code is wrong the row stays out of sight
+      // rather than printing a bare "Visits" label.
+      var tries = 0, t = setInterval(function () {
+        if (slot && slot.textContent.replace(/\s/g, "") !== "") {
+          box.hidden = false;
+          clearInterval(t);
+        } else if (++tries > 25) {
+          clearInterval(t);
+        }
+      }, 200);
     });
   })();
 })();
