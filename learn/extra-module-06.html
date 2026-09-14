@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Extra Course, Module 6: Signals in Full | K4DIA</title>
+<style>:root { --accent: #4A4494; --accent-dark: #37326E; --tint: #F0EFF8; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-extra.html"><svg class="rank" width="17" height="20" viewBox="0 0 20 24.0" aria-label="Level 3 mark" role="img"><path d="M3 21.0 L10 14.0 L17 21.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Extra course</a>
+  <span>Module 6 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Extra Course, Module 6: Signals in Full</h1>
+  <p class="covers">Covers NCVEC 2024-2028 Extra Pool, Subelement E8 (Signals and Emissions). Four questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray keys a dead-plain carrier into the dummy load and puts the spectrum display beside the oscilloscope. &quot;One line on the analyzer, one sine wave on the scope. Same signal, two true descriptions. Everything in this module is learning to move between those two views, because every signal you will ever make or measure lives in both.&quot;</p></div>
+<section class="module-section" id="s6-1"><h2><span class="secnum">6.1</span>Fourier&#x27;s Great Idea, and the Honest Digitizer</h2><p><strong>Fourier analysis</strong> is the mathematical bridge between Ray&#x27;s two screens: any repetitive waveform can be expressed as a <strong>sum of sine waves</strong>, a fundamental plus harmonics in the right amounts and phases. Two canonical decompositions the exam checks:</p>
+<ul><li>A <strong>square wave</strong> is the fundamental plus its <strong>odd harmonics</strong> (3rd, 5th, 7th...), which is why Section 5.2&#x27;s switching amplifiers need harmonic filters and why key clicks splatter: sharp edges <em>are</em> high harmonics.</li><li>A <strong>sawtooth wave</strong> contains the fundamental plus <strong>all harmonics</strong>, odd and even.</li></ul>
+<p>Change the time-domain shape and you have changed the spectrum, and vice versa; they are one object.</p>
+<p>The measurement vocabulary carries forward with its reasons: <strong>RMS</strong> matters because it states a waveform&#x27;s <strong>equivalent heating power</strong> (the General definition, now the answer to &quot;why measure RMS at all&quot;), and PEP-versus-average keeps its General-course arithmetic, with one addition worth knowing for real signals: typical SSB voice runs a PEP-to-average ratio around <strong>2.5 to 1</strong>, which is why your wattmeter&#x27;s average needle sits so far below the peaks.</p>
+<p>Digitizing a signal honestly obeys Section 5.6&#x27;s law: sample at <strong>twice the highest frequency or faster</strong>. One counterintuitive refinement joins it: <strong>dither</strong>, a small amount of noise deliberately added before analog-to-digital conversion, which breaks up quantization artifacts and improves the converter&#x27;s effective linearity. Adding noise to increase fidelity is the kind of trick that separates Extra-class intuition from arithmetic: quantization error is correlated with the signal and sounds like distortion; dither randomizes it into benign hiss.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E8A)</span> Fourier: any repetitive waveform is a sum of sine waves. Square wave: fundamental plus odd harmonics. Sawtooth: fundamental plus all harmonics. RMS: the equivalent heating power measure. SSB voice PEP-to-average: roughly 2.5:1. Sampling: at least twice the highest frequency. Dither: small added noise that improves ADC linearity by randomizing quantization error.</p></aside><section class="check" id="check-6.1"><h3>Knowledge Check 6.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What harmonics make up a square wave?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Even harmonics only</button><button class="opt" data-letter="b"><span class="letter">b</span>The fundamental plus odd harmonics</button><button class="opt" data-letter="c"><span class="letter">c</span>All harmonics equally</button><button class="opt" data-letter="d"><span class="letter">d</span>None; a square wave is a pure tone</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why is RMS the standard AC measurement?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It is the easiest to display</button><button class="opt" data-letter="b"><span class="letter">b</span>It expresses the waveform&#x27;s equivalent heating power</button><button class="opt" data-letter="c"><span class="letter">c</span>It equals the peak value</button><button class="opt" data-letter="d"><span class="letter">d</span>It ignores harmonics</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why add dither before analog-to-digital conversion?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>To raise the signal above the noise floor</button><button class="opt" data-letter="b"><span class="letter">b</span>To randomize quantization error, improving effective linearity</button><button class="opt" data-letter="c"><span class="letter">c</span>To reduce the required sample rate</button><button class="opt" data-letter="d"><span class="letter">d</span>To encrypt the samples</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-2"><h2><span class="secnum">6.2</span>Modulation by the Numbers, and Sharing the Channel</h2><p>FM finally gets its quantities:</p>
+<ul><li><strong>Modulation index</strong> is the ratio of frequency deviation to the modulating frequency, computed instant by instant: 6 kHz of deviation from a 2 kHz tone is an index of <strong>3</strong>. Note what it ignores: modulation index does not depend on the RF carrier frequency, only on deviation and audio.</li><li><strong>Deviation ratio</strong> is the design-limit version: <strong>maximum deviation divided by maximum modulating frequency</strong>. The pool&#x27;s pair: 5 kHz deviation with 3 kHz maximum audio gives <strong>1.67</strong>; 7.5 kHz with 3.5 kHz gives <strong>2.14</strong>.</li></ul>
+<p>These numbers connect straight back to the General course&#x27;s E1C modulation-index limit of 1.0 below 29 MHz and to Carson&#x27;s-rule bandwidth: the index is the dial that trades bandwidth for noise immunity.</p>
+<p>Sharing one channel among many signals is <strong>multiplexing</strong>, in three geometries:</p>
+<ul><li><strong>Frequency-division multiplexing (FDM)</strong>: two or more information streams ride <strong>different frequencies</strong> simultaneously.</li><li><strong>Time-division multiplexing (TDM)</strong>: streams take turns in <strong>time slots</strong> on one frequency, and you have operated it since the Technician course: DMR&#x27;s two voices per channel is TDM wearing a callsign.</li><li><strong>Orthogonal frequency-division multiplexing (OFDM)</strong>: many closely spaced subcarriers, mathematically orthogonal so they interleave without interfering, each carrying a slow piece of a fast data stream. Its superpower is <strong>resistance to multipath and intersymbol interference</strong>: slow symbols on many carriers survive the smearing that would destroy fast symbols on one. OFDM is inside digital television, mesh networking, and the wideband digital voice modes, and it is the reason those systems shrug at reflections that would wreck an analog picture.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E8B)</span> Modulation index: deviation divided by modulating frequency (6 kHz over 2 kHz = 3), independent of carrier frequency. Deviation ratio: maximum deviation over maximum modulating frequency (5/3 = 1.67; 7.5/3.5 = 2.14). FDM: streams on different frequencies. TDM: streams in time slots. OFDM: many orthogonal subcarriers; resists multipath and intersymbol interference.</p></aside><section class="check" id="check-6.2"><h3>Knowledge Check 6.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is the modulation index of an FM signal with 6 kHz deviation from a 2 kHz tone?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>0.33</button><button class="opt" data-letter="b"><span class="letter">b</span>3</button><button class="opt" data-letter="c"><span class="letter">c</span>8</button><button class="opt" data-letter="d"><span class="letter">d</span>12</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What is the deviation ratio of a system with 7.5 kHz maximum deviation and 3.5 kHz maximum audio?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>1.67</button><button class="opt" data-letter="b"><span class="letter">b</span>2.14</button><button class="opt" data-letter="c"><span class="letter">c</span>3.5</button><button class="opt" data-letter="d"><span class="letter">d</span>26.25</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why does OFDM tolerate multipath so well?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Its subcarriers use spread spectrum</button><button class="opt" data-letter="b"><span class="letter">b</span>Slow symbols on many orthogonal carriers resist the intersymbol smearing that breaks fast single-carrier signals</button><button class="opt" data-letter="c"><span class="letter">c</span>It transmits every bit twice</button><button class="opt" data-letter="d"><span class="letter">d</span>It uses only vertical polarization</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-3"><h2><span class="secnum">6.3</span>Digital Signals and Their Geometry</h2><p>The digital vocabulary, made precise:</p>
+<ul><li><strong>Symbol rate</strong> is the rate at which the transmitted waveform <strong>changes state</strong>, and Module 6 of the General course already taught its law: higher symbol rates require wider bandwidth. Bits and symbols part company when each state change carries multiple bits, which is the entire trick of dense modern modes.</li><li>The bandwidth arithmetic the pool checks: a 13-WPM CW signal occupies roughly <strong>52.8 Hz</strong> (bandwidth scales with keying speed, about 4 Hz per WPM); a 170-Hz-shift, 300-baud ASCII signal needs about <strong>0.5 kHz</strong>; a 4800-Hz-shift, 9600-baud FSK signal needs about <strong>15.36 kHz</strong>. Different modes, one principle: bandwidth follows shift plus speed.</li><li><strong>Gray code</strong> orders binary values so that <strong>only one bit changes between successive values</strong>. Its payoff in modulation: a symbol mistaken for its nearest neighbor corrupts only one bit, converting the likeliest channel error into the smallest data error.</li></ul>
+<p>The geometry: a <strong>constellation diagram</strong> plots a digitally modulated signal&#x27;s states as points, with <strong>phase as the angle and amplitude as the distance from the origin</strong>. QPSK draws four points on a circle (phase only, the four shifts from the General course); <strong>QAM</strong> populates a grid, encoding in <strong>both amplitude and phase</strong> at once, buying bits per symbol at the price of noise margin. Read a constellation like a target: tight clusters mean a clean channel, smeared clusters mean noise, rotated clusters mean phase trouble. One diagram, a complete diagnosis.</p>
+<p>Error protection completes the picture with the General course&#x27;s FEC generalized: redundancy spent up front (as in FT8&#x27;s deep coding) buys decoding below the noise, and the harder the channel, the better that trade gets.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E8C)</span> Symbol rate: how fast the waveform changes state. Bandwidths: 13-WPM CW about 52.8 Hz; 170-Hz shift 300-baud ASCII about 0.5 kHz; 4800-Hz shift 9600-baud about 15.36 kHz. Gray code: one bit changes between successive values, minimizing the damage of nearest-neighbor symbol errors. Constellation diagram: phase as angle, amplitude as radius. QAM: amplitude and phase together.</p></aside><section class="check" id="check-6.3"><h3>Knowledge Check 6.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What does a constellation diagram display?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Satellite positions</button><button class="opt" data-letter="b"><span class="letter">b</span>The phase and amplitude states of a digitally modulated signal</button><button class="opt" data-letter="c"><span class="letter">c</span>Harmonic content versus time</button><button class="opt" data-letter="d"><span class="letter">d</span>Antenna radiation lobes</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why is Gray code used in digital modulation?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It compresses the data</button><button class="opt" data-letter="b"><span class="letter">b</span>Adjacent symbols differ by one bit, so the likeliest error corrupts the least data</button><button class="opt" data-letter="c"><span class="letter">c</span>It encrypts against casual interception</button><button class="opt" data-letter="d"><span class="letter">d</span>It doubles the symbol rate</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is symbol rate?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The bit rate divided by eight</button><button class="opt" data-letter="b"><span class="letter">b</span>The rate at which the waveform changes state</button><button class="opt" data-letter="c"><span class="letter">c</span>The carrier frequency tolerance</button><button class="opt" data-letter="d"><span class="letter">d</span>The FEC overhead percentage</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-4"><h2><span class="secnum">6.4</span>Clean Keying, Codes, and Spread Spectrum</h2><p>The transmitter-hygiene section, Fourier&#x27;s idea enforced:</p>
+<ul><li><strong>Key clicks</strong> are caused by <strong>excessively fast CW rise and fall times</strong>: sharp edges are odd harmonics (Section 6.1), and they land on your neighbors. The cure is shaping the keying envelope to a rise and fall of about <strong>5 milliseconds</strong>, slow enough to tame the sidebands, fast enough to keep crisp code.</li><li>Overdriven digital modes commit the same sin the analog way: the General course&#x27;s waterfall sidebars, now understood as intermodulation products of an overdriven audio chain. Digital cleanliness is Module 5&#x27;s amplifier linearity plus this module&#x27;s spectral awareness, in daily practice.</li></ul>
+<p>Character codes, compared:</p>
+<ul><li><strong>Baudot</strong> remains the 5-bit RTTY code from the General course. <strong>ASCII</strong> is the 7-bit code, and its advantages are practical: upper <em>and</em> lower case, and an optional <strong>parity bit</strong> enabling simple error detection. One bit of redundancy catches any single-bit error, the cheapest error detection ever invented, and the conceptual seed of everything FEC.</li></ul>
+<p><strong>Spread spectrum</strong> closes the signals course, the mode Extra rules finally let you transmit (above 222 MHz, 10 watts, from Module 1):</p>
+<ul><li><strong>Direct-sequence spread spectrum (DSSS)</strong> multiplies the data by a fast <strong>pseudorandom sequence</strong>, smearing a narrow signal across a wide band at low density.</li><li><strong>Frequency-hopping spread spectrum (FHSS)</strong> changes the carrier frequency per a <strong>pseudorandom sequence</strong> shared by both stations.</li><li>The interference resistance of both comes from the same lock-and-key mechanism: the receiver, synchronized to the pseudorandom sequence, despreads the desired signal while <strong>signals not synchronized to the sequence are ignored</strong> or diluted. To everyone else, your signal is a whisper of noise; to your partner, it assembles perfectly. It is the one legal amateur mode that hides in plain sight, which is precisely why the rules fence its power and frequencies.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E8D)</span> Key clicks: too-fast rise and fall; shape to about 5 ms. Baudot: 5 bits; ASCII: 7 bits, upper and lower case, optional parity bit for error detection. DSSS: data multiplied by a fast pseudorandom sequence. FHSS: carrier hops per a pseudorandom sequence. Spread spectrum interference resistance: unsynchronized signals are ignored by the despreading receiver.</p></aside><section class="check" id="check-6.4"><h3>Knowledge Check 6.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What causes key clicks?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Excessive transmitter power</button><button class="opt" data-letter="b"><span class="letter">b</span>CW rise and fall times that are too fast</button><button class="opt" data-letter="c"><span class="letter">c</span>A misadjusted sidetone</button><button class="opt" data-letter="d"><span class="letter">d</span>Low battery voltage</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What advantage does ASCII hold over Baudot?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Narrower bandwidth</button><button class="opt" data-letter="b"><span class="letter">b</span>Upper and lower case, plus an optional parity bit for error detection</button><button class="opt" data-letter="c"><span class="letter">c</span>Built-in encryption</button><button class="opt" data-letter="d"><span class="letter">d</span>Compatibility with Morse</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why does spread spectrum resist interference?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It uses more power than other modes</button><button class="opt" data-letter="b"><span class="letter">b</span>The synchronized receiver despreads the desired signal and ignores unsynchronized ones</button><button class="opt" data-letter="c"><span class="letter">c</span>It occupies less bandwidth</button><button class="opt" data-letter="d"><span class="letter">d</span>It transmits only during quiet moments</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">E8A</span> Fourier: any repetitive waveform is a sum of sine waves. Square wave: fundamental plus odd harmonics. Sawtooth: fundamental plus all harmonics. RMS: the equivalent heating power measure. SSB voice PEP-to-average: roughly 2.5:1. Sampling: at least twice the highest frequency. Dither: small added noise that improves ADC linearity by randomizing quantization error.</p></div><div class="anchor review"><p><span class="anchor-lead">E8B</span> Modulation index: deviation divided by modulating frequency (6 kHz over 2 kHz = 3), independent of carrier frequency. Deviation ratio: maximum deviation over maximum modulating frequency (5/3 = 1.67; 7.5/3.5 = 2.14). FDM: streams on different frequencies. TDM: streams in time slots. OFDM: many orthogonal subcarriers; resists multipath and intersymbol interference.</p></div><div class="anchor review"><p><span class="anchor-lead">E8C</span> Symbol rate: how fast the waveform changes state. Bandwidths: 13-WPM CW about 52.8 Hz; 170-Hz shift 300-baud ASCII about 0.5 kHz; 4800-Hz shift 9600-baud about 15.36 kHz. Gray code: one bit changes between successive values, minimizing the damage of nearest-neighbor symbol errors. Constellation diagram: phase as angle, amplitude as radius. QAM: amplitude and phase together.</p></div><div class="anchor review"><p><span class="anchor-lead">E8D</span> Key clicks: too-fast rise and fall; shape to about 5 ms. Baudot: 5 bits; ASCII: 7 bits, upper and lower case, optional parity bit for error detection. DSSS: data multiplied by a fast pseudorandom sequence. FHSS: carrier hops per a pseudorandom sequence. Spread spectrum interference resistance: unsynchronized signals are ignored by the despreading receiver.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>Ray&#x27;s two screens are now one language: you can decompose any waveform into its sine waves, quantify FM by index and ratio, read a constellation like an instrument, compute a digital signal&#x27;s bandwidth from its shift and speed, and explain why a properly shaped CW signal is an act of neighborliness. The signal is the spectrum; the spectrum is the signal.</p>
+<p>Module 7 is the program&#x27;s other heavyweight: eight questions of antennas and transmission lines, from radiation resistance through the Smith chart.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (E-S1): put your own transmitted signal on a spectrum display (an SDR dongle and attenuator suffice) and audit it against this module: harmonics, keying sidebands, and digital-drive cleanliness. The E-S1 sign-off asks you to inspect a transmitted signal for cleanliness, and your own is the one that matters.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 6 complete</button>
+    <div class="pager"><a class="navlink" href="extra-module-05.html">Previous module</a><a class="navlink" href="extra-module-07.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-extra-m06";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 6 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 9: On the Air | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 9 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 9: On the Air</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T2 (Operating Procedures). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray slides the microphone across the bench, and this time he does not put his hand over it. &quot;Everything is programmed. The repeater is quiet. Say who you are looking for and who you are.&quot;</p>
+<p>Your heart rate disagrees with how simple that sounds. This module is the cure for mic fright: know exactly what to say, and saying it gets easy.</p></div>
+<section class="module-section" id="s9-1"><h2><span class="secnum">9.1</span>Making the Call</h2><p>The frequencies come first. The national FM simplex calling frequency on 2 meters is <strong>146.520 MHz</strong>, the channel where any ham anywhere in the country can listen for a call. <strong>Simplex</strong> means transmitting and receiving on the same frequency, radio to radio, no repeater in between. The band plans set aside simplex channels so stations within range of each other can talk without tying up a repeater.</p>
+<p>A <strong>band plan</strong>, by the way, is a voluntary guideline for using modes and activities within a band, organizing the space beyond what FCC privileges require. Following it is good citizenship, not law.</p>
+<p>Repeaters listen on one frequency and transmit on another, and the <strong>repeater offset</strong> is the difference between those transmit and receive frequencies. The standards: <strong>plus or minus 600 kHz on 2 meters</strong>, and <strong>plus or minus 5 MHz on 70 centimeters</strong>. Your radio applies the offset automatically once programmed, which you did in Module 8.</p>
+<p>Now the scripts, and there are only three:</p>
+<ul><li><strong>Calling a specific station:</strong> say their call sign, then identify with yours. &quot;K4DIA, this is KJ4XYZ.&quot; Done. No &quot;break break,&quot; no drama.</li><li><strong>Looking for anyone on a repeater:</strong> the custom is your call sign followed by &quot;listening.&quot; Announcing yourself is enough; someone who wants to chat will answer.</li><li><strong>Looking for anyone on simplex:</strong> call CQ. <strong>CQ means calling any station.</strong> The procedure: repeat &quot;CQ&quot; a few times, say &quot;this is&quot; and your call sign, then pause and listen. Repeat as needed. And when you hear someone else calling CQ, answer with their call sign followed by your call sign, so they know both who you want and who you are.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T2A)</span> 2-meter national FM simplex calling frequency: 146.520 MHz. Simplex: transmitting and receiving on the same frequency; simplex channels exist so nearby stations do not tie up repeaters. Band plan: voluntary guideline beyond FCC privileges. Repeater offset: difference between transmit and receive frequencies; 600 kHz on 2 meters, 5 MHz on 70 cm. Call a known station: their call, then yours. Repeater availability: your call sign followed by &quot;listening.&quot; CQ means calling any station: repeat CQ, give your call, pause, repeat. Answer a CQ: their call, then your call.</p></aside><section class="check" id="check-9.1"><h3>Knowledge Check 9.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is the 2-meter national FM simplex calling frequency?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>146.000 MHz</button><button class="opt" data-letter="b"><span class="letter">b</span>146.520 MHz</button><button class="opt" data-letter="c"><span class="letter">c</span>147.000 MHz</button><button class="opt" data-letter="d"><span class="letter">d</span>144.200 MHz</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. What is the standard repeater offset on 2 meters?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Plus or minus 5 MHz</button><button class="opt" data-letter="b"><span class="letter">b</span>Plus or minus 1 MHz</button><button class="opt" data-letter="c"><span class="letter">c</span>Plus or minus 600 kHz</button><button class="opt" data-letter="d"><span class="letter">d</span>Plus or minus 100 kHz</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. You hear a station calling CQ on simplex. How do you answer?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Say &quot;QRZ&quot; and wait</button><button class="opt" data-letter="b"><span class="letter">b</span>Transmit their call sign followed by your call sign</button><button class="opt" data-letter="c"><span class="letter">c</span>Transmit your call sign three times</button><button class="opt" data-letter="d"><span class="letter">d</span>Key up and say &quot;go ahead&quot;</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s9-2"><h2><span class="secnum">9.2</span>Repeater Craft and Fixing What Goes Wrong</h2><p>Repeaters have their own toolbox, and knowing it separates smooth operators from confused ones.</p>
+<p><strong>Access tones</strong> first. Many repeaters ignore signals that do not carry a <strong>CTCSS</strong> tone: a sub-audible tone transmitted along with your voice that opens the repeater&#x27;s squelch. Wrong tone, no repeater, even with a strong signal. <strong>DTMF</strong> is the other tone system: the telephone-style signaling that uses two simultaneous audio tones, used for controlling things like IRLP nodes from Module 6.</p>
+<p>So when you can hear a repeater but cannot bring it up, the suspect list is exactly three items, and the exam accepts all of them: improper transceiver offset, wrong CTCSS tone, or wrong DCS code. Check all three before blaming the radio.</p>
+<p>The <strong>reverse function</strong> listens on the repeater&#x27;s input frequency. Why bother? Because if you can hear a station on the input, you can work them simplex and give the repeater back to everyone else.</p>
+<p>Some repeaters are part of a <strong>linked repeater network</strong>, where signals received by one repeater are transmitted by all the repeaters in the network, turning a regional system into one big room. On DMR systems, two more settings from your Module 8 code plug matter on the air: the <strong>color code</strong>, an access code that must be programmed into your radio to access a specific repeater, and the <strong>talkgroup</strong>, an identifier DMR uses to organize traffic so that those who want to hear a group are not bothered by other traffic.</p>
+<p>Operating problems and their answers:</p>
+<ul><li>Your FM audio drops out on voice peaks: you are talking too loudly. Back off the mic.</li><li>Two stations interfere with each other on the same frequency: the stations should negotiate continued use of the frequency. Nobody owns a frequency, and &quot;I was here first&quot; is not a rule.</li><li>And two Q signals every operator uses whether they know Morse or not: <strong>QRM</strong> means interference from other stations, and <strong>QSY</strong> means changing frequency. &quot;QRM here, let&#x27;s QSY up five&quot; is a complete, universally understood sentence.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T2B)</span> CTCSS: sub-audible tone that opens a repeater&#x27;s squelch. DTMF: two simultaneous audio tones. Hear a repeater but cannot access it: wrong offset, wrong CTCSS, or wrong DCS (all of these). Reverse function: listen on the repeater&#x27;s input. Linked network: one repeater&#x27;s receive goes out over all of them. DMR color code: access code programmed to reach a specific repeater. Talkgroup: DMR identifier organizing traffic; join by programming the group&#x27;s ID. Audio dropout on peaks: talking too loudly. Shared-frequency interference: negotiate. QRM: interference from stations. QSY: changing frequency. Squelch (from Module 8): mutes audio when no signal is present.</p></aside><section class="check" id="check-9.2"><h3>Knowledge Check 9.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="d"><p class="qtext">1. You hear the repeater clearly but it never responds to you. Which is a possible cause?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Wrong offset</button><button class="opt" data-letter="b"><span class="letter">b</span>Wrong CTCSS tone</button><button class="opt" data-letter="c"><span class="letter">c</span>Wrong DCS code</button><button class="opt" data-letter="d"><span class="letter">d</span>Any of these</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What does the reverse function do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Swaps your call sign order</button><button class="opt" data-letter="b"><span class="letter">b</span>Listens on the repeater&#x27;s input frequency</button><button class="opt" data-letter="c"><span class="letter">c</span>Inverts your audio</button><button class="opt" data-letter="d"><span class="letter">d</span>Plays back your last transmission</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Another net is already using your usual frequency. What is correct?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>They must move; your net is scheduled</button><button class="opt" data-letter="b"><span class="letter">b</span>Negotiate continued use of the frequency</button><button class="opt" data-letter="c"><span class="letter">c</span>Transmit anyway; first licensed, first served</button><button class="opt" data-letter="d"><span class="letter">d</span>Add a CTCSS tone so both can share</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s9-3"><h2><span class="secnum">9.3</span>When It Matters: Nets and Public Service</h2><p>The pager on Ray&#x27;s belt is a museum piece, but the habit behind it is not. &quot;Someday the cell network will be down, and somebody will hand you a radio and a list of stations. This is how that works.&quot;</p>
+<p>First, the legal frame: FCC rules <strong>always</strong> apply. There is no emergency exception that suspends Part 97, no FEMA mode, no special wartime footing. One narrow provision exists: a control operator may operate outside their license privileges only in situations involving the immediate safety of human life or protection of property. That is a break-glass rule, not a loophole.</p>
+<p>Two organizations, constantly confused, cleanly separated:</p>
+<ul><li><strong>ARES</strong> (Amateur Radio Emergency Service): licensed amateurs who have voluntarily registered their qualifications and equipment for communications duty in the public service. Join by volunteering.</li><li><strong>RACES</strong> (Radio Amateur Civil Emergency Service): an FCC Part 97 amateur radio service for civil defense communications during national emergencies. Operating RACES requires certification of current enrollment by a civil defense organization. Join by being certified.</li></ul>
+<p>Ray&#x27;s memory hook: ARES is volunteers, RACES is certified.</p>
+<p>Directed nets run on discipline:</p>
+<ul><li>The <strong>Net Control Station</strong> calls the net to order and directs communications between stations checking in. One voice runs the room.</li><li>Your job as a participant: unless you are reporting an emergency, transmit only when directed by net control.</li><li><strong>Traffic</strong> means the formal messages exchanged by net stations, and formal messages have anatomy: the <strong>preamble</strong> contains the information needed to track the message, and the <strong>check</strong> is the number of words or word equivalents in the text portion, so the receiving station can verify nothing fell out along the way.</li><li>Unusual words in a message get spelled using a standard phonetic alphabet, the same ITU phonetics from Module 1, now doing operational work.</li></ul>
+<p>One digital tool belongs in this section: <strong>Winlink</strong>, the system that relays messages using email addresses based on amateur call signs, moving real email over radio when the internet is gone.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T2C)</span> FCC rules always apply; operating outside privileges is allowed only for the immediate safety of human life or protection of property. ARES: volunteers registered for public service duty. RACES: FCC Part 97 service for civil defense, requiring civil defense certification. Net Control calls the net to order and directs communications; participants transmit only when directed unless reporting an emergency. Traffic: formal messages. Preamble: tracking information. Check: word count of the text. Spell unusual words with standard phonetics. Winlink: email relayed via call sign-based addresses.</p></aside><section class="check" id="check-9.3"><h3>Knowledge Check 9.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. During a declared emergency, which rules govern amateur operation?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>FEMA rules replace FCC rules</button><button class="opt" data-letter="b"><span class="letter">b</span>RACES rules replace FCC rules</button><button class="opt" data-letter="c"><span class="letter">c</span>FCC rules always apply</button><button class="opt" data-letter="d"><span class="letter">d</span>No rules apply during emergencies</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Which requires certification by a civil defense organization?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>ARES</button><button class="opt" data-letter="b"><span class="letter">b</span>RACES</button><button class="opt" data-letter="c"><span class="letter">c</span>SKYWARN</button><button class="opt" data-letter="d"><span class="letter">d</span>Winlink</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. In a radiogram, what is the &quot;check&quot;?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The originating station&#x27;s call sign</button><button class="opt" data-letter="b"><span class="letter">b</span>The number of words in the message text</button><button class="opt" data-letter="c"><span class="letter">c</span>A delivery confirmation signature</button><button class="opt" data-letter="d"><span class="letter">d</span>The message priority level</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T2A</span> 2-meter national FM simplex calling frequency: 146.520 MHz. Simplex: transmitting and receiving on the same frequency; simplex channels exist so nearby stations do not tie up repeaters. Band plan: voluntary guideline beyond FCC privileges. Repeater offset: difference between transmit and receive frequencies; 600 kHz on 2 meters, 5 MHz on 70 cm. Call a known station: their call, then yours. Repeater availability: your call sign followed by &quot;listening.&quot; CQ means calling any station: repeat CQ, give your call, pause, repeat. Answer a CQ: their call, then your call.</p></div><div class="anchor review"><p><span class="anchor-lead">T2B</span> CTCSS: sub-audible tone that opens a repeater&#x27;s squelch. DTMF: two simultaneous audio tones. Hear a repeater but cannot access it: wrong offset, wrong CTCSS, or wrong DCS (all of these). Reverse function: listen on the repeater&#x27;s input. Linked network: one repeater&#x27;s receive goes out over all of them. DMR color code: access code programmed to reach a specific repeater. Talkgroup: DMR identifier organizing traffic; join by programming the group&#x27;s ID. Audio dropout on peaks: talking too loudly. Shared-frequency interference: negotiate. QRM: interference from stations. QSY: changing frequency. Squelch (from Module 8): mutes audio when no signal is present.</p></div><div class="anchor review"><p><span class="anchor-lead">T2C</span> FCC rules always apply; operating outside privileges is allowed only for the immediate safety of human life or protection of property. ARES: volunteers registered for public service duty. RACES: FCC Part 97 service for civil defense, requiring civil defense certification. Net Control calls the net to order and directs communications; participants transmit only when directed unless reporting an emergency. Traffic: formal messages. Preamble: tracking information. Check: word count of the text. Spell unusual words with standard phonetics. Winlink: email relayed via call sign-based addresses.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You keyed up. Whatever happened next, you are now an operator, and the scripts in this module work the same on your ten-thousandth contact as your first. You know the calling frequency, the offsets, the tones, the Q signals, and the discipline of a directed net.</p>
+<p>One module remains, and Ray saved it for last on purpose: the one about going home with the same number of fingers you arrived with.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S3): make the contacts. One simplex on 146.52, one through a repeater, and one net check-in. Then log all three, because Module 1 taught you the log fields and an operator who logs from day one never has to develop the habit later.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 9 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-08.html">Previous module</a><a class="navlink" href="tech-module-10.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m09";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 9 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

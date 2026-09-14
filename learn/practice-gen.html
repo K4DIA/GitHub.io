@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Practice Exam | K4DIA</title>
+<style>
+:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2;
+  --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA;
+  --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1.1rem 4rem; }
+h1 { font-family: Georgia, serif; font-size: 1.8rem; margin: .6rem 0 .3rem; }
+.lede { color: var(--muted); margin: 0 0 1.4rem; }
+.q { background: #fff; border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1rem 1.1rem; margin-bottom: .9rem; }
+.gid { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--accent-dark);
+  background: var(--tint); border-radius: 5px; padding: .1rem .45rem; margin-right: .3rem; }
+.qtext { font-weight: 600; margin: 0 0 .6rem; }
+.qfig { margin: .6rem 0 .9rem; text-align: center; }
+.qfig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+.opts { display: grid; gap: .45rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; background: var(--paper);
+  border: 1.5px solid var(--rule); border-radius: 8px; padding: .5rem .7rem; cursor: pointer; }
+.opt:hover { border-color: var(--accent); }
+.opt input { accent-color: var(--accent); }
+.letter { font-weight: 700; color: var(--accent-dark); }
+.q.right { border-color: var(--ok); }
+.q.wrong { border-color: var(--no); }
+.q.graded .opt { cursor: default; }
+.q.graded .opt.correct { border-color: var(--ok); background: #EAF5EE; }
+.q.graded .opt.chosen-wrong { border-color: var(--no); background: #FAEDEC; }
+.review { font-weight: 600; margin: .6rem 0 0; }
+.review a { color: var(--accent-dark); }
+.submitrow { position: sticky; bottom: 0; background: var(--paper);
+  border-top: 1px solid var(--rule); padding: .8rem 0; display: flex;
+  gap: 1rem; align-items: center; }
+#submit { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px;
+  padding: .7rem 1.2rem; cursor: pointer; }
+#count { color: var(--muted); font-weight: 600; }
+#result { margin: 1rem 0; padding: 1rem 1.1rem; border-radius: 10px; font-size: 1.05rem;
+  font-weight: 700; display: none; }
+#result.pass { display: block; background: #EAF5EE; color: var(--ok);
+  border: 2px solid var(--ok); }
+#result.fail { display: block; background: #FAEDEC; color: var(--no);
+  border: 2px solid var(--no); }
+#best { color: var(--muted); font-size: .9rem; }
+#restudy { background: var(--tint); border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: .9rem 1.1rem; margin: 1rem 0; }
+.rehead { font-weight: 700; color: var(--accent-dark); margin: 0 0 .4rem; }
+#relist { margin: 0; padding-left: 1.2rem; }
+#relist li { margin: .3rem 0; }
+#relist a { color: var(--accent-dark); font-weight: 600; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Practice exam</span>
+</div>
+<main>
+<h1>General Practice Exam</h1>
+<p class="lede">35 questions, one from each exam group, in your course's own words. Passing is 26 correct, the same standard as the real exam. Miss one and you get a link straight back to the section that teaches it. <span id="best"></span></p>
+<form id="exam"><div class="q" data-answer="2" data-mod="gen-module-01.html#s1-1" data-label="Module 1, Section 1.1"><p class="qtext"><span class="gid">G1A</span> 1. Where Generals lack a full voice segment, their portion is the:</p><div class="opts"><label class="opt"><input type="radio" name="q1" value="0"><span class="letter">a</span><span>Lower end</span></label><label class="opt"><input type="radio" name="q1" value="1"><span class="letter">b</span><span>Middle</span></label><label class="opt"><input type="radio" name="q1" value="2"><span class="letter">c</span><span>Upper end</span></label><label class="opt"><input type="radio" name="q1" value="3"><span class="letter">d</span><span>Center 25 kHz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-01.html#s1-2" data-label="Module 1, Section 1.2"><p class="qtext"><span class="gid">G1B</span> 2. The maximum power for an HF beacon station is:</p><div class="opts"><label class="opt"><input type="radio" name="q2" value="0"><span class="letter">a</span><span>10 W PEP</span></label><label class="opt"><input type="radio" name="q2" value="1"><span class="letter">b</span><span>100 W PEP</span></label><label class="opt"><input type="radio" name="q2" value="2"><span class="letter">c</span><span>200 W PEP</span></label><label class="opt"><input type="radio" name="q2" value="3"><span class="letter">d</span><span>1500 W PEP</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-01.html#s1-3" data-label="Module 1, Section 1.3"><p class="qtext"><span class="gid">G1C</span> 3. The power limit on the 30-meter band is:</p><div class="opts"><label class="opt"><input type="radio" name="q3" value="0"><span class="letter">a</span><span>100 W PEP</span></label><label class="opt"><input type="radio" name="q3" value="1"><span class="letter">b</span><span>200 W PEP</span></label><label class="opt"><input type="radio" name="q3" value="2"><span class="letter">c</span><span>1000 W PEP</span></label><label class="opt"><input type="radio" name="q3" value="3"><span class="letter">d</span><span>1500 W PEP</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="gen-module-01.html#s1-4" data-label="Module 1, Section 1.4"><p class="qtext"><span class="gid">G1D</span> 4. A CSCE showing a passed exam element remains valid for:</p><div class="opts"><label class="opt"><input type="radio" name="q4" value="0"><span class="letter">a</span><span>90 days</span></label><label class="opt"><input type="radio" name="q4" value="1"><span class="letter">b</span><span>180 days</span></label><label class="opt"><input type="radio" name="q4" value="2"><span class="letter">c</span><span>365 days</span></label><label class="opt"><input type="radio" name="q4" value="3"><span class="letter">d</span><span>10 years</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-01.html#s1-5" data-label="Module 1, Section 1.5"><p class="qtext"><span class="gid">G1E</span> 5. The Americas fall in ITU Region:</p><div class="opts"><label class="opt"><input type="radio" name="q5" value="0"><span class="letter">a</span><span>1</span></label><label class="opt"><input type="radio" name="q5" value="1"><span class="letter">b</span><span>2</span></label><label class="opt"><input type="radio" name="q5" value="2"><span class="letter">c</span><span>3</span></label><label class="opt"><input type="radio" name="q5" value="3"><span class="letter">d</span><span>4</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-09.html#s9-1" data-label="Module 9, Section 9.1"><p class="qtext"><span class="gid">G2A</span> 6. By convention, voice on 160, 75, and 40 meters uses:</p><div class="opts"><label class="opt"><input type="radio" name="q6" value="0"><span class="letter">a</span><span>Upper sideband</span></label><label class="opt"><input type="radio" name="q6" value="1"><span class="letter">b</span><span>Lower sideband</span></label><label class="opt"><input type="radio" name="q6" value="2"><span class="letter">c</span><span>FM</span></label><label class="opt"><input type="radio" name="q6" value="3"><span class="letter">d</span><span>Double sideband</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="gen-module-09.html#s9-2" data-label="Module 9, Section 9.2"><p class="qtext"><span class="gid">G2B</span> 7. A courteous separation from an ongoing SSB contact is roughly:</p><div class="opts"><label class="opt"><input type="radio" name="q7" value="0"><span class="letter">a</span><span>150 Hz</span></label><label class="opt"><input type="radio" name="q7" value="1"><span class="letter">b</span><span>500 Hz</span></label><label class="opt"><input type="radio" name="q7" value="2"><span class="letter">c</span><span>2 to 3 kHz</span></label><label class="opt"><input type="radio" name="q7" value="3"><span class="letter">d</span><span>10 kHz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-09.html#s9-3" data-label="Module 9, Section 9.3"><p class="qtext"><span class="gid">G2C</span> 8. Sending &quot;QRL?&quot; before calling CQ asks:</p><div class="opts"><label class="opt"><input type="radio" name="q8" value="0"><span class="letter">a</span><span>What is your location?</span></label><label class="opt"><input type="radio" name="q8" value="1"><span class="letter">b</span><span>Is this frequency in use?</span></label><label class="opt"><input type="radio" name="q8" value="2"><span class="letter">c</span><span>Shall I send slower?</span></label><label class="opt"><input type="radio" name="q8" value="3"><span class="letter">d</span><span>Who is calling me?</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-09.html#s9-4" data-label="Module 9, Section 9.4"><p class="qtext"><span class="gid">G2D</span> 9. The long-path bearing to a station is its short-path bearing:</p><div class="opts"><label class="opt"><input type="radio" name="q9" value="0"><span class="letter">a</span><span>Plus 90 degrees</span></label><label class="opt"><input type="radio" name="q9" value="1"><span class="letter">b</span><span>Plus 180 degrees</span></label><label class="opt"><input type="radio" name="q9" value="2"><span class="letter">c</span><span>Minus 45 degrees</span></label><label class="opt"><input type="radio" name="q9" value="3"><span class="letter">d</span><span>Unchanged</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-09.html#s9-5" data-label="Module 9, Section 9.5"><p class="qtext"><span class="gid">G2E</span> 10. FT8 operation fails unless your computer&#x27;s clock is:</p><div class="opts"><label class="opt"><input type="radio" name="q10" value="0"><span class="letter">a</span><span>Set to UTC display</span></label><label class="opt"><input type="radio" name="q10" value="1"><span class="letter">b</span><span>Within about a second of correct time</span></label><label class="opt"><input type="radio" name="q10" value="2"><span class="letter">c</span><span>Synchronized to WWV daily</span></label><label class="opt"><input type="radio" name="q10" value="3"><span class="letter">d</span><span>Faster than the radio&#x27;s clock</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="gen-module-02.html#s2-1" data-label="Module 2, Section 2.1"><p class="qtext"><span class="gid">G3A</span> 11. The solar flux index measures solar radiation at a wavelength of:</p><div class="opts"><label class="opt"><input type="radio" name="q11" value="0"><span class="letter">a</span><span>10.7 cm</span></label><label class="opt"><input type="radio" name="q11" value="1"><span class="letter">b</span><span>21 cm</span></label><label class="opt"><input type="radio" name="q11" value="2"><span class="letter">c</span><span>304 angstroms</span></label><label class="opt"><input type="radio" name="q11" value="3"><span class="letter">d</span><span>1 meter</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="gen-module-02.html#s2-2" data-label="Module 2, Section 2.2"><p class="qtext"><span class="gid">G3B</span> 12. One F2-region hop can span approximately:</p><div class="opts"><label class="opt"><input type="radio" name="q12" value="0"><span class="letter">a</span><span>500 miles</span></label><label class="opt"><input type="radio" name="q12" value="1"><span class="letter">b</span><span>1200 miles</span></label><label class="opt"><input type="radio" name="q12" value="2"><span class="letter">c</span><span>2500 miles</span></label><label class="opt"><input type="radio" name="q12" value="3"><span class="letter">d</span><span>12000 miles</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-02.html#s2-3" data-label="Module 2, Section 2.3"><p class="qtext"><span class="gid">G3C</span> 13. NVIS operation aims signals:</p><div class="opts"><label class="opt"><input type="radio" name="q13" value="0"><span class="letter">a</span><span>At the horizon</span></label><label class="opt"><input type="radio" name="q13" value="1"><span class="letter">b</span><span>Nearly straight up, for coverage out to a few hundred miles</span></label><label class="opt"><input type="radio" name="q13" value="2"><span class="letter">c</span><span>At the Moon</span></label><label class="opt"><input type="radio" name="q13" value="3"><span class="letter">d</span><span>Along the ground</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-08.html#s8-1" data-label="Module 8, Section 8.1"><p class="qtext"><span class="gid">G4A</span> 14. The ALC circuit exists to:</p><div class="opts"><label class="opt"><input type="radio" name="q14" value="0"><span class="letter">a</span><span>Boost weak audio</span></label><label class="opt"><input type="radio" name="q14" value="1"><span class="letter">b</span><span>Prevent excessive transmitter drive</span></label><label class="opt"><input type="radio" name="q14" value="2"><span class="letter">c</span><span>Sharpen CW keying</span></label><label class="opt"><input type="radio" name="q14" value="3"><span class="letter">d</span><span>Reduce receiver noise</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-08.html#s8-2" data-label="Module 8, Section 8.2"><p class="qtext"><span class="gid">G4B</span> 15. Transmitter linearity is checked using:</p><div class="opts"><label class="opt"><input type="radio" name="q15" value="0"><span class="letter">a</span><span>A single steady tone</span></label><label class="opt"><input type="radio" name="q15" value="1"><span class="letter">b</span><span>Two non-harmonically-related audio tones</span></label><label class="opt"><input type="radio" name="q15" value="2"><span class="letter">c</span><span>White noise</span></label><label class="opt"><input type="radio" name="q15" value="3"><span class="letter">d</span><span>A dummy antenna alone</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="gen-module-08.html#s8-4" data-label="Module 8, Section 8.4"><p class="qtext"><span class="gid">G4C</span> 16. Hum on your transmitted audio often points to:</p><div class="opts"><label class="opt"><input type="radio" name="q16" value="0"><span class="letter">a</span><span>A ground loop</span></label><label class="opt"><input type="radio" name="q16" value="1"><span class="letter">b</span><span>Low battery voltage</span></label><label class="opt"><input type="radio" name="q16" value="2"><span class="letter">c</span><span>An antenna mismatch</span></label><label class="opt"><input type="radio" name="q16" value="3"><span class="letter">d</span><span>Excessive drive</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-08.html#s8-3" data-label="Module 8, Section 8.3"><p class="qtext"><span class="gid">G4D</span> 17. A report of 20 dB over S9 means your power sounds:</p><div class="opts"><label class="opt"><input type="radio" name="q17" value="0"><span class="letter">a</span><span>10 times S9</span></label><label class="opt"><input type="radio" name="q17" value="1"><span class="letter">b</span><span>100 times S9</span></label><label class="opt"><input type="radio" name="q17" value="2"><span class="letter">c</span><span>20 times S9</span></label><label class="opt"><input type="radio" name="q17" value="3"><span class="letter">d</span><span>2 times S9</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-08.html#s8-5" data-label="Module 8, Section 8.5"><p class="qtext"><span class="gid">G4E</span> 18. A capacitance hat on a mobile whip serves to:</p><div class="opts"><label class="opt"><input type="radio" name="q18" value="0"><span class="letter">a</span><span>Shed rain static</span></label><label class="opt"><input type="radio" name="q18" value="1"><span class="letter">b</span><span>Electrically lengthen the antenna</span></label><label class="opt"><input type="radio" name="q18" value="2"><span class="letter">c</span><span>Reduce wind load</span></label><label class="opt"><input type="radio" name="q18" value="3"><span class="letter">d</span><span>Match the coax</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-03.html#s3-1" data-label="Module 3, Section 3.1"><p class="qtext"><span class="gid">G5A</span> 19. At resonance, inductive and capacitive reactance:</p><div class="opts"><label class="opt"><input type="radio" name="q19" value="0"><span class="letter">a</span><span>Add together</span></label><label class="opt"><input type="radio" name="q19" value="1"><span class="letter">b</span><span>Cancel each other</span></label><label class="opt"><input type="radio" name="q19" value="2"><span class="letter">c</span><span>Both vanish separately</span></label><label class="opt"><input type="radio" name="q19" value="3"><span class="letter">d</span><span>Double</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-03.html#s3-2" data-label="Module 3, Section 3.2"><p class="qtext"><span class="gid">G5B</span> 20. RMS voltage is the AC value that:</p><div class="opts"><label class="opt"><input type="radio" name="q20" value="0"><span class="letter">a</span><span>Equals the peak</span></label><label class="opt"><input type="radio" name="q20" value="1"><span class="letter">b</span><span>Heats a resistor the same as that DC voltage</span></label><label class="opt"><input type="radio" name="q20" value="2"><span class="letter">c</span><span>Is always 339 V</span></label><label class="opt"><input type="radio" name="q20" value="3"><span class="letter">d</span><span>Applies only to sine waves above 60 Hz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="gen-module-03.html#s3-3" data-label="Module 3, Section 3.3"><p class="qtext"><span class="gid">G5C</span> 21. A transformer with 500 primary turns and 1500 secondary turns fed 120 V AC delivers:</p><div class="opts"><label class="opt"><input type="radio" name="q21" value="0"><span class="letter">a</span><span>40 V</span></label><label class="opt"><input type="radio" name="q21" value="1"><span class="letter">b</span><span>120 V</span></label><label class="opt"><input type="radio" name="q21" value="2"><span class="letter">c</span><span>360 V</span></label><label class="opt"><input type="radio" name="q21" value="3"><span class="letter">d</span><span>1500 V</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-04.html#s4-1" data-label="Module 4, Section 4.1"><p class="qtext"><span class="gid">G6A</span> 22. The MOSFET&#x27;s defining construction feature is:</p><div class="opts"><label class="opt"><input type="radio" name="q22" value="0"><span class="letter">a</span><span>A point contact</span></label><label class="opt"><input type="radio" name="q22" value="1"><span class="letter">b</span><span>An insulated gate</span></label><label class="opt"><input type="radio" name="q22" value="2"><span class="letter">c</span><span>Two emitters</span></label><label class="opt"><input type="radio" name="q22" value="3"><span class="letter">d</span><span>A germanium junction</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-04.html#s4-2" data-label="Module 4, Section 4.2"><p class="qtext"><span class="gid">G6B</span> 23. The ferrite mix chosen for a core determines its:</p><div class="opts"><label class="opt"><input type="radio" name="q23" value="0"><span class="letter">a</span><span>Color code</span></label><label class="opt"><input type="radio" name="q23" value="1"><span class="letter">b</span><span>Suitability for a frequency range</span></label><label class="opt"><input type="radio" name="q23" value="2"><span class="letter">c</span><span>Voltage rating</span></label><label class="opt"><input type="radio" name="q23" value="3"><span class="letter">d</span><span>Wire gauge</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-05.html#s5-1" data-label="Module 5, Section 5.1"><p class="qtext"><span class="gid">G7A</span> 24. In figure G7-1, which numbered symbol is the Zener diode?</p><div class="qfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 540" font-family="Helvetica, Arial, sans-serif">
+<rect width="980" height="540" fill="white"/>
+<text x="490.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">General Figure G7-1: Symbol Quiz (pool numbering)</text>
+<rect x="26.0" y="64.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="137.5" cy="135.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="135.5" y1="117.0" x2="135.5" y2="153.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="135.5" y1="121.0" x2="153.5" y2="121.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="153.5" y1="121.0" x2="153.5" y2="93.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="135.5" y1="149.0" x2="153.5" y2="149.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="153.5" y1="149.0" x2="153.5" y2="177.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="82.5" y1="149.0" x2="135.5" y2="149.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="133.5,149.0 124.9,154.2 124.9,143.8" fill="black" stroke="none"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<rect x="261.0" y="64.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="372.5" cy="135.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="362.5" y1="117.0" x2="362.5" y2="153.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="317.5" y1="135.0" x2="362.5" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="362.5" y1="127.0" x2="386.5" y2="113.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="386.5" y1="113.0" x2="386.5" y2="93.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="362.5" y1="143.0" x2="386.5" y2="157.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="386.5" y1="157.0" x2="386.5" y2="177.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="383.5,155.0 373.5,155.1 378.7,146.2" fill="black" stroke="none"/>
+<circle cx="281.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="281.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<rect x="496.0" y="64.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="552.5" y1="135.0" x2="577.5" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<path d="M 577.5 135.0 L 585.5 123.0 L 593.5 147.0 L 601.5 123.0 L 609.5 147.0 L 617.5 123.0 L 625.5 147.0 L 637.5 135.0" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="637.5" y1="135.0" x2="662.5" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="516.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="516.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<rect x="731.0" y="64.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="787.5" y1="135.0" x2="836.5" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="836.5" y1="119.0" x2="836.5" y2="151.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="848.5" y1="119.0" x2="848.5" y2="151.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="848.5" y1="135.0" x2="897.5" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="751.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="751.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<rect x="26.0" y="214.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="82.5" y1="285.0" x2="123.5" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="123.5,271.0 123.5,299.0 149.5,285.0" fill="black" stroke="none"/>
+<line x1="149.5" y1="271.0" x2="149.5" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="149.5" y1="271.0" x2="142.5" y2="266.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="149.5" y1="299.0" x2="156.5" y2="304.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="149.5" y1="285.0" x2="192.5" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<rect x="261.0" y="214.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 358.5 253.0 A 10 8 0 0 0 358.5 269.0 A 10 8 0 0 0 358.5 285.0 A 10 8 0 0 0 358.5 301.0 A 10 8 0 0 0 358.5 317.0" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 386.5 253.0 A 10 8 0 0 1 386.5 269.0 A 10 8 0 0 1 386.5 285.0 A 10 8 0 0 1 386.5 301.0 A 10 8 0 0 1 386.5 317.0" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="368.5" y1="253.0" x2="368.5" y2="317.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="376.5" y1="253.0" x2="376.5" y2="317.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="358.5" y1="253.0" x2="358.5" y2="239.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="358.5" y1="239.0" x2="317.5" y2="239.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="358.5" y1="317.0" x2="358.5" y2="331.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="358.5" y1="331.0" x2="317.5" y2="331.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="386.5" y1="253.0" x2="386.5" y2="239.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="386.5" y1="239.0" x2="427.5" y2="239.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="386.5" y1="317.0" x2="386.5" y2="331.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="386.5" y1="331.0" x2="427.5" y2="331.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="281.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="281.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<rect x="496.0" y="214.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="552.5" y1="285.0" x2="575.5" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<path d="M 575.5 285.0 A 8 10 0 0 1 591.5 285.0 A 8 10 0 0 1 607.5 285.0 A 8 10 0 0 1 623.5 285.0 A 8 10 0 0 1 639.5 285.0" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="639.5" y1="285.0" x2="662.5" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="607.5" y1="275.0" x2="607.5" y2="251.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="516.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="516.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">7</text>
+<rect x="731.0" y="214.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="787.5" y1="285.0" x2="828.5" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="828.5,271.0 828.5,299.0 854.5,285.0" fill="black" stroke="none"/>
+<line x1="854.5" y1="271.0" x2="854.5" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="854.5" y1="285.0" x2="897.5" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="751.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="751.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">8</text>
+<rect x="26.0" y="364.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="82.5" y1="435.0" x2="123.5" y2="435.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="123.5" y1="417.0" x2="123.5" y2="453.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="133.5" y1="426.0" x2="133.5" y2="444.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="143.5" y1="417.0" x2="143.5" y2="453.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="153.5" y1="426.0" x2="153.5" y2="444.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="153.5" y1="435.0" x2="192.5" y2="435.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<text x="113.5" y="413.0" font-size="16" text-anchor="middle" font-weight="bold" fill="black">+</text>
+<circle cx="46.0" cy="386.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="391.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">9</text>
+<rect x="261.0" y="364.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="317.5" y1="435.0" x2="366.5" y2="435.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="366.5" y1="419.0" x2="366.5" y2="451.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="378.5" y1="419.0" x2="378.5" y2="451.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="378.5" y1="435.0" x2="427.5" y2="435.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="354.5" y1="455.0" x2="390.5" y2="415.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="390.5,415.0 388.6,424.8 380.9,417.9" fill="black" stroke="none"/>
+<circle cx="281.0" cy="386.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="281.0" y="391.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">10</text>
+<rect x="496.0" y="364.0" width="223.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="552.5" y1="435.0" x2="593.5" y2="435.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="593.5" y1="419.0" x2="593.5" y2="451.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<rect x="599.5" y="421.0" width="16.0" height="28.0" rx="0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="621.5" y1="419.0" x2="621.5" y2="451.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="621.5" y1="435.0" x2="662.5" y2="435.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="516.0" cy="386.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="516.0" y="391.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">11</text>
+<text x="490.0" y="514.0" font-size="13" text-anchor="middle" font-weight="normal" fill="#444" font-style="italic">Identify each numbered symbol. Answer key: gen-fig-g7-1</text>
+<text x="966.0" y="530.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg></div><div class="opts"><label class="opt"><input type="radio" name="q24" value="0"><span class="letter">a</span><span>Symbol 2</span></label><label class="opt"><input type="radio" name="q24" value="1"><span class="letter">b</span><span>Symbol 5</span></label><label class="opt"><input type="radio" name="q24" value="2"><span class="letter">c</span><span>Symbol 7</span></label><label class="opt"><input type="radio" name="q24" value="3"><span class="letter">d</span><span>Symbol 11</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="3" data-mod="gen-module-05.html#s5-2" data-label="Module 5, Section 5.2"><p class="qtext"><span class="gid">G7B</span> 25. The amplifier class with the highest efficiency is:</p><div class="opts"><label class="opt"><input type="radio" name="q25" value="0"><span class="letter">a</span><span>Class A</span></label><label class="opt"><input type="radio" name="q25" value="1"><span class="letter">b</span><span>Class AB</span></label><label class="opt"><input type="radio" name="q25" value="2"><span class="letter">c</span><span>Class B</span></label><label class="opt"><input type="radio" name="q25" value="3"><span class="letter">d</span><span>Class C</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-05.html#s5-3" data-label="Module 5, Section 5.3"><p class="qtext"><span class="gid">G7C</span> 26. SSB signals are recovered in a receiver by a:</p><div class="opts"><label class="opt"><input type="radio" name="q26" value="0"><span class="letter">a</span><span>Ratio detector</span></label><label class="opt"><input type="radio" name="q26" value="1"><span class="letter">b</span><span>Product detector</span></label><label class="opt"><input type="radio" name="q26" value="2"><span class="letter">c</span><span>Slope detector</span></label><label class="opt"><input type="radio" name="q26" value="3"><span class="letter">d</span><span>Envelope follower</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="gen-module-06.html#s6-2" data-label="Module 6, Section 6.2"><p class="qtext"><span class="gid">G8A</span> 27. The narrowest voice emission in common amateur use is:</p><div class="opts"><label class="opt"><input type="radio" name="q27" value="0"><span class="letter">a</span><span>AM</span></label><label class="opt"><input type="radio" name="q27" value="1"><span class="letter">b</span><span>FM</span></label><label class="opt"><input type="radio" name="q27" value="2"><span class="letter">c</span><span>Single sideband</span></label><label class="opt"><input type="radio" name="q27" value="3"><span class="letter">d</span><span>Double sideband</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="gen-module-06.html#s6-3" data-label="Module 6, Section 6.3"><p class="qtext"><span class="gid">G8B</span> 28. By Carson&#x27;s rule, 5 kHz deviation with 3 kHz audio occupies about:</p><div class="opts"><label class="opt"><input type="radio" name="q28" value="0"><span class="letter">a</span><span>8 kHz</span></label><label class="opt"><input type="radio" name="q28" value="1"><span class="letter">b</span><span>10 kHz</span></label><label class="opt"><input type="radio" name="q28" value="2"><span class="letter">c</span><span>16 kHz</span></label><label class="opt"><input type="radio" name="q28" value="3"><span class="letter">d</span><span>3 kHz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-06.html#s6-3" data-label="Module 6, Section 6.3"><p class="qtext"><span class="gid">G8C</span> 29. Forward error correction works by:</p><div class="opts"><label class="opt"><input type="radio" name="q29" value="0"><span class="letter">a</span><span>Requesting repeats</span></label><label class="opt"><input type="radio" name="q29" value="1"><span class="letter">b</span><span>Sending redundant information with the data</span></label><label class="opt"><input type="radio" name="q29" value="2"><span class="letter">c</span><span>Raising power</span></label><label class="opt"><input type="radio" name="q29" value="3"><span class="letter">d</span><span>Slowing the symbol rate automatically</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-07.html#s7-4" data-label="Module 7, Section 7.4"><p class="qtext"><span class="gid">G9A</span> 30. A 200-ohm antenna on 50-ohm line gives an SWR of:</p><div class="opts"><label class="opt"><input type="radio" name="q30" value="0"><span class="letter">a</span><span>2:1</span></label><label class="opt"><input type="radio" name="q30" value="1"><span class="letter">b</span><span>4:1</span></label><label class="opt"><input type="radio" name="q30" value="2"><span class="letter">c</span><span>1:1</span></label><label class="opt"><input type="radio" name="q30" value="3"><span class="letter">d</span><span>8:1</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-07.html#s7-1" data-label="Module 7, Section 7.1"><p class="qtext"><span class="gid">G9B</span> 31. Moving a dipole&#x27;s feed point from center toward an end makes the feed impedance:</p><div class="opts"><label class="opt"><input type="radio" name="q31" value="0"><span class="letter">a</span><span>Fall</span></label><label class="opt"><input type="radio" name="q31" value="1"><span class="letter">b</span><span>Rise</span></label><label class="opt"><input type="radio" name="q31" value="2"><span class="letter">c</span><span>Stay constant</span></label><label class="opt"><input type="radio" name="q31" value="3"><span class="letter">d</span><span>Become purely reactive</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-07.html#s7-2" data-label="Module 7, Section 7.2"><p class="qtext"><span class="gid">G9C</span> 32. Gain in dBi equals gain in dBd plus:</p><div class="opts"><label class="opt"><input type="radio" name="q32" value="0"><span class="letter">a</span><span>1.15 dB</span></label><label class="opt"><input type="radio" name="q32" value="1"><span class="letter">b</span><span>2.15 dB</span></label><label class="opt"><input type="radio" name="q32" value="2"><span class="letter">c</span><span>3 dB</span></label><label class="opt"><input type="radio" name="q32" value="3"><span class="letter">d</span><span>6 dB</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-07.html#s7-4" data-label="Module 7, Section 7.4"><p class="qtext"><span class="gid">G9D</span> 33. NVIS antennas are typically:</p><div class="opts"><label class="opt"><input type="radio" name="q33" value="0"><span class="letter">a</span><span>Verticals with many radials</span></label><label class="opt"><input type="radio" name="q33" value="1"><span class="letter">b</span><span>Horizontal dipoles mounted low</span></label><label class="opt"><input type="radio" name="q33" value="2"><span class="letter">c</span><span>Long Yagis aimed at the horizon</span></label><label class="opt"><input type="radio" name="q33" value="3"><span class="letter">d</span><span>Small loops indoors</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-10.html#s10-1" data-label="Module 10, Section 10.1"><p class="qtext"><span class="gid">G0A</span> 34. A lower transmitter duty cycle permits:</p><div class="opts"><label class="opt"><input type="radio" name="q34" value="0"><span class="letter">a</span><span>No change in exposure</span></label><label class="opt"><input type="radio" name="q34" value="1"><span class="letter">b</span><span>Greater short-term exposure levels</span></label><label class="opt"><input type="radio" name="q34" value="2"><span class="letter">c</span><span>Less short-term exposure</span></label><label class="opt"><input type="radio" name="q34" value="3"><span class="letter">d</span><span>Ignoring the evaluation</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="gen-module-10.html#s10-2" data-label="Module 10, Section 10.2"><p class="qtext"><span class="gid">G0B</span> 35. Before a generator powers your house, you must:</p><div class="opts"><label class="opt"><input type="radio" name="q35" value="0"><span class="letter">a</span><span>Notify the FCC</span></label><label class="opt"><input type="radio" name="q35" value="1"><span class="letter">b</span><span>Disconnect the incoming utility power feed</span></label><label class="opt"><input type="radio" name="q35" value="2"><span class="letter">c</span><span>Ground the generator to a water pipe</span></label><label class="opt"><input type="radio" name="q35" value="3"><span class="letter">d</span><span>Run it at half load for an hour</span></label></div><p class="review" hidden></p></div>
+<div class="submitrow">
+  <button id="submit" type="button">Grade my exam</button>
+  <span id="count">0 of 35 answered</span>
+</div>
+<div id="result" role="status"></div>
+<div id="restudy" hidden><p class="rehead">Your restudy list</p><ul id="relist"></ul></div>
+</form>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  var N = 35, PASS = 26, KEY = "k4dia-gen-exam-best";
+  var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+  var count = document.getElementById("count");
+  var best = localStorage.getItem(KEY);
+  if (best) document.getElementById("best").textContent = "Your best so far: " + best + " of " + N + ".";
+  document.getElementById("exam").addEventListener("change", function () {
+    var n = qs.filter(function (q) { return q.querySelector("input:checked"); }).length;
+    count.textContent = n + " of " + N + " answered";
+  });
+  document.getElementById("submit").addEventListener("click", function () {
+    var unanswered = qs.filter(function (q) { return !q.querySelector("input:checked"); }).length;
+    if (unanswered > 0 && !confirm(unanswered + " unanswered question" + (unanswered > 1 ? "s" : "") + " will count as wrong. Grade anyway?")) return;
+    var score = 0;
+    qs.forEach(function (q) {
+      var a = parseInt(q.dataset.answer, 10);
+      var chosen = q.querySelector("input:checked");
+      var opts = q.querySelectorAll(".opt");
+      q.classList.add("graded");
+      opts[a].classList.add("correct");
+      q.querySelectorAll("input").forEach(function (r) { r.disabled = true; });
+      var rev = q.querySelector(".review");
+      if (chosen && parseInt(chosen.value, 10) === a) {
+        score++; q.classList.add("right");
+      } else {
+        q.classList.add("wrong");
+        if (chosen) opts[parseInt(chosen.value, 10)].classList.add("chosen-wrong");
+        rev.innerHTML = 'Restudy: <a href="' + q.dataset.mod + '">' + q.dataset.label + "</a>";
+        rev.hidden = false;
+      }
+    });
+    var seen = {}, list = document.getElementById("relist");
+    qs.forEach(function (q) {
+      if (!q.classList.contains("wrong")) return;
+      var href = q.dataset.mod, label = q.dataset.label;
+      if (seen[href]) return;
+      seen[href] = true;
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = href; a.textContent = label;
+      li.appendChild(a); list.appendChild(li);
+    });
+    var missed = list.children.length;
+    if (missed > 0) document.getElementById("restudy").hidden = false;
+    var r = document.getElementById("result");
+    if (score >= PASS) {
+      r.className = "pass";
+      r.textContent = "PASS: " + score + " of " + N + " (needed " + PASS + "). Ray would shake your hand." + (missed > 0 ? " A restudy list for the few you missed is below." : "");
+    } else {
+      r.className = "fail";
+      r.textContent = score + " of " + N + " (needed " + PASS + "). Your restudy list is below; each missed question above also carries its own link.";
+    }
+    var prev = parseInt(localStorage.getItem(KEY) || "0", 10);
+    if (score > prev) localStorage.setItem(KEY, String(score));
+    r.scrollIntoView({ behavior: "smooth", block: "center" });
+    document.getElementById("submit").textContent = "Reload the page to retake";
+  });
+})();
+</script>
+</body>
+</html>

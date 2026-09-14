@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Extra Course, Module 2: Propagation at the Edges | K4DIA</title>
+<style>:root { --accent: #4A4494; --accent-dark: #37326E; --tint: #F0EFF8; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-extra.html"><svg class="rank" width="17" height="20" viewBox="0 0 20 24.0" aria-label="Level 3 mark" role="img"><path d="M3 21.0 L10 14.0 L17 21.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Extra course</a>
+  <span>Module 2 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Extra Course, Module 2: Propagation at the Edges</h1>
+  <p class="covers">Covers NCVEC 2024-2028 Extra Pool, Subelement E3 (Radio Wave Propagation). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray points the big Yagi at a gray smudge rising over the tree line. &quot;General taught you the ionosphere. Extra teaches you everything the ionosphere is not: the Moon, meteor trails, the paths across the equator, and the solar telemetry behind every forecast. This is the propagation nobody stumbles into. You go looking for it.&quot;</p></div>
+<section class="module-section" id="s2-1"><h2><span class="secnum">2.1</span>The Moon, the Meteors, and the Wave Itself</h2><p>Begin with the wave, stated with Extra precision. An electromagnetic wave&#x27;s electric and magnetic fields are oriented at <strong>right angles to each other</strong>, and the wave travels at a <strong>right angle to both fields</strong>. Its speed through any medium is set by the medium&#x27;s <strong>index of refraction</strong>, which is why &quot;the speed of light&quot; always carries the silent asterisk &quot;in vacuum.&quot; And a wave whose electric and magnetic fields <strong>rotate</strong> as it travels is <strong>circularly polarized</strong>, a definition that becomes an operating tool two paragraphs from now.</p>
+<p><strong>EME</strong>, Earth-Moon-Earth, is the longest path in amateur radio: bounce a signal off the Moon and the maximum station separation is about <strong>12,000 miles</strong>, any two points that can both see the Moon. The path is brutal, and its physics sets the operating practices:</p>
+<ul><li>Path loss is least when the Moon is at <strong>perigee</strong>, its closest approach. Serious EME operators schedule by the lunar distance table.</li><li>The returning echo carries <strong>libration fading</strong>: a fluttery, irregular fading imposed by the Moon&#x27;s slight rocking, which smears reflections from its rough surface.</li><li>The trip through the ionosphere adds Faraday rotation, twisting polarization unpredictably, and satellites add spin modulation. One antenna choice addresses both: <strong>circular polarization</strong>, which shrugs at rotation because it is already rotating.</li></ul>
+<p><strong>Meteor scatter</strong> trades the Moon for ionized debris: a meteor burning up creates a linear ionized region in the <strong>E region</strong> of the ionosphere, and signals bounce off the trail for the seconds it survives. The frequency sweet spot is <strong>28 to 148 MHz</strong>, which is why 6 meters is the meteor band and why the Technician course flagged it years ago.</p>
+<p>The rest of the specialized menu:</p>
+<ul><li><strong>Auroral propagation</strong> is most likely during <strong>severe geomagnetic storms</strong>, and the best mode through the shimmer remains <strong>CW</strong>, the auroral distortion from your Technician course now traced to its solar cause.</li><li><strong>Microwave tropospheric ducts</strong> form most often over <strong>large bodies of water</strong>, with a typical range of <strong>100 to 300 miles</strong>, the General course&#x27;s duct with its geography and mileage attached.</li><li>And the daily ionospheric rhythm, stated as an operating decision: when darkness drops the MUF below your long-distance path, <strong>switch to a lower frequency band</strong>. Follow the MUF down at sunset, back up at sunrise.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E3A)</span> EM wave: fields at right angles to each other, travel at right angles to both; speed set by the index of refraction; circular polarization: rotating fields. EME: about 12,000 miles maximum, both stations seeing the Moon; least loss at perigee; libration fading is fluttery and irregular; circular polarization counters Faraday rotation and spin modulation. Meteor trails: E region ionization; best at 28 to 148 MHz. Aurora: severe geomagnetic storms; CW is the best mode. Microwave ducts: over large bodies of water, 100 to 300 miles. MUF drops with darkness: move to a lower band.</p></aside><section class="check" id="check-2.1"><h3>Knowledge Check 2.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. When is EME path loss lowest?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>At full moon</button><button class="opt" data-letter="b"><span class="letter">b</span>When the Moon is at perigee</button><button class="opt" data-letter="c"><span class="letter">c</span>When the Moon is at apogee</button><button class="opt" data-letter="d"><span class="letter">d</span>During lunar eclipses</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Where does a meteor create its ionized trail?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The D region</button><button class="opt" data-letter="b"><span class="letter">b</span>The E region</button><button class="opt" data-letter="c"><span class="letter">c</span>The F2 region</button><button class="opt" data-letter="d"><span class="letter">d</span>The troposphere</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why does circular polarization help EME and satellite work?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It doubles effective radiated power</button><button class="opt" data-letter="b"><span class="letter">b</span>It is immune to Faraday rotation and spin effects because the fields already rotate</button><button class="opt" data-letter="c"><span class="letter">c</span>It narrows the beamwidth</button><button class="opt" data-letter="d"><span class="letter">d</span>It cancels libration fading</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s2-2"><h2><span class="secnum">2.2</span>Paths the Textbook Diagrams Leave Out</h2><p>The great-circle hop from your General course is the standard model. This section is everything that breaks it, profitably.</p>
+<p><strong>Transequatorial propagation (TEP)</strong> links stations <strong>2,000 to 3,000 miles apart on a path perpendicular to the geomagnetic equator</strong>, with a maximum range around <strong>5,000 miles</strong>, and it favors the <strong>afternoon and early evening</strong>. Ionization bulges straddling the magnetic equator form a double mirror, and stations in the southern US work South America on bands that should be closed. The magnetic equator, note, not the geographic one; propagation follows the field.</p>
+<p><strong>Chordal hop</strong> is the ionosphere skipping the middleman: <strong>successive ionospheric refractions without an intermediate ground reflection</strong>, the signal ricocheting along the underside of the ionosphere. Its effect is the payoff: <strong>less loss than multi-hop propagation</strong>, because every ground reflection the signal skips is loss it never pays. The freakishly loud long-distance signal at sunset is often riding a chord.</p>
+<p>The ionosphere also splits every wave it touches into two: the <strong>ordinary and extraordinary waves</strong>, independently propagating, elliptically polarized waves created in the ionosphere by the interaction with Earth&#x27;s magnetic field. Two waves, two slightly different paths, and their interference is part of why HF fading is never simple.</p>
+<p>The workhorse facts of the group:</p>
+<ul><li><strong>Long-path propagation</strong> is most frequent on <strong>40 and 20 meters</strong>, the bands with the reach to go the wrong way around profitably.</li><li><strong>160 meters</strong> goes long-distance only on a path <strong>entirely in darkness</strong>, the D-region absorption story from General taken to its extreme: the top band&#x27;s DX window is the mutual night.</li><li><strong>Lowering your takeoff angle increases the distance covered by each hop</strong>, the single sentence justifying every antenna height decision you will make in Module 7.</li><li><strong>Sporadic E</strong> gets its calendar and clock: most likely around the <strong>solstices, especially the summer solstice</strong>, and most likely <strong>between sunrise and sunset</strong>. June at midday is the Magic Band&#x27;s rush hour.</li><li><strong>Ground wave</strong> rounds out the map: its range <strong>decreases as frequency increases</strong> (160 meters crawls a hundred miles; 10 meters barely leaves the yard), and it supports <strong>vertical polarization</strong>, which is why AM broadcast towers and 160-meter verticals stand up straight.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E3B)</span> TEP: 2,000 to 3,000 miles perpendicular to the geomagnetic equator, about 5,000 miles maximum, afternoon and early evening. Chordal hop: successive ionospheric refractions with no ground reflection, hence less loss than multi-hop. Ordinary and extraordinary waves: independent, elliptically polarized waves created in the ionosphere. Long path: most frequent on 40 and 20 meters. 160-meter DX: paths entirely in darkness. Lower takeoff angle: longer hops. Sporadic E: solstices (especially summer), sunrise to sunset. Ground wave: range decreases with frequency; vertical polarization.</p></aside><section class="check" id="check-2.2"><h3>Knowledge Check 2.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What makes chordal-hop signals unusually strong?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>They travel through the low-loss D region</button><button class="opt" data-letter="b"><span class="letter">b</span>They skip the lossy ground reflections between ionospheric refractions</button><button class="opt" data-letter="c"><span class="letter">c</span>They are amplified by the geomagnetic field</button><button class="opt" data-letter="d"><span class="letter">d</span>They use both ordinary and extraordinary waves</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. When does a 160-meter path support long-distance work?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>When entirely in sunlight</button><button class="opt" data-letter="b"><span class="letter">b</span>When entirely in darkness</button><button class="opt" data-letter="c"><span class="letter">c</span>At local noon</button><button class="opt" data-letter="d"><span class="letter">d</span>During geomagnetic storms</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. When is sporadic E most likely?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Around the equinoxes, at night</button><button class="opt" data-letter="b"><span class="letter">b</span>Around the solstices, especially summer, between sunrise and sunset</button><button class="opt" data-letter="c"><span class="letter">c</span>In winter, before dawn</button><button class="opt" data-letter="d"><span class="letter">d</span>Randomly, with no seasonal pattern</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s2-3"><h2><span class="secnum">2.3</span>Reading Space Weather Like an Engineer</h2><p>The General course gave you the dashboard. The Extra course gives you the telemetry behind it.</p>
+<p><strong>The Sun&#x27;s misbehavior, classified:</strong></p>
+<ul><li>Short-term radio blackouts are caused by <strong>solar flares</strong>, the 8-minute X-ray strike from your General course, now named as the blackout mechanism.</li><li>Flare intensity runs a letter scale where <strong>class X</strong> indicates the greatest intensity. An X-flare headline means the low bands are about to go quiet on the daylight side.</li><li>Geomagnetic storms run the <strong>G scale</strong>, where <strong>G5</strong> is the space-weather term for an extreme storm.</li><li>A <strong>sudden rise in background noise across a large portion of the HF spectrum</strong> signals that a <strong>coronal mass ejection impact or solar flare has occurred</strong>. The bands tell you before the websites do.</li></ul>
+<p><strong>The interplanetary detail that predicts trouble:</strong> <strong>Bz</strong> is the <strong>north-south component of the interplanetary magnetic field</strong> carried by the solar wind. When Bz points <strong>southward</strong>, it opposes Earth&#x27;s field, the two fields connect, and charged particles pour in: southward Bz is the loaded gun of geomagnetic disturbance. Watching Bz turn negative during a CME arrival is watching the storm decide to happen.</p>
+<p><strong>The indices, upgraded from General:</strong> a <strong>rising A-index or K-index</strong> indicates <strong>increasing disturbance of the geomagnetic field</strong>, and the paths that suffer most when they climb are those passing <strong>through the auroral oval</strong>, the high-latitude ring where the particles rain in. Polar paths die first; TEP, meanwhile, barely notices.</p>
+<p><strong>The modern instruments:</strong></p>
+<ul><li>The <strong>304A parameter</strong> measures solar <strong>UV emissions at 304 angstroms</strong>, which correlate with the solar flux index: a direct optical measurement of the ionizing radiation itself.</li><li><strong>VOACAP</strong> software models <strong>HF propagation</strong>, the free planning tool that turns all of this telemetry into a point-to-point reliability forecast.</li><li>And amateur <strong>propagation reporting networks</strong> (the Reverse Beacon Network and PSK Reporter from your General capstone) report <strong>digital-mode and CW signals</strong>, real-time confirmation that beats any model.</li></ul>
+<p>One last geometry fact files the radio horizon precisely: the VHF/UHF radio horizon is approximately <strong>15 percent farther</strong> than the geographic horizon, the Technician course&#x27;s &quot;slightly past the visible horizon&quot; finally assigned its number.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E3C)</span> Radio blackouts: solar flares; class X is the most intense flare; G5 is an extreme geomagnetic storm. Sudden HF-wide noise rise: CME impact or flare. Bz: north-south interplanetary magnetic field component; southward Bz invites disturbance. Rising A or K index: increasing geomagnetic disturbance; auroral-oval paths absorb worst. 304A: solar UV at 304 angstroms, correlated with solar flux. VOACAP: models HF propagation. Amateur propagation networks report digital and CW signals. Radio horizon: about 15 percent beyond the geographic horizon.</p></aside><section class="check" id="check-2.3"><h3>Knowledge Check 2.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Which Bz orientation makes geomagnetic disturbance likely?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Northward</button><button class="opt" data-letter="b"><span class="letter">b</span>Southward</button><button class="opt" data-letter="c"><span class="letter">c</span>Eastward</button><button class="opt" data-letter="d"><span class="letter">d</span>Bz does not affect disturbance</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. What does an X in a flare report indicate?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Unknown intensity</button><button class="opt" data-letter="b"><span class="letter">b</span>An expired forecast</button><button class="opt" data-letter="c"><span class="letter">c</span>The greatest flare intensity class</button><button class="opt" data-letter="d"><span class="letter">d</span>X-band radar interference</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What does VOACAP model?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>VHF ducting</button><button class="opt" data-letter="b"><span class="letter">b</span>HF propagation</button><button class="opt" data-letter="c"><span class="letter">c</span>Antenna impedance</button><button class="opt" data-letter="d"><span class="letter">d</span>Solar wind velocity</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">E3A</span> EM wave: fields at right angles to each other, travel at right angles to both; speed set by the index of refraction; circular polarization: rotating fields. EME: about 12,000 miles maximum, both stations seeing the Moon; least loss at perigee; libration fading is fluttery and irregular; circular polarization counters Faraday rotation and spin modulation. Meteor trails: E region ionization; best at 28 to 148 MHz. Aurora: severe geomagnetic storms; CW is the best mode. Microwave ducts: over large bodies of water, 100 to 300 miles. MUF drops with darkness: move to a lower band.</p></div><div class="anchor review"><p><span class="anchor-lead">E3B</span> TEP: 2,000 to 3,000 miles perpendicular to the geomagnetic equator, about 5,000 miles maximum, afternoon and early evening. Chordal hop: successive ionospheric refractions with no ground reflection, hence less loss than multi-hop. Ordinary and extraordinary waves: independent, elliptically polarized waves created in the ionosphere. Long path: most frequent on 40 and 20 meters. 160-meter DX: paths entirely in darkness. Lower takeoff angle: longer hops. Sporadic E: solstices (especially summer), sunrise to sunset. Ground wave: range decreases with frequency; vertical polarization.</p></div><div class="anchor review"><p><span class="anchor-lead">E3C</span> Radio blackouts: solar flares; class X is the most intense flare; G5 is an extreme geomagnetic storm. Sudden HF-wide noise rise: CME impact or flare. Bz: north-south interplanetary magnetic field component; southward Bz invites disturbance. Rising A or K index: increasing geomagnetic disturbance; auroral-oval paths absorb worst. 304A: solar UV at 304 angstroms, correlated with solar flux. VOACAP: models HF propagation. Amateur propagation networks report digital and CW signals. Radio horizon: about 15 percent beyond the geographic horizon.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>The gray smudge over the tree line, for the record, was the Moon, and Ray&#x27;s point in aiming at it stands for the whole module: Extra-class propagation is deliberate. You now know where the exotic paths live (the Moon at perigee, meteor trails in the E region, the TEP mirrors on the magnetic equator, the chords under the ionosphere) and how to read the solar telemetry that opens and closes them.</p>
+<p>Module 3 returns to the bench for the mathematics under everything: resonance with numbers, Q and its bandwidth, phase angles, and the coordinate systems that make complex impedance an ordinary tool.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (E-S4): the Extra Skills Track requires one specialized contact, and this module is its menu. Pick your path (meteor scatter on 6 meters during a solstice shower is the gentlest entry) and start watching the numbers this module taught: Bz, the K-index, and the flare classes, as planning data rather than trivia.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 2 complete</button>
+    <div class="pager"><a class="navlink" href="extra-module-01.html">Previous module</a><a class="navlink" href="extra-module-03.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-extra-m02";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 2 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

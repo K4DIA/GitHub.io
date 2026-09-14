@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 2: The Sun Is Your Repeater | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 2 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 2: The Sun Is Your Repeater</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G3 (Radio Wave Propagation). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray pulls up a website showing a photograph of the Sun, speckled with dark blotches. &quot;Every repeater you have ever used was a machine on a hilltop somebody had to build and maintain,&quot; he says. &quot;HF runs through a repeater ninety-three million miles away, fueled for the next five billion years, and free to every station on Earth. The catch is that nobody controls it. So we learn to read it.&quot;</p></div>
+<section class="module-section" id="s2-1"><h2><span class="secnum">2.1</span>Reading the Star</h2><p>The <strong>sunspot number</strong> is the oldest gauge on the dashboard. More sunspots mean more of the ultraviolet and X-ray radiation that ionizes the upper atmosphere, and higher sunspot numbers indicate a greater probability of good propagation at higher frequencies. That single sentence explains the rhythm of the hobby: at solar maximum, 15, 12, and 10 meters roar; at solar minimum, those same high bands are the least reliable for long-distance work, and everyone migrates down. The 20-meter band is the great exception, supporting worldwide daylight propagation at <strong>any point</strong> in the solar cycle, which is why it is the workhorse band of amateur radio.</p>
+<p>The modern gauge is the <strong>solar flux index</strong>: a measure of solar radiation at a wavelength of 10.7 centimeters, a radio measurement of the Sun that tracks ionization-producing activity and works even when clouds hide the sunspots.</p>
+<p>The Sun also misbehaves, on two different clocks:</p>
+<ul><li>A <strong>solar flare</strong> blasts out ultraviolet and X-rays that travel at the speed of light, reaching Earth in about <strong>8 minutes</strong>. The result is a sudden ionospheric disturbance, and it disrupts signals on lower frequencies more than higher ones (hold that thought for Section 2.3, where the D region explains why).</li><li>A <strong>coronal mass ejection</strong> hurls charged particles, which are matter, not light, and take <strong>15 hours to several days</strong> to arrive. Charged particles also stream from <strong>coronal holes</strong>, and when either arrives, HF communication is disturbed.</li></ul>
+<p>That arriving material stirs Earth&#x27;s magnetic field into a <strong>geomagnetic storm</strong>: a temporary disturbance in the geomagnetic field. Its signature effect on radio is degraded high-latitude HF propagation, which is why polar paths die first when the Sun acts up. There is one consolation prize: high geomagnetic activity creates auroras that can reflect VHF signals, handing 6-meter operators a strange and wonderful propagation mode while the HF operators complain.</p>
+<p>Two indices measure the shaking, and the exam wants them kept straight:</p>
+<ul><li>The <strong>K-index</strong>: short-term stability of Earth&#x27;s geomagnetic field.</li><li>The <strong>A-index</strong>: long-term stability of the same field.</li></ul>
+<p>Ray&#x27;s mnemonic: K is quick, A is averaged. And one more clock: propagation conditions repeat on a 26-to-28-day cycle because the Sun&#x27;s surface layers rotate around its axis, carrying active regions back around to face Earth like a lighthouse beam.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G3A)</span> Higher sunspot numbers: better propagation at higher frequencies; 15, 12, and 10 meters are least reliable during low solar activity; 20 meters supports worldwide daytime propagation at any point in the cycle. Solar flux index: solar radiation at 10.7 cm wavelength. Flare UV and X-rays arrive in about 8 minutes and disrupt lower frequencies more. CMEs take 15 hours to several days; coronal hole particles disturb HF. Geomagnetic storm: temporary disturbance of Earth&#x27;s geomagnetic field; degrades high-latitude HF; benefit is auroras that reflect VHF. K-index: short-term geomagnetic stability. A-index: long-term. The 26-to-28-day cycle comes from the rotation of the Sun&#x27;s surface layers.</p></aside><section class="check" id="check-2.1"><h3>Knowledge Check 2.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What does a high sunspot number suggest?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Poor propagation on all bands</button><button class="opt" data-letter="b"><span class="letter">b</span>Greater probability of good propagation at higher frequencies</button><button class="opt" data-letter="c"><span class="letter">c</span>Increased D-region absorption at night</button><button class="opt" data-letter="d"><span class="letter">d</span>More sporadic E on 2 meters</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. How long do a solar flare&#x27;s X-rays take to reach Earth, and a CME&#x27;s particles?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Both arrive in 8 minutes</button><button class="opt" data-letter="b"><span class="letter">b</span>About 8 minutes; 15 hours to several days</button><button class="opt" data-letter="c"><span class="letter">c</span>Several days; 8 minutes</button><button class="opt" data-letter="d"><span class="letter">d</span>Both take about 28 days</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. Which index tracks the short-term stability of Earth&#x27;s geomagnetic field?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>A-index</button><button class="opt" data-letter="b"><span class="letter">b</span>Solar flux index</button><button class="opt" data-letter="c"><span class="letter">c</span>K-index</button><button class="opt" data-letter="d"><span class="letter">d</span>Sunspot number</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s2-2"><h2><span class="secnum">2.2</span>MUF, LUF, and the Window Between</h2><p>For any two points on Earth at any moment, ionospheric propagation is a window between two frequencies, and every HF operating decision is an attempt to sit inside it.</p>
+<p>The <strong>MUF</strong>, Maximum Usable Frequency, is the highest frequency that supports communications between two specific points. Above it, signals pass through the ionosphere and into space. The <strong>LUF</strong>, Lowest Usable Frequency, is the floor for those same two points. Below it, signals are attenuated (absorbed) before reaching the destination. Between them, radio waves are refracted back to Earth, and the sweet spot is <strong>just below the MUF</strong>, where long-distance skip suffers the least attenuation.</p>
+<p>What moves the MUF? Path distance and location, time of day and season, solar radiation and ionospheric disturbances. All of it, which is why the MUF is a weather report, not a constant. And when conditions get bad enough that the <strong>LUF rises above the MUF</strong>, the window closes: ordinary skywave communication over that path is simply not possible. It happens, and knowing it happens saves you an evening of blaming your antenna.</p>
+<p>How far does one hop carry? Via the <strong>F2 region</strong>, about <strong>2,500 miles</strong> maximum along the Earth&#x27;s surface; via the <strong>E region</strong>, about <strong>1,200 miles</strong>. Long paths are chains of hops, ionosphere to ground and back up.</p>
+<p>Sometimes the ionosphere hands you the planet&#x27;s far side twice. A signal can travel the <strong>short path</strong> (the direct great circle) or the <strong>long path</strong> (the rest of the great circle, 180 degrees from the short-path heading). Hear both at once, and the extra distance shows up as a slightly delayed echo on the signal, one of HF&#x27;s genuinely eerie sounds.</p>
+<p>How do you actually check conditions from your own station, tonight? The modern answer: transmit and use a network of automated receiving stations on the internet (the Reverse Beacon Network for CW, PSK Reporter for digital) to see exactly where you are being heard. Propagation forecasting used to be astrology; now it is a map with your call sign on it.</p>
+<p>Two seasonal notes finish the group: summer on the lower HF bands means high levels of atmospheric noise and static from continental thunderstorms, and it is the price of July on 80 meters.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G3B)</span> MUF: maximum usable frequency between two points; LUF: the lowest. Between them, waves refract back to Earth; below the LUF they are attenuated; least attenuation is just below the MUF. MUF depends on path, time, season, and solar activity (all). LUF above MUF: no skywave path exists. One hop: about 2,500 miles via F2, about 1,200 via E. Short path and long path: long-path signals arrive as a slightly delayed echo; a beam is pointed 180 degrees from the short-path heading for long path. Check propagation by transmitting to networks of automated internet-connected receivers. Summer lower HF: high atmospheric noise.</p></aside><section class="check" id="check-2.2"><h3>Knowledge Check 2.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Where is attenuation lowest for long-distance skip?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Just above the LUF</button><button class="opt" data-letter="b"><span class="letter">b</span>Just below the MUF</button><button class="opt" data-letter="c"><span class="letter">c</span>At the critical frequency</button><button class="opt" data-letter="d"><span class="letter">d</span>Exactly between LUF and MUF</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. The LUF for a path rises above the MUF. What does that mean?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Double-hop propagation is enhanced</button><button class="opt" data-letter="b"><span class="letter">b</span>Only CW will get through</button><button class="opt" data-letter="c"><span class="letter">c</span>No ordinary skywave propagation is possible on that path</button><button class="opt" data-letter="d"><span class="letter">d</span>The path works only at night</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. What is the maximum single-hop distance via the F2 region?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>180 miles</button><button class="opt" data-letter="b"><span class="letter">b</span>1,200 miles</button><button class="opt" data-letter="c"><span class="letter">c</span>2,500 miles</button><button class="opt" data-letter="d"><span class="letter">d</span>12,000 miles</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s2-3"><h2><span class="secnum">2.3</span>The Layers That Do the Work</h2><p>Time to meet the machinery. The ionosphere is not one mirror but a stack of regions, each with a personality.</p>
+<ul><li>The <strong>D region</strong> is the lowest, closest to Earth&#x27;s surface. It is not a mirror at all but a sponge: during daylight it absorbs signals below about 10 MHz. The D region is why 40, 60, 80, and 160 meters are difficult for long distance during the day, and why they come alive when the Sun sets and the D region fades. It is also why a solar flare&#x27;s X-ray burst, which supercharges the D region, silences the low bands first.</li><li>The <strong>E region</strong> sits above it: modest hops (that 1,200-mile figure), plus the sporadic-E surprises you met at Technician.</li><li>The <strong>F region</strong>, splitting into F1 and F2 by day, is the high mirror. Skip via F2 is the longest precisely because F2 is the <strong>highest</strong> region: simple geometry, a higher mirror throws a longer shadow.</li></ul>
+<p>Two &quot;critical&quot; definitions govern whether a signal comes back at all:</p>
+<ul><li>The <strong>critical frequency</strong> is the highest frequency refracted back to Earth at a given incidence angle. Fire straight up: signals below it return, signals above it leave.</li><li>The <strong>critical angle</strong> is the highest takeoff angle that will return a wave to Earth under the conditions of the moment. Steeper than that, and the wave punches through.</li></ul>
+<p>Those two definitions collide usefully in <strong>NVIS</strong>, Near Vertical Incidence Skywave: short-distance MF and HF propagation using high elevation angles. Aim 40 or 80 meters nearly straight up, below the critical frequency, and the ionosphere rains your signal down in a few-hundred-mile circle around you, filling in the gap between ground wave and the first skip hop. NVIS is the emergency communicator&#x27;s best trick, regional coverage with no infrastructure, and your Field Record notebook will meet it again.</p>
+<p>Between the hops lies the <strong>skip zone</strong>: too far for ground wave, too close for the first hop. <strong>Scatter</strong> propagation is what lets signals be heard there anyway, energy scattered out of the main beam by irregularities along the path. Its fingerprints: scatter signals are weak, because only a small fraction of the signal energy scatters into the skip zone, and they have a characteristic fluttering, distorted sound, because the energy arrives via several different paths at once.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G3C)</span> D region: closest to Earth; absorbs sub-10 MHz signals in daylight; the reason 40/60/80/160 struggle by day. F2 skip is longest because F2 is highest. Critical frequency: highest frequency refracted back at a given angle. Critical angle: highest takeoff angle that still returns to Earth. NVIS: short-distance MF/HF propagation at high elevation angles. Scatter: lets signals into the skip zone; scatter signals are weak (little energy scatters that way) and fluttery or distorted (multiple simultaneous paths).</p></aside><section class="check" id="check-2.3"><h3>Knowledge Check 2.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why are 80 and 160 meters poor for long distances during the day?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The F region disappears in daylight</button><button class="opt" data-letter="b"><span class="letter">b</span>The D region absorbs low-frequency signals during daylight</button><button class="opt" data-letter="c"><span class="letter">c</span>The MUF is too high</button><button class="opt" data-letter="d"><span class="letter">d</span>Atmospheric noise blocks all reception</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why does the F2 region produce the longest skip?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It is the densest region</button><button class="opt" data-letter="b"><span class="letter">b</span>It is the highest region</button><button class="opt" data-letter="c"><span class="letter">c</span>It only exists at night</button><button class="opt" data-letter="d"><span class="letter">d</span>It moves with the Sun</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is NVIS?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Long-path propagation at sunrise</button><button class="opt" data-letter="b"><span class="letter">b</span>Short-distance MF/HF propagation using high elevation angles</button><button class="opt" data-letter="c"><span class="letter">c</span>VHF ducting over water</button><button class="opt" data-letter="d"><span class="letter">d</span>Meteor scatter below 10 MHz</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G3A</span> Higher sunspot numbers: better propagation at higher frequencies; 15, 12, and 10 meters are least reliable during low solar activity; 20 meters supports worldwide daytime propagation at any point in the cycle. Solar flux index: solar radiation at 10.7 cm wavelength. Flare UV and X-rays arrive in about 8 minutes and disrupt lower frequencies more. CMEs take 15 hours to several days; coronal hole particles disturb HF. Geomagnetic storm: temporary disturbance of Earth&#x27;s geomagnetic field; degrades high-latitude HF; benefit is auroras that reflect VHF. K-index: short-term geomagnetic stability. A-index: long-term. The 26-to-28-day cycle comes from the rotation of the Sun&#x27;s surface layers.</p></div><div class="anchor review"><p><span class="anchor-lead">G3B</span> MUF: maximum usable frequency between two points; LUF: the lowest. Between them, waves refract back to Earth; below the LUF they are attenuated; least attenuation is just below the MUF. MUF depends on path, time, season, and solar activity (all). LUF above MUF: no skywave path exists. One hop: about 2,500 miles via F2, about 1,200 via E. Short path and long path: long-path signals arrive as a slightly delayed echo; a beam is pointed 180 degrees from the short-path heading for long path. Check propagation by transmitting to networks of automated internet-connected receivers. Summer lower HF: high atmospheric noise.</p></div><div class="anchor review"><p><span class="anchor-lead">G3C</span> D region: closest to Earth; absorbs sub-10 MHz signals in daylight; the reason 40/60/80/160 struggle by day. F2 skip is longest because F2 is highest. Critical frequency: highest frequency refracted back at a given angle. Critical angle: highest takeoff angle that still returns to Earth. NVIS: short-distance MF/HF propagation at high elevation angles. Scatter: lets signals into the skip zone; scatter signals are weak (little energy scatters that way) and fluttery or distorted (multiple simultaneous paths).</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You can now read the Sun&#x27;s dashboard (sunspots, solar flux, K and A), find the window between LUF and MUF, and name the layer responsible for whatever the bands are doing right now. Ray&#x27;s summary: &quot;High bands follow the sunspots, low bands follow the darkness, 20 meters shows up every day, and when the K-index spikes, go do something else for a few hours.&quot;</p>
+<p>Module 3 goes back to the bench. Reactance, resonance, RMS, and the math that makes tuned circuits and power measurements make sense. It is the most mathematical module of the course, and it is friendlier than its reputation.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (G-S3): pick one evening and one morning this week. Check the solar flux and K-index, predict which two bands should be open and where to, then listen and log what you actually hear, or transmit FT8 and watch PSK Reporter map your real coverage. Two sessions of predict-then-verify will teach you more than any chart.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 2 complete</button>
+    <div class="pager"><a class="navlink" href="gen-module-01.html">Previous module</a><a class="navlink" href="gen-module-03.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m02";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 2 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

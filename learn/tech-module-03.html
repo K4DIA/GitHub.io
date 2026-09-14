@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 3: Electricity You Can Use | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 3 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 3: Electricity You Can Use</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T5 (Electrical Principles). Four questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>On the bench in Ray&#x27;s shack sits a military surplus ammo can with a battery inside, a fuse block, a pair of Powerpole connectors, and a master switch. &quot;Field power box,&quot; he says. &quot;Before the weekend is over you are going to tell me what size fuse it needs. Not guess. Calculate.&quot;</p>
+<p>To do that, you need four ideas and one law. That is this entire module.</p></div>
+<section class="module-section" id="s3-1"><h2><span class="secnum">3.1</span>The Four Ideas</h2><p><strong>Current</strong> is the flow of electrons through a circuit. It is measured in <strong>amperes</strong> (amps, A). When Ray&#x27;s radio transmits, electrons are flowing from the battery, through the radio, and back. More flow, more amps.</p>
+<p><strong>Voltage</strong> is the force that causes electrons to flow, measured in <strong>volts</strong> (V). Think of it as electrical pressure. A 12-volt battery pushes harder than a 1.5-volt flashlight cell. No voltage, no current.</p>
+<p><strong>Resistance</strong> is the opposition to that flow, measured in <strong>ohms</strong>. Everything resists at least a little, and resistance opposes every kind of current: DC, AC, and RF alike.</p>
+<p><strong>Power</strong> is the rate at which electrical energy is used, measured in <strong>watts</strong> (W). It is what heats the final transistors and what actually leaves the antenna.</p>
+<p>Two supporting facts round out the vocabulary. Current that flows in one direction only is <strong>direct current (DC)</strong>, which is what batteries deliver. Current that reverses, flowing between positive and negative directions, is <strong>alternating current (AC)</strong>, which is what comes out of the wall. The number of complete cycles an alternating current makes per second is its <strong>frequency</strong>, measured in <strong>hertz (Hz)</strong>. A radio signal is just alternating current cycling millions of times per second.</p>
+<p>Why do electrons flow easily through wire but not through the wire&#x27;s insulation? Metals are good conductors because they have many free electrons, loosely bound and ready to move. Insulators like glass hold their electrons tightly, so almost nothing flows.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T5A)</span> Current: flow of electrons, measured in amperes. Voltage: the force that causes electron flow, measured in volts. Power: the rate at which electrical energy is used, measured in watts. Frequency: cycles per second of an alternating current, measured in hertz. DC flows one direction, AC alternates between positive and negative directions. Metals conduct because of many free electrons; glass is a good insulator. Resistance opposes all current: DC, AC, and RF.</p></aside><section class="check" id="check-3.1"><h3>Knowledge Check 3.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is electrical current, and what unit measures it?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Electrical pressure, measured in volts</button><button class="opt" data-letter="b"><span class="letter">b</span>The flow of electrons, measured in amperes</button><button class="opt" data-letter="c"><span class="letter">c</span>Stored energy, measured in farads</button><button class="opt" data-letter="d"><span class="letter">d</span>Opposition to flow, measured in ohms</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. What force causes electrons to flow in a circuit?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Resistance</button><button class="opt" data-letter="b"><span class="letter">b</span>Inductance</button><button class="opt" data-letter="c"><span class="letter">c</span>Voltage</button><button class="opt" data-letter="d"><span class="letter">d</span>Frequency</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why are metals good conductors?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>They are dense</button><button class="opt" data-letter="b"><span class="letter">b</span>They have many free electrons</button><button class="opt" data-letter="c"><span class="letter">c</span>They have many free protons</button><button class="opt" data-letter="d"><span class="letter">d</span>They are magnetic</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-2"><h2><span class="secnum">3.2</span>Moving the Decimal Point</h2><p>Radio numbers span from billionths to billions, so we handle them with metric prefixes. There are only four you need, plus one guest appearance:</p>
+<ul><li><strong>kilo (k)</strong> = one thousand. 1 kilovolt = 1000 volts. 1500 kHz = 1,500,000 Hz.</li><li><strong>mega (M)</strong> = one million. 3.525 MHz = 3525 kHz. 28400 kHz = 28.400 MHz.</li><li><strong>milli (m)</strong> = one one-thousandth. 1.5 amperes = 1500 milliamperes. 500 milliwatts = 0.5 watts.</li><li><strong>micro (µ)</strong> = one one-millionth. 1 microvolt = one one-millionth of a volt.</li><li><strong>pico (p)</strong> = one one-trillionth, seen with capacitors: 1,000,000 picofarads = 1 microfarad.</li></ul>
+<p>Ray&#x27;s method: do not memorize conversions, memorize the ladder. Each step from milli to base to kilo to mega is a factor of 1000, which means the decimal point slides three places per step. Going up the ladder (milli to amps), slide it left. Going down (amps to milli), slide it right.</p>
+<p>The second half of this section is the <strong>decibel (dB)</strong>, the way radio people compare power levels. Decibels are logarithmic, which sounds scary and is not, because you only need three anchors:</p>
+<ul><li><strong>3 dB = double the power.</strong> 5 watts to 10 watts is 3 dB.</li><li><strong>10 dB = ten times the power.</strong> 20 watts to 200 watts is 10 dB.</li><li>Negative works the same in reverse: 12 watts down to 3 watts is two halvings, or <strong>-6 dB</strong>.</li></ul>
+<p>Stack them for everything else. 100 times the power? That is 10 dB + 10 dB = 20 dB. Four times? 3 + 3 = 6 dB.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T5B)</span> 1.5 A = 1500 mA. 1,500,000 Hz = 1500 kHz. 1 kV = 1000 V. 1 µV = one millionth of a volt. 500 mW = 0.5 W. 3000 mA = 3 A. 3.525 MHz = 3525 kHz. 28400 kHz = 28.400 MHz. 2425 MHz = 2.425 GHz. 1,000,000 pF = 1 µF. Decibels: 3 dB doubles power (5 W to 10 W), 10 dB is ten times (20 W to 200 W), 12 W to 3 W is -6 dB.</p></aside><section class="check" id="check-3.2"><h3>Knowledge Check 3.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. Your handheld draws 1.4 amperes on transmit. How many milliamperes is that?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>14 mA</button><button class="opt" data-letter="b"><span class="letter">b</span>140 mA</button><button class="opt" data-letter="c"><span class="letter">c</span>1400 mA</button><button class="opt" data-letter="d"><span class="letter">d</span>14,000 mA</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. You upgrade from a 5-watt handheld to a 50-watt mobile. What is the power increase in dB?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>3 dB</button><button class="opt" data-letter="b"><span class="letter">b</span>6 dB</button><button class="opt" data-letter="c"><span class="letter">c</span>10 dB</button><button class="opt" data-letter="d"><span class="letter">d</span>45 dB</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Which is the same as 28400 kHz?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>2.84 MHz</button><button class="opt" data-letter="b"><span class="letter">b</span>28.400 MHz</button><button class="opt" data-letter="c"><span class="letter">c</span>284.00 MHz</button><button class="opt" data-letter="d"><span class="letter">d</span>28,400 MHz</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-3"><h2><span class="secnum">3.3</span>The One Law</h2><p>Ray writes three letters on the whiteboard in a triangle: E on top, I and R on the bottom.</p>
+<p><strong>Ohm&#x27;s Law</strong> ties voltage (E), current (I), and resistance (R) together. Cover the one you want, and the triangle shows you the math:</p>
+<ul><li><strong>E = I x R</strong> (voltage = current times resistance)</li><li><strong>I = E / R</strong> (current = voltage divided by resistance)</li><li><strong>R = E / I</strong> (resistance = voltage divided by current)</li></ul>
+<p>Then he fires drills at you until the triangle is reflex:</p>
+<ul><li>90 volts pushing 3 amps: R = 90 / 3 = <strong>30 ohms</strong>.</li><li>12 volts across a circuit drawing 1.5 amps: R = 12 / 1.5 = <strong>8 ohms</strong>.</li><li>120 volts across 80 ohms: I = 120 / 80 = <strong>1.5 amps</strong>.</li><li>200 volts across 100 ohms: I = 200 / 100 = <strong>2 amps</strong>.</li><li>0.5 amps through 2 ohms: E = 0.5 x 2 = <strong>1 volt</strong>.</li><li>2 amps through 10 ohms: E = 2 x 10 = <strong>20 volts</strong>.</li></ul>
+<p>Every exam version asks at least one of these, and they are free points for anyone who can divide.</p>
+<p>Last concept: how components share a circuit. In a <strong>series</strong> circuit, components are in a single line, so the <strong>current is the same through all of them</strong>. In a <strong>parallel</strong> circuit, components sit side by side across the same two points, so the <strong>voltage is the same across all of them</strong>. Ray&#x27;s shorthand: series shares current, parallel shares voltage.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T5D)</span> E = I x R, I = E / R, R = E / I. Worked values above match the pool problems. Series circuit: same current through all components. Parallel circuit: same voltage across all components.</p></aside><section class="check" id="check-3.3"><h3>Knowledge Check 3.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. A mobile radio draws 10 amps from a 12-volt system. What is the effective resistance of the load?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>120 ohms</button><button class="opt" data-letter="b"><span class="letter">b</span>1.2 ohms</button><button class="opt" data-letter="c"><span class="letter">c</span>0.83 ohms</button><button class="opt" data-letter="d"><span class="letter">d</span>22 ohms</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What current flows through a 24-ohm resistor connected across 240 volts?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>0.1 amps</button><button class="opt" data-letter="b"><span class="letter">b</span>10 amps</button><button class="opt" data-letter="c"><span class="letter">c</span>24 amps</button><button class="opt" data-letter="d"><span class="letter">d</span>5760 amps</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. In which circuit type is the voltage the same across every component?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Series</button><button class="opt" data-letter="b"><span class="letter">b</span>Parallel</button><button class="opt" data-letter="c"><span class="letter">c</span>Resonant</button><button class="opt" data-letter="d"><span class="letter">d</span>Open</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-4"><h2><span class="secnum">3.4</span>Power Math and Two Energy Tanks</h2><p>Back to the ammo can. &quot;The radio manual says 22 amps max draw at 13.8 volts,&quot; Ray says. &quot;How much power is that?&quot;</p>
+<p>The power formula: <strong>P = I x E</strong> (power = current times voltage). So 22 x 13.8 is right around 300 watts of DC input. The pool versions you should be able to do cold:</p>
+<ul><li>13.8 volts at 10 amps: <strong>138 watts</strong>.</li><li>12 volts at 2.5 amps: <strong>30 watts</strong>.</li><li>And in reverse: how much current delivers 120 watts at 12 volts? I = P / E = 120 / 12 = <strong>10 amps</strong>.</li></ul>
+<p>That reverse version is the one you will use constantly, because it converts a radio&#x27;s power rating into the current its wiring and fuses must carry.</p>
+<p>Two more components store energy instead of using it, and the exam wants their vocabulary:</p>
+<ul><li><strong>Capacitance</strong> is the ability to store energy in an <strong>electric field</strong>, measured in <strong>farads</strong>. Capacitors are the sprinters: charge fast, dump fast.</li><li><strong>Inductance</strong> is the ability to store energy in a <strong>magnetic field</strong>, measured in <strong>henrys</strong>. Inductors are coils of wire, and they resist changes in current.</li></ul>
+<p>And one word that will follow you all the way to Extra class: <strong>impedance</strong>, the opposition to AC current flow, measured in <strong>ohms</strong>. Your radio expects to see about 50 ohms of it looking into the feed line. For now, just own the definition and the unit.</p>
+<p>Housekeeping the exam checks: the correct abbreviations are <strong>kHz</strong> (lowercase k, capital H, lowercase z) and <strong>MHz</strong> (capital M, capital H, lowercase z). RF is alternating current at radio frequencies, and its unit of frequency is still the hertz.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T5C)</span> P = I x E. 13.8 V at 10 A = 138 W. 12 V at 2.5 A = 30 W. 120 W at 12 V requires 10 A. Capacitance: energy stored in an electric field, unit farad. Inductance: energy stored in a magnetic field, unit henry. Impedance: opposition to AC current flow, unit ohm. Abbreviations: kHz and MHz.</p></aside><section class="check" id="check-3.4"><h3>Knowledge Check 3.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. Your radio manual lists 20 amps of transmit current draw on a 13.8-volt supply. Approximately how much power is that?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>34 watts</button><button class="opt" data-letter="b"><span class="letter">b</span>138 watts</button><button class="opt" data-letter="c"><span class="letter">c</span>276 watts</button><button class="opt" data-letter="d"><span class="letter">d</span>500 watts</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Which component stores energy in a magnetic field, and what is its unit?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Capacitor, farad</button><button class="opt" data-letter="b"><span class="letter">b</span>Inductor, henry</button><button class="opt" data-letter="c"><span class="letter">c</span>Resistor, ohm</button><button class="opt" data-letter="d"><span class="letter">d</span>Battery, ampere-hour</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">3. What is impedance?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The opposition to AC current flow, measured in ohms</button><button class="opt" data-letter="b"><span class="letter">b</span>The inverse of resistance</button><button class="opt" data-letter="c"><span class="letter">c</span>Power handling capacity</button><button class="opt" data-letter="d"><span class="letter">d</span>Stored charge</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T5A</span> Current: flow of electrons, measured in amperes. Voltage: the force that causes electron flow, measured in volts. Power: the rate at which electrical energy is used, measured in watts. Frequency: cycles per second of an alternating current, measured in hertz. DC flows one direction, AC alternates between positive and negative directions. Metals conduct because of many free electrons; glass is a good insulator. Resistance opposes all current: DC, AC, and RF.</p></div><div class="anchor review"><p><span class="anchor-lead">T5B</span> 1.5 A = 1500 mA. 1,500,000 Hz = 1500 kHz. 1 kV = 1000 V. 1 µV = one millionth of a volt. 500 mW = 0.5 W. 3000 mA = 3 A. 3.525 MHz = 3525 kHz. 28400 kHz = 28.400 MHz. 2425 MHz = 2.425 GHz. 1,000,000 pF = 1 µF. Decibels: 3 dB doubles power (5 W to 10 W), 10 dB is ten times (20 W to 200 W), 12 W to 3 W is -6 dB.</p></div><div class="anchor review"><p><span class="anchor-lead">T5D</span> E = I x R, I = E / R, R = E / I. Worked values above match the pool problems. Series circuit: same current through all components. Parallel circuit: same voltage across all components.</p></div><div class="anchor review"><p><span class="anchor-lead">T5C</span> P = I x E. 13.8 V at 10 A = 138 W. 12 V at 2.5 A = 30 W. 120 W at 12 V requires 10 A. Capacitance: energy stored in an electric field, unit farad. Inductance: energy stored in a magnetic field, unit henry. Impedance: opposition to AC current flow, unit ohm. Abbreviations: kHz and MHz.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You can now speak the language (volts, amps, ohms, watts), slide decimal points with the metric prefixes, use dB anchors to compare power, work the Ohm&#x27;s Law triangle, and calculate power and current for real equipment. Ray&#x27;s fuse question is now answerable: a radio drawing 22 amps needs wiring and a fuse rated comfortably above that, and you calculated it rather than guessed.</p>
+<p>Module 4 opens the parts bin: resistors, capacitors, inductors, diodes, transistors, and the schematic symbols that let you read a circuit like a map.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S1): with a multimeter, measure your own radio&#x27;s actual current draw on receive and on transmit at each power level. Compare against the manual. This is the measurement that sizes every fuse and battery you will ever choose.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 3 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-02.html">Previous module</a><a class="navlink" href="tech-module-04.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m03";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 3 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

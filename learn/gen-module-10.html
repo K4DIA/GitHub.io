@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 10: Safety at HF Power | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 10 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 10: Safety at HF Power</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G0 (Electrical and RF Safety). Two questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray walks the whole station one last time, hand trailing along the bonding strap. &quot;Technician safety was about not getting hurt by a radio,&quot; he says. &quot;General safety is about running a hundred watts, or fifteen hundred, next to people you love, forever, with total confidence that nobody is being cooked, shocked, or surprised. It is the same rules with bigger numbers, so we finish where we started: nobody gets hurt.&quot;</p></div>
+<section class="module-section" id="s10-1"><h2><span class="secnum">10.1</span>RF Exposure, Now That You Have Real Power</h2><p>The Technician foundation stands: RF is non-ionizing, and its effect on the body is <strong>heating tissue</strong>. What changes at General is that your power and your antennas got serious, so the evaluation becomes personal engineering instead of a checkbox.</p>
+<p>Whether a signal exceeds the <strong>maximum permissible exposure (MPE)</strong> limits depends on its frequency, its power density, and its duty cycle. All of these, the same three-legged stool from Technician, now supporting 100-watt legs. The evaluation methods also carry over intact: calculation per FCC OET Bulletin 65, computer modeling, or measurement with calibrated field-strength equipment. All acceptable.</p>
+<p>The concepts that do the heavy lifting at HF power:</p>
+<ul><li><strong>Duty cycle</strong> remains the percentage of time transmitting during the averaging period, and its practical consequence is stated plainly: a <strong>lower duty cycle permits greater power levels</strong> for the same average exposure. A CW conversation at 50 percent duty and low key-down density exposes far less than the same power of key-down FT8, which is Module 6&#x27;s finals-cooking warning wearing its safety hat.</li><li><strong>Time averaging</strong> is the principle underneath: RF exposure is averaged over time, because the hazard is cumulative heating, not instantaneous fields. Bodies, like transistors, care about average power.</li></ul>
+<p>The obligations, and they are yours:</p>
+<ul><li>Perform the routine station evaluation to determine whether your station complies with MPE limits, and repeat it when anything in the transmitter or antenna system changes.</li><li>If the evaluation shows exposure limits exceeded where people can be, <strong>take action to prevent human exposure</strong>: relocate the antenna, reduce power, restrict access to the area, or fence the time people spend there. Two specific versions the exam names: if a directional antenna&#x27;s main lobe would exceed limits at a neighbor&#x27;s location, <strong>ensure the antenna cannot be pointed in their direction</strong>; and an <strong>indoor transmitting antenna</strong> demands verifying that MPE limits are not exceeded in <strong>occupied areas</strong>, because indoors, everywhere is the near field. The fix is required, not suggested.</li><li>Before working on an antenna, make sure transmitters that feed it <strong>cannot transmit</strong>: powered down, disconnected, and everyone in the household briefed. An antenna under maintenance is an antenna off the air, no exceptions, which also finishes the RF burn story from Technician: the burn happens when the antenna and the hand meet during transmission, so the rule ensures they never can.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G0A)</span> RF affects the body by heating tissue. MPE depends on frequency, power density, and duty cycle (all). Evaluate by Bulletin 65 calculation, modeling, or calibrated measurement (all). Lower duty cycle permits higher power for the same exposure; exposure is time-averaged. Re-evaluate after station changes. If limits are exceeded, take action to prevent human exposure: relocating antennas is the named remedy, a directional antenna must not be pointable at an over-limit neighbor location, and indoor antennas require MPE compliance in occupied areas. Antenna work: turn off the transmitter and disconnect the feed line. Touching a transmitting antenna: RF burn.</p></aside><section class="check" id="check-10.1"><h3>Knowledge Check 10.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="d"><p class="qtext">1. Which factors determine whether your signal exceeds MPE limits?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Frequency only</button><button class="opt" data-letter="b"><span class="letter">b</span>Power density only</button><button class="opt" data-letter="c"><span class="letter">c</span>Duty cycle only</button><button class="opt" data-letter="d"><span class="letter">d</span>All of these</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. How does a lower transmit duty cycle affect permitted power?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It has no effect</button><button class="opt" data-letter="b"><span class="letter">b</span>It permits greater power levels for the same average exposure</button><button class="opt" data-letter="c"><span class="letter">c</span>It requires lower power</button><button class="opt" data-letter="d"><span class="letter">d</span>It doubles the averaging period</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Your evaluation shows the MPE limit is exceeded in a corner of the yard. What must you do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Nothing; evaluations are advisory</button><button class="opt" data-letter="b"><span class="letter">b</span>Take action to prevent human exposure in that area</button><button class="opt" data-letter="c"><span class="letter">c</span>File the result with the FCC</button><button class="opt" data-letter="d"><span class="letter">d</span>Post the result on your license</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s10-2"><h2><span class="secnum">10.2</span>Wiring, Generators, and the Tower, at Full Scale</h2><p>The electrical rules scale up from Technician with numbers attached.</p>
+<p><strong>Wiring</strong> by the book:</p>
+<ul><li>Fuses and circuit breakers go in series with the <strong>hot conductor only</strong>, the Technician rule unchanged and worth repeating forever.</li><li>Wire gauge now has values: <strong>AWG 12 for a 20-ampere circuit, AWG 10 for 30 amperes</strong>, and the rule runs both directions: <strong>AWG 14 wire must be protected by a fuse or breaker of no more than 15 amperes</strong>. Wire is rated by what warms it, and the fuse from Technician Module 10 is still protecting the wire, not the radio.</li><li>Inside equipment, two capacitor disciplines: <strong>bleeder resistors</strong> (Module 5) discharge supply capacitors at power-off, and before working inside high-voltage equipment you verify the discharge yourself with a meter rated for the job. <strong>Interlocks</strong>, whose purpose is to <strong>remove dangerous voltages when the cabinet is opened</strong>, are respected, never defeated.</li><li>One bench-habit rule the exam likes: after soldering, <strong>wash your hands</strong>. Lead-tin solder is a skin-contact and hand-to-mouth hazard, and the cure costs thirty seconds of soap.</li></ul>
+<p><strong>Generators</strong> power the emergency station and bring two killers to manage. The first is <strong>carbon monoxide</strong>: a generator runs <strong>outdoors, well away from building openings</strong>, windows, doors, and vents, full stop. The second is invisible from your side of the meter: when a generator powers your house, you must <strong>disconnect the incoming utility power feed</strong> first. Backfeeding the grid can energize &quot;dead&quot; lines and kill the lineworker restoring your neighborhood, which makes the transfer switch the most important safety device in your emergency power plan.</p>
+<p><strong>The tower</strong> repeats the Technician discipline with the crew formalized:</p>
+<ul><li>Climbing gear, harness and lanyards, is <strong>inspected before each use</strong>, and the climber maintains <strong>100 percent tie-off</strong> at all times, with tools raised on a line rather than carried in hand.</li><li>The ground crew is part of the safety system: anyone standing below wears a <strong>hard hat and safety glasses</strong> the entire time someone is aloft. Dropped wrenches obey Module 10 of the Technician course: gravity is also a hazard.</li><li>Grounding at full scale: each tower leg gets its <strong>own ground rod, all bonded together</strong>, with lightning conductors run short and direct, <strong>avoiding sharp bends</strong> (lightning, all rise-time and no patience, treats a sharp bend as an inductor and jumps it), and <strong>lightning arrestors on a grounded panel where the feed lines enter the building</strong>. Every element of that sentence appeared somewhere earlier in your training; here it assembles into one drawing, which is exactly what your capstone&#x27;s station-design documentation asks you to produce.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G0B)</span> Fuses and breakers: hot conductor only. AWG 12 for 20 A; AWG 10 for 30 A; AWG 14 fused at no more than 15 A. Discharge and verify capacitors before internal work; respect interlocks. Wash hands after handling lead solder. Generators: outdoors, away from building openings, because of carbon monoxide; disconnect the incoming utility feed before powering the house. Climbing gear inspected before each use; 100 percent tie-off; ground crew in hard hats and safety glasses. Tower grounding: a bonded rod per leg, short direct conductors avoiding sharp bends, arrestors on a grounded entry panel.</p></aside><section class="check" id="check-10.2"><h3>Knowledge Check 10.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. What wire gauge does a 20-ampere circuit require?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>AWG 16</button><button class="opt" data-letter="b"><span class="letter">b</span>AWG 14</button><button class="opt" data-letter="c"><span class="letter">c</span>AWG 12</button><button class="opt" data-letter="d"><span class="letter">d</span>AWG 8</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. Where does an emergency generator belong while running?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>In the garage with the door cracked</button><button class="opt" data-letter="b"><span class="letter">b</span>In the basement near the panel</button><button class="opt" data-letter="c"><span class="letter">c</span>Outdoors, well away from building openings</button><button class="opt" data-letter="d"><span class="letter">d</span>Anywhere, if it has a catalytic muffler</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What must the ground crew wear while someone works on the tower?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Rubber gloves</button><button class="opt" data-letter="b"><span class="letter">b</span>Hard hat and safety glasses</button><button class="opt" data-letter="c"><span class="letter">c</span>A climbing harness</button><button class="opt" data-letter="d"><span class="letter">d</span>High-voltage boots</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s"><h2><span class="secnum"></span>You Made It, Again</h2><p>Ten modules, ten subelements, all 35 questions&#x27; worth of General material, taught the same way the Technician course taught: story first, exam anchor always, hands on wherever hands fit.</p>
+<p>Ray&#x27;s send-off is shorter this time, because you need less. &quot;Book the exam. Sign &#x27;/AG&#x27; the same afternoon. Then get the capstone done while the bands are open: three bands, two modes, one DX contact, on an antenna you built. And start noticing which new hams at the club could use an Elmer, because the next course asks you to become one.&quot;</p>
+<p><strong>Next steps:</strong></p>
+<ul><li>Practice exams until the misses stop clustering. Reread sections, not answer keys.</li><li>Complete the General Skills Track and the 24-hour station capstone from the curriculum page.</li><li>When the Extra segments at the band edges start taunting you, and they will, the Extra course is next.</li></ul>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G0A</span> RF affects the body by heating tissue. MPE depends on frequency, power density, and duty cycle (all). Evaluate by Bulletin 65 calculation, modeling, or calibrated measurement (all). Lower duty cycle permits higher power for the same exposure; exposure is time-averaged. Re-evaluate after station changes. If limits are exceeded, take action to prevent human exposure: relocating antennas is the named remedy, a directional antenna must not be pointable at an over-limit neighbor location, and indoor antennas require MPE compliance in occupied areas. Antenna work: turn off the transmitter and disconnect the feed line. Touching a transmitting antenna: RF burn.</p></div><div class="anchor review"><p><span class="anchor-lead">G0B</span> Fuses and breakers: hot conductor only. AWG 12 for 20 A; AWG 10 for 30 A; AWG 14 fused at no more than 15 A. Discharge and verify capacitors before internal work; respect interlocks. Wash hands after handling lead solder. Generators: outdoors, away from building openings, because of carbon monoxide; disconnect the incoming utility feed before powering the house. Climbing gear inspected before each use; 100 percent tie-off; ground crew in hard hats and safety glasses. Tower grounding: a bonded rod per leg, short direct conductors avoiding sharp bends, arrestors on a grounded entry panel.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  
+  <aside class="skills"><p>Skills Track tie-in (G-S1, G-S5, capstone): perform the full RF exposure evaluation for your commissioned station and file it with your station documentation, then walk your grounding against Section 10.2&#x27;s drawing. The General sign-off requires both, and doing them now means your Extra-class station engineering project starts from a documented baseline.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 10 complete</button>
+    <div class="pager"><a class="navlink" href="gen-module-09.html">Previous module</a><span></span></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m10";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 10 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

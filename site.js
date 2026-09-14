@@ -63,8 +63,11 @@
 
     // Scrolling past a section turns the dial to it, so the panel keeps
     // saying where you are rather than where you last clicked.
+    // Rows that leave the page (the courses) have no section to watch, so
+    // they take a null slot and the observer simply skips them.
     var targets = rows.map(function (r) {
-      return document.querySelector(r.getAttribute("href"));
+      var href = r.getAttribute("href");
+      return href.charAt(0) === "#" ? document.querySelector(href) : null;
     });
 
     if ("IntersectionObserver" in window) {

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Extra Course, Module 10: Safety, One Last Time | K4DIA</title>
+<style>:root { --accent: #4A4494; --accent-dark: #37326E; --tint: #F0EFF8; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-extra.html"><svg class="rank" width="17" height="20" viewBox="0 0 20 24.0" aria-label="Level 3 mark" role="img"><path d="M3 21.0 L10 14.0 L17 21.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Extra course</a>
+  <span>Module 10 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Extra Course, Module 10: Safety, One Last Time</h1>
+  <p class="covers">Covers NCVEC 2024-2028 Extra Pool, Subelement E0 (Safety). One question on your exam comes from this material. All twelve questions in the pool group deserve knowing anyway.</p>
+</header>
+<div class="intro"><p>Ray does not roll up his sleeve this time. He just taps the pale wrench-shaped scar through the fabric. &quot;Three courses, three safety modules, and the exam is down to one question because by now it assumes you know. This module makes sure the assumption is true, and then we are done. Almost.&quot;</p></div>
+<section class="module-section" id="s10-1"><h2><span class="secnum">10.1</span>RF Exposure, the Extra Refinements</h2><p>The foundation stands from two courses back: RF is non-ionizing, lacking the energy to cause genetic damage, and its hazard is heating. The Extra pool adds the professional vocabulary and the professional situations:</p>
+<ul><li><strong>SAR</strong>, the specific absorption rate, is the measure of <strong>the rate at which RF energy is absorbed by the body</strong>, the quantity underneath every exposure limit you have calculated since Technician. The limits vary with frequency because absorption does, with the body&#x27;s unfortunate efficiency near 50 MHz still setting the strictest limit.</li><li>The exposure limits split into two environments, and the split is the exam&#x27;s favorite question: <strong>controlled environments</strong> (people who are aware of the RF exposure and can exercise control over it, meaning you and your household) versus <strong>uncontrolled environments</strong> (everyone else: neighbors, passersby, people who never agreed to be near an antenna). The <strong>uncontrolled limits are stricter</strong>, precisely because those people are unaware and cannot control their exposure. Your evaluation from the General course was silently computing both boundaries; now you know why the yard-facing number was smaller.</li><li><strong>Time averaging</strong> keeps its role: exposure is assessed as an average over the measurement period, which is why duty cycle keeps buying margin, and why the averaging windows differ between the two environments (shorter for controlled, longer for uncontrolled).</li><li>The professional courtesy rule: before working on a tower or antenna near <strong>someone else&#x27;s transmitting antenna</strong>, coordinate with that station&#x27;s operator to ensure their transmitters <strong>cannot transmit while you are aloft</strong>. Your own lockout discipline from the General course, extended across property lines. Multi-tenant sites run on this rule.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E0A, part 1)</span> SAR: the rate at which the body absorbs RF energy. Controlled environment: people aware of exposure who can control it; uncontrolled: people unaware, hence stricter limits. Exposure is time-averaged, with different averaging periods per environment. Coordinate with other stations&#x27; operators so their transmitters cannot transmit during your antenna work. RF remains non-ionizing: insufficient energy for genetic damage; touching a radiating antenna still means an RF burn.</p></aside><section class="check" id="check-10.1"><h3>Knowledge Check 10.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is SAR?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The station antenna ratio</button><button class="opt" data-letter="b"><span class="letter">b</span>The rate at which RF energy is absorbed by the body</button><button class="opt" data-letter="c"><span class="letter">c</span>The spurious attenuation requirement</button><button class="opt" data-letter="d"><span class="letter">d</span>Solar activity rating</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why are uncontrolled-environment MPE limits stricter than controlled ones?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Uncontrolled environments have better antennas</button><button class="opt" data-letter="b"><span class="letter">b</span>People there are unaware of the exposure and cannot control it</button><button class="opt" data-letter="c"><span class="letter">c</span>The FCC doubles all outdoor limits</button><button class="opt" data-letter="d"><span class="letter">d</span>Controlled environments are indoors</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Before climbing near another operator&#x27;s transmitting antenna, you must:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Wear an RF exposure meter</button><button class="opt" data-letter="b"><span class="letter">b</span>Coordinate so their transmitters cannot transmit during the work</button><button class="opt" data-letter="c"><span class="letter">c</span>File an FCC notification</button><button class="opt" data-letter="d"><span class="letter">d</span>Limit your time aloft to 6 minutes</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s10-2"><h2><span class="secnum">10.2</span>The Materials That Bite, and the Send-Off</h2><p>Two hazardous materials hide inside the equipment an Extra is most likely to open:</p>
+<ul><li><strong>Beryllium oxide</strong>, the white ceramic insulator in some RF power devices and older microwave components: an excellent thermal conductor, and <strong>toxic if its dust is inhaled</strong>, which happens when it is crushed, ground, or broken. The rule is absolute: never crush, sand, or machine the white ceramic from RF equipment, and treat unknown white insulators in power devices as beryllium oxide until proven otherwise.</li><li><strong>Polychlorinated biphenyls (PCBs)</strong>, in the oil of some older transformers and high-voltage capacitors: the vintage gear hazard. Leaking oil from old iron gets handled as hazardous material, not shop rags.</li></ul>
+<p>Add the solder-and-soap rule from the General course and the capacitor discipline from all three, and the Extra&#x27;s bench hazards are fully mapped. The pattern held for three courses: every safety rule is a story someone else already paid for.</p></section><section class="module-section" id="s"><h2><span class="secnum"></span>The Send-Off</h2><p>Ray keys the microphone one last time in your presence, gives his call, and then does something he has never done: he hands you the logbook instead of the microphone.</p>
+<p>&quot;Thirty modules ago, the deal was that the license opens the door and the training walks you through it. You are through it. So here is the last lesson, and it is the first one wearing different clothes: the FCC keeps this service alive because it maintains a pool of trained operators. You are the pool now. The exam you are about to pass is the last one you take and the first one you give.&quot;</p>
+<p><strong>The finish line, in order:</strong></p>
+<ul><li>Pass Element 4. Fifty questions, thirty-seven to pass, and ten modules say you are past ready.</li><li>Complete the Extra Skills Track: the measurements (E-S1), the modeled-built-measured antenna (E-S2), the homebrew project (E-S3), the specialized contact (E-S4), the engineered station documentation (E-S5).</li><li>Then the requirement that makes this program different from a license manual: <strong>E-S6</strong>. Get accredited, sit at an exam session, and Elmer one Technician candidate through the same Skills Track that started your journey. Teach one module of this curriculum to somebody.</li></ul>
+<p>The written examination was the legal entry point three licenses ago. Everything after it was the point. Somewhere out there is a newly licensed operator holding a handheld that receives only silence, not knowing what to program, what to say, or whether the radio even works, and about to give up. You were that operator once.</p>
+<p>Go be Ray.</p></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">E0A, part 1</span> SAR: the rate at which the body absorbs RF energy. Controlled environment: people aware of exposure who can control it; uncontrolled: people unaware, hence stricter limits. Exposure is time-averaged, with different averaging periods per environment. Coordinate with other stations&#x27; operators so their transmitters cannot transmit during your antenna work. RF remains non-ionizing: insufficient energy for genetic damage; touching a radiating antenna still means an RF burn.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  
+  
+  <div class="finish">
+    <button id="complete" type="button">Mark module 10 complete</button>
+    <div class="pager"><a class="navlink" href="extra-module-09.html">Previous module</a><span></span></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-extra-m10";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 10 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 7: Antennas and Feed Lines | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 7 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 7: Antennas and Feed Lines</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T9 (Antennas and Feed Lines). Two questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray holds up two radios. &quot;Fifty-watt mobile into the rubber duck antenna off your handheld. Five-watt handheld into the antenna on my roof. Which one talks farther?&quot;</p>
+<p>The roof wins, every time, by a lot. &quot;Money spent on the antenna beats money spent on the radio,&quot; he says. &quot;This module is why.&quot;</p></div>
+<section class="module-section" id="s7-1"><h2><span class="secnum">7.1</span>How an Antenna Works</h2><p>An antenna is a resonant structure, and Module 4&#x27;s tuned circuit is hiding inside it: the wire&#x27;s own inductance and capacitance make it resonate, and resonance depends on length.</p>
+<p>The master relationship: <strong>antenna length and frequency are inversely related.</strong> A dipole cut for a lower frequency is longer; shortening a dipole increases its resonant frequency. When your antenna is resonant too low, you trim it. Too high, you add wire. Every antenna adjustment you ever make flows from that one rule.</p>
+<p>The workhorse is the <strong>half-wave dipole</strong>: a wire split in the middle and fed at the center. Its radiation is not equal in all directions. A dipole radiates strongest broadside to the antenna, off the sides of the wire, and weakest off the ends. Point the side of your dipole at the station you want.</p>
+<p><strong>Polarization</strong> carries over from Module 2, and the antenna is where it comes from: polarization is described by the orientation of the electric field, which follows the orientation of the antenna&#x27;s elements. Vertical element, vertical wave. That is why mobile and repeater antennas stand up straight and weak-signal VHF beams lie flat.</p>
+<p>Sometimes a full-size antenna will not fit, especially on a vehicle. <strong>Antenna loading</strong> is the fix: electrically lengthening an antenna by inserting inductors in the radiating elements. The coil in the middle of a short mobile whip is doing exactly that, letting a four-foot antenna behave like a longer one. Loading is a compromise, trading efficiency for size, but it is the compromise that makes mobile HF possible at all.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T9A, part 1)</span> Antenna length and resonant frequency are inversely related; shortening a dipole raises its resonant frequency. A half-wave dipole radiates strongest broadside to the antenna. Polarization is described by the orientation of the electric field. Antenna loading: electrically lengthening by inserting inductors in radiating elements.</p></aside><section class="check" id="check-7.1"><h3>Knowledge Check 7.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Your dipole is resonant slightly below the frequency you want. What do you do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Lengthen it</button><button class="opt" data-letter="b"><span class="letter">b</span>Shorten it</button><button class="opt" data-letter="c"><span class="letter">c</span>Add a loading coil</button><button class="opt" data-letter="d"><span class="letter">d</span>Raise it higher</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. Where does a half-wave dipole radiate its strongest signal?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Off the ends of the wire</button><button class="opt" data-letter="b"><span class="letter">b</span>Straight up only</button><button class="opt" data-letter="c"><span class="letter">c</span>Broadside to the antenna</button><button class="opt" data-letter="d"><span class="letter">d</span>Equally in all directions</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. The coil in the middle of a short mobile whip is there to:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Filter harmonics</button><button class="opt" data-letter="b"><span class="letter">b</span>Electrically lengthen the antenna</button><button class="opt" data-letter="c"><span class="letter">c</span>Reduce wind load</button><button class="opt" data-letter="d"><span class="letter">d</span>Match polarization</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s7-2"><h2><span class="secnum">7.2</span>Gain, Beams, and the Antennas You Will Actually Own</h2><p><strong>Antenna gain</strong> is the increase in signal strength in a specified direction compared to a reference antenna. Read that carefully: gain is not free power added to your transmitter. An antenna with gain takes the same energy and concentrates it, like squeezing a balloon: more in the favored direction, less everywhere else.</p>
+<p>An antenna that concentrates signals in one direction is a <strong>beam antenna</strong>, and the classic beam is the <strong>Yagi</strong>, the TV-antenna-looking array of parallel elements. Of the common antenna types, the Yagi offers the greatest gain. Ray&#x27;s tape-measure foxhunt antenna from Module 6 is a Yagi built from a hardware store.</p>
+<p>The verticals ladder, from weakest to strongest:</p>
+<ul><li>The handheld&#x27;s stock <strong>rubber duck</strong> is the bottom rung: compared to a full-size quarter-wave, its disadvantage is low efficiency. It hears less and talks less, and it is the first thing worth upgrading. Related trap: using a handheld inside a vehicle without an external antenna means your signal is reduced by the shielding effect of the vehicle&#x27;s metal body.</li><li>The <strong>quarter-wave vertical</strong> is the honest standard. On 2 meters it is about 19 inches long, and 19 inches is popular for exactly that reason: it is a resonant quarter wavelength at 146 MHz. Check it against Module 2&#x27;s math: 300/146 is about 2 meters, a quarter of that is about half a meter, and half a meter is about 19 inches. The formula keeps paying rent.</li><li>The <strong>5/8-wave whip</strong> is the mobile upgrade: compared to a quarter-wave, its advantage is more gain, flattening the radiation pattern toward the horizon where the repeaters live.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T9A, part 2)</span> Antenna gain: increased signal strength in a specified direction versus a reference antenna. Beam antenna: concentrates signals in one direction; the Yagi has the greatest gain of the common types. Handheld flexible antennas have low efficiency; a handheld used inside a vehicle loses signal to the vehicle&#x27;s shielding. A 19-inch vertical is a resonant quarter-wave on 2 meters. A 5/8-wave mobile whip&#x27;s advantage over a quarter-wave is more gain.</p></aside><section class="check" id="check-7.2"><h3>Knowledge Check 7.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is antenna gain?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Extra power the antenna adds to the transmitter</button><button class="opt" data-letter="b"><span class="letter">b</span>Increased signal strength in a specified direction compared to a reference antenna</button><button class="opt" data-letter="c"><span class="letter">c</span>The antenna&#x27;s efficiency percentage</button><button class="opt" data-letter="d"><span class="letter">d</span>The ratio of SWR to impedance</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. Which antenna type offers the greatest gain?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Quarter-wave vertical</button><button class="opt" data-letter="b"><span class="letter">b</span>J-pole</button><button class="opt" data-letter="c"><span class="letter">c</span>Yagi</button><button class="opt" data-letter="d"><span class="letter">d</span>Rubber duck</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why is a 19-inch whip the standard 2-meter mobile antenna?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It fits in a glovebox</button><button class="opt" data-letter="b"><span class="letter">b</span>It is a resonant quarter wavelength at 2-meter frequencies</button><button class="opt" data-letter="c"><span class="letter">c</span>FCC rules limit mobile antennas to 19 inches</button><button class="opt" data-letter="d"><span class="letter">d</span>It matches all polarizations</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s7-3"><h2><span class="secnum">7.3</span>The Feed Line&#x27;s Job</h2><p>Between radio and antenna runs the feed line, and its whole job is to deliver power without losing or radiating it along the way.</p>
+<p><strong>Coaxial cable</strong> dominates amateur stations because it is easy to use and requires few special installation considerations: run it along a wall, tape it to a mast, bury it in conduit, and it does not care. The standard impedance of amateur coax is <strong>50 ohms</strong>, matching what your transceiver expects.</p>
+<p>But coax charges rent, and the rent goes up with frequency: as the frequency of a signal in coax increases, the loss increases. Cable choice therefore matters more at VHF and UHF than at HF:</p>
+<ul><li><strong>RG-213</strong> has less loss than skinny RG-58 at any given frequency. Thin cable is for short jumpers, not fifty-foot runs.</li><li><strong>Foam-dielectric</strong> coax has less loss per foot than solid-dielectric.</li><li><strong>Air-insulated hardline</strong> is the lowest-loss feed line available, the choice for long runs to serious VHF/UHF antennas.</li></ul>
+<p>Connectors are chosen by frequency and sealed against weather:</p>
+<ul><li>The <strong>PL-259</strong> is the standard connector at HF and VHF. It is not waterproof, and neither is anything else: all coax connectors used outdoors, PL-259, BNC, and Type N alike, should be carefully taped for weather protection, because Module 5 already taught you what moisture does to coax.</li><li>Above 400 MHz, the <strong>Type N</strong> connector is the right choice, built for UHF and beyond.</li></ul>
+<p><strong>SWR</strong> returns one more time for its definition: a measure of how well a load is matched to a transmission line. When the match is poor, an <strong>antenna tuner</strong> (antenna coupler) can help, and its major function is matching the antenna system impedance to the transceiver&#x27;s 50-ohm output. Be clear about what that means: the tuner makes the <em>radio</em> happy at the <em>radio end</em>. It does not fix the antenna, and any loss in the mismatched line is still being paid. A tuner is a diplomat, not a repairman.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T9B)</span> Coax is the most common feed line because it is easy to use with few installation considerations; standard impedance 50 ohms. Coax loss increases as frequency increases. RG-213 has less loss than RG-58; foam dielectric has less loss than solid; air-insulated hardline has the lowest loss of all. PL-259: common at HF and VHF. Type N: best above 400 MHz. Tape all outdoor connectors for weather protection. SWR: measure of how well a load is matched to a transmission line. Antenna tuner: matches the antenna system impedance to the transceiver&#x27;s output impedance.</p></aside><section class="check" id="check-7.3"><h3>Knowledge Check 7.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. What happens to coax loss as frequency increases?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It decreases</button><button class="opt" data-letter="b"><span class="letter">b</span>It stays constant</button><button class="opt" data-letter="c"><span class="letter">c</span>It increases</button><button class="opt" data-letter="d"><span class="letter">d</span>It reverses direction</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Which connector is most suitable above 400 MHz?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>PL-259</button><button class="opt" data-letter="b"><span class="letter">b</span>Type N</button><button class="opt" data-letter="c"><span class="letter">c</span>RCA</button><button class="opt" data-letter="d"><span class="letter">d</span>DB-25</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What does an antenna tuner actually do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Retunes the antenna element to resonance</button><button class="opt" data-letter="b"><span class="letter">b</span>Matches the antenna system impedance to the transceiver&#x27;s output</button><button class="opt" data-letter="c"><span class="letter">c</span>Eliminates feed line loss</button><button class="opt" data-letter="d"><span class="letter">d</span>Increases antenna gain</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T9A, part 1</span> Antenna length and resonant frequency are inversely related; shortening a dipole raises its resonant frequency. A half-wave dipole radiates strongest broadside to the antenna. Polarization is described by the orientation of the electric field. Antenna loading: electrically lengthening by inserting inductors in radiating elements.</p></div><div class="anchor review"><p><span class="anchor-lead">T9A, part 2</span> Antenna gain: increased signal strength in a specified direction versus a reference antenna. Beam antenna: concentrates signals in one direction; the Yagi has the greatest gain of the common types. Handheld flexible antennas have low efficiency; a handheld used inside a vehicle loses signal to the vehicle&#x27;s shielding. A 19-inch vertical is a resonant quarter-wave on 2 meters. A 5/8-wave mobile whip&#x27;s advantage over a quarter-wave is more gain.</p></div><div class="anchor review"><p><span class="anchor-lead">T9B</span> Coax is the most common feed line because it is easy to use with few installation considerations; standard impedance 50 ohms. Coax loss increases as frequency increases. RG-213 has less loss than RG-58; foam dielectric has less loss than solid; air-insulated hardline has the lowest loss of all. PL-259: common at HF and VHF. Type N: best above 400 MHz. Tape all outdoor connectors for weather protection. SWR: measure of how well a load is matched to a transmission line. Antenna tuner: matches the antenna system impedance to the transceiver&#x27;s output impedance.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You now know why the roof antenna beat the fifty-watt mobile: resonance, pattern, gain, and a feed line that delivered the power instead of eating it. You also know the upgrade ladder for your own station: replace the rubber duck first, use fat coax for long runs, and seal every outdoor connector like the weather is personal.</p>
+<p>Module 8 takes everything so far and bolts it together into a working station, at the home bench and in a vehicle.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S2): build the classic first antenna, a quarter-wave ground plane or roll-up J-pole for 2 meters, and measure its SWR across the band. Cutting wire to a calculated length and watching the analyzer agree with your math is the moment this module becomes permanent.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 7 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-06.html">Previous module</a><a class="navlink" href="tech-module-08.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m07";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 7 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

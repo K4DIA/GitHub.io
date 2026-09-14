@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 8: Setting Up the Station | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 8 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 8: Setting Up the Station</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T4 (Amateur Radio Practices). Two questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>The boxes have arrived. A mobile radio, a power supply, a spool of coax, and a bag of connectors sit on your bench, and Ray is drinking your coffee this time. &quot;Everything you have learned so far was theory with a story attached,&quot; he says. &quot;Today it becomes a station. We wire it right the first time, because stations wired wrong fail at the worst possible moment.&quot;</p></div>
+<section class="module-section" id="s8-1"><h2><span class="secnum">8.1</span>Power and Wiring, Done Right</h2><p>Start with the number on the back of the radio. A typical 50-watt mobile FM transceiver needs a supply rated around <strong>13.8 volts at 12 amperes</strong>. That 13.8 is not arbitrary: it is automotive electrical system voltage, which is why mobile radios and home supplies share it.</p>
+<p>The wiring rules, each one traceable to Module 3:</p>
+<ul><li>Use <strong>short, heavy-gauge wire</strong> for the DC power connection, to minimize voltage drop when transmitting. Ohm&#x27;s Law never sleeps: thin wire has resistance, transmit current through resistance drops voltage, and the radio browns out exactly when it draws the most.</li><li>In a vehicle, connect the <strong>negative return at the battery chassis ground</strong>, not to any random screw in the dash. The engineered ground path handles the current; mystery screws cause mystery noises.</li><li>Running from a battery? Runtime is arithmetic: <strong>divide the battery&#x27;s ampere-hour rating by the average current draw</strong> of the equipment. A 20 Ah battery running gear that averages 2 amps gives roughly ten hours. This is the calculation behind every field outing you will ever plan.</li></ul>
+<p>Instrumentation goes in the signal path, not around it. An <strong>RF power meter</strong> is installed in the feed line, between the transmitter and the antenna. When choosing an SWR meter, consider the frequency and power level at which you will measure, because a meter built for HF power levels may read nonsense at UHF.</p>
+<p>One more conductor ties the station together: <strong>bonding</strong>, connecting equipment enclosures so they sit at the same RF potential. The preferred conductor for RF bonding is <strong>flat copper strap</strong>, because RF flows on the surface of conductors, and a wide flat strap has far more surface than a round wire. Wire gauge thinking is for DC; strap thinking is for RF.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T4A, part 1)</span> A 50-watt mobile transceiver needs about 13.8 V at 12 A. Short, heavy-gauge power wiring minimizes voltage drop on transmit. Mobile negative return: at the battery chassis ground. Battery runtime: ampere-hour rating divided by average current draw. RF power meter: in the feed line between transmitter and antenna. Choose an SWR meter for the frequency and power level being measured. Preferred RF bonding conductor: flat copper strap.</p></aside><section class="check" id="check-8.1"><h3>Knowledge Check 8.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why must a transceiver&#x27;s power leads be short and heavy-gauge?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>To look professional</button><button class="opt" data-letter="b"><span class="letter">b</span>To minimize voltage drop when transmitting</button><button class="opt" data-letter="c"><span class="letter">c</span>To prevent RF radiation from the leads</button><button class="opt" data-letter="d"><span class="letter">d</span>To meet FCC wiring rules</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. A 20 Ah battery powers equipment averaging 4 amps. Roughly how long will it run?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>80 hours</button><button class="opt" data-letter="b"><span class="letter">b</span>24 hours</button><button class="opt" data-letter="c"><span class="letter">c</span>5 hours</button><button class="opt" data-letter="d"><span class="letter">d</span>2 hours</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Which conductor is preferred for bonding equipment at RF?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Round copper-clad steel wire</button><button class="opt" data-letter="b"><span class="letter">b</span>Flat copper strap</button><button class="opt" data-letter="c"><span class="letter">c</span>Twisted pair</button><button class="opt" data-letter="d"><span class="letter">d</span>Braid pulled from old coax</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s8-2"><h2><span class="secnum">8.2</span>The Computer Joins the Station</h2><p>Modern stations are radio-plus-computer, and the connections are simpler than they look. For a digital mode like <strong>FT8</strong>, the radio&#x27;s audio output and input connect to the audio input and output of the computer running the FT8 software. The radio hears the computer, the computer hears the radio. That is the whole trick.</p>
+<p>Formally, a computer-radio interface for digital operation carries three signals: <strong>receive audio, transmit audio, and transmitter keying</strong>. The keying line is the computer pressing PTT for you. One of the specific connections is the computer&#x27;s &quot;line in&quot; to the transceiver&#x27;s speaker connector, which is exactly the &quot;computer hears the radio&quot; half.</p>
+<p>Two accessories round out the modern shack:</p>
+<ul><li>A <strong>digital mode hotspot</strong> performs one service for nearby transceivers: communication with a digital voice or data network. Your handheld talks to the hotspot on your desk, the hotspot rides your internet to talkgroups worldwide. It is a personal repeater the size of a deck of cards.</li><li>An <strong>electronic keyer</strong> assists in the manual sending of Morse code, turning paddle squeezes into perfectly timed dits and dahs.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T4A, part 2)</span> FT8 wiring: transceiver audio in/out to computer audio out/in. A computer-radio interface carries receive audio, transmit audio, and transmitter keying. One required connection: computer &quot;line in&quot; to transceiver speaker connector. Hotspot: provides communication with a digital voice or data network. Electronic keyer: assists manual sending of Morse code.</p></aside><section class="check" id="check-8.2"><h3>Knowledge Check 8.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What three signals pass through a computer-radio interface for digital modes?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Power, ground, and data</button><button class="opt" data-letter="b"><span class="letter">b</span>Receive audio, transmit audio, and transmitter keying</button><button class="opt" data-letter="c"><span class="letter">c</span>GPS, time, and frequency</button><button class="opt" data-letter="d"><span class="letter">d</span>USB, CAT, and CI-V</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What does a digital hotspot do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Boosts your handheld&#x27;s transmit power</button><button class="opt" data-letter="b"><span class="letter">b</span>Connects nearby radios to a digital voice or data network</button><button class="opt" data-letter="c"><span class="letter">c</span>Heats the shack</button><button class="opt" data-letter="d"><span class="letter">d</span>Replaces the need for a license</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. An electronic keyer helps with:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Unlocking a radio&#x27;s extended transmit</button><button class="opt" data-letter="b"><span class="letter">b</span>Manually sending well-timed Morse code</button><button class="opt" data-letter="c"><span class="letter">c</span>Encrypting transmissions</button><button class="opt" data-letter="d"><span class="letter">d</span>Automatic station identification</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s8-3"><h2><span class="secnum">8.3</span>The Knobs and Menus</h2><p>Radio front panels intimidate new operators. Ray&#x27;s cure is to explain what each control is <em>for</em>, one honest sentence apiece.</p>
+<ul><li><strong>Frequency entry:</strong> use the keypad or the VFO knob. Both reach the same place.</li><li><strong>Squelch:</strong> mutes the receiver audio when no signal is present. To hear a weak FM signal, open the squelch threshold until the audio stays on all the time, hiss and all. Squelch is a convenience, and weak signals hide under it.</li><li><strong>Scanning:</strong> tunes through a range of frequencies checking for activity.</li><li><strong>Memory channels:</strong> store frequency, offset, and tone together so the repeater is one button instead of five settings.</li><li><strong>Microphone gain:</strong> set it too high on SSB and the transmitted audio distorts. Louder is not stronger.</li><li><strong>RIT (Receiver Incremental Tuning), or Clarifier:</strong> shifts your receive frequency without moving transmit. When an SSB voice answering you sounds too high or too low pitched, RIT fixes them without losing your spot.</li><li><strong>Filter bandwidth:</strong> matching receiver bandwidth to the mode reduces noise and interference. For SSB, 2400 Hz gives the best signal-to-noise ratio: wide enough for the 3 kHz voice from Module 6, no wider.</li><li>An FM signal received slightly <strong>off frequency</strong> sounds distorted. If everyone sounds bad, check where you are parked.</li></ul>
+<p>Digital voice radios move settings into software. A DMR radio is configured by a <strong>code plug</strong>: the configuration data loaded onto your radio to access repeaters and talkgroups. Selecting a specific group of stations means entering the group&#x27;s identification code, and joining a talkgroup is done by programming your radio with that group&#x27;s ID. One more digital chore: a <strong>D-STAR</strong> transceiver requires your call sign to be programmed in before transmitting, because the protocol sends it with every transmission.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T4B)</span> Frequency: keypad or VFO knob. Squelch mutes audio with no signal; open it fully to hear weak signals. Scanning checks a range for activity. Excessive mic gain distorts SSB audio. RIT/Clarifier: adjusts receive pitch of an off-frequency SSB station. Receiver bandwidth matched to mode reduces noise; 2400 Hz is best for SSB. Off-frequency FM sounds distorted. DMR code plug: configuration data for repeaters and talkgroups; select a group by entering its ID code. D-STAR requires your call sign programmed before use.</p></aside><section class="check" id="check-8.3"><h3>Knowledge Check 8.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. To listen for a very weak FM signal, you should:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Tighten the squelch fully</button><button class="opt" data-letter="b"><span class="letter">b</span>Open the squelch until audio is on continuously</button><button class="opt" data-letter="c"><span class="letter">c</span>Increase mic gain</button><button class="opt" data-letter="d"><span class="letter">d</span>Enable the tone encoder</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. An SSB station answering you sounds like a chipmunk. Which control fixes it?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Squelch</button><button class="opt" data-letter="b"><span class="letter">b</span>Mic gain</button><button class="opt" data-letter="c"><span class="letter">c</span>RIT or Clarifier</button><button class="opt" data-letter="d"><span class="letter">d</span>Power output</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is a DMR code plug?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>A physical dongle that unlocks the radio</button><button class="opt" data-letter="b"><span class="letter">b</span>Configuration data loaded onto the radio for repeaters and talkgroups</button><button class="opt" data-letter="c"><span class="letter">c</span>The radio&#x27;s serial number</button><button class="opt" data-letter="d"><span class="letter">d</span>An encryption key</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T4A, part 1</span> A 50-watt mobile transceiver needs about 13.8 V at 12 A. Short, heavy-gauge power wiring minimizes voltage drop on transmit. Mobile negative return: at the battery chassis ground. Battery runtime: ampere-hour rating divided by average current draw. RF power meter: in the feed line between transmitter and antenna. Choose an SWR meter for the frequency and power level being measured. Preferred RF bonding conductor: flat copper strap.</p></div><div class="anchor review"><p><span class="anchor-lead">T4A, part 2</span> FT8 wiring: transceiver audio in/out to computer audio out/in. A computer-radio interface carries receive audio, transmit audio, and transmitter keying. One required connection: computer &quot;line in&quot; to transceiver speaker connector. Hotspot: provides communication with a digital voice or data network. Electronic keyer: assists manual sending of Morse code.</p></div><div class="anchor review"><p><span class="anchor-lead">T4B</span> Frequency: keypad or VFO knob. Squelch mutes audio with no signal; open it fully to hear weak signals. Scanning checks a range for activity. Excessive mic gain distorts SSB audio. RIT/Clarifier: adjusts receive pitch of an off-frequency SSB station. Receiver bandwidth matched to mode reduces noise; 2400 Hz is best for SSB. Off-frequency FM sounds distorted. DMR code plug: configuration data for repeaters and talkgroups; select a group by entering its ID code. D-STAR requires your call sign programmed before use.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>The boxes are now a station: powered through short heavy wire, fused, bonded with strap, metered in the feed line, and connected to a computer that can key it. You also know what every knob on the front panel is for, which is more than some operators learn in a decade.</p>
+<p>Module 9 is the one you have been waiting for. The station works. Time to talk.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S1, T-S3, T-S4): this module IS the skills track. Wire your radio to its supply with proper gauge and fusing, program your local repeaters into memory both by hand and from software, and if you run digital voice, build your first code plug. Have your work checked by an Elmer before full power.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 8 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-07.html">Previous module</a><a class="navlink" href="tech-module-09.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m08";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 8 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

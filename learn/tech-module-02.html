@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 2: The Wave | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 2 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 2: The Wave</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T3 (Radio Wave Propagation). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray drives you up a fire road to a hilltop at sunset, parks, and clips a handheld to the dash. A repeater fifty miles away comes back to his call like it is across the street.</p>
+<p>&quot;Down in town, I cannot hit that machine at all,&quot; he says. &quot;Same radio, same power. The only thing that changed is what is between me and it. Tonight you learn what a radio signal actually is, and why <em>where</em> matters as much as <em>watts</em>.&quot;</p></div>
+<section class="module-section" id="s2-1"><h2><span class="secnum">2.1</span>What a Radio Wave Actually Is</h2><p>Key up a transmitter and the antenna launches an electromagnetic wave: an electric field and a magnetic field, locked together at right angles to each other, traveling outward at the speed of light. In free space that is 300,000,000 meters per second. Every radio frequency travels at that same speed, from the longest longwave to the highest microwave. Nothing outruns anything.</p>
+<p>Since the speed never changes, frequency and wavelength are locked together. Crank the frequency up and each cycle has less time to travel, so the wave gets shorter. Frequency up, wavelength down. Always.</p>
+<p>The conversion is one piece of arithmetic you will use for the rest of your ham life:</p>
+<p><strong>Wavelength in meters = 300 divided by frequency in MHz</strong></p>
+<p>Try it. 146.52 MHz: 300 / 146.52 is right around 2. That is why we call it the 2-meter band. 52.525 MHz gives about 6 meters. 28.4 MHz gives about 10 meters. Hams name bands by their approximate wavelength in meters, and now you can decode every band name on the chart.</p>
+<p>The spectrum also gets sliced into named ranges, and the exam wants three of them cold:</p>
+<ul><li><strong>HF (High Frequency):</strong> 3 to 30 MHz. The worldwide bands.</li><li><strong>VHF (Very High Frequency):</strong> 30 to 300 MHz. Home of 6 meters and 2 meters.</li><li><strong>UHF (Ultra High Frequency):</strong> 300 to 3000 MHz. Home of 70 centimeters.</li></ul>
+<p>Ray&#x27;s memory trick: each range starts where the last one ended, and each is ten times wider than the one before. Learn the VHF boundaries (30 to 300 MHz) and the others fall into place on either side.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T3B)</span> A radio wave is electric and magnetic fields at right angles, traveling at the speed of light (300,000,000 meters per second), the same velocity for all frequencies. Wavelength in meters = 300 / frequency in MHz. Wavelength gets shorter as frequency increases. Bands are identified by approximate wavelength in meters. HF is 3 to 30 MHz, VHF is 30 to 300 MHz, UHF is 300 to 3000 MHz.</p></aside><section class="check" id="check-2.1"><h3>Knowledge Check 2.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is the velocity of a radio wave in free space?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The speed of sound</button><button class="opt" data-letter="b"><span class="letter">b</span>The speed of light, about 300,000,000 meters per second</button><button class="opt" data-letter="c"><span class="letter">c</span>It depends on the frequency</button><button class="opt" data-letter="d"><span class="letter">d</span>It depends on the transmitter power</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. What is the approximate wavelength of a 146 MHz signal?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>20 meters</button><button class="opt" data-letter="b"><span class="letter">b</span>10 meters</button><button class="opt" data-letter="c"><span class="letter">c</span>2 meters</button><button class="opt" data-letter="d"><span class="letter">d</span>70 centimeters</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Which frequency range is VHF?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>3 to 30 MHz</button><button class="opt" data-letter="b"><span class="letter">b</span>30 to 300 MHz</button><button class="opt" data-letter="c"><span class="letter">c</span>300 to 3000 MHz</button><button class="opt" data-letter="d"><span class="letter">d</span>30 to 300 kHz</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s2-2"><h2><span class="secnum">2.2</span>The Wave Meets the Real World</h2><p>Back in the truck, Ray rolls slowly down the hill while you hold a conversation on the repeater. Your signal starts to flutter, chopping in and out in rapid little slices.</p>
+<p>&quot;Hear that? Picket fencing.&quot; The signal is arriving at the repeater by more than one path at once, bouncing off hills and buildings, and the copies alternately reinforce and cancel each other as you move. That is <strong>multipath</strong>, and it explains one of the strangest things a new ham discovers: moving an antenna just a few feet can change a VHF signal from unreadable to full quieting, because you moved out of a cancellation spot. On data transmissions, multipath shows up as increased error rates.</p>
+<p>Then there is <strong>polarization</strong>: the orientation of a wave&#x27;s electric field, which follows the orientation of the antenna that launched it. A vertical antenna makes a vertically polarized wave. Two rules of thumb come from this:</p>
+<ul><li>FM repeater and mobile work uses <strong>vertical</strong> polarization, because whips on cars and handhelds are vertical.</li><li>Long-distance CW and SSB weak-signal work on VHF and UHF uses <strong>horizontal</strong> polarization by convention.</li></ul>
+<p>Mismatch them across a line-of-sight path (you vertical, the other station horizontal) and the received signal strength drops dramatically. On HF you get a pass: signals refracted by the ionosphere come back elliptically polarized, so either vertical or horizontal antennas work for ionospheric paths.</p>
+<p>The environment takes its cut too. Vegetation absorbs UHF and microwave signals, which is why the forest can eat your 70-centimeter signal. Precipitation reduces range at microwave frequencies. And down on 10 and 6 meters, fog and rain have little effect at all. The lower the frequency, the less the weather cares.</p>
+<p>When the path is blocked, all is not lost. Signals can bend over a sharp obstacle like a ridge line, an effect called <strong>knife-edge diffraction</strong>, and a directional antenna can sometimes find a reflected path to a repeater by aiming at a building or hillside instead of at the repeater itself.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T3A)</span> Multipath: signals arriving via multiple paths cancel or reinforce, causing VHF strength changes over a few feet, rapid mobile flutter called picket fencing, irregular ionospheric fading, and higher data error rates. Polarization is the orientation of the electric field. Horizontal for VHF/UHF CW and SSB weak-signal work, and cross-polarization reduces received strength. Ionospheric signals are elliptically polarized, so either antenna orientation works. Vegetation absorbs UHF and microwaves, precipitation cuts microwave range, fog and rain barely touch 10 and 6 meters. Knife-edge diffraction bends signals over obstructions, and reflections can carry a signal around a blocked path. The ionosphere is the region that can reflect HF radio waves.</p></aside><section class="check" id="check-2.2"><h3>Knowledge Check 2.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Your mobile 2-meter signal flutters rapidly as you drive. What is this called, and what causes it?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Squelch clipping, caused by low battery</button><button class="opt" data-letter="b"><span class="letter">b</span>Picket fencing, caused by multipath propagation</button><button class="opt" data-letter="c"><span class="letter">c</span>Doppler shift, caused by vehicle speed</button><button class="opt" data-letter="d"><span class="letter">d</span>Desense, caused by nearby transmitters</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What describes the polarization of a radio wave?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The orientation of its magnetic field</button><button class="opt" data-letter="b"><span class="letter">b</span>The orientation of its electric field</button><button class="opt" data-letter="c"><span class="letter">c</span>The direction of travel</button><button class="opt" data-letter="d"><span class="letter">d</span>The transmitter power level</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. Buildings block your direct path to a distant repeater and you have a beam antenna. What is worth trying?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Raising your SWR</button><button class="opt" data-letter="b"><span class="letter">b</span>Switching to lower power</button><button class="opt" data-letter="c"><span class="letter">c</span>Aiming at a surface that reflects your signal toward the repeater</button><button class="opt" data-letter="d"><span class="letter">d</span>Changing to AM</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s2-3"><h2><span class="secnum">2.3</span>Beyond the Horizon</h2><p>&quot;Now the fun part,&quot; Ray says. &quot;Everything past where you can see.&quot;</p>
+<p>Start with the baseline: VHF and UHF are mostly line-of-sight. But the <em>radio</em> horizon is farther away than the visual horizon, because the atmosphere refracts radio waves slightly, bending them a little past the curve of the Earth. That is the normal daily reach of your 2-meter signal, and it is why height beats power every time. Simplex UHF signals are rarely heard beyond that radio horizon because UHF signals are usually not propagated by the ionosphere.</p>
+<p>HF plays a different game entirely. High above the ground, solar radiation ionizes a region of the atmosphere called the <strong>ionosphere</strong>, and the ionosphere can bend HF signals back down to Earth hundreds or thousands of miles away. This is why long-distance ionospheric propagation is far more common on HF than on VHF: it is the defining difference between the two worlds. The F region does the heavy lifting, and it runs on sunlight. The best long-distance 10-meter F-region propagation happens from dawn to shortly after sunset during periods of high sunspot activity. At the peak of the sunspot cycle, the F region gets energetic enough to carry 10 meters and even 6 meters around the planet.</p>
+<p>Then come the special events, the propagation modes that make VHF operators drop what they are doing:</p>
+<ul><li><strong>Sporadic E.</strong> Patches of intense ionization form unpredictably in the E region and suddenly there are strong signals from beyond the horizon on 10, 6, and even 2 meters. It is the most common source of surprise long-distance openings on those bands.</li><li><strong>Tropospheric ducting.</strong> A temperature inversion in the atmosphere forms a duct that guides VHF and UHF signals about 300 miles on a regular basis. Coastal and summer weather patterns are famous for it.</li><li><strong>Meteor scatter.</strong> Meteors burn up and leave brief ionized trails that reflect signals. The band best suited for it is 6 meters.</li><li><strong>Auroral propagation.</strong> Signals bounce off the aurora, and they come back distorted with a characteristic raspy sound. CW survives the trip better than voice.</li></ul>
+<p>&quot;Six meters gets called the Magic Band,&quot; Ray says, &quot;because on any given afternoon it can be dead quiet or wide open to another continent, and you find out by listening.&quot;</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T3C)</span> The radio horizon is farther than the visual horizon because the atmosphere slightly refracts radio waves. UHF is rarely heard beyond it because UHF is not usually propagated by the ionosphere. Long-distance ionospheric propagation is far more common on HF. Best 10-meter F-region DX: dawn to shortly after sunset, high sunspot activity. At the sunspot cycle peak, 6 and 10 meters can go worldwide via the F region. Sporadic E brings occasional strong beyond-the-horizon signals on 10, 6, and 2 meters. Tropospheric ducting, caused by temperature inversions, regularly carries VHF/UHF about 300 miles. Meteor scatter works best on 6 meters. Auroral signals sound raspy and distorted. Knife-edge diffraction gets signals past obstructions.</p></aside><section class="check" id="check-2.3"><h3>Knowledge Check 2.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why can your 2-meter signal reach slightly past the visible horizon?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The ionosphere reflects it</button><button class="opt" data-letter="b"><span class="letter">b</span>The atmosphere refracts radio waves a little</button><button class="opt" data-letter="c"><span class="letter">c</span>VHF waves travel faster than light</button><button class="opt" data-letter="d"><span class="letter">d</span>Ground wave follows the terrain indefinitely</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">2. Occasional strong out-of-nowhere signals on 10, 6, and 2 meters usually indicate which propagation mode?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Sporadic E</button><button class="opt" data-letter="b"><span class="letter">b</span>Gray-line</button><button class="opt" data-letter="c"><span class="letter">c</span>D-region absorption</button><button class="opt" data-letter="d"><span class="letter">d</span>Moonbounce</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. What causes tropospheric ducting?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Sunspots</button><button class="opt" data-letter="b"><span class="letter">b</span>Lightning storms</button><button class="opt" data-letter="c"><span class="letter">c</span>Temperature inversions in the atmosphere</button><button class="opt" data-letter="d"><span class="letter">d</span>Meteor showers</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T3B</span> A radio wave is electric and magnetic fields at right angles, traveling at the speed of light (300,000,000 meters per second), the same velocity for all frequencies. Wavelength in meters = 300 / frequency in MHz. Wavelength gets shorter as frequency increases. Bands are identified by approximate wavelength in meters. HF is 3 to 30 MHz, VHF is 30 to 300 MHz, UHF is 300 to 3000 MHz.</p></div><div class="anchor review"><p><span class="anchor-lead">T3A</span> Multipath: signals arriving via multiple paths cancel or reinforce, causing VHF strength changes over a few feet, rapid mobile flutter called picket fencing, irregular ionospheric fading, and higher data error rates. Polarization is the orientation of the electric field. Horizontal for VHF/UHF CW and SSB weak-signal work, and cross-polarization reduces received strength. Ionospheric signals are elliptically polarized, so either antenna orientation works. Vegetation absorbs UHF and microwaves, precipitation cuts microwave range, fog and rain barely touch 10 and 6 meters. Knife-edge diffraction bends signals over obstructions, and reflections can carry a signal around a blocked path. The ionosphere is the region that can reflect HF radio waves.</p></div><div class="anchor review"><p><span class="anchor-lead">T3C</span> The radio horizon is farther than the visual horizon because the atmosphere slightly refracts radio waves. UHF is rarely heard beyond it because UHF is not usually propagated by the ionosphere. Long-distance ionospheric propagation is far more common on HF. Best 10-meter F-region DX: dawn to shortly after sunset, high sunspot activity. At the sunspot cycle peak, 6 and 10 meters can go worldwide via the F region. Sporadic E brings occasional strong beyond-the-horizon signals on 10, 6, and 2 meters. Tropospheric ducting, caused by temperature inversions, regularly carries VHF/UHF about 300 miles. Meteor scatter works best on 6 meters. Auroral signals sound raspy and distorted. Knife-edge diffraction gets signals past obstructions.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You now know what a wave is, how to convert frequency to wavelength, why bands have names in meters, what multipath and polarization do to real signals, and every propagation mode the exam asks about. More importantly, you know why the hilltop beat the valley.</p>
+<p>Module 3 goes inside the wire: voltage, current, Ohm&#x27;s Law, and the power math you will use every time you connect a radio to a battery.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S2, T-S3): with a handheld, drive or walk a weak repeater path and experience picket fencing and antenna position sensitivity firsthand. Ten minutes of that teaches multipath better than any paragraph.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 2 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-01.html">Previous module</a><a class="navlink" href="tech-module-03.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m02";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 2 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

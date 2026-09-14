@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 7: Antennas That Work the World | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 7 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 7: Antennas That Work the World</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G9 (Antennas and Feed Lines). Four questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Saturday morning, Ray&#x27;s back yard. A spool of wire, a bag of insulators, an antenna analyzer, and a printed formula taped to the workbench. &quot;Technician taught you what an antenna is,&quot; he says. &quot;General teaches you to design one. By lunch you will have cut a dipole from a formula and watched the analyzer agree with your arithmetic. There is no better feeling in this hobby.&quot;</p></div>
+<section class="module-section" id="s7-1"><h2><span class="secnum">7.1</span>Feed Lines and SWR, With the Gloves Off</h2><p>Start where Technician left off, and go deeper on three fronts.</p>
+<p><strong>Characteristic impedance</strong> is geometry. For a parallel-conductor line, it is set by the distance between the conductor centers and the radius of the conductors. Ladder-style <strong>window line</strong> runs about <strong>450 ohms</strong>, and its selling point is loss: open-wire line loses far less than coax, especially when SWR is high.</p>
+<p><strong>SWR</strong> gets its causal definition: reflected power at the feed point is caused by a difference between the feed line impedance and the antenna feed point impedance. Purely resistive mismatches make the arithmetic simple, just the ratio of the two: a 50-ohm line into a 200-ohm load gives <strong>4:1</strong>; into a 10-ohm load, <strong>5:1</strong> (always expressed as the larger number first). And the cure is stated the same way: preventing standing waves means matching the antenna feed point impedance to the line&#x27;s characteristic impedance.</p>
+<p>Now three truths about SWR that separate General understanding from Technician understanding:</p>
+<ul><li><strong>The tuner does not fix the line.</strong> With 5:1 SWR on the feed line and a matching network at the transmitter adjusted to show the radio 1:1, the SWR on the feed line itself is still <strong>5:1</strong>. The tuner satisfies the transmitter; the line keeps living its mismatched life. Module 7 of the Technician course called the tuner a diplomat, and here is the proof.</li><li><strong>High SWR increases loss in a lossy line.</strong> Reflected power makes extra round trips, and every trip pays the line&#x27;s toll again. On low-loss line, high SWR is nearly free; on lossy coax, it compounds.</li><li><strong>Line loss lies to your SWR meter.</strong> Loss attenuates the reflected wave on its way back to the meter, so higher loss makes the SWR measured at the transmitter end read <strong>lower</strong> than the truth at the antenna. A long run of cheap coax showing 1.5:1 may be hiding a 4:1 disaster at the feed point. Flattering meters and honest antennas are found at opposite ends of lossy cable.</li></ul>
+<p>Coax attenuation itself still rises with frequency, and feed line loss is specified in <strong>decibels per 100 feet</strong>, the unit on every cable datasheet you will ever read.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G9A)</span> Parallel line impedance: conductor spacing and radius. Window line: about 450 ohms. Reflected power: impedance difference between line and feed point; prevention is matching them. 50-ohm line: 200-ohm load = 4:1 SWR, 10-ohm load = 5:1. A transmitter-end matching network leaves feed line SWR unchanged (still 5:1). High SWR increases loss in lossy line. Line loss reduces the SWR reading at the input. Coax attenuation increases with frequency; loss is expressed in dB per 100 feet.</p></aside><section class="check" id="check-7.1"><h3>Knowledge Check 7.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. A tuner at the radio shows 1:1 into a feed line whose antenna-end SWR is 5:1. What is the SWR on the line?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>1:1</button><button class="opt" data-letter="b"><span class="letter">b</span>3:1, the average</button><button class="opt" data-letter="c"><span class="letter">c</span>5:1</button><button class="opt" data-letter="d"><span class="letter">d</span>It depends on transmitter power</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What SWR results from feeding a 200-ohm resistive load with 50-ohm coax?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>1:4</button><button class="opt" data-letter="b"><span class="letter">b</span>4:1</button><button class="opt" data-letter="c"><span class="letter">c</span>2:1</button><button class="opt" data-letter="d"><span class="letter">d</span>1:1</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">3. Why can a long lossy feed line show deceptively low SWR at the transmitter?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The loss attenuates the reflected wave before it reaches the meter</button><button class="opt" data-letter="b"><span class="letter">b</span>Loss cancels reactance</button><button class="opt" data-letter="c"><span class="letter">c</span>SWR meters compensate for cable length</button><button class="opt" data-letter="d"><span class="letter">d</span>It cannot; SWR readings are absolute</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s7-2"><h2><span class="secnum">7.2</span>Dipoles and Verticals by the Numbers</h2><p>The formula taped to Ray&#x27;s bench: <strong>length in feet = 468 / frequency in MHz</strong> for a half-wave dipole, half that (234 / f) for a quarter-wave vertical. Run the pool&#x27;s three:</p>
+<ul><li>Dipole for 14.250 MHz: 468 / 14.25 = about <strong>33 feet</strong>.</li><li>Dipole for 3.550 MHz: 468 / 3.55 = about <strong>132 feet</strong>.</li><li>Quarter-wave monopole for 28.5 MHz: 234 / 28.5 = about <strong>8 feet</strong>.</li></ul>
+<p>Cut long, trim to resonance, exactly as the Technician rule (shorter = higher frequency) predicts.</p>
+<p><strong>Patterns and height</strong> are where dipoles get interesting:</p>
+<ul><li>In free space, a dipole&#x27;s pattern is a <strong>figure-eight at right angles to the antenna</strong>, the broadside rule from Technician drawn precisely.</li><li>But height rewrites the pattern. A horizontal dipole <strong>less than 1/2 wavelength high</strong> becomes almost <strong>omnidirectional in azimuth</strong> at high elevation angles. On 80 meters, &quot;low&quot; is anything under 130 feet, which is why nearly every 80-meter dipole in the world is effectively an omnidirectional cloud warmer, and why that is exactly what NVIS wants (Section 7.4).</li><li>Height also moves the feed point impedance: it <strong>steadily decreases</strong> as a dipole drops toward 1/10 wavelength above ground. And along the wire itself, impedance <strong>increases as the feed point moves from center toward the ends</strong>, from about 70 ohms at center to thousands at the tip. Hold that thought two sections.</li></ul>
+<p><strong>Verticals</strong> have their own account book:</p>
+<ul><li>A ground-mounted vertical lays its <strong>radial wires on the surface or buried a few inches down</strong>.</li><li>An elevated ground-plane brings its feed point to approximately 50 ohms by <strong>sloping the radials downward</strong>.</li><li>The pattern is <strong>omnidirectional in azimuth</strong>, the all-directions workhorse.</li><li>The comparative ledger: a <strong>horizontal</strong> antenna&#x27;s advantage over a vertical at HF is <strong>lower ground losses</strong>, since verticals launch their signal along the lossy earth while horizontals bounce off it.</li></ul>
+<p>One cautionary antenna closes the section: the <strong>random wire fed directly from the transmitter</strong>. It works, but with a documented price: station equipment may carry significant RF current, because the &quot;counterpoise&quot; completing the antenna is your radio, your mic cable, and occasionally your lips on 40 meters. The Technician course&#x27;s RF-in-the-shack symptoms start here; the cure is a proper feed line and choke.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G9B)</span> 468/f: dipole length (33 ft at 14.250 MHz, 132 ft at 3.550 MHz); 234/f: quarter-wave (8 ft at 28.5 MHz). Free-space dipole: figure-eight broadside. Below 1/2 wavelength high: nearly omnidirectional azimuth. Dipole feed impedance decreases with lowering height, increases toward the wire ends. Ground-mounted vertical radials: on or just under the surface; elevated ground-plane radials slope downward for 50 ohms; vertical pattern is omnidirectional in azimuth. Horizontal advantage: lower ground losses. Random wire fed directly: station equipment carries RF.</p></aside><section class="check" id="check-7.2"><h3>Knowledge Check 7.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Approximately how long is a half-wave dipole for 3.550 MHz?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>66 feet</button><button class="opt" data-letter="b"><span class="letter">b</span>132 feet</button><button class="opt" data-letter="c"><span class="letter">c</span>234 feet</button><button class="opt" data-letter="d"><span class="letter">d</span>263 feet</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What happens to a horizontal dipole&#x27;s azimuth pattern when it is less than 1/2 wavelength high?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It sharpens into a narrow beam</button><button class="opt" data-letter="b"><span class="letter">b</span>It becomes almost omnidirectional</button><button class="opt" data-letter="c"><span class="letter">c</span>Radiation off the ends is eliminated</button><button class="opt" data-letter="d"><span class="letter">d</span>It becomes vertically polarized</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why does a random wire fed straight from the transmitter cause RF in the shack?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Its harmonic radiation is excessive</button><button class="opt" data-letter="b"><span class="letter">b</span>Station equipment becomes part of the antenna and carries RF current</button><button class="opt" data-letter="c"><span class="letter">c</span>Random lengths are illegal above 30 meters</button><button class="opt" data-letter="d"><span class="letter">d</span>It only radiates vertically</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s7-3"><h2><span class="secnum">7.3</span>The Yagi, Engineered</h2><p>At Technician the Yagi was &quot;the antenna with the most gain.&quot; Now the design brief.</p>
+<p>The anatomy: a <strong>driven element</strong> approximately <strong>1/2 wavelength</strong> long, a <strong>reflector behind it that is longer</strong>, and one or more <strong>directors ahead of it that are shorter</strong>. Long pushes, short pulls, and the pattern focuses forward.</p>
+<p>The design levers, each with its price:</p>
+<ul><li><strong>More gain:</strong> increase the boom length and add directors. Gain is bought by the foot.</li><li><strong>More bandwidth:</strong> use <strong>larger-diameter elements</strong>. Fat elements are electrically broad.</li><li><strong>Fine tuning:</strong> element <strong>spacing</strong> along the boom can be adjusted to optimize forward gain, front-to-back ratio, or SWR bandwidth. All of these trade against each other; a Yagi is a negotiation, not a formula.</li><li><strong>More still:</strong> stack a second identical Yagi 1/2 wavelength away and gain rises about <strong>3 dB</strong>, one free doubling for the price of a second antenna. Vertically stacking horizontal Yagis <strong>narrows the main lobe in elevation</strong>, squeezing radiation toward the horizon where the DX lives.</li></ul>
+<p>The measurement vocabulary:</p>
+<ul><li>The <strong>main lobe</strong> is the direction of maximum radiated field strength.</li><li><strong>Front-to-back ratio</strong> compares the power in the major lobe with the power in the opposite direction, the spec that quiets the noise behind you.</li><li>Gain references matter: the same antenna&#x27;s gain in <strong>dBi</strong> (versus an isotropic point source) reads <strong>2.15 dB higher</strong> than its gain in <strong>dBd</strong> (versus a dipole). Neither number is wrong; advertisers simply prefer the bigger one. Check the suffix before you are impressed.</li></ul>
+<p>Feeding a Yagi has its own tricks, because a Yagi&#x27;s natural feed impedance sits below 50 ohms:</p>
+<ul><li>The <strong>beta or hairpin match</strong>: a shorted transmission line stub at the feed point providing the impedance match.</li><li>The <strong>gamma match</strong>: its signature advantage is that the driven element <strong>does not need to be insulated from the boom</strong>, which is why so many commercial beams bolt straight together.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G9C)</span> Driven element: about 1/2 wavelength; reflector longer, directors shorter. Longer boom and more directors: more gain. Larger-diameter elements: more bandwidth. Element spacing adjusts gain, front-to-back, and SWR bandwidth (all). Two stacked Yagis: about 3 dB over one. dBi = dBd + 2.15. Main lobe: direction of maximum field strength. Front-to-back: major lobe power versus the opposite direction. Beta/hairpin match: shorted stub at the feed point. Gamma match: driven element need not be insulated from the boom.</p></aside><section class="check" id="check-7.3"><h3>Knowledge Check 7.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. How do a Yagi&#x27;s reflector and director lengths compare to the driven element?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Reflector shorter, director longer</button><button class="opt" data-letter="b"><span class="letter">b</span>Reflector longer, director shorter</button><button class="opt" data-letter="c"><span class="letter">c</span>All identical</button><button class="opt" data-letter="d"><span class="letter">d</span>It depends on polarization</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. An antenna advertises 10 dBi of gain. What is that in dBd?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>12.15 dBd</button><button class="opt" data-letter="b"><span class="letter">b</span>10 dBd</button><button class="opt" data-letter="c"><span class="letter">c</span>7.85 dBd</button><button class="opt" data-letter="d"><span class="letter">d</span>5 dBd</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is a hairpin (beta) match?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>A quarter-wave section of 75-ohm coax</button><button class="opt" data-letter="b"><span class="letter">b</span>A shorted transmission line stub at the Yagi&#x27;s feed point</button><button class="opt" data-letter="c"><span class="letter">c</span>A series capacitor at the reflector</button><button class="opt" data-letter="d"><span class="letter">d</span>A folded driven element</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s7-4"><h2><span class="secnum">7.4</span>The Specialists</h2><p>The last group is the catalog of antennas built for one job each, and every entry cashes in something from earlier in the course.</p>
+<ul><li><strong>The NVIS antenna.</strong> Module 2 taught NVIS propagation; here is its hardware: a <strong>horizontal dipole placed between 1/10 and 1/4 wavelength above ground</strong> is most effective for daytime short-skip on 40 meters. The low height that ruins DX (Section 7.2&#x27;s omnidirectional high-angle cloud) is precisely the point: fire straight up, rain down regionally. Deliberately hanging an antenna low is the most counterintuitive good idea in emergency communications.</li><li><strong>The end-fed half-wave.</strong> Its feed point impedance is <strong>very high</strong>, thousands of ohms, exactly as Section 7.2&#x27;s moving-feed-point rule predicts at the wire&#x27;s end, and exactly why your EFHW needs the 49:1 transformer whose arithmetic Module 3 settled. Three modules, one antenna, full circle.</li><li><strong>Antenna traps</strong> exist to enable <strong>multiband operation</strong>: tuned circuits along the element that electrically shorten it on higher bands. The multiband convenience carries one disadvantage worth knowing: an antenna resonant on several bands has <strong>poor harmonic rejection</strong>, happily radiating a harmonic that lands on another of its bands, which is why multiband antennas raise the stakes on your transmitter&#x27;s low-pass filtering. The documented tradeoff of multiband antennas generally: they radiate harmonics more readily, so transmitter cleanliness matters more.</li><li>The <strong>inverted V</strong>: the everyday name for a dipole hung from a <strong>single central support</strong>, the most-built HF antenna on Earth because trees outnumber towers.</li><li>The <strong>halo</strong>: maximum radiation <strong>omnidirectional in the plane of the halo</strong>, the trick for horizontally polarized mobile VHF work.</li><li>The <strong>log-periodic</strong>: element length and spacing <strong>vary logarithmically along the boom</strong>, buying its signature advantage, <strong>wide bandwidth</strong>, a Yagi-looking antenna that covers 3-to-1 frequency ranges at the cost of gain per element.</li><li>The <strong>screwdriver mobile antenna</strong>: adjusts its feed point impedance by <strong>varying the base loading inductance</strong> with a motor, the Technician course&#x27;s loading coil made tunable from the driver&#x27;s seat. It will return in Module 8&#x27;s mobile section.</li><li>The <strong>Beverage</strong>: a very long, low wire used for <strong>directional receiving on MF and the low HF bands</strong>. It hears wonderfully and transmits terribly, and serious 160-meter operators run separate antennas for each direction of listening.</li><li>The <strong>electrically small loop</strong> (under 1/10 wavelength around): its pattern has <strong>nulls broadside to the loop</strong>, and turning a null onto a noise source is the loop&#x27;s superpower, for direction finding and for portable operators fighting local QRM.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G9D)</span> NVIS: horizontal dipole 1/10 to 1/4 wavelength high. EFHW feed point: very high impedance. Traps: multiband operation; multiband antennas have poor harmonic rejection. Inverted V: dipole on a single central support. Halo: omnidirectional in its plane. Log-periodic: logarithmic element length and spacing, wide bandwidth. Screwdriver antenna: varies base loading inductance. Beverage: directional receiving, MF and low HF. Small loop: nulls broadside to the loop. Stacked horizontal Yagis narrow the elevation lobe.</p></aside><section class="check" id="check-7.4"><h3>Knowledge Check 7.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What height makes a 40-meter dipole an effective NVIS antenna?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>At least 1/2 wavelength</button><button class="opt" data-letter="b"><span class="letter">b</span>Between 1/10 and 1/4 wavelength above ground</button><button class="opt" data-letter="c"><span class="letter">c</span>Exactly 1 wavelength</button><button class="opt" data-letter="d"><span class="letter">d</span>Height does not matter for NVIS</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why does an end-fed half-wave need a high-ratio matching transformer?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Its feed point impedance is very low</button><button class="opt" data-letter="b"><span class="letter">b</span>Its feed point impedance is very high</button><button class="opt" data-letter="c"><span class="letter">c</span>To suppress its second harmonic</button><button class="opt" data-letter="d"><span class="letter">d</span>To make it directional</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is a Beverage antenna used for?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>High-gain transmitting on 10 meters</button><button class="opt" data-letter="b"><span class="letter">b</span>Directional receiving on MF and low HF bands</button><button class="opt" data-letter="c"><span class="letter">c</span>Satellite uplink</button><button class="opt" data-letter="d"><span class="letter">d</span>Portable NVIS transmitting</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G9A</span> Parallel line impedance: conductor spacing and radius. Window line: about 450 ohms. Reflected power: impedance difference between line and feed point; prevention is matching them. 50-ohm line: 200-ohm load = 4:1 SWR, 10-ohm load = 5:1. A transmitter-end matching network leaves feed line SWR unchanged (still 5:1). High SWR increases loss in lossy line. Line loss reduces the SWR reading at the input. Coax attenuation increases with frequency; loss is expressed in dB per 100 feet.</p></div><div class="anchor review"><p><span class="anchor-lead">G9B</span> 468/f: dipole length (33 ft at 14.250 MHz, 132 ft at 3.550 MHz); 234/f: quarter-wave (8 ft at 28.5 MHz). Free-space dipole: figure-eight broadside. Below 1/2 wavelength high: nearly omnidirectional azimuth. Dipole feed impedance decreases with lowering height, increases toward the wire ends. Ground-mounted vertical radials: on or just under the surface; elevated ground-plane radials slope downward for 50 ohms; vertical pattern is omnidirectional in azimuth. Horizontal advantage: lower ground losses. Random wire fed directly: station equipment carries RF.</p></div><div class="anchor review"><p><span class="anchor-lead">G9C</span> Driven element: about 1/2 wavelength; reflector longer, directors shorter. Longer boom and more directors: more gain. Larger-diameter elements: more bandwidth. Element spacing adjusts gain, front-to-back, and SWR bandwidth (all). Two stacked Yagis: about 3 dB over one. dBi = dBd + 2.15. Main lobe: direction of maximum field strength. Front-to-back: major lobe power versus the opposite direction. Beta/hairpin match: shorted stub at the feed point. Gamma match: driven element need not be insulated from the boom.</p></div><div class="anchor review"><p><span class="anchor-lead">G9D</span> NVIS: horizontal dipole 1/10 to 1/4 wavelength high. EFHW feed point: very high impedance. Traps: multiband operation; multiband antennas have poor harmonic rejection. Inverted V: dipole on a single central support. Halo: omnidirectional in its plane. Log-periodic: logarithmic element length and spacing, wide bandwidth. Screwdriver antenna: varies base loading inductance. Beverage: directional receiving, MF and low HF. Small loop: nulls broadside to the loop. Stacked horizontal Yagis narrow the elevation lobe.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>The dipole from Ray&#x27;s back yard measured resonant within 40 kHz of the arithmetic, after one trim. That is the module in one sentence: antennas obey math you now own. You can size a dipole from 468/f, predict what height does to its pattern and impedance, negotiate a Yagi&#x27;s tradeoffs, read gain claims with the dBi/dBd decoder ring, and pick a specialist antenna by its job.</p>
+<p>Module 8 assembles the whole HF station around these antennas: the front-panel controls that matter, the test bench, the grounding that keeps hum off your signal, and the mobile installation that takes it all on the road.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (G-S2): build the wire antenna from the capstone requirement now, using 468/f, and log the analyzer&#x27;s first reading against your calculation before any trimming. The gap between arithmetic and copper, usually a few percent from wire insulation and height, is the most instructive number in antenna work.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 7 complete</button>
+    <div class="pager"><a class="navlink" href="gen-module-06.html">Previous module</a><a class="navlink" href="gen-module-08.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m07";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 7 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

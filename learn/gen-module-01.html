@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 1: Rules of the Bigger Map | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 1 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 1: Rules of the Bigger Map</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G1 (Commission&#x27;s Rules). Five questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray looks at your logbook: the Technician capstone signed off, a page of repeater contacts, one proud 10-meter opening. He closes it and unrolls a new band chart that dwarfs the old one.</p>
+<p>&quot;General class hands you almost all of this,&quot; he says. &quot;Almost. The exam mostly wants to know if you can see the edges. So we start with the map, and where you still cannot go.&quot;</p></div>
+<section class="module-section" id="s1-1"><h2><span class="secnum">1.1</span>Your Privileges and Their Edges</h2><p>The headline: General class opens every amateur HF band. The fine print: on four of those bands, portions remain off limits, because 80, 40, 20, and 15 meters contain segments where General licensees cannot transmit. Those reserved slices are the segments exclusively allocated to Amateur Extra licensees, and they sit on the same four bands: 80, 40, 20, and 15. Learn one list, answer two questions.</p>
+<p>The pattern that organizes it: when Generals do not get the entire voice segment of a band, they get the <strong>upper frequency portion</strong> of it. The Extra-only exclusives sit at the bottom edges. So a frequency like 21300 kHz sits comfortably inside the General portion of 15 meters, while 7.125 to 7.175 MHz is an example of spectrum where a General cannot be the control operator.</p>
+<p>Some bands carry mode restrictions instead of class restrictions. <strong>30 meters</strong> is the famous one: phone is prohibited there, and so is image transmission. It is a CW and data band, full stop, and its quiet, narrowband character is the point.</p>
+<p>Two more edge cases finish the map. On 10 meters, CW is permitted across the entire band, the one HF band where the key works everywhere. And repeaters on 10 meters live only in the portion above 29.5 MHz.</p>
+<p>Finally, sharing. Where the amateur service is <strong>secondary</strong> on a band, amateur stations must not cause harmful interference to primary users and must accept interference from them. Same rule you learned at Technician, now applied to bands like 30 and 60 meters where hams are guests. Being a guest also imposes affirmative duty: operating where the service is secondary, transmitting spread spectrum, or operating near an FCC monitoring station all require specific steps to avoid harmful interference. All of those conditions.</p><figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="820" fill="white"/>
+<text x="600.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">General Class HF Privileges (Extra/Advanced-only segments shown gray)</text>
+<rect x="150.0" y="58.0" width="22.0" height="16.0" rx="0" fill="#7fb3ff" stroke="#555" stroke-width="1"/>
+<text x="180.0" y="71.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">General CW / RTTY / data</text>
+<rect x="380.0" y="58.0" width="22.0" height="16.0" rx="0" fill="#8fd48f" stroke="#555" stroke-width="1"/>
+<text x="410.0" y="71.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">General phone / image</text>
+<rect x="610.0" y="58.0" width="22.0" height="16.0" rx="0" fill="#e0e0e0" stroke="#555" stroke-width="1"/>
+<text x="640.0" y="71.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">Extra or Advanced only</text>
+<rect x="840.0" y="58.0" width="22.0" height="16.0" rx="0" fill="#ffd27f" stroke="#555" stroke-width="1"/>
+<text x="870.0" y="71.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">Channelized (60 m)</text>
+<text x="138.0" y="121.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">160 m (MHz)</text>
+<rect x="150.0" y="100.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="100.0" width="900.0" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="600.0" y="120.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">All modes, entire band (phone+CW/data)</text>
+<text x="150.0" y="146.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">1.8</text>
+<text x="1050.0" y="146.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">2</text>
+<text x="138.0" y="191.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">80/75 m</text>
+<rect x="150.0" y="170.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="170.0" width="45.0" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="172.5" y="190.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E</text>
+<rect x="195.0" y="170.0" width="135.0" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="262.5" y="190.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data 3.525-3.600</text>
+<rect x="330.0" y="170.0" width="360.0" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="510.0" y="190.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Extra/Advanced phone</text>
+<rect x="690.0" y="170.0" width="360.0" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="870.0" y="190.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone 3.800-4.000</text>
+<text x="150.0" y="216.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">3.5</text>
+<text x="1050.0" y="216.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">4</text>
+<text x="138.0" y="261.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">60 m</text>
+<rect x="150.0" y="240.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="240.0" width="900.0" height="30.0" rx="0" fill="#ffd27f" stroke="#666" stroke-width="0.8"/>
+<text x="600.0" y="260.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Five channels, USB (2.8 kHz), 100 W ERP, special rules</text>
+<text x="150.0" y="286.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">5.3</text>
+<text x="1050.0" y="286.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">5.5</text>
+<text x="138.0" y="331.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">40 m</text>
+<rect x="150.0" y="310.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="310.0" width="75.0" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="187.5" y="330.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E</text>
+<rect x="225.0" y="310.0" width="300.0" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="375.0" y="330.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data 7.025-7.125</text>
+<rect x="525.0" y="310.0" width="150.0" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="600.0" y="330.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E/A phone</text>
+<rect x="675.0" y="310.0" width="375.0" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="862.5" y="330.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone 7.175-7.300</text>
+<text x="150.0" y="356.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">7</text>
+<text x="1050.0" y="356.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">7.3</text>
+<text x="138.0" y="401.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">30 m</text>
+<rect x="150.0" y="380.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="380.0" width="900.0" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="600.0" y="400.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data only; 200 W PEP; no phone or image; no contesting</text>
+<text x="150.0" y="426.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">10.1</text>
+<text x="1050.0" y="426.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">10.15</text>
+<text x="138.0" y="471.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">20 m</text>
+<rect x="150.0" y="450.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="450.0" width="64.3" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="182.1" y="470.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E</text>
+<rect x="214.3" y="450.0" width="321.4" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="375.0" y="470.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data 14.025-14.150</text>
+<rect x="535.7" y="450.0" width="192.9" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="632.1" y="470.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E/A phone</text>
+<rect x="728.6" y="450.0" width="321.4" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="889.3" y="470.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone 14.225-14.350</text>
+<text x="150.0" y="496.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">14</text>
+<text x="1050.0" y="496.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">14.35</text>
+<text x="138.0" y="541.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">17 m</text>
+<rect x="150.0" y="520.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="520.0" width="378.0" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="339.0" y="540.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data</text>
+<rect x="528.0" y="520.0" width="522.0" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="789.0" y="540.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone</text>
+<text x="150.0" y="566.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">18.068</text>
+<text x="1050.0" y="566.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">18.168</text>
+<text x="138.0" y="611.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">15 m</text>
+<rect x="150.0" y="590.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="590.0" width="50.0" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="175.0" y="610.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E</text>
+<rect x="200.0" y="590.0" width="350.0" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="375.0" y="610.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data 21.025-21.200</text>
+<rect x="550.0" y="590.0" width="150.0" height="30.0" rx="0" fill="#e0e0e0" stroke="#666" stroke-width="0.8"/>
+<text x="625.0" y="610.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">E/A phone</text>
+<rect x="700.0" y="590.0" width="350.0" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="875.0" y="610.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone 21.275-21.450</text>
+<text x="150.0" y="636.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">21</text>
+<text x="1050.0" y="636.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">21.45</text>
+<text x="138.0" y="681.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">12 m</text>
+<rect x="150.0" y="660.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="660.0" width="360.0" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="330.0" y="680.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data</text>
+<rect x="510.0" y="660.0" width="540.0" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="780.0" y="680.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone</text>
+<text x="150.0" y="706.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">24.89</text>
+<text x="1050.0" y="706.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">24.99</text>
+<text x="138.0" y="751.0" font-size="15" text-anchor="end" font-weight="bold" fill="black">10 m</text>
+<rect x="150.0" y="730.0" width="900.0" height="30.0" rx="0" fill="none" stroke="black" stroke-width="1.4"/>
+<rect x="150.0" y="730.0" width="158.8" height="30.0" rx="0" fill="#7fb3ff" stroke="#666" stroke-width="0.8"/>
+<text x="229.4" y="750.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">CW/data</text>
+<rect x="308.8" y="730.0" width="741.2" height="30.0" rx="0" fill="#8fd48f" stroke="#666" stroke-width="0.8"/>
+<text x="679.4" y="750.0" font-size="11" text-anchor="middle" font-weight="normal" fill="black">Phone/image 28.300-29.700 (repeaters above 29.5)</text>
+<text x="150.0" y="776.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">28</text>
+<text x="1050.0" y="776.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">29.7</text>
+<text x="150.0" y="796.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">When Generals lack a full voice segment, they hold the UPPER portion. Extra-exclusive CW segments live on 80/40/20/15. Power: 1500 W PEP except 30 m (200 W) and 60 m (100 W ERP).</text>
+<text x="1186.0" y="810.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg><figcaption>General HF privileges at a glance</figcaption></figure><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G1A)</span> Generals cannot transmit in portions of 80, 40, 20, and 15 meters; those same four bands hold the Extra-exclusive segments. When Generals lack the full voice segment, they hold the upper portion. 21300 kHz is within the General 15-meter allocation; 7.125 to 7.175 MHz is not available to Generals. Phone and image are both prohibited on 30 meters. CW is permitted on the entire 10-meter band; 10-meter repeaters operate above 29.5 MHz. Secondary allocation: cause no harmful interference to primary users, accept interference from them.</p></aside><section class="check" id="check-1.1"><h3>Knowledge Check 1.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. On which HF bands do General licensees have portions where they cannot transmit?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>160, 60, 30, and 10 meters</button><button class="opt" data-letter="b"><span class="letter">b</span>80, 40, 20, and 15 meters</button><button class="opt" data-letter="c"><span class="letter">c</span>All HF bands</button><button class="opt" data-letter="d"><span class="letter">d</span>17 and 12 meters only</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Which is true of 30 meters?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It is a phone-only band</button><button class="opt" data-letter="b"><span class="letter">b</span>Phone and image transmission are prohibited</button><button class="opt" data-letter="c"><span class="letter">c</span>It is exclusive to Extra licensees</button><button class="opt" data-letter="d"><span class="letter">d</span>It allows repeaters above 10.14 MHz</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. When Generals do not get a band&#x27;s entire voice segment, which portion do they hold?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The lower frequency portion</button><button class="opt" data-letter="b"><span class="letter">b</span>The upper frequency portion</button><button class="opt" data-letter="c"><span class="letter">c</span>Alternating segments</button><button class="opt" data-letter="d"><span class="letter">d</span>Whatever the band plan assigns that week</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s1-2"><h2><span class="secnum">1.2</span>Good Practice, Beacons, and What You May Retransmit</h2><p>Part 97 cannot anticipate everything, so it delegates: in all matters not specifically covered by the rules, the station must be operated in accordance with &quot;good engineering and good amateur practice,&quot; and the FCC itself determines what that means.</p>
+<p>Antenna structures have a regulatory ceiling: <strong>200 feet</strong> above ground is the maximum height, not near a public-use airport, before FAA notification and FCC registration are required. Below the federal layer, state and local governments may regulate antennas, but under the PRB-1 standard they must reasonably accommodate amateur communications and impose the minimum practical regulation to accomplish their legitimate purpose. That sentence has won a lot of zoning arguments.</p>
+<p><strong>Beacon stations</strong>, the propagation transmitters you met in the Technician course, get their own rulebook as you may now run one: their purpose in the rules is observation of propagation and reception, no more than one beacon may transmit in the same band from the same station location, power is limited to <strong>100 watts PEP output</strong>, and automatically controlled HF beacons are confined to 28.20 to 28.30 MHz. That is also why operators avoid transmitting on 14.100, 18.110, 21.150, 24.930, and 28.200 MHz: an international network of propagation beacons lives on those frequencies, and covering them up blinds everyone.</p>
+<p>What may any amateur station retransmit or transmit one-way? A short, specific list:</p>
+<ul><li>Occasional retransmission of weather and propagation forecast information from US government stations is permitted.</li><li>One-way transmissions to assist with learning the International Morse code are permitted, which is why code-practice broadcasts are legal.</li><li>Abbreviations and procedural signals may be used as long as they do not obscure the meaning of a message. Efficiency is fine; secrecy is not, the same principle as the Technician encryption rule.</li></ul>
+<p>And who may you talk to across borders? Amateurs in any country, except those whose administrations have notified the ITU that they object to such communications.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G1B)</span> The FCC determines good engineering and good amateur practice. 200 feet: antenna height requiring FAA notification and FCC registration (away from airports). State and local regulation must reasonably accommodate amateur radio with minimum practical restriction. Beacons: purpose is observation of propagation and reception; one per band per location; 100 W PEP limit; automatic HF beacons only in 28.20 to 28.30 MHz. Avoid 14.100, 18.110, 21.150, 24.930, 28.200 MHz: propagation beacon network. Permitted: retransmitting US government weather and propagation forecasts, one-way code-practice transmissions, abbreviations that do not obscure meaning. International contacts allowed except with countries objecting via the ITU.</p></aside><section class="check" id="check-1.2"><h3>Knowledge Check 1.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. Who defines &quot;good engineering and good amateur practice&quot; where the rules are silent?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The ARRL</button><button class="opt" data-letter="b"><span class="letter">b</span>The control operator</button><button class="opt" data-letter="c"><span class="letter">c</span>The FCC</button><button class="opt" data-letter="d"><span class="letter">d</span>The IEEE</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What is the beacon station power limit?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>10 watts PEP</button><button class="opt" data-letter="b"><span class="letter">b</span>100 watts PEP</button><button class="opt" data-letter="c"><span class="letter">c</span>200 watts PEP</button><button class="opt" data-letter="d"><span class="letter">d</span>1500 watts PEP</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why avoid transmitting on 14.100 MHz?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It is an FCC bulletin frequency</button><button class="opt" data-letter="b"><span class="letter">b</span>Propagation beacons operate there</button><button class="opt" data-letter="c"><span class="letter">c</span>It is reserved for emergencies</button><button class="opt" data-letter="d"><span class="letter">d</span>It is an automatic digital segment</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s1-3"><h2><span class="secnum">1.3</span>Power, and the Bands With Asterisks</h2><p>The default HF power limit is <strong>1500 watts PEP output</strong>, and PEP output from the transmitter is exactly the measurement the rules specify. That default covers most of the map: 1500 watts on 160 meters (1.8 MHz), 1500 watts on 12 meters, 1500 watts on 10 meters (28 MHz) for a General.</p>
+<p>Two bands carry asterisks:</p>
+<ul><li><strong>30 meters (10.140 MHz): 200 watts PEP maximum.</strong> The quiet band stays quiet by rule.</li><li><strong>60 meters</strong> is the strangest real estate in amateur radio: a secondary allocation shared with federal users, with its own operating requirements. Two examples the pool keeps: USB signals there are limited to a maximum bandwidth of <strong>2.8 kHz</strong>, and if you use an antenna other than a dipole, you must keep a record of your antenna&#x27;s gain. The band&#x27;s structure is also in transition following recent FCC rule changes, which is why several 60-meter questions were withdrawn from this pool. Ray&#x27;s operational advice: before operating 60 meters, check the current FCC rules for the band that week, and mean it.</li></ul>
+<p>One rule in this group governs the digital future instead of power: before using a new digital protocol on the air, its technical characteristics must be <strong>publicly documented</strong>. Amateur radio welcomes new modes, and rejects secret ones, the same open-service principle wearing a data format.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G1C)</span> Maximum power is measured as PEP output from the transmitter. 1500 W PEP: the general HF limit, including 160 meters, 12 meters, and 28 MHz. 200 W PEP: the 30-meter limit (10.140 MHz). 60 meters: 2.8 kHz maximum USB bandwidth; keep a record of antenna gain when using other than a dipole. New digital protocols must be publicly documented before use.</p></aside><section class="check" id="check-1.3"><h3>Knowledge Check 1.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. How do FCC rules specify maximum power measurement?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>RMS output from the transmitter</button><button class="opt" data-letter="b"><span class="letter">b</span>PEP input to the antenna</button><button class="opt" data-letter="c"><span class="letter">c</span>PEP output from the transmitter</button><button class="opt" data-letter="d"><span class="letter">d</span>Average power at the feed point</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What is the power limit on 30 meters?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>1500 watts PEP</button><button class="opt" data-letter="b"><span class="letter">b</span>200 watts PEP</button><button class="opt" data-letter="c"><span class="letter">c</span>100 watts PEP</button><button class="opt" data-letter="d"><span class="letter">d</span>50 watts PEP</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. What must happen before a brand-new digital protocol goes on the air?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>FCC type-certification of the equipment</button><button class="opt" data-letter="b"><span class="letter">b</span>An experimental license grant</button><button class="opt" data-letter="c"><span class="letter">c</span>Public documentation of its technical characteristics</button><button class="opt" data-letter="d"><span class="letter">d</span>A rule-making petition</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s1-4"><h2><span class="secnum">1.4</span>The Day You Pass, and the Table You Will Sit Behind</h2><p>Here is the part of the rules that applies to you personally within minutes of passing.</p>
+<p>Walk out of the session with your <strong>CSCE</strong>, the Certificate of Successful Completion of Examination, and you may use General privileges immediately, on any General or Technician band segment, before the FCC database updates. The condition: identify with <strong>&quot;AG&quot;</strong> after your call sign whenever operating with your new General privileges. The CSCE is valid for exam element credit for <strong>365 days</strong>.</p>
+<p>Expired licenses get a partial mercy rule: anyone who can demonstrate they once held an FCC-issued General, Advanced, or Amateur Extra license (not revoked) can receive credit for those elements. Past the two-year grace period, the path back is proof of the expired license grant plus passing the current Element 2 (Technician) exam. The knowledge credit survives; the license itself does not.</p>
+<p>Now the table. As a General, you can join the Volunteer Examiner corps, and the exam wants the staffing rules:</p>
+<ul><li>VEs are accredited by a <strong>Volunteer Examiner Coordinator</strong>, not by the FCC directly.</li><li>Minimum age: <strong>18</strong>.</li><li>A non-US citizen may serve as a VE, provided they hold an FCC-granted amateur license of General class or above.</li><li>As a General-class VE, you may administer <strong>Technician exams only</strong>. Three VEs of General class or higher must observe a Technician exam session.</li></ul>
+<p>Remote operation closes the group with two clean rules. Operating a US station by remote control from outside the country requires a US operator/primary station license, because the station is a US station no matter where your fingers are. Flip it around, and operating a station in another country over the internet from the US puts you under <strong>only that country&#x27;s regulations</strong>, because the transmitter is theirs.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G1D)</span> CSCE: operate General segments immediately, sign &quot;/AG,&quot; valid 365 days for element credit. Expired General/Advanced/Extra licenses earn element credit if not revoked; after the grace period, show the expired grant and pass Element 2. VEs: accredited by a VEC, minimum age 18, non-citizens eligible with an FCC General or higher, General-class VEs give Technician exams only, three General-or-higher VEs observe. Remote control of a US station from abroad: US license required. Remote control of a foreign station from the US: only the foreign country&#x27;s rules apply.</p></aside><section class="check" id="check-1.4"><h3>Knowledge Check 1.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. You passed the General exam an hour ago. When may you use General privileges?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>When the FCC database shows the upgrade</button><button class="opt" data-letter="b"><span class="letter">b</span>Immediately, identifying with &quot;AG&quot; after your call sign</button><button class="opt" data-letter="c"><span class="letter">c</span>After receiving the paper license</button><button class="opt" data-letter="d"><span class="letter">d</span>After your VEC files the paperwork</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">2. Which exams may you administer as a General-class VE?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Technician only</button><button class="opt" data-letter="b"><span class="letter">b</span>Technician and General</button><button class="opt" data-letter="c"><span class="letter">c</span>All license classes</button><button class="opt" data-letter="d"><span class="letter">d</span>None</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. You operate a remote station in Chile over the internet from your US home. Whose rules apply?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The FCC&#x27;s only</button><button class="opt" data-letter="b"><span class="letter">b</span>Both countries&#x27; rules</button><button class="opt" data-letter="c"><span class="letter">c</span>Only Chile&#x27;s rules</button><button class="opt" data-letter="d"><span class="letter">d</span>ITU Region 2 rules</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s1-5"><h2><span class="secnum">1.5</span>Control, Third Parties, and the Automatic Stations</h2><p>The last group collects the rules governing who and what is behind a transmission.</p>
+<p><strong>Third parties</strong> first, now with an HF twist, because your General license makes international third-party traffic real. Messages to a third party in a country with a Third-Party Agreement must relate to amateur radio, or remarks of a personal character, or emergencies and disaster relief. One disqualifier the exam checks: a person whose amateur license was <strong>revoked and not reinstated</strong> may not participate as a third party. And third-party messages may be sent via remote control under any circumstances where third-party traffic is otherwise permitted; the control link does not change the rules.</p>
+<p>The world is carved into three <strong>ITU regions</strong>, and North and South America are <strong>Region 2</strong>. Region determines frequency allocations, which is why a band chart from Europe (Region 1) does not match yours.</p>
+<p>Repeater cross-band rules produce one specific scenario: a 10-meter repeater may retransmit the 2-meter signal of a Technician-controlled station only if the 10-meter repeater&#x27;s control operator holds at least a General class license, because the retransmission on 10 meters happens under the repeater control operator&#x27;s privileges.</p>
+<p><strong>Automatically controlled digital stations</strong>, the robots of the band, get a fenced yard: they may communicate with each other only in limited segments of some HF bands (and anywhere on 6 meters and shorter wavelengths). Outside those segments, a contact with an automatic station is legal only if the station initiating it is under local or remote control, meaning a human is on at least one end. Spread spectrum, while we are near it, is capped at <strong>10 watts PEP</strong>.</p>
+<p>One last boundary: the 2.4 GHz amateur band overlaps consumer Wi-Fi, and amateur stations may communicate with non-licensed Wi-Fi stations in <strong>no part</strong> of it. Same hardware, different services, no mixing.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G1E)</span> Third-party traffic to agreement countries: amateur radio topics, personal remarks, or emergency/disaster content. Revoked-and-not-reinstated licensees are disqualified as third parties. Remote control does not change third-party rules. The Americas are ITU Region 2. A 10-meter repeater may retransmit a Technician&#x27;s 2-meter signal only with a General-or-higher repeater control operator. Automatic digital stations talk to each other on 6 meters and up, plus limited HF segments; elsewhere the initiating station must be locally or remotely controlled. Spread spectrum: 10 W PEP max. No amateur communication with unlicensed Wi-Fi anywhere in 2.4 GHz.</p></aside><section class="check" id="check-1.5"><h3>Knowledge Check 1.5</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Which ITU region covers North and South America?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Region 1</button><button class="opt" data-letter="b"><span class="letter">b</span>Region 2</button><button class="opt" data-letter="c"><span class="letter">c</span>Region 3</button><button class="opt" data-letter="d"><span class="letter">d</span>Region 4</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. What disqualifies someone from participating as a third party?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Not being a US citizen</button><button class="opt" data-letter="b"><span class="letter">b</span>Speaking a language other than English</button><button class="opt" data-letter="c"><span class="letter">c</span>A revoked and not reinstated amateur license</button><button class="opt" data-letter="d"><span class="letter">d</span>Being under 18</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Outside the automatic-control band segments, how may you contact an automatically controlled digital station?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>You may not</button><button class="opt" data-letter="b"><span class="letter">b</span>Your initiating station must be under local or remote control</button><button class="opt" data-letter="c"><span class="letter">c</span>Only with Extra class privileges</button><button class="opt" data-letter="d"><span class="letter">d</span>Only below 30 meters</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G1A</span> Generals cannot transmit in portions of 80, 40, 20, and 15 meters; those same four bands hold the Extra-exclusive segments. When Generals lack the full voice segment, they hold the upper portion. 21300 kHz is within the General 15-meter allocation; 7.125 to 7.175 MHz is not available to Generals. Phone and image are both prohibited on 30 meters. CW is permitted on the entire 10-meter band; 10-meter repeaters operate above 29.5 MHz. Secondary allocation: cause no harmful interference to primary users, accept interference from them.</p></div><div class="anchor review"><p><span class="anchor-lead">G1B</span> The FCC determines good engineering and good amateur practice. 200 feet: antenna height requiring FAA notification and FCC registration (away from airports). State and local regulation must reasonably accommodate amateur radio with minimum practical restriction. Beacons: purpose is observation of propagation and reception; one per band per location; 100 W PEP limit; automatic HF beacons only in 28.20 to 28.30 MHz. Avoid 14.100, 18.110, 21.150, 24.930, 28.200 MHz: propagation beacon network. Permitted: retransmitting US government weather and propagation forecasts, one-way code-practice transmissions, abbreviations that do not obscure meaning. International contacts allowed except with countries objecting via the ITU.</p></div><div class="anchor review"><p><span class="anchor-lead">G1C</span> Maximum power is measured as PEP output from the transmitter. 1500 W PEP: the general HF limit, including 160 meters, 12 meters, and 28 MHz. 200 W PEP: the 30-meter limit (10.140 MHz). 60 meters: 2.8 kHz maximum USB bandwidth; keep a record of antenna gain when using other than a dipole. New digital protocols must be publicly documented before use.</p></div><div class="anchor review"><p><span class="anchor-lead">G1D</span> CSCE: operate General segments immediately, sign &quot;/AG,&quot; valid 365 days for element credit. Expired General/Advanced/Extra licenses earn element credit if not revoked; after the grace period, show the expired grant and pass Element 2. VEs: accredited by a VEC, minimum age 18, non-citizens eligible with an FCC General or higher, General-class VEs give Technician exams only, three General-or-higher VEs observe. Remote control of a US station from abroad: US license required. Remote control of a foreign station from the US: only the foreign country&#x27;s rules apply.</p></div><div class="anchor review"><p><span class="anchor-lead">G1E</span> Third-party traffic to agreement countries: amateur radio topics, personal remarks, or emergency/disaster content. Revoked-and-not-reinstated licensees are disqualified as third parties. Remote control does not change third-party rules. The Americas are ITU Region 2. A 10-meter repeater may retransmit a Technician&#x27;s 2-meter signal only with a General-or-higher repeater control operator. Automatic digital stations talk to each other on 6 meters and up, plus limited HF segments; elsewhere the initiating station must be locally or remotely controlled. Spread spectrum: 10 W PEP max. No amateur communication with unlicensed Wi-Fi anywhere in 2.4 GHz.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You can now read the whole HF map: where Generals operate, where the Extra segments sit, which bands carry power or mode asterisks, and what the day after your exam looks like, &quot;/AG&quot; and all. You also met the referee&#x27;s chair, because the VE table is in your future whether you know it yet or not.</p>
+<p>Module 2 is the reason any of this map matters: the star that powers it. The Sun is about to become your repeater.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (G-S3): print or bookmark the current General band chart and mark the Extra-only segments in red. Then spin a receiver through 30 meters some evening and hear what a CW and data band sounds like. Knowing the edges by ear beats knowing them by chart.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 1 complete</button>
+    <div class="pager"><span></span><a class="navlink" href="gen-module-02.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m01";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 1 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

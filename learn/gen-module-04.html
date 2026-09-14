@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 4: The Deeper Parts Bin | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 4 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 4: The Deeper Parts Bin</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G6 (Circuit Components). Two questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray slides open the wide shallow drawers of his parts cabinet, the ones you were not allowed to rummage at Technician. &quot;Same families you already know,&quot; he says. &quot;Diodes, capacitors, transistors, connectors. What changes at General is that you stop asking what a part is and start asking which one, and why. Every drawer in here is an answer to a &#x27;which one&#x27; question.&quot;</p></div>
+<section class="module-section" id="s4-1"><h2><span class="secnum">4.1</span>Choosing Parts Like You Mean It</h2><p><strong>Batteries</strong> first, because your field box runs on them. Two specifications matter beyond amp-hours:</p>
+<ul><li>A standard 12-volt lead-acid battery should never be discharged below <strong>10.5 volts</strong> if you want maximum life. Below that, the chemistry starts eating itself.</li><li><strong>Low internal resistance</strong> is the specification behind a battery&#x27;s ability to deliver <strong>high discharge current</strong>. Internal resistance is a resistor you cannot remove, in series with everything, and Ohm&#x27;s Law caps the current it will allow.</li></ul>
+<p><strong>Diodes</strong> now come with numbers attached. That forward voltage drop from Technician has values: approximately <strong>0.3 volts for germanium</strong>, <strong>0.7 volts for silicon</strong>. Germanium&#x27;s smaller toll made it the classic detector diode; silicon&#x27;s ruggedness made it everything else.</p>
+<p><strong>Capacitors</strong> have personalities, chosen by job:</p>
+<ul><li><strong>Electrolytic</strong>: high capacitance for a given volume, the big cans in power supply filters. The tradeoff is leakage, tolerance, and polarity.</li><li><strong>Ceramic</strong>: comparatively low cost, the workhorse for bypassing and general duty.</li></ul>
+<p><strong>Resistors</strong> carry one RF warning: <strong>wire-wound resistors do not belong in RF circuits</strong>, because a resistor made of coiled wire is secretly an inductor, and its inductance makes circuit performance unpredictable. At DC it is a resistor; at 14 MHz it is a component you did not design.</p>
+<p>That same treachery afflicts real inductors: every coil has stray capacitance between its turns, giving it a <strong>self-resonant frequency</strong>. Operate an inductor above its self-resonance and it <strong>becomes capacitive</strong>, an inductor in name only. At RF, every part is all three of R, L, and C; good design just decides which one dominates.</p>
+<p><strong>Transistors</strong> deepen by one layer each:</p>
+<ul><li>A bipolar transistor used as a <strong>switch</strong> operates at two points: <strong>saturation and cutoff</strong>, fully on and fully off, sprinting through the wasteful in-between region. (File this: it becomes amplifier class efficiency in Module 5.)</li><li>The <strong>MOSFET&#x27;s</strong> defining construction: its gate is separated from the channel by a <strong>thin insulating layer</strong>. No current flows into the gate at all; the field does the work through the glass, which is also why static electricity kills MOSFETs.</li></ul>
+<p>And the <strong>vacuum tube</strong> refuses to leave the exam, because high-power amplifiers still use them. Two grid facts: the <strong>control grid</strong> regulates the flow of electrons between cathode and plate (a small grid voltage steering a large plate current, the tube&#x27;s whole trick), and the <strong>screen grid</strong> exists to reduce grid-to-plate capacitance, taming the feedback path that makes tube amplifiers oscillate.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G6A)</span> Lead-acid minimum discharge: 10.5 volts. Low internal resistance enables high discharge current. Forward threshold: germanium 0.3 V, silicon 0.7 V. Electrolytic capacitor: high capacitance per volume. Ceramic: low cost. Wire-wound resistors: unwanted inductance at RF. An inductor above self-resonance becomes capacitive. Transistor switch operating points: saturation and cutoff. MOSFET: gate insulated from the channel by a thin layer. Tube control grid regulates cathode-to-plate electron flow; screen grid reduces grid-to-plate capacitance.</p></aside><section class="check" id="check-4.1"><h3>Knowledge Check 4.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. What is the minimum discharge voltage for long life in a 12-volt lead-acid battery?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>6 volts</button><button class="opt" data-letter="b"><span class="letter">b</span>8.5 volts</button><button class="opt" data-letter="c"><span class="letter">c</span>10.5 volts</button><button class="opt" data-letter="d"><span class="letter">d</span>11.9 volts</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why are wire-wound resistors avoided in RF circuits?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>They cannot dissipate enough power</button><button class="opt" data-letter="b"><span class="letter">b</span>Their inductance makes circuit behavior unpredictable</button><button class="opt" data-letter="c"><span class="letter">c</span>Their tolerance is too loose</button><button class="opt" data-letter="d"><span class="letter">d</span>They are too expensive</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What are the two operating points of a bipolar transistor used as a switch?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Peak and valley</button><button class="opt" data-letter="b"><span class="letter">b</span>Saturation and cutoff</button><button class="opt" data-letter="c"><span class="letter">c</span>Source and drain</button><button class="opt" data-letter="d"><span class="letter">d</span>Active and passive</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s4-2"><h2><span class="secnum">4.2</span>Chips, Connectors, and the Ferrite Drawer</h2><p>The second half of the cabinet holds the parts that connect, contain, and integrate.</p>
+<p><strong>Integrated circuits</strong> sort into two great families. An <strong>operational amplifier</strong> is the classic <strong>analog</strong> IC, a device that works on continuously varying signals. The digital side&#x27;s exam entry is <strong>CMOS</strong>, whose advantage over the older TTL family is <strong>low power consumption</strong>, the property that put a computer in your pocket. And at microwave, the <strong>MMIC</strong>, the Monolithic Microwave Integrated Circuit, packs an entire amplifier stage into a part the size of a grain of rice.</p>
+<p><strong>Connectors</strong> are chosen by frequency and duty, extending your Technician ladder:</p>
+<ul><li><strong>RCA phono</strong>: the humble connector for low-frequency and DC connections to a transceiver, the PTT and audio jacks on the back panel.</li><li><strong>BNC</strong>: the bayonet quick-connect, good for low-SWR operation to about <strong>4 GHz</strong>, which is why test equipment wears it.</li><li><strong>SMA</strong>: small and <strong>threaded</strong>, suitable to several GHz, the handheld antenna connector.</li><li><strong>Type N</strong>: the <strong>moisture-resistant</strong> connector useful to <strong>10 GHz</strong>, repeating from Technician with its numbers attached.</li></ul>
+<p>The <strong>ferrite drawer</strong> deserves its own paragraph, because ferrites run through this entire hobby. The performance of a ferrite core at different frequencies is determined by the composition, or <strong>&quot;mix,&quot;</strong> of materials in it: type 43 for HF choking, type 61 higher up, and using the wrong mix means the part politely does nothing. Wind an inductor on a <strong>ferrite toroid</strong> and you get the full package: large inductance values, magnetic properties optimized for a chosen frequency range, and a magnetic field that stays contained in the core instead of coupling into everything nearby. All of these. And the common-mode chokes you have been clipping onto cables since Technician work by a mechanism you can now name: a ferrite bead reduces common-mode current by <strong>creating an impedance in the current&#x27;s path</strong>.</p>
+<p>One old friend closes the drawer with its bias stated formally: an LED emits light when <strong>forward biased</strong>, the same forward current from your Technician course wearing its General-class vocabulary.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G6B)</span> Op-amp: analog IC. CMOS advantage: low power consumption. MMIC: Monolithic Microwave Integrated Circuit. RCA phono: low frequency and DC transceiver connections. BNC: low SWR to 4 GHz. SMA: small threaded connector to several GHz. Type N: moisture-resistant to 10 GHz. Ferrite performance is set by its material mix. Ferrite toroid advantages: large inductance, frequency-optimized core, contained magnetic field (all). Ferrite bead: reduces common-mode current by creating impedance in its path. LED: emits when forward biased.</p></aside><section class="check" id="check-4.2"><h3>Knowledge Check 4.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What determines how a ferrite core performs at different frequencies?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Its physical size</button><button class="opt" data-letter="b"><span class="letter">b</span>The composition or mix of materials in the core</button><button class="opt" data-letter="c"><span class="letter">c</span>The number of turns wound on it</button><button class="opt" data-letter="d"><span class="letter">d</span>Its color code</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. Which connector is a small threaded type good to several GHz?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>RCA phono</button><button class="opt" data-letter="b"><span class="letter">b</span>BNC</button><button class="opt" data-letter="c"><span class="letter">c</span>SMA</button><button class="opt" data-letter="d"><span class="letter">d</span>PL-259</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. An operational amplifier is what kind of device?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Digital</button><button class="opt" data-letter="b"><span class="letter">b</span>Analog</button><button class="opt" data-letter="c"><span class="letter">c</span>Microwave-only</button><button class="opt" data-letter="d"><span class="letter">d</span>Electromechanical</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G6A</span> Lead-acid minimum discharge: 10.5 volts. Low internal resistance enables high discharge current. Forward threshold: germanium 0.3 V, silicon 0.7 V. Electrolytic capacitor: high capacitance per volume. Ceramic: low cost. Wire-wound resistors: unwanted inductance at RF. An inductor above self-resonance becomes capacitive. Transistor switch operating points: saturation and cutoff. MOSFET: gate insulated from the channel by a thin layer. Tube control grid regulates cathode-to-plate electron flow; screen grid reduces grid-to-plate capacitance.</p></div><div class="anchor review"><p><span class="anchor-lead">G6B</span> Op-amp: analog IC. CMOS advantage: low power consumption. MMIC: Monolithic Microwave Integrated Circuit. RCA phono: low frequency and DC transceiver connections. BNC: low SWR to 4 GHz. SMA: small threaded connector to several GHz. Type N: moisture-resistant to 10 GHz. Ferrite performance is set by its material mix. Ferrite toroid advantages: large inductance, frequency-optimized core, contained magnetic field (all). Ferrite bead: reduces common-mode current by creating impedance in its path. LED: emits when forward biased.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>The drawers are open to you now: you can pick a diode by its threshold, a capacitor by its personality, a connector by its frequency, and a ferrite by its mix, and you know why the wrong resistor becomes an inductor at RF. The &quot;which one and why&quot; habit is the actual upgrade; the exam questions are just spot checks on it.</p>
+<p>Module 5 wires these parts into the circuits that make a transceiver: power supplies, amplifier classes, oscillators, filters, and the software-defined radio that is quietly replacing half of them.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (G-S1, G-S5): put a multimeter across a silicon diode on the diode-test setting and read the 0.7 volts yourself, then check a battery&#x27;s resting voltage against the 10.5-volt floor after your next field outing. And if you own a NanoVNA, sweep one of your ferrite chokes and watch its impedance rise across the band it was mixed for.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 4 complete</button>
+    <div class="pager"><a class="navlink" href="gen-module-03.html">Previous module</a><a class="navlink" href="gen-module-05.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m04";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 4 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

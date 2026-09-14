@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Practice Exam | K4DIA</title>
+<style>
+:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA;
+  --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA;
+  --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1.1rem 4rem; }
+h1 { font-family: Georgia, serif; font-size: 1.8rem; margin: .6rem 0 .3rem; }
+.lede { color: var(--muted); margin: 0 0 1.4rem; }
+.q { background: #fff; border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1rem 1.1rem; margin-bottom: .9rem; }
+.gid { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--accent-dark);
+  background: var(--tint); border-radius: 5px; padding: .1rem .45rem; margin-right: .3rem; }
+.qtext { font-weight: 600; margin: 0 0 .6rem; }
+.qfig { margin: .6rem 0 .9rem; text-align: center; }
+.qfig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+.opts { display: grid; gap: .45rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; background: var(--paper);
+  border: 1.5px solid var(--rule); border-radius: 8px; padding: .5rem .7rem; cursor: pointer; }
+.opt:hover { border-color: var(--accent); }
+.opt input { accent-color: var(--accent); }
+.letter { font-weight: 700; color: var(--accent-dark); }
+.q.right { border-color: var(--ok); }
+.q.wrong { border-color: var(--no); }
+.q.graded .opt { cursor: default; }
+.q.graded .opt.correct { border-color: var(--ok); background: #EAF5EE; }
+.q.graded .opt.chosen-wrong { border-color: var(--no); background: #FAEDEC; }
+.review { font-weight: 600; margin: .6rem 0 0; }
+.review a { color: var(--accent-dark); }
+.submitrow { position: sticky; bottom: 0; background: var(--paper);
+  border-top: 1px solid var(--rule); padding: .8rem 0; display: flex;
+  gap: 1rem; align-items: center; }
+#submit { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px;
+  padding: .7rem 1.2rem; cursor: pointer; }
+#count { color: var(--muted); font-weight: 600; }
+#result { margin: 1rem 0; padding: 1rem 1.1rem; border-radius: 10px; font-size: 1.05rem;
+  font-weight: 700; display: none; }
+#result.pass { display: block; background: #EAF5EE; color: var(--ok);
+  border: 2px solid var(--ok); }
+#result.fail { display: block; background: #FAEDEC; color: var(--no);
+  border: 2px solid var(--no); }
+#best { color: var(--muted); font-size: .9rem; }
+#restudy { background: var(--tint); border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: .9rem 1.1rem; margin: 1rem 0; }
+.rehead { font-weight: 700; color: var(--accent-dark); margin: 0 0 .4rem; }
+#relist { margin: 0; padding-left: 1.2rem; }
+#relist li { margin: .3rem 0; }
+#relist a { color: var(--accent-dark); font-weight: 600; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Practice exam</span>
+</div>
+<main>
+<h1>Technician Practice Exam</h1>
+<p class="lede">35 questions, one from each exam group, in your course's own words. Passing is 26 correct, the same standard as the real exam. Miss one and you get a link straight back to the section that teaches it. <span id="best"></span></p>
+<form id="exam"><div class="q" data-answer="2" data-mod="tech-module-01.html#s1-6" data-label="Module 1, Section 1.6"><p class="qtext"><span class="gid">T1A</span> 1. Willfully interfering with another amateur station is:</p><div class="opts"><label class="opt"><input type="radio" name="q1" value="0"><span class="letter">a</span><span>Permitted if the other station is causing you interference</span></label><label class="opt"><input type="radio" name="q1" value="1"><span class="letter">b</span><span>Permitted during contests</span></label><label class="opt"><input type="radio" name="q1" value="2"><span class="letter">c</span><span>Never permitted</span></label><label class="opt"><input type="radio" name="q1" value="3"><span class="letter">d</span><span>Permitted below 30 MHz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-01.html#s1-3" data-label="Module 1, Section 1.3"><p class="qtext"><span class="gid">T1B</span> 2. 146.520 MHz sits inside which amateur band?</p><div class="opts"><label class="opt"><input type="radio" name="q2" value="0"><span class="letter">a</span><span>6 meters</span></label><label class="opt"><input type="radio" name="q2" value="1"><span class="letter">b</span><span>2 meters</span></label><label class="opt"><input type="radio" name="q2" value="2"><span class="letter">c</span><span>1.25 meters</span></label><label class="opt"><input type="radio" name="q2" value="3"><span class="letter">d</span><span>70 centimeters</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-01.html#s1-2" data-label="Module 1, Section 1.2"><p class="qtext"><span class="gid">T1C</span> 3. A new FCC amateur license is normally granted for a term of:</p><div class="opts"><label class="opt"><input type="radio" name="q3" value="0"><span class="letter">a</span><span>5 years</span></label><label class="opt"><input type="radio" name="q3" value="1"><span class="letter">b</span><span>10 years</span></label><label class="opt"><input type="radio" name="q3" value="2"><span class="letter">c</span><span>Life</span></label><label class="opt"><input type="radio" name="q3" value="3"><span class="letter">d</span><span>2 years, renewable</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="tech-module-01.html#s1-4" data-label="Module 1, Section 1.4"><p class="qtext"><span class="gid">T1D</span> 4. Accepting payment for operating your amateur station is:</p><div class="opts"><label class="opt"><input type="radio" name="q4" value="0"><span class="letter">a</span><span>Fine if under $100</span></label><label class="opt"><input type="radio" name="q4" value="1"><span class="letter">b</span><span>Allowed for public service events</span></label><label class="opt"><input type="radio" name="q4" value="2"><span class="letter">c</span><span>Prohibited, with narrow exceptions such as certain classroom use</span></label><label class="opt"><input type="radio" name="q4" value="3"><span class="letter">d</span><span>Allowed with FCC approval</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-01.html#s1-5" data-label="Module 1, Section 1.5"><p class="qtext"><span class="gid">T1E</span> 5. A transmitting station&#x27;s privileges are set by:</p><div class="opts"><label class="opt"><input type="radio" name="q5" value="0"><span class="letter">a</span><span>The station owner&#x27;s license class</span></label><label class="opt"><input type="radio" name="q5" value="1"><span class="letter">b</span><span>The control operator&#x27;s license class</span></label><label class="opt"><input type="radio" name="q5" value="2"><span class="letter">c</span><span>The equipment&#x27;s certification</span></label><label class="opt"><input type="radio" name="q5" value="3"><span class="letter">d</span><span>The frequency coordinator</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-01.html#s1-6" data-label="Module 1, Section 1.6"><p class="qtext"><span class="gid">T1F</span> 6. You must identify with your call sign:</p><div class="opts"><label class="opt"><input type="radio" name="q6" value="0"><span class="letter">a</span><span>Once at the start of a contact only</span></label><label class="opt"><input type="radio" name="q6" value="1"><span class="letter">b</span><span>Every 10 minutes during a contact and at its end</span></label><label class="opt"><input type="radio" name="q6" value="2"><span class="letter">c</span><span>Every 5 minutes</span></label><label class="opt"><input type="radio" name="q6" value="3"><span class="letter">d</span><span>Only when asked</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="tech-module-09.html#s9-1" data-label="Module 9, Section 9.1"><p class="qtext"><span class="gid">T2A</span> 7. The standard repeater offset on the 2-meter band is:</p><div class="opts"><label class="opt"><input type="radio" name="q7" value="0"><span class="letter">a</span><span>600 kHz</span></label><label class="opt"><input type="radio" name="q7" value="1"><span class="letter">b</span><span>1 MHz</span></label><label class="opt"><input type="radio" name="q7" value="2"><span class="letter">c</span><span>5 MHz</span></label><label class="opt"><input type="radio" name="q7" value="3"><span class="letter">d</span><span>100 kHz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-09.html#s9-1" data-label="Module 9, Section 9.1"><p class="qtext"><span class="gid">T2B</span> 8. CTCSS is best described as:</p><div class="opts"><label class="opt"><input type="radio" name="q8" value="0"><span class="letter">a</span><span>A digital squelch code</span></label><label class="opt"><input type="radio" name="q8" value="1"><span class="letter">b</span><span>A sub-audible tone that opens a receiver&#x27;s squelch</span></label><label class="opt"><input type="radio" name="q8" value="2"><span class="letter">c</span><span>A type of repeater linking</span></label><label class="opt"><input type="radio" name="q8" value="3"><span class="letter">d</span><span>An identification requirement</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-09.html#s9-3" data-label="Module 9, Section 9.3"><p class="qtext"><span class="gid">T2C</span> 9. During a directed net, the station that manages who transmits is the:</p><div class="opts"><label class="opt"><input type="radio" name="q9" value="0"><span class="letter">a</span><span>Relay station</span></label><label class="opt"><input type="radio" name="q9" value="1"><span class="letter">b</span><span>Net Control Station</span></label><label class="opt"><input type="radio" name="q9" value="2"><span class="letter">c</span><span>Section manager</span></label><label class="opt"><input type="radio" name="q9" value="3"><span class="letter">d</span><span>Bulletin station</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-02.html#s2-2" data-label="Module 2, Section 2.2"><p class="qtext"><span class="gid">T3A</span> 10. An FM signal that drops out at one spot in a room can often be fixed by:</p><div class="opts"><label class="opt"><input type="radio" name="q10" value="0"><span class="letter">a</span><span>Doubling power</span></label><label class="opt"><input type="radio" name="q10" value="1"><span class="letter">b</span><span>Moving the antenna a few feet</span></label><label class="opt"><input type="radio" name="q10" value="2"><span class="letter">c</span><span>Switching to AM</span></label><label class="opt"><input type="radio" name="q10" value="3"><span class="letter">d</span><span>Lowering the squelch</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-02.html#s2-1" data-label="Module 2, Section 2.1"><p class="qtext"><span class="gid">T3B</span> 11. Wavelength in meters is found by dividing 300 by:</p><div class="opts"><label class="opt"><input type="radio" name="q11" value="0"><span class="letter">a</span><span>The frequency in kilohertz</span></label><label class="opt"><input type="radio" name="q11" value="1"><span class="letter">b</span><span>The frequency in megahertz</span></label><label class="opt"><input type="radio" name="q11" value="2"><span class="letter">c</span><span>The power in watts</span></label><label class="opt"><input type="radio" name="q11" value="3"><span class="letter">d</span><span>The antenna length</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-02.html#s2-3" data-label="Module 2, Section 2.3"><p class="qtext"><span class="gid">T3C</span> 12. Sporadic E propagation most famously produces long contacts on:</p><div class="opts"><label class="opt"><input type="radio" name="q12" value="0"><span class="letter">a</span><span>160 meters</span></label><label class="opt"><input type="radio" name="q12" value="1"><span class="letter">b</span><span>6 meters</span></label><label class="opt"><input type="radio" name="q12" value="2"><span class="letter">c</span><span>23 centimeters</span></label><label class="opt"><input type="radio" name="q12" value="3"><span class="letter">d</span><span>30 meters</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-08.html#s8-2" data-label="Module 8, Section 8.2"><p class="qtext"><span class="gid">T4A</span> 13. A mobile HF radio&#x27;s power leads should run:</p><div class="opts"><label class="opt"><input type="radio" name="q13" value="0"><span class="letter">a</span><span>To the cigarette lighter socket</span></label><label class="opt"><input type="radio" name="q13" value="1"><span class="letter">b</span><span>Directly to the battery, fused in both leads</span></label><label class="opt"><input type="radio" name="q13" value="2"><span class="letter">c</span><span>To any convenient chassis point</span></label><label class="opt"><input type="radio" name="q13" value="3"><span class="letter">d</span><span>Through the ignition switch only</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-08.html#s8-1" data-label="Module 8, Section 8.1"><p class="qtext"><span class="gid">T4B</span> 14. The receiver incremental tuning (RIT) control:</p><div class="opts"><label class="opt"><input type="radio" name="q14" value="0"><span class="letter">a</span><span>Changes your transmit frequency</span></label><label class="opt"><input type="radio" name="q14" value="1"><span class="letter">b</span><span>Shifts your receive frequency without moving your transmit frequency</span></label><label class="opt"><input type="radio" name="q14" value="2"><span class="letter">c</span><span>Adjusts microphone gain</span></label><label class="opt"><input type="radio" name="q14" value="3"><span class="letter">d</span><span>Sets repeater offset</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="tech-module-03.html#s3-1" data-label="Module 3, Section 3.1"><p class="qtext"><span class="gid">T5A</span> 15. Which of these is a good electrical insulator?</p><div class="opts"><label class="opt"><input type="radio" name="q15" value="0"><span class="letter">a</span><span>Copper</span></label><label class="opt"><input type="radio" name="q15" value="1"><span class="letter">b</span><span>Aluminum</span></label><label class="opt"><input type="radio" name="q15" value="2"><span class="letter">c</span><span>Glass</span></label><label class="opt"><input type="radio" name="q15" value="3"><span class="letter">d</span><span>Salt water</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="tech-module-03.html#s3-2" data-label="Module 3, Section 3.2"><p class="qtext"><span class="gid">T5B</span> 16. A 3 dB increase means power has:</p><div class="opts"><label class="opt"><input type="radio" name="q16" value="0"><span class="letter">a</span><span>Doubled</span></label><label class="opt"><input type="radio" name="q16" value="1"><span class="letter">b</span><span>Tripled</span></label><label class="opt"><input type="radio" name="q16" value="2"><span class="letter">c</span><span>Increased tenfold</span></label><label class="opt"><input type="radio" name="q16" value="3"><span class="letter">d</span><span>Not changed</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-03.html#s3-3" data-label="Module 3, Section 3.3"><p class="qtext"><span class="gid">T5C</span> 17. A radio drawing 10 amperes from a 13.8-volt supply consumes:</p><div class="opts"><label class="opt"><input type="radio" name="q17" value="0"><span class="letter">a</span><span>1.38 watts</span></label><label class="opt"><input type="radio" name="q17" value="1"><span class="letter">b</span><span>138 watts</span></label><label class="opt"><input type="radio" name="q17" value="2"><span class="letter">c</span><span>23.8 watts</span></label><label class="opt"><input type="radio" name="q17" value="3"><span class="letter">d</span><span>1380 watts</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="tech-module-03.html#s3-3" data-label="Module 3, Section 3.3"><p class="qtext"><span class="gid">T5D</span> 18. 90 volts across a 30-ohm resistor drives a current of:</p><div class="opts"><label class="opt"><input type="radio" name="q18" value="0"><span class="letter">a</span><span>3 amperes</span></label><label class="opt"><input type="radio" name="q18" value="1"><span class="letter">b</span><span>0.33 amperes</span></label><label class="opt"><input type="radio" name="q18" value="2"><span class="letter">c</span><span>2700 amperes</span></label><label class="opt"><input type="radio" name="q18" value="3"><span class="letter">d</span><span>120 amperes</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="3" data-mod="tech-module-04.html#s4-1" data-label="Module 4, Section 4.1"><p class="qtext"><span class="gid">T6A</span> 19. Which battery chemistry must never be recharged?</p><div class="opts"><label class="opt"><input type="radio" name="q19" value="0"><span class="letter">a</span><span>Lead-acid</span></label><label class="opt"><input type="radio" name="q19" value="1"><span class="letter">b</span><span>Lithium-ion</span></label><label class="opt"><input type="radio" name="q19" value="2"><span class="letter">c</span><span>Nickel-metal hydride</span></label><label class="opt"><input type="radio" name="q19" value="3"><span class="letter">d</span><span>Carbon-zinc</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-04.html#s4-2" data-label="Module 4, Section 4.2"><p class="qtext"><span class="gid">T6B</span> 20. On a physical diode, the stripe marks the:</p><div class="opts"><label class="opt"><input type="radio" name="q20" value="0"><span class="letter">a</span><span>Anode</span></label><label class="opt"><input type="radio" name="q20" value="1"><span class="letter">b</span><span>Cathode</span></label><label class="opt"><input type="radio" name="q20" value="2"><span class="letter">c</span><span>Gate</span></label><label class="opt"><input type="radio" name="q20" value="3"><span class="letter">d</span><span>Base</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-04.html#s4-3" data-label="Module 4, Section 4.3"><p class="qtext"><span class="gid">T6C</span> 21. In the figure, which numbered symbol is the NPN transistor?</p><div class="qfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Technician Figure 2: Symbol Quiz</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="90.0" y1="135.0" x2="131.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="131.0,121.0 131.0,149.0 157.0,135.0" fill="black" stroke="none"/>
+<line x1="157.0" y1="121.0" x2="157.0" y2="149.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="157.0" y1="135.0" x2="200.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="340.0" y1="135.0" x2="381.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="381.0,121.0 381.0,149.0 407.0,135.0" fill="black" stroke="none"/>
+<line x1="407.0" y1="121.0" x2="407.0" y2="149.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="135.0" x2="450.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="393.0" y1="115.0" x2="405.0" y2="103.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="405.0,103.0 403.3,109.8 398.2,104.7" fill="black" stroke="none"/>
+<line x1="403.0" y1="109.0" x2="415.0" y2="97.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="415.0,97.0 413.3,103.8 408.2,98.7" fill="black" stroke="none"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="645.0" cy="135.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="635.0" y1="117.0" x2="635.0" y2="153.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="590.0" y1="135.0" x2="635.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="635.0" y1="127.0" x2="659.0" y2="113.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="659.0" y1="113.0" x2="659.0" y2="93.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="635.0" y1="143.0" x2="659.0" y2="157.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="659.0" y1="157.0" x2="659.0" y2="177.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="656.0,155.0 646.0,155.1 651.2,146.2" fill="black" stroke="none"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="145.0" cy="285.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="135.0" y1="267.0" x2="135.0" y2="303.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="90.0" y1="285.0" x2="135.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="135.0" y1="277.0" x2="159.0" y2="263.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="159.0" y1="263.0" x2="159.0" y2="243.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="135.0" y1="293.0" x2="159.0" y2="307.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="159.0" y1="307.0" x2="159.0" y2="327.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="138.0,295.0 148.0,294.9 142.8,303.8" fill="black" stroke="none"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="395.0" cy="285.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="393.0" y1="267.0" x2="393.0" y2="303.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="393.0" y1="271.0" x2="411.0" y2="271.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="271.0" x2="411.0" y2="243.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="393.0" y1="299.0" x2="411.0" y2="299.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="299.0" x2="411.0" y2="327.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="340.0" y1="299.0" x2="393.0" y2="299.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="391.0,299.0 382.4,304.2 382.4,293.8" fill="black" stroke="none"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="590.0" y1="285.0" x2="631.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="631.0,271.0 631.0,299.0 657.0,285.0" fill="black" stroke="none"/>
+<line x1="657.0" y1="271.0" x2="657.0" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="657.0" y1="271.0" x2="650.0" y2="266.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="657.0" y1="299.0" x2="664.0" y2="304.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="657.0" y1="285.0" x2="700.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="395.0" y="364.0" font-size="13" text-anchor="middle" font-weight="normal" fill="#444" font-style="italic">Identify each numbered symbol. Answer key: tech-fig-2</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg></div><div class="opts"><label class="opt"><input type="radio" name="q21" value="0"><span class="letter">a</span><span>1</span></label><label class="opt"><input type="radio" name="q21" value="1"><span class="letter">b</span><span>3</span></label><label class="opt"><input type="radio" name="q21" value="2"><span class="letter">c</span><span>5</span></label><label class="opt"><input type="radio" name="q21" value="3"><span class="letter">d</span><span>6</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-04.html#s4-4" data-label="Module 4, Section 4.4"><p class="qtext"><span class="gid">T6D</span> 22. A relay is:</p><div class="opts"><label class="opt"><input type="radio" name="q22" value="0"><span class="letter">a</span><span>A type of fuse</span></label><label class="opt"><input type="radio" name="q22" value="1"><span class="letter">b</span><span>An electrically controlled switch</span></label><label class="opt"><input type="radio" name="q22" value="2"><span class="letter">c</span><span>A voltage regulator</span></label><label class="opt"><input type="radio" name="q22" value="3"><span class="letter">d</span><span>An antenna matching device</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-05.html#s5-1" data-label="Module 5, Section 5.1"><p class="qtext"><span class="gid">T7A</span> 23. A transceiver is a unit that combines:</p><div class="opts"><label class="opt"><input type="radio" name="q23" value="0"><span class="letter">a</span><span>A receiver and a power supply</span></label><label class="opt"><input type="radio" name="q23" value="1"><span class="letter">b</span><span>A transmitter and a receiver</span></label><label class="opt"><input type="radio" name="q23" value="2"><span class="letter">c</span><span>Two receivers</span></label><label class="opt"><input type="radio" name="q23" value="3"><span class="letter">d</span><span>An amplifier and an antenna tuner</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="tech-module-05.html#s5-2" data-label="Module 5, Section 5.2"><p class="qtext"><span class="gid">T7B</span> 24. If you are told your FM signal is overdeviating, you should:</p><div class="opts"><label class="opt"><input type="radio" name="q24" value="0"><span class="letter">a</span><span>Talk farther from the microphone</span></label><label class="opt"><input type="radio" name="q24" value="1"><span class="letter">b</span><span>Raise your power</span></label><label class="opt"><input type="radio" name="q24" value="2"><span class="letter">c</span><span>Switch antennas</span></label><label class="opt"><input type="radio" name="q24" value="3"><span class="letter">d</span><span>Speak more quickly</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-05.html#s5-3" data-label="Module 5, Section 5.3"><p class="qtext"><span class="gid">T7C</span> 25. Transmitter testing off the air is done into a:</p><div class="opts"><label class="opt"><input type="radio" name="q25" value="0"><span class="letter">a</span><span>Long wire</span></label><label class="opt"><input type="radio" name="q25" value="1"><span class="letter">b</span><span>Dummy load</span></label><label class="opt"><input type="radio" name="q25" value="2"><span class="letter">c</span><span>Second receiver</span></label><label class="opt"><input type="radio" name="q25" value="3"><span class="letter">d</span><span>Filter</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-05.html#s5-4" data-label="Module 5, Section 5.4"><p class="qtext"><span class="gid">T7D</span> 26. To measure voltage, a voltmeter is connected:</p><div class="opts"><label class="opt"><input type="radio" name="q26" value="0"><span class="letter">a</span><span>In series with the circuit</span></label><label class="opt"><input type="radio" name="q26" value="1"><span class="letter">b</span><span>In parallel with the circuit</span></label><label class="opt"><input type="radio" name="q26" value="2"><span class="letter">c</span><span>Through a capacitor</span></label><label class="opt"><input type="radio" name="q26" value="3"><span class="letter">d</span><span>Only with power removed</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="2" data-mod="tech-module-06.html#s6-1" data-label="Module 6, Section 6.1"><p class="qtext"><span class="gid">T8A</span> 27. Which emission occupies the narrowest bandwidth?</p><div class="opts"><label class="opt"><input type="radio" name="q27" value="0"><span class="letter">a</span><span>FM voice</span></label><label class="opt"><input type="radio" name="q27" value="1"><span class="letter">b</span><span>SSB voice</span></label><label class="opt"><input type="radio" name="q27" value="2"><span class="letter">c</span><span>CW</span></label><label class="opt"><input type="radio" name="q27" value="3"><span class="letter">d</span><span>AM voice</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-06.html#s6-4" data-label="Module 6, Section 6.4"><p class="qtext"><span class="gid">T8B</span> 28. The steady drift you must tune out during a satellite pass is caused by:</p><div class="opts"><label class="opt"><input type="radio" name="q28" value="0"><span class="letter">a</span><span>Ionospheric absorption</span></label><label class="opt"><input type="radio" name="q28" value="1"><span class="letter">b</span><span>Doppler shift</span></label><label class="opt"><input type="radio" name="q28" value="2"><span class="letter">c</span><span>Transponder aging</span></label><label class="opt"><input type="radio" name="q28" value="3"><span class="letter">d</span><span>Ground reflections</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-06.html#s6-3" data-label="Module 6, Section 6.3"><p class="qtext"><span class="gid">T8C</span> 29. A Maidenhead grid square is:</p><div class="opts"><label class="opt"><input type="radio" name="q29" value="0"><span class="letter">a</span><span>A type of antenna</span></label><label class="opt"><input type="radio" name="q29" value="1"><span class="letter">b</span><span>A map location identifier exchanged by operators</span></label><label class="opt"><input type="radio" name="q29" value="2"><span class="letter">c</span><span>A satellite mode</span></label><label class="opt"><input type="radio" name="q29" value="3"><span class="letter">d</span><span>A contest logging program</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-06.html#s6-2" data-label="Module 6, Section 6.2"><p class="qtext"><span class="gid">T8D</span> 30. FT8&#x27;s defining strength is:</p><div class="opts"><label class="opt"><input type="radio" name="q30" value="0"><span class="letter">a</span><span>High-fidelity audio</span></label><label class="opt"><input type="radio" name="q30" value="1"><span class="letter">b</span><span>Decoding signals far too weak to hear</span></label><label class="opt"><input type="radio" name="q30" value="2"><span class="letter">c</span><span>Fast keyboard chat</span></label><label class="opt"><input type="radio" name="q30" value="3"><span class="letter">d</span><span>Image transmission</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="0" data-mod="tech-module-07.html#s7-3" data-label="Module 7, Section 7.3"><p class="qtext"><span class="gid">T9A</span> 31. A quarter-wave vertical for 146 MHz is approximately:</p><div class="opts"><label class="opt"><input type="radio" name="q31" value="0"><span class="letter">a</span><span>19 inches tall</span></label><label class="opt"><input type="radio" name="q31" value="1"><span class="letter">b</span><span>38 inches tall</span></label><label class="opt"><input type="radio" name="q31" value="2"><span class="letter">c</span><span>6 feet tall</span></label><label class="opt"><input type="radio" name="q31" value="3"><span class="letter">d</span><span>112 inches tall</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-07.html#s7-3" data-label="Module 7, Section 7.3"><p class="qtext"><span class="gid">T9B</span> 32. As frequency rises, loss in a length of coaxial cable:</p><div class="opts"><label class="opt"><input type="radio" name="q32" value="0"><span class="letter">a</span><span>Falls</span></label><label class="opt"><input type="radio" name="q32" value="1"><span class="letter">b</span><span>Rises</span></label><label class="opt"><input type="radio" name="q32" value="2"><span class="letter">c</span><span>Stays constant</span></label><label class="opt"><input type="radio" name="q32" value="3"><span class="letter">d</span><span>Disappears above 440 MHz</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-10.html#s10-1" data-label="Module 10, Section 10.1"><p class="qtext"><span class="gid">T0A</span> 33. A blown 5-amp fuse should be replaced with:</p><div class="opts"><label class="opt"><input type="radio" name="q33" value="0"><span class="letter">a</span><span>A 20-amp fuse for margin</span></label><label class="opt"><input type="radio" name="q33" value="1"><span class="letter">b</span><span>A 5-amp fuse</span></label><label class="opt"><input type="radio" name="q33" value="2"><span class="letter">c</span><span>A wire jumper temporarily</span></label><label class="opt"><input type="radio" name="q33" value="3"><span class="letter">d</span><span>Whatever is on hand</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-10.html#s10-3" data-label="Module 10, Section 10.3"><p class="qtext"><span class="gid">T0B</span> 34. An antenna must be placed so that if it falls, it:</p><div class="opts"><label class="opt"><input type="radio" name="q34" value="0"><span class="letter">a</span><span>Lands on your own property</span></label><label class="opt"><input type="radio" name="q34" value="1"><span class="letter">b</span><span>Cannot come near power lines</span></label><label class="opt"><input type="radio" name="q34" value="2"><span class="letter">c</span><span>Misses the tower base</span></label><label class="opt"><input type="radio" name="q34" value="3"><span class="letter">d</span><span>Stays attached to its feed line</span></label></div><p class="review" hidden></p></div><div class="q" data-answer="1" data-mod="tech-module-10.html#s10-3" data-label="Module 10, Section 10.3"><p class="qtext"><span class="gid">T0C</span> 35. RF exposure limits are strictest near:</p><div class="opts"><label class="opt"><input type="radio" name="q35" value="0"><span class="letter">a</span><span>160 meters</span></label><label class="opt"><input type="radio" name="q35" value="1"><span class="letter">b</span><span>50 MHz</span></label><label class="opt"><input type="radio" name="q35" value="2"><span class="letter">c</span><span>10 GHz</span></label><label class="opt"><input type="radio" name="q35" value="3"><span class="letter">d</span><span>Any CW frequency</span></label></div><p class="review" hidden></p></div>
+<div class="submitrow">
+  <button id="submit" type="button">Grade my exam</button>
+  <span id="count">0 of 35 answered</span>
+</div>
+<div id="result" role="status"></div>
+<div id="restudy" hidden><p class="rehead">Your restudy list</p><ul id="relist"></ul></div>
+</form>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  var N = 35, PASS = 26, KEY = "k4dia-tech-exam-best";
+  var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+  var count = document.getElementById("count");
+  var best = localStorage.getItem(KEY);
+  if (best) document.getElementById("best").textContent = "Your best so far: " + best + " of " + N + ".";
+  document.getElementById("exam").addEventListener("change", function () {
+    var n = qs.filter(function (q) { return q.querySelector("input:checked"); }).length;
+    count.textContent = n + " of " + N + " answered";
+  });
+  document.getElementById("submit").addEventListener("click", function () {
+    var unanswered = qs.filter(function (q) { return !q.querySelector("input:checked"); }).length;
+    if (unanswered > 0 && !confirm(unanswered + " unanswered question" + (unanswered > 1 ? "s" : "") + " will count as wrong. Grade anyway?")) return;
+    var score = 0;
+    qs.forEach(function (q) {
+      var a = parseInt(q.dataset.answer, 10);
+      var chosen = q.querySelector("input:checked");
+      var opts = q.querySelectorAll(".opt");
+      q.classList.add("graded");
+      opts[a].classList.add("correct");
+      q.querySelectorAll("input").forEach(function (r) { r.disabled = true; });
+      var rev = q.querySelector(".review");
+      if (chosen && parseInt(chosen.value, 10) === a) {
+        score++; q.classList.add("right");
+      } else {
+        q.classList.add("wrong");
+        if (chosen) opts[parseInt(chosen.value, 10)].classList.add("chosen-wrong");
+        rev.innerHTML = 'Restudy: <a href="' + q.dataset.mod + '">' + q.dataset.label + "</a>";
+        rev.hidden = false;
+      }
+    });
+    var seen = {}, list = document.getElementById("relist");
+    qs.forEach(function (q) {
+      if (!q.classList.contains("wrong")) return;
+      var href = q.dataset.mod, label = q.dataset.label;
+      if (seen[href]) return;
+      seen[href] = true;
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = href; a.textContent = label;
+      li.appendChild(a); list.appendChild(li);
+    });
+    var missed = list.children.length;
+    if (missed > 0) document.getElementById("restudy").hidden = false;
+    var r = document.getElementById("result");
+    if (score >= PASS) {
+      r.className = "pass";
+      r.textContent = "PASS: " + score + " of " + N + " (needed " + PASS + "). Ray would shake your hand." + (missed > 0 ? " A restudy list for the few you missed is below." : "");
+    } else {
+      r.className = "fail";
+      r.textContent = score + " of " + N + " (needed " + PASS + "). Your restudy list is below; each missed question above also carries its own link.";
+    }
+    var prev = parseInt(localStorage.getItem(KEY) || "0", 10);
+    if (score > prev) localStorage.setItem(KEY, String(score));
+    r.scrollIntoView({ behavior: "smooth", block: "center" });
+    document.getElementById("submit").textContent = "Reload the page to retake";
+  });
+})();
+</script>
+</body>
+</html>

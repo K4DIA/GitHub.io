@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 5: Inside the Radio | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 5 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 5: Inside the Radio</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T7 (Practical Circuits). Four questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>A neighbor knocks on Ray&#x27;s door holding a portable radio. &quot;Every time you talk on yours, mine goes crazy.&quot;</p>
+<p>Ray does not apologize and he does not panic. He invites the neighbor in, pours coffee, and starts asking questions. By the end of this module you will understand exactly what he checked, in what order, and why he was smiling the whole time.</p></div>
+<section class="module-section" id="s5-1"><h2><span class="secnum">5.1</span>The Building Blocks of a Radio</h2><p>First, the vocabulary of the radio itself.</p>
+<p>A <strong>transceiver</strong> is a transmitter and receiver combined in one box, which is what nearly every ham radio sold today is. Inside it, a handful of circuit blocks do the work:</p>
+<ul><li>An <strong>oscillator</strong> generates a signal at a specific frequency. It is the radio&#x27;s heartbeat.</li><li>The <strong>VFO</strong> (Variable Frequency Oscillator) is the oscillator you control: it sets the receive and transmit frequency. Spin the big knob and you are steering the VFO.</li><li>A <strong>mixer</strong> converts a signal from one frequency to another. Receivers use mixers to shift incoming signals to frequencies that are easier to filter and amplify.</li><li><strong>Modulation</strong> is combining speech (or data) with an RF carrier signal. The microphone by itself makes audio; modulation is how that audio rides the radio wave.</li><li>The <strong>PTT</strong> (Push-To-Talk) input switches the transceiver from receive to transmit when grounded. That is all the button does: it grounds a wire.</li></ul>
+<p>Two words describe how good a receiver is, and they are not the same thing:</p>
+<ul><li><strong>Sensitivity</strong> is the ability to detect the presence of a signal. A sensitive receiver hears weak stations.</li><li><strong>Selectivity</strong> is the ability to discriminate between multiple signals. A selective receiver hears <em>only</em> the station you want, even with a loud one next door.</li></ul>
+<p>Beyond the transceiver, two accessories extend it. An <strong>RF power amplifier</strong> added to the output increases transmitted power. Some VHF amplifiers have a switch marked SSB or CW-FM, and its purpose is to set the amplifier for proper operation in the selected mode. A <strong>transverter</strong> converts the RF input and output of a transceiver to another band entirely, which is how hams get on microwave bands using an HF radio as the engine.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T7A)</span> Transceiver: combined receiver and transmitter. Oscillator: generates a signal at a specific frequency. VFO: sets receive and transmit frequency. Mixer: converts a signal from one frequency to another. Modulation: combining speech with an RF carrier. PTT: switches to transmit when grounded. Sensitivity: detecting the presence of a signal. Selectivity: discriminating between signals. RF power amplifier: increases output power. The SSB/CW-FM switch on a VHF amplifier sets it for proper operation in that mode. Transverter: converts a transceiver&#x27;s RF input and output to another band.</p></aside><section class="check" id="check-5.1"><h3>Knowledge Check 5.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Which receiver quality lets you copy a weak, distant station?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Selectivity</button><button class="opt" data-letter="b"><span class="letter">b</span>Sensitivity</button><button class="opt" data-letter="c"><span class="letter">c</span>Stability</button><button class="opt" data-letter="d"><span class="letter">d</span>Fidelity</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What does the mixer stage in a receiver do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Blends the left and right audio channels</button><button class="opt" data-letter="b"><span class="letter">b</span>Converts a signal from one frequency to another</button><button class="opt" data-letter="c"><span class="letter">c</span>Combines transmit and receive antennas</button><button class="opt" data-letter="d"><span class="letter">d</span>Averages the signal strength</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What happens electrically when you press the PTT button?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The microphone amplifier turns on</button><button class="opt" data-letter="b"><span class="letter">b</span>A line is grounded, switching the transceiver to transmit</button><button class="opt" data-letter="c"><span class="letter">c</span>The antenna is retuned</button><button class="opt" data-letter="d"><span class="letter">d</span>The VFO locks</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s5-2"><h2><span class="secnum">5.2</span>When Radios Fight</h2><p>Back to Ray&#x27;s neighbor. Interference between a ham station and consumer electronics almost always comes down to a short list of causes, and radio frequency interference in general can be caused by fundamental overload, harmonics, or spurious emissions. All of the above, as the exam likes to say.</p>
+<p><strong>Fundamental overload</strong> is the big one for neighbor problems: the consumer receiver is simply unable to reject a strong signal that is outside its own band. Nothing is wrong with your transmitter. The cure lives at the <em>affected</em> receiver: block the amateur signal with a filter at the antenna input of the receiver being interfered with.</p>
+<p>Ray&#x27;s checklist when a neighbor reports interference, and the exam agrees with every step:</p>
+<ol><li>Make sure your own station is functioning properly, and confirm it does not interfere with your own radio or TV tuned to the same channels.</li><li>If something in the <em>neighbor&#x27;s</em> home is interfering with <em>your</em> station, work with the neighbor to identify the offending device, politely share that FCC rules prohibit devices that cause interference, and keep your own station up to the standards of good amateur practice. All of those together.</li><li>For non-fiber cable TV interference, the first step is unglamorous: be sure all the TV feed line coax connectors are installed properly. Loose F-connectors cause most of it.</li></ol>
+<p>Interference also flows the other direction. A nearby commercial FM broadcast station tearing up your 2-meter receiver is fixed with a <strong>band-reject filter</strong> that notches out the broadcast band.</p>
+<p>Then there are problems that are genuinely yours:</p>
+<ul><li>Told you are <strong>over-deviating</strong> on FM? Your voice is swinging the signal too wide. The fix is free: talk farther away from the microphone.</li><li><strong>Low RF output</strong> from a solid-state radio is commonly caused by high SWR, because the radio protects itself (more on that in the next section).</li><li>Reports that your FM audio is <strong>distorted or unintelligible</strong> can mean your transmitter is slightly off frequency, you are speaking too loudly or too close to the mic, or you are simply in a bad location. Any of them.</li><li><strong>RF feedback</strong>, your own transmitted signal getting back into your microphone audio and distorting your voice, is cured by adding a clip-on ferrite choke to the microphone cable.</li></ul>
+<p>The theme: diagnose before blaming, and put the fix where the problem actually is.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T7B)</span> RFI causes: fundamental overload, harmonics, spurious emissions (all of these). Broadcast receiver picking up your transmission: fundamental overload, cured by a filter at the affected receiver&#x27;s antenna input. Neighbor complains: first verify your station is clean, including against your own TV and radio. Neighbor&#x27;s device interferes with you: work together, cite the rules politely, keep your station clean (all of these). Cable TV interference: check the coax connectors first. Commercial FM into your 2-meter rig: band-reject filter. Over-deviating: talk farther from the mic. Low output from a solid-state rig: high SWR. Distorted FM audio: off frequency, too loud or too close, or bad location (all of these). Distortion from RF feedback: ferrite choke on the mic cable.</p></aside><section class="check" id="check-5.2"><h3>Knowledge Check 5.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Your neighbor&#x27;s stereo plays your voice whenever you transmit, even though your signal is clean. What is happening?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Your harmonics are on the broadcast band</button><button class="opt" data-letter="b"><span class="letter">b</span>Fundamental overload of the stereo, fixed with a filter at the stereo&#x27;s antenna input</button><button class="opt" data-letter="c"><span class="letter">c</span>Your microphone gain is too high</button><button class="opt" data-letter="d"><span class="letter">d</span>The stereo is tuned to your frequency</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. The repeater tells you your FM signal is over-deviating. The simplest fix is:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Reduce transmit power</button><button class="opt" data-letter="b"><span class="letter">b</span>Talk farther away from the microphone</button><button class="opt" data-letter="c"><span class="letter">c</span>Switch to a smaller antenna</button><button class="opt" data-letter="d"><span class="letter">d</span>Lower the squelch</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Your transmitted audio is distorted, and clipping a ferrite choke onto the microphone cable fixes it. What was the problem?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>A cold solder joint</button><button class="opt" data-letter="b"><span class="letter">b</span>RF feedback into the microphone line</button><button class="opt" data-letter="c"><span class="letter">c</span>Low battery voltage</button><button class="opt" data-letter="d"><span class="letter">d</span>Excessive selectivity</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s5-3"><h2><span class="secnum">5.3</span>Feed Line Health and the Dummy Load</h2><p>Ray hands you a heavy cylinder with one connector and no antenna. &quot;Fifty ohms of pure resistor on a heat sink. Best test instrument in the shack.&quot;</p>
+<p>That is a <strong>dummy load</strong>: a 50-ohm non-inductive resistor mounted on a heat sink, and its primary purpose is to prevent transmitting signals over the air while making tests. The radio sees a perfect match, your tests bother nobody, and any problem you observe is in the radio, not the antenna. Testing into the dummy load is step one of splitting every transmit problem in half.</p>
+<p>Now the number that rules the antenna system: <strong>SWR</strong> (standing wave ratio), a measure of how well the load is matched to the transmission line. The scores:</p>
+<ul><li><strong>1:1</strong> is a perfect match between antenna system and feed line.</li><li><strong>4:1</strong> means an impedance mismatch. Power is being reflected back down the line instead of leaving.</li></ul>
+<p>Why care? Most solid-state transmitters reduce output power as SWR climbs, specifically to protect the RF output amplifier transistors. That fold-back is the &quot;high SWR causes low output&quot; answer from the last section, now explained.</p>
+<p>Measuring it: an <strong>SWR meter</strong> or a <strong>directional wattmeter</strong> in the feed line can determine SWR, and an <strong>antenna analyzer</strong> is the tool for finding whether an antenna is resonant at the desired frequency without transmitting at all.</p>
+<p>Feed line failures come from a rogues&#x27; gallery you can memorize:</p>
+<ul><li><strong>Moisture contamination</strong> is the classic coax killer.</li><li><strong>Ultraviolet light</strong> damages the outer jacket, which then lets water enter the cable. That is why the jacket must be UV resistant.</li><li>Sources of loss in a coax run include water in the connectors, high SWR, and multiple connectors in the line. All of them.</li><li>Whatever power the feed line loses is converted into heat. It does not radiate, it does not come back, it just warms the cable.</li><li><strong>Erratic SWR changes</strong> point at a loose connection in the antenna or feed line.</li></ul>
+<p>Choosing coax: RG-213 has less loss than skinny RG-58 at any given frequency, foam-dielectric cable has less loss per foot than solid-dielectric, air-insulated hardline is the lowest-loss feed line of all, and loss always increases as frequency increases. Fifty ohms is the standard impedance, and the reason coax dominates amateur stations is simple: it is easy to use and requires few special installation considerations.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T7C)</span> Dummy load: 50-ohm non-inductive resistor on a heat sink; prevents transmitting over the air during tests. SWR 1:1 = perfect match; 4:1 = impedance mismatch. Solid-state rigs reduce power at high SWR to protect the output transistors. SWR is measured with a directional wattmeter; resonance is found with an antenna analyzer. Coax fails from moisture contamination; UV damages the jacket and lets water in. Feed line loss sources: water in connectors, high SWR, multiple connectors (all of these). Lost feed line power becomes heat. Erratic SWR = loose connection.</p></aside><section class="check" id="check-5.3"><h3>Knowledge Check 5.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is the primary purpose of a dummy load?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Increase transmitter power</button><button class="opt" data-letter="b"><span class="letter">b</span>Test without transmitting a signal over the air</button><button class="opt" data-letter="c"><span class="letter">c</span>Match the antenna to the feed line</button><button class="opt" data-letter="d"><span class="letter">d</span>Absorb lightning strikes</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Your SWR reading jumps around erratically during transmit. The most likely cause is:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Solar activity</button><button class="opt" data-letter="b"><span class="letter">b</span>A loose connection in the antenna or feed line</button><button class="opt" data-letter="c"><span class="letter">c</span>Over-modulation</button><button class="opt" data-letter="d"><span class="letter">d</span>A blown fuse</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. Where does the power lost in a feed line go?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It is reflected to the transmitter</button><button class="opt" data-letter="b"><span class="letter">b</span>It radiates as harmonics</button><button class="opt" data-letter="c"><span class="letter">c</span>It is converted into heat</button><button class="opt" data-letter="d"><span class="letter">d</span>It charges the coax shield</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s5-4"><h2><span class="secnum">5.4</span>The Multimeter and the Iron</h2><p>Two skills separate hams who fix things from hams who ship things back: measuring and soldering.</p>
+<p>The <strong>multimeter</strong> combines the three basic instruments, and each has its own connection rule:</p>
+<ul><li>A <strong>voltmeter</strong> measures electric potential, and it connects <strong>in parallel</strong> with the component, across it, while the circuit runs.</li><li>An <strong>ammeter</strong> measures current, and it connects <strong>in series</strong>, so the current flows through the meter. You have to break the circuit to insert it.</li><li>An <strong>ohmmeter</strong> measures resistance by applying a small current and measuring the resulting voltage. Two safety rules come with it: the circuit must be unpowered before you measure resistance, and attempting to measure voltage while the meter is set to resistance can damage the meter.</li></ul>
+<p>One classic reading worth knowing: connect an ohmmeter across a large discharged capacitor and you will see the resistance increase with time as the meter&#x27;s own current charges it. That rising reading is a healthy capacitor saying hello.</p>
+<p>Then the iron. Soldering rules the exam checks:</p>
+<ul><li><strong>Never use acid-core solder</strong> for electronics. Acid flux is for plumbing, and it will corrode your circuit from the inside. Rosin-core is the electronics standard.</li><li>A <strong>cold solder joint</strong>, made without enough heat, has a characteristic rough or lumpy surface instead of a smooth bright fillet. Cold joints work today and fail on the mountaintop.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T7D)</span> Voltmeter: measures potential, connects in parallel. Ammeter: measures current, connects in series. Ohmmeter: applies a small current and measures voltage; circuit must be unpowered; measuring voltage on the resistance setting can damage the meter. Ohmmeter across a discharged capacitor: resistance increases with time. Never use acid-core solder for electronics. Cold solder joint: rough or lumpy surface.</p></aside><section class="check" id="check-5.4"><h3>Knowledge Check 5.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. To measure the current a radio draws, the meter must be connected:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>In parallel with the power leads</button><button class="opt" data-letter="b"><span class="letter">b</span>In series with a power lead</button><button class="opt" data-letter="c"><span class="letter">c</span>Across the speaker terminals</button><button class="opt" data-letter="d"><span class="letter">d</span>Between antenna and ground</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Before measuring resistance in a circuit, you must:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Ground the meter</button><button class="opt" data-letter="b"><span class="letter">b</span>Remove power from the circuit</button><button class="opt" data-letter="c"><span class="letter">c</span>Set the meter to AC volts</button><button class="opt" data-letter="d"><span class="letter">d</span>Discharge the meter leads</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. A solder joint with a rough, lumpy surface indicates:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Too much solder</button><button class="opt" data-letter="b"><span class="letter">b</span>Acid-core solder was used</button><button class="opt" data-letter="c"><span class="letter">c</span>A cold joint made with insufficient heat</button><button class="opt" data-letter="d"><span class="letter">d</span>A perfect connection</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T7A</span> Transceiver: combined receiver and transmitter. Oscillator: generates a signal at a specific frequency. VFO: sets receive and transmit frequency. Mixer: converts a signal from one frequency to another. Modulation: combining speech with an RF carrier. PTT: switches to transmit when grounded. Sensitivity: detecting the presence of a signal. Selectivity: discriminating between signals. RF power amplifier: increases output power. The SSB/CW-FM switch on a VHF amplifier sets it for proper operation in that mode. Transverter: converts a transceiver&#x27;s RF input and output to another band.</p></div><div class="anchor review"><p><span class="anchor-lead">T7B</span> RFI causes: fundamental overload, harmonics, spurious emissions (all of these). Broadcast receiver picking up your transmission: fundamental overload, cured by a filter at the affected receiver&#x27;s antenna input. Neighbor complains: first verify your station is clean, including against your own TV and radio. Neighbor&#x27;s device interferes with you: work together, cite the rules politely, keep your station clean (all of these). Cable TV interference: check the coax connectors first. Commercial FM into your 2-meter rig: band-reject filter. Over-deviating: talk farther from the mic. Low output from a solid-state rig: high SWR. Distorted FM audio: off frequency, too loud or too close, or bad location (all of these). Distortion from RF feedback: ferrite choke on the mic cable.</p></div><div class="anchor review"><p><span class="anchor-lead">T7C</span> Dummy load: 50-ohm non-inductive resistor on a heat sink; prevents transmitting over the air during tests. SWR 1:1 = perfect match; 4:1 = impedance mismatch. Solid-state rigs reduce power at high SWR to protect the output transistors. SWR is measured with a directional wattmeter; resonance is found with an antenna analyzer. Coax fails from moisture contamination; UV damages the jacket and lets water in. Feed line loss sources: water in connectors, high SWR, multiple connectors (all of these). Lost feed line power becomes heat. Erratic SWR = loose connection.</p></div><div class="anchor review"><p><span class="anchor-lead">T7D</span> Voltmeter: measures potential, connects in parallel. Ammeter: measures current, connects in series. Ohmmeter: applies a small current and measures voltage; circuit must be unpowered; measuring voltage on the resistance setting can damage the meter. Ohmmeter across a discharged capacitor: resistance increases with time. Never use acid-core solder for electronics. Cold solder joint: rough or lumpy surface.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You now know the blocks inside a transceiver, the short list of causes behind almost every interference complaint, the health signs of a feed line, and how to hold a multimeter and an iron without hurting anything. Ray&#x27;s neighbor, by the way, had a twenty-year-old stereo with no front-end filtering: fundamental overload, cured with a ten-dollar filter on its antenna wire, and the two of them are friends now.</p>
+<p>Module 6 is where the signals themselves get interesting: FM versus SSB, bandwidth, digital modes, and how to talk through a satellite.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S1, T-S5): perform the multimeter measurements from Module 3&#x27;s tie-in, then deliberately create one fault (loosen a coax connector on a dummy load) and watch what the SWR meter does. Faults you have created are faults you will recognize.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 5 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-04.html">Previous module</a><a class="navlink" href="tech-module-06.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m05";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 5 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

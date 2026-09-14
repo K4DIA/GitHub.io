@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 10: Nobody Gets Hurt | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 10 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 10: Nobody Gets Hurt</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T0 (Safety). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray&#x27;s left forearm has a pale scar shaped like a wrench. &quot;Battery. Nineteen eighty-something. I set a tool across the terminals of a big lead-acid and it welded itself there, glowing.&quot; He rolls the sleeve back down. &quot;Every rule in this module is a story like that one, learned by somebody. Learn them from the stories instead.&quot;</p></div>
+<section class="module-section" id="s10-1"><h2><span class="secnum">10.1</span>Electricity Bites</h2><p>Start with Ray&#x27;s scar. A 12-volt storage battery without internal protection cannot shock you through dry skin, but shorting its terminals can cause burns, fire, or an explosion, because a big battery will dump hundreds of amps into a dead short. Rapidly charging or discharging an unprotected battery brings its own hazard: overheating or out-gassing. Respect the amp-hours.</p>
+<p>Current through the body is the actual killer, and it hurts you three ways at once: heating tissue, disrupting the electrical functions of cells, and causing involuntary muscle contractions. All of these, which is why the answer to &quot;what does shock do&quot; is everything on the list.</p>
+<p>House wiring has a color code, and one color matters most: in US three-wire 120 V cable, <strong>black insulation is the hot wire</strong>. Treat it accordingly.</p>
+<p>The fuse rules, now with their reasons:</p>
+<ul><li>A fuse&#x27;s purpose is to remove power in case of an overload.</li><li>In a 120 V AC circuit, the fuse or breaker goes in series with the <strong>hot conductor only</strong>. Fusing the neutral could leave a circuit dead but still hot, a trap for the next person inside it.</li><li>And the classic exam scenario: never replace a 5-amp fuse with a 20-amp fuse, because excessive current could cause a fire. The fuse was protecting the wire. A bigger fuse just gives the fire a head start. This is Module 3&#x27;s ammo can question, now wearing its safety hat.</li></ul>
+<p>Guarding against shock in the shack is a package deal: use three-wire cords and plugs on all AC equipment, connect all AC-powered equipment to a common safety ground, and make sure high-voltage capacitors are discharged before working inside anything. All of these. That capacitor rule has teeth: a power supply immediately after being switched off still holds a hazard, the charge stored in its filter capacitors. Off is not the same as safe.</p>
+<p>Lightning gets two rules. The <strong>lightning arrester</strong> in a coax feed line belongs on a grounded panel near where the feed lines enter the building, and all external ground rods and earth connections must be bonded together with heavy wire or conductive strap. Separate, unbonded grounds invite a strike to equalize them through your equipment.</p>
+<p>One measurement rule closes the section: when measuring high voltages, ensure the voltmeter and its leads are rated for the voltages being measured. A meter rated for less becomes part of the circuit in the worst way.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T0A)</span> Shorting battery terminals: burns, fire, or explosion; rapid charge/discharge of unprotected batteries: overheating or out-gassing. Body current heats tissue, disrupts cells, and contracts muscles (all). Black wire = hot in 120 V cable. Fuse: removes power on overload; goes in series with the hot conductor only; never upsize (5 A to 20 A risks fire). Shock protection: three-wire cords, common safety ground, discharge high-voltage capacitors (all). After power-off, filter capacitors stay charged. Lightning arrester: grounded panel where feed lines enter. Bond all ground rods together. Use meters and leads rated for the voltage measured.</p></aside><section class="check" id="check-10.1"><h3>Knowledge Check 10.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why must a blown 5-amp fuse never be replaced with a 20-amp fuse?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The 20-amp fuse will blow immediately</button><button class="opt" data-letter="b"><span class="letter">b</span>Excessive current could cause a fire</button><button class="opt" data-letter="c"><span class="letter">c</span>It changes the circuit voltage</button><button class="opt" data-letter="d"><span class="letter">d</span>It voids the radio&#x27;s warranty</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. The power supply is switched off and unplugged. What hazard remains inside?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Residual RF energy</button><button class="opt" data-letter="b"><span class="letter">b</span>Charge stored in the filter capacitors</button><button class="opt" data-letter="c"><span class="letter">c</span>Magnetized transformer cores</button><button class="opt" data-letter="d"><span class="letter">d</span>None; unplugged is safe</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. Where does a coax lightning arrester belong?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>At the antenna feed point</button><button class="opt" data-letter="b"><span class="letter">b</span>At the radio&#x27;s antenna jack</button><button class="opt" data-letter="c"><span class="letter">c</span>On a grounded panel near where feed lines enter the building</button><button class="opt" data-letter="d"><span class="letter">d</span>At the AC breaker box</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s10-2"><h2><span class="secnum">10.2</span>Gravity Is Also a Hazard</h2><p>Antennas go up, and up is where the danger is.</p>
+<p>The first rule outranks all others: <strong>look for and stay clear of overhead electrical wires</strong> before putting up any antenna, and never attach an antenna to a utility pole, because the antenna could contact high-voltage lines. Then the geometry rule: keep enough distance from power lines that if the antenna falls, no part of it comes within <strong>10 feet</strong> of the wires. Plan the failure, not just the installation.</p>
+<p>Tower work is a discipline, not a chore:</p>
+<ul><li>Climbing requires sufficient training in safe climbing techniques, an approved climbing harness, and constant tie-off to the tower. All of these, always.</li><li>Is it ever safe to climb without a helper or observer? <strong>Never.</strong> The exam answer and the real answer are the same word.</li><li>A <strong>crank-up tower</strong> must not be climbed unless it is fully retracted or its mechanical safety locking devices are engaged. The sections of a crank-up are a guillotine held by a cable.</li><li>The <strong>safety wire through a turnbuckle</strong> on guy lines prevents the turnbuckle from loosening due to vibration. Wind works hardware loose one gust at a time.</li></ul>
+<p>Tower grounding pulls together everything from 10.1: proper practice is a separate eight-foot ground rod for each tower leg, bonded to the tower and to each other. Lightning conductors want short, direct connections with <strong>sharp bends avoided</strong>, because lightning does not turn corners, it jumps them. And who sets the legal requirements for grounding your tower or antenna? Not the FCC: <strong>local electrical codes</strong> establish grounding requirements.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T0B)</span> Look for and stay clear of overhead power lines; never use utility poles; keep antennas far enough from lines that a falling antenna stays 10 feet away. Tower climbing: training, harness, and 100 percent tie-off (all); never climb without a helper; never climb a crank-up unless retracted or mechanically locked. Turnbuckle safety wire prevents vibration loosening. Ground each tower leg with its own eight-foot rod, all bonded together. Lightning ground connections: short and direct, avoiding sharp bends. Grounding requirements come from local electrical codes.</p></aside><section class="check" id="check-10.2"><h3>Knowledge Check 10.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. How far from power lines should an antenna be installed?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>One wavelength at the operating frequency</button><button class="opt" data-letter="b"><span class="letter">b</span>Far enough that if it falls, no part comes within 10 feet of the wires</button><button class="opt" data-letter="c"><span class="letter">c</span>Twice the antenna height</button><button class="opt" data-letter="d"><span class="letter">d</span>50 feet in all cases</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="d"><p class="qtext">2. When may you climb a tower alone, without an observer?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Below 20 feet</button><button class="opt" data-letter="b"><span class="letter">b</span>When no electrical work is involved</button><button class="opt" data-letter="c"><span class="letter">c</span>When wearing a harness</button><button class="opt" data-letter="d"><span class="letter">d</span>Never</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. What establishes the grounding requirements for your antenna installation?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>FCC Part 97</button><button class="opt" data-letter="b"><span class="letter">b</span>The ARRL Handbook</button><button class="opt" data-letter="c"><span class="letter">c</span>Local electrical codes</button><button class="opt" data-letter="d"><span class="letter">d</span>The antenna manufacturer</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s10-3"><h2><span class="secnum">10.3</span>Living With RF</h2><p>Last topic, and Ray frames it precisely, because imprecision in this area breeds both carelessness and panic.</p>
+<p>Radio signals are <strong>non-ionizing radiation</strong>. The difference from ionizing radiation (radioactivity) is fundamental: RF does not have sufficient energy to cause chemical changes in cells and damage DNA. RF&#x27;s hazard is thermal, heating tissue, which is real but manageable. Touch an antenna during a transmission and the injury is an <strong>RF burn</strong> to the skin, not electrocution.</p>
+<p>Exposure limits exist, and they vary with frequency because the human body absorbs more RF energy at some frequencies than at others. The band with the <strong>lowest</strong> maximum permissible exposure, meaning the strictest limit, is around <strong>50 MHz</strong>, because human bodies are unfortunately good antennas near those frequencies.</p>
+<p>What determines a person&#x27;s actual exposure near your antenna? Frequency and power, distance from the antenna, and the antenna&#x27;s radiation pattern. All of these, which is why the practical way to reduce exposure is to <strong>relocate antennas</strong>: distance is the cheapest shielding there is, and antennas belong up and away from people.</p>
+<p><strong>Duty cycle</strong> matters because exposure limits are based on averages. Duty cycle is the percentage of time a transmitter is transmitting during the averaging period, and it affects the average exposure to radiation. Cut duty cycle from 100 percent to 50 percent and the allowable power density increases by a factor of 2. Listening half the time literally doubles your margin, and hams listen far more than half the time.</p>
+<p>The compliance frame: acceptable ways to evaluate your station include calculation per FCC OET Bulletin 65, computer modeling, and field-strength measurement with calibrated equipment. All of these. Staying compliant means re-evaluating whenever you change anything in the transmitter or antenna system, and the person responsible for making sure nobody is exposed beyond the limits is the <strong>station licensee</strong>. You. The same answer as Module 1&#x27;s control operator questions, wearing a hard hat.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T0C)</span> RF is non-ionizing radiation; it lacks the energy to cause chemical changes and damage DNA. Touching a transmitting antenna: RF burn. Exposure limits vary with frequency because the body absorbs more at some frequencies; 50 MHz has the lowest MPE. Exposure depends on frequency and power, distance, and radiation pattern (all). Reduce exposure by relocating antennas. Duty cycle: percentage of time transmitting; it affects average exposure; 100 to 50 percent duty cycle doubles allowable power density. Evaluate by Bulletin 65 calculation, modeling, or calibrated measurement (all). Re-evaluate after any transmitter or antenna change. The station licensee is responsible.</p></aside><section class="check" id="check-10.3"><h3>Knowledge Check 10.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. How does RF radiation differ from radioactivity?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It does not; both damage DNA</button><button class="opt" data-letter="b"><span class="letter">b</span>RF lacks the energy to cause chemical changes in cells and damage DNA</button><button class="opt" data-letter="c"><span class="letter">c</span>RF is more dangerous per watt</button><button class="opt" data-letter="d"><span class="letter">d</span>RF only affects electronics</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. Reducing duty cycle from 100 percent to 50 percent does what to allowable power density?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Nothing</button><button class="opt" data-letter="b"><span class="letter">b</span>Halves it</button><button class="opt" data-letter="c"><span class="letter">c</span>Doubles it</button><button class="opt" data-letter="d"><span class="letter">d</span>Squares it</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. Who is responsible for keeping RF exposure at your station within FCC limits?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The FCC</button><button class="opt" data-letter="b"><span class="letter">b</span>The antenna manufacturer</button><button class="opt" data-letter="c"><span class="letter">c</span>The station licensee</button><button class="opt" data-letter="d"><span class="letter">d</span>Whoever is nearest the antenna</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s"><h2><span class="secnum"></span>You Made It</h2><p>Ten modules. All ten subelements, all 35 exam questions&#x27; worth of material, taught as a story instead of a flashcard deck.</p>
+<p>Here is Ray&#x27;s final speech, and it is short. &quot;The test is 35 questions and you need 26. You are past ready. Book the exam session this week, before the details go stale. And the day your call sign shows up in the FCC database, do not celebrate by putting the radio on a shelf. Celebrate by keying up on 146.52 and finding out who is out there.&quot;</p>
+<p>The license opens the door. Now go walk through it.</p>
+<p><strong>Next steps:</strong></p>
+<ul><li>Take two or three full practice exams. Miss a question, reread that module&#x27;s section, not just the answer.</li><li>Complete the Technician Skills Track and capstone from the curriculum page. Passing the exam makes you licensed. The skills make you ready.</li><li>When 10 meters starts calling your name, the General course is waiting.</li></ul>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T0A</span> Shorting battery terminals: burns, fire, or explosion; rapid charge/discharge of unprotected batteries: overheating or out-gassing. Body current heats tissue, disrupts cells, and contracts muscles (all). Black wire = hot in 120 V cable. Fuse: removes power on overload; goes in series with the hot conductor only; never upsize (5 A to 20 A risks fire). Shock protection: three-wire cords, common safety ground, discharge high-voltage capacitors (all). After power-off, filter capacitors stay charged. Lightning arrester: grounded panel where feed lines enter. Bond all ground rods together. Use meters and leads rated for the voltage measured.</p></div><div class="anchor review"><p><span class="anchor-lead">T0B</span> Look for and stay clear of overhead power lines; never use utility poles; keep antennas far enough from lines that a falling antenna stays 10 feet away. Tower climbing: training, harness, and 100 percent tie-off (all); never climb without a helper; never climb a crank-up unless retracted or mechanically locked. Turnbuckle safety wire prevents vibration loosening. Ground each tower leg with its own eight-foot rod, all bonded together. Lightning ground connections: short and direct, avoiding sharp bends. Grounding requirements come from local electrical codes.</p></div><div class="anchor review"><p><span class="anchor-lead">T0C</span> RF is non-ionizing radiation; it lacks the energy to cause chemical changes and damage DNA. Touching a transmitting antenna: RF burn. Exposure limits vary with frequency because the body absorbs more at some frequencies; 50 MHz has the lowest MPE. Exposure depends on frequency and power, distance, and radiation pattern (all). Reduce exposure by relocating antennas. Duty cycle: percentage of time transmitting; it affects average exposure; 100 to 50 percent duty cycle doubles allowable power density. Evaluate by Bulletin 65 calculation, modeling, or calibrated measurement (all). Re-evaluate after any transmitter or antenna change. The station licensee is responsible.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  
+  <aside class="skills"><p>Skills Track tie-in (T-S1, T-S2, capstone): before commissioning your station, walk it against this module: fusing sized and placed correctly, grounds bonded, connectors weatherproofed, antennas clear of power lines and people. Safety review is the final line item on the capstone sign-off, and it is the one Ray checks personally.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 10 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-09.html">Previous module</a><span></span></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m10";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 10 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

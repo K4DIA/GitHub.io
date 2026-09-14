@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Extra Course, Module 3: The Mathematics of Resonance | K4DIA</title>
+<style>:root { --accent: #4A4494; --accent-dark: #37326E; --tint: #F0EFF8; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-extra.html"><svg class="rank" width="17" height="20" viewBox="0 0 20 24.0" aria-label="Level 3 mark" role="img"><path d="M3 21.0 L10 14.0 L17 21.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Extra course</a>
+  <span>Module 3 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Extra Course, Module 3: The Mathematics of Resonance</h1>
+  <p class="covers">Covers NCVEC 2024-2028 Extra Pool, Subelement E5 (Electrical Principles). Four questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray writes one formula across the top of the whiteboard and boxes it: <strong>f = 1 / (2π√LC)</strong>. &quot;Every course so far treated resonance as a fact. This one treats it as arithmetic. Four sections: resonance with numbers, time and phase, the coordinate systems that tame complex impedance, and what RF does to real parts. This is the most math in the whole program, and every line of it drives something you own.&quot;</p></div>
+<section class="module-section" id="s3-1"><h2><span class="secnum">3.1</span>Resonance, Quantified</h2><p>The boxed formula computes the resonant frequency of any LC pair. The pool&#x27;s two:</p>
+<ul><li>50 µH and 40 pF: <strong>3.56 MHz</strong>.</li><li>50 µH and 10 pF: <strong>7.12 MHz</strong>.</li></ul>
+<p>Notice the check: one quarter the capacitance doubled the frequency, because C sits under a square root. That relationship is worth more than the formula.</p>
+<p>At resonance, the reactances cancel (your General definition), and what remains is telling:</p>
+<ul><li>A <strong>series</strong> RLC circuit&#x27;s impedance at resonance is <strong>approximately equal to the circuit resistance</strong>: the reactances vanish from the equation and R is what is left. Voltage and current are <strong>in phase</strong>.</li><li>A <strong>parallel</strong> RLC circuit&#x27;s impedance at resonance is also <strong>approximately equal to the circuit resistance</strong>, but the geometry inverts everything else: the <strong>circulating current between L and C is at maximum</strong> while the <strong>current at the circuit&#x27;s input is at minimum</strong>. The tank sloshes furiously inside while sipping from the source.</li></ul>
+<p><strong>Q</strong>, the quality factor, measures how furiously. For a parallel resonant circuit, <strong>Q = resistance divided by reactance</strong>. Its two consequences run in opposite directions, and both are exam material:</p>
+<ul><li><strong>Bandwidth.</strong> The half-power bandwidth of a resonant circuit is <strong>f / Q</strong>. A 7.1 MHz circuit with Q of 150: <strong>47.3 kHz</strong>. A 3.7 MHz circuit with Q of 118: <strong>31.4 kHz</strong>. High Q buys selectivity by narrowing the window, which is also why <strong>increasing the Q of an impedance-matching circuit decreases its matching bandwidth</strong>, the reason your mobile antenna from the General course needs retuning across one band.</li><li><strong>Voltage magnification.</strong> Resonance can drive the <strong>voltage across the reactances higher than the voltage applied to the whole circuit</strong>, and increasing Q in a series resonant circuit <strong>increases those internal voltages</strong> further. A modest transmitter can develop startling kilovolts across a high-Q loop capacitor. Q is free voltage gain, and free voltage gain bites.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E5A)</span> f = 1/(2π√LC): 50 µH + 40 pF = 3.56 MHz; 50 µH + 10 pF = 7.12 MHz. Series resonance: impedance ≈ R, voltage and current in phase; resonance can raise reactance voltages above the applied voltage, and higher Q raises them further. Parallel resonance: impedance ≈ R, circulating current maximum, input current minimum. Parallel Q = R / X. Half-power bandwidth = f/Q: 47.3 kHz at 7.1 MHz with Q 150; 31.4 kHz at 3.7 MHz with Q 118. Higher matching-circuit Q: narrower matching bandwidth.</p></aside><section class="check" id="check-3.1"><h3>Knowledge Check 3.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is the half-power bandwidth of a 7.1 MHz resonant circuit with a Q of 150?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>4.73 kHz</button><button class="opt" data-letter="b"><span class="letter">b</span>47.3 kHz</button><button class="opt" data-letter="c"><span class="letter">c</span>150 kHz</button><button class="opt" data-letter="d"><span class="letter">d</span>1.065 MHz</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. At resonance, the input current of a parallel RLC circuit is:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Maximum</button><button class="opt" data-letter="b"><span class="letter">b</span>Minimum</button><button class="opt" data-letter="c"><span class="letter">c</span>Equal to the circulating current</button><button class="opt" data-letter="d"><span class="letter">d</span>Zero at all Q values</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What happens to internal voltages as the Q of a series resonant circuit increases?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>They decrease</button><button class="opt" data-letter="b"><span class="letter">b</span>They increase</button><button class="opt" data-letter="c"><span class="letter">c</span>They stay equal to the source voltage</button><button class="opt" data-letter="d"><span class="letter">d</span>They invert phase</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-2"><h2><span class="secnum">3.2</span>Time Constants and the Phase Dance</h2><p>Two ideas govern circuits in motion: how fast they settle, and who leads whom.</p>
+<p><strong>The time constant</strong> measures settling: one time constant is the time for a capacitor in an RC circuit to charge to <strong>63.2 percent</strong> of the applied voltage, or discharge to <strong>36.8 percent</strong> of its initial voltage. The pool&#x27;s computation: two 220 µF capacitors and two 1-megohm resistors, all in parallel. Module 3 of the General course does the combining (parallel capacitors add: 440 µF; parallel resistors halve: 0.5 megohm), and τ = RC = <strong>220 seconds</strong>. That nearly-four-minute answer is also a safety lesson: big filter capacitors bleed slowly, which is why the bleeder resistor exists and why &quot;off&quot; is not &quot;safe.&quot;</p>
+<p><strong>The phase dance</strong> starts with two partners you can memorize with one phrase, <strong>ELI the ICE man</strong>:</p>
+<ul><li>In an inductor (L), voltage (E) leads current (I): <strong>ELI</strong>.</li><li>In a capacitor (C), current (I) leads voltage (E): <strong>ICE</strong>.</li><li>Both by <strong>90 degrees</strong> in the pure component.</li></ul>
+<p>Mix R with net reactance and the angle lands between 0 and 90: the tangent of the phase angle is net reactance over resistance. The pool&#x27;s three, each with the same recipe (net the reactances, divide by R, arctangent):</p>
+<ul><li>XC 500, R 1000, XL 250: net 250 capacitive, angle <strong>14 degrees, voltage lagging</strong> (capacitive circuits lag, per ICE).</li><li>XC 300, R 100, XL 100: net 200 capacitive, angle <strong>63 degrees, voltage lagging</strong>.</li><li>XC 25, R 100, XL 75: net 50 <strong>inductive</strong>, angle <strong>27 degrees, voltage leading</strong> (ELI).</li></ul>
+<p>The reciprocal world completes your vocabulary: <strong>admittance</strong> is the inverse of impedance (from General), and its imaginary part is <strong>susceptance</strong>, represented by the letter <strong>B</strong>. Converting impedance in polar form to admittance: <strong>take the reciprocal of the magnitude and change the sign of the angle</strong>. Converting a pure reactance to susceptance: <strong>replace it with its reciprocal</strong>. Parallel-circuit analysis runs on admittances the way series analysis runs on impedances, which is the entire reason this mirror-image vocabulary exists.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E5B)</span> One time constant: charge to 63.2 percent or discharge to 36.8 percent. Two 220 µF caps and two 1 MΩ resistors all in parallel: 220 seconds. Capacitor: current leads voltage by 90 degrees; inductor: voltage leads current by 90 degrees. Phase angles: 14 degrees lagging (XC 500, R 1000, XL 250); 63 degrees lagging (XC 300, R 100, XL 100); 27 degrees leading (XC 25, R 100, XL 75). Admittance: inverse of impedance; susceptance: its imaginary part, letter B; polar conversion: reciprocal magnitude, negated angle; reactance to susceptance: reciprocal.</p></aside><section class="check" id="check-3.2"><h3>Knowledge Check 3.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. After one time constant, an RC circuit&#x27;s capacitor has charged to what fraction of the applied voltage?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>36.8 percent</button><button class="opt" data-letter="b"><span class="letter">b</span>50 percent</button><button class="opt" data-letter="c"><span class="letter">c</span>63.2 percent</button><button class="opt" data-letter="d"><span class="letter">d</span>90 percent</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">2. In a capacitor, what is the current-voltage phase relationship?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Current leads voltage by 90 degrees</button><button class="opt" data-letter="b"><span class="letter">b</span>Voltage leads current by 90 degrees</button><button class="opt" data-letter="c"><span class="letter">c</span>They are in phase</button><button class="opt" data-letter="d"><span class="letter">d</span>They are 180 degrees apart</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is susceptance?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The real part of impedance</button><button class="opt" data-letter="b"><span class="letter">b</span>The imaginary part of admittance</button><button class="opt" data-letter="c"><span class="letter">c</span>The inverse of resistance</button><button class="opt" data-letter="d"><span class="letter">d</span>The magnitude of a phasor</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-3"><h2><span class="secnum">3.3</span>Complex Impedance on Paper</h2><p>Impedance has two dimensions, so plotting it takes two axes, and two coordinate systems share the job.</p>
+<p><strong>Rectangular coordinates</strong> split impedance into parts: the <strong>X axis carries the resistive component, the Y axis the reactive component</strong>, written as R ± jX. The conventions:</p>
+<ul><li>Pure resistance sits <strong>on the horizontal axis</strong>.</li><li>Inductive reactance is <strong>+j</strong> (up); capacitive is <strong>-j</strong> (down). A pure capacitive reactance of 100 ohms is <strong>0 - j100</strong>.</li><li><strong>50 - j25</strong> reads as 50 ohms of resistance in series with 25 ohms of <strong>capacitive</strong> reactance. The minus sign is the whole diagnosis.</li></ul>
+<p><strong>Polar coordinates</strong> describe the same point by <strong>magnitude and phase angle</strong>, which is how your antenna analyzer thinks. Pure inductive reactance in polar form is a <strong>positive 90-degree</strong> angle; pure capacitive, negative 90. A <strong>phasor diagram</strong> is the drawing that shows phase relationships between impedances at a given frequency, Section 3.2&#x27;s dance rendered as arrows.</p>
+<p>The pool exercises this on <strong>Figure E5-1</strong>, a rectangular grid of numbered points where you compute a reactance (X = 1/2πfC or 2πfL) and pick the point at (R, ±jX). The three worked cases: 400 ohms with 38 pF at 14 MHz lands near 400 - j300; 300 ohms with 18 µH at 3.505 MHz near 300 + j400; 300 ohms with 19 pF at 21.2 MHz near 300 - j400. Compute the reactance, mind the sign, find the point.</p>
+<p><em>Website note: this page will include a redrawn E5-1 grid with worked solutions traced onto it, plus a blank version for practice.</em></p>
+<p>One graphing convention finishes the section: frequency-response curves use a <strong>logarithmic Y-axis scale</strong>, because filter responses spanning 60 dB are unreadable on linear paper. Every filter plot you have seen since the General course was quietly logarithmic; now it is official.</p><figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 820" font-family="Helvetica, Arial, sans-serif">
+<rect width="760" height="820" fill="white"/>
+<text x="380.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E5-1: Impedance Coordinates (worked)</text>
+<line x1="130.0" y1="90.0" x2="130.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="130.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">0</text>
+<line x1="185.0" y1="90.0" x2="185.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="185.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">100</text>
+<line x1="240.0" y1="90.0" x2="240.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="240.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">200</text>
+<line x1="295.0" y1="90.0" x2="295.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="295.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">300</text>
+<line x1="350.0" y1="90.0" x2="350.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="350.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">400</text>
+<line x1="405.0" y1="90.0" x2="405.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="405.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">500</text>
+<line x1="460.0" y1="90.0" x2="460.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="460.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">600</text>
+<line x1="130.0" y1="750.0" x2="460.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="754.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j600</text>
+<line x1="130.0" y1="695.0" x2="460.0" y2="695.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="699.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j500</text>
+<line x1="130.0" y1="640.0" x2="460.0" y2="640.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="644.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j400</text>
+<line x1="130.0" y1="585.0" x2="460.0" y2="585.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="589.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j300</text>
+<line x1="130.0" y1="530.0" x2="460.0" y2="530.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="534.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j200</text>
+<line x1="130.0" y1="475.0" x2="460.0" y2="475.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="479.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j100</text>
+<line x1="130.0" y1="420.0" x2="460.0" y2="420.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="424.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">0</text>
+<line x1="130.0" y1="365.0" x2="460.0" y2="365.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="369.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j100</text>
+<line x1="130.0" y1="310.0" x2="460.0" y2="310.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="314.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j200</text>
+<line x1="130.0" y1="255.0" x2="460.0" y2="255.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="259.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j300</text>
+<line x1="130.0" y1="200.0" x2="460.0" y2="200.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="204.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j400</text>
+<line x1="130.0" y1="145.0" x2="460.0" y2="145.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="149.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j500</text>
+<line x1="130.0" y1="90.0" x2="460.0" y2="90.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="94.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j600</text>
+<line x1="130.0" y1="420.0" x2="460.0" y2="420.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="130.0" y1="90.0" x2="130.0" y2="750.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<text x="456.0" y="410.0" font-size="14" text-anchor="end" font-weight="bold" fill="black">Resistance R (ohms)</text>
+<text x="140.0" y="106.0" font-size="14" text-anchor="start" font-weight="bold" fill="black">Inductive reactance +jX</text>
+<text x="140.0" y="742.0" font-size="14" text-anchor="start" font-weight="bold" fill="black">Capacitive reactance -jX</text>
+<circle cx="295.0" cy="640.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="307.0" y="645.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 1</text>
+<circle cx="185.0" cy="502.5" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="197.0" y="507.5" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 2</text>
+<circle cx="295.0" cy="200.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="307.0" y="205.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 3</text>
+<circle cx="350.0" cy="585.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="362.0" y="590.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 4</text>
+<circle cx="212.5" cy="337.5" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="224.5" y="342.5" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 5</text>
+<circle cx="405.0" cy="475.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="417.0" y="480.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 6</text>
+<circle cx="295.0" cy="475.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="307.0" y="480.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 7</text>
+<circle cx="405.0" cy="200.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="417.0" y="205.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 8</text>
+<rect x="12.0" y="658.0" width="736.0" height="132.0" rx="0" fill="none" stroke="#999" stroke-width="1"/>
+<text x="20.0" y="680.0" font-size="14" text-anchor="start" font-weight="bold" fill="black">Worked pool problems (compute X, sign it, find the point):</text>
+<text x="20.0" y="704.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">E5C10: 400-ohm R + 38 pF at 14 MHz. XC = 1/(2πfC) ≈ 300 Ω capacitive → 400 - j300 = Point 4</text>
+<text x="20.0" y="726.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">E5C11: 300-ohm R + 18 µH at 3.505 MHz. XL = 2πfL ≈ 400 Ω inductive → 300 + j400 = Point 3</text>
+<text x="20.0" y="748.0" font-size="13" text-anchor="start" font-weight="normal" fill="black">E5C12: 300-ohm R + 19 pF at 21.2 MHz. XC ≈ 400 Ω capacitive → 300 - j400 = Point 1</text>
+<circle cx="350.0" cy="585.0" r="12.0" fill="none" stroke="#c00" stroke-width="2.5"/>
+<circle cx="295.0" cy="200.0" r="12.0" fill="none" stroke="#c00" stroke-width="2.5"/>
+<circle cx="295.0" cy="640.0" r="12.0" fill="none" stroke="#c00" stroke-width="2.5"/>
+<text x="746.0" y="810.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg><figcaption>Figure E5-1 with the three pool problems worked</figcaption></figure>
+<details class="fig-quiz"><summary>Quiz yourself: plot the impedances yourself</summary><div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 820" font-family="Helvetica, Arial, sans-serif">
+<rect width="760" height="820" fill="white"/>
+<text x="380.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E5-1: Impedance Coordinates</text>
+<line x1="130.0" y1="90.0" x2="130.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="130.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">0</text>
+<line x1="185.0" y1="90.0" x2="185.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="185.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">100</text>
+<line x1="240.0" y1="90.0" x2="240.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="240.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">200</text>
+<line x1="295.0" y1="90.0" x2="295.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="295.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">300</text>
+<line x1="350.0" y1="90.0" x2="350.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="350.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">400</text>
+<line x1="405.0" y1="90.0" x2="405.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="405.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">500</text>
+<line x1="460.0" y1="90.0" x2="460.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="460.0" y="770.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">600</text>
+<line x1="130.0" y1="750.0" x2="460.0" y2="750.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="754.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j600</text>
+<line x1="130.0" y1="695.0" x2="460.0" y2="695.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="699.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j500</text>
+<line x1="130.0" y1="640.0" x2="460.0" y2="640.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="644.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j400</text>
+<line x1="130.0" y1="585.0" x2="460.0" y2="585.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="589.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j300</text>
+<line x1="130.0" y1="530.0" x2="460.0" y2="530.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="534.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j200</text>
+<line x1="130.0" y1="475.0" x2="460.0" y2="475.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="479.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">-j100</text>
+<line x1="130.0" y1="420.0" x2="460.0" y2="420.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="424.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">0</text>
+<line x1="130.0" y1="365.0" x2="460.0" y2="365.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="369.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j100</text>
+<line x1="130.0" y1="310.0" x2="460.0" y2="310.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="314.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j200</text>
+<line x1="130.0" y1="255.0" x2="460.0" y2="255.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="259.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j300</text>
+<line x1="130.0" y1="200.0" x2="460.0" y2="200.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="204.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j400</text>
+<line x1="130.0" y1="145.0" x2="460.0" y2="145.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="149.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j500</text>
+<line x1="130.0" y1="90.0" x2="460.0" y2="90.0" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+<text x="122.0" y="94.0" font-size="12" text-anchor="end" font-weight="normal" fill="#555">+j600</text>
+<line x1="130.0" y1="420.0" x2="460.0" y2="420.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="130.0" y1="90.0" x2="130.0" y2="750.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<text x="456.0" y="410.0" font-size="14" text-anchor="end" font-weight="bold" fill="black">Resistance R (ohms)</text>
+<text x="140.0" y="106.0" font-size="14" text-anchor="start" font-weight="bold" fill="black">Inductive reactance +jX</text>
+<text x="140.0" y="742.0" font-size="14" text-anchor="start" font-weight="bold" fill="black">Capacitive reactance -jX</text>
+<circle cx="295.0" cy="640.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="307.0" y="645.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 1</text>
+<circle cx="185.0" cy="502.5" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="197.0" y="507.5" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 2</text>
+<circle cx="295.0" cy="200.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="307.0" y="205.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 3</text>
+<circle cx="350.0" cy="585.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="362.0" y="590.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 4</text>
+<circle cx="212.5" cy="337.5" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="224.5" y="342.5" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 5</text>
+<circle cx="405.0" cy="475.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="417.0" y="480.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 6</text>
+<circle cx="295.0" cy="475.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="307.0" y="480.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 7</text>
+<circle cx="405.0" cy="200.0" r="6.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="417.0" y="205.0" font-size="13" text-anchor="start" font-weight="bold" fill="black">Point 8</text>
+<text x="746.0" y="810.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg></div></details><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E5C)</span> Rectangular: X axis resistive, Y axis reactive; pure resistance on the horizontal axis; pure capacitive 100 ohms = 0 - j100; 50 - j25 = 50 ohms resistance in series with 25 ohms capacitive reactance. Polar: magnitude and phase angle; pure inductive = +90 degrees; polar coordinates display circuit phase angle. Phasor diagram: phase relationships at a given frequency. Frequency response graphs: logarithmic Y axis. Figure E5-1: compute reactance, sign it, locate the point.</p></aside><section class="check" id="check-3.3"><h3>Knowledge Check 3.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What does 50 - j25 ohms represent?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>50 ohms resistance in series with 25 ohms inductive reactance</button><button class="opt" data-letter="b"><span class="letter">b</span>50 ohms resistance in series with 25 ohms capacitive reactance</button><button class="opt" data-letter="c"><span class="letter">c</span>25 ohms resistance in series with 50 ohms capacitive reactance</button><button class="opt" data-letter="d"><span class="letter">d</span>A 2:1 SWR</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. How do polar coordinates describe an impedance?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Real and imaginary parts</button><button class="opt" data-letter="b"><span class="letter">b</span>Magnitude and phase angle</button><button class="opt" data-letter="c"><span class="letter">c</span>Resistance and conductance</button><button class="opt" data-letter="d"><span class="letter">d</span>Rise time and settling time</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Which Y-axis scale do frequency-response graphs normally use?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Linear</button><button class="opt" data-letter="b"><span class="letter">b</span>Logarithmic</button><button class="opt" data-letter="c"><span class="letter">c</span>Inverse</button><button class="opt" data-letter="d"><span class="letter">d</span>Bilateral</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-4"><h2><span class="secnum">3.4</span>What RF Does to Real Parts</h2><p>The General course warned that at RF every part is all three of R, L, and C. This section names the mechanisms.</p>
+<p><strong>Skin effect</strong> is the big one: as frequency increases, RF current flows closer to the conductor&#x27;s surface, so <strong>resistance increases with frequency</strong> because the current uses less of the copper. Consequences ripple everywhere: it is the primary loss mechanism in film capacitors at RF, it is why RF conductors are silver-plated and why the General course preferred wide strap, and it adds a subtlety to antennas: as a conductor&#x27;s <strong>diameter increases, its electrical length increases</strong>, which is why fat elements resonate slightly lower than the wire formula predicts (and, from General Module 7, why they are broader banded).</p>
+<p><strong>Parasitics</strong> are the components you did not install:</p>
+<ul><li>Every component&#x27;s <strong>self-resonance</strong> comes from its <strong>nominal reactance combining with its parasitic reactance</strong>. In an inductor specifically, the parasite is <strong>inter-turn capacitance</strong>, the General course&#x27;s self-resonant coil now explained.</li><li><strong>Electrolytic capacitors</strong> are unsuitable at RF because of their parasitic <strong>inductance</strong>, that rolled-foil construction being effectively a coil.</li><li>The cures are geometric: <strong>keep component leads short at VHF and above to minimize inductive reactance</strong>, and at microwave, short connections <strong>reduce phase shift along the connection</strong>, because at 10 GHz a centimeter of wire is an appreciable fraction of a wavelength.</li></ul>
+<p><strong>Real and reactive power</strong> close the module. In reactive power, voltage and current are <strong>90 degrees out of phase</strong>, and the result is genuinely strange: ideal inductors and capacitors <strong>store energy in their fields but dissipate no power</strong>. Reactive power is <strong>wattless, nonproductive power</strong>, volt-amperes circulating without heating anything. Only the resistive component consumes: a circuit of 100 ohms resistance in series with 100 ohms inductive reactance drawing 1 ampere consumes I²R = <strong>100 watts</strong> of real power, not the 141 the total impedance suggests. Your wattmeter, your power bill, and your finals all agree: only R gets paid.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E5D)</span> Skin effect: RF current crowds the surface, resistance rises with frequency; it is the main film-capacitor RF loss; larger conductor diameter increases electrical length. Self-resonance: nominal plus parasitic reactance; in inductors, inter-turn capacitance. Electrolytics fail at RF from parasitic inductance. Short leads at VHF: minimize inductive reactance; short microwave connections: reduce phase shift. Reactive power: voltage and current 90 degrees apart; ideal L and C store energy without dissipation; reactive power is wattless and nonproductive. 100 ohms R in series with 100 ohms XL at 1 A: 100 watts real power.</p></aside><section class="check" id="check-3.4"><h3>Knowledge Check 3.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why does resistance rise with frequency in a conductor?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Electron mobility falls</button><button class="opt" data-letter="b"><span class="letter">b</span>Skin effect crowds current toward the surface, using less of the conductor</button><button class="opt" data-letter="c"><span class="letter">c</span>Thermal coefficients dominate at RF</button><button class="opt" data-letter="d"><span class="letter">d</span>The magnetic field saturates</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What makes electrolytic capacitors unsuitable at RF?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Dielectric leakage</button><button class="opt" data-letter="b"><span class="letter">b</span>Parasitic inductance from their construction</button><button class="opt" data-letter="c"><span class="letter">c</span>Excessive capacitance</button><button class="opt" data-letter="d"><span class="letter">d</span>Polarity sensitivity</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. How much real power is consumed by 100 ohms of resistance in series with 100 ohms of inductive reactance drawing 1 ampere?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>70.7 watts</button><button class="opt" data-letter="b"><span class="letter">b</span>100 watts</button><button class="opt" data-letter="c"><span class="letter">c</span>141.4 watts</button><button class="opt" data-letter="d"><span class="letter">d</span>200 watts</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">E5A</span> f = 1/(2π√LC): 50 µH + 40 pF = 3.56 MHz; 50 µH + 10 pF = 7.12 MHz. Series resonance: impedance ≈ R, voltage and current in phase; resonance can raise reactance voltages above the applied voltage, and higher Q raises them further. Parallel resonance: impedance ≈ R, circulating current maximum, input current minimum. Parallel Q = R / X. Half-power bandwidth = f/Q: 47.3 kHz at 7.1 MHz with Q 150; 31.4 kHz at 3.7 MHz with Q 118. Higher matching-circuit Q: narrower matching bandwidth.</p></div><div class="anchor review"><p><span class="anchor-lead">E5B</span> One time constant: charge to 63.2 percent or discharge to 36.8 percent. Two 220 µF caps and two 1 MΩ resistors all in parallel: 220 seconds. Capacitor: current leads voltage by 90 degrees; inductor: voltage leads current by 90 degrees. Phase angles: 14 degrees lagging (XC 500, R 1000, XL 250); 63 degrees lagging (XC 300, R 100, XL 100); 27 degrees leading (XC 25, R 100, XL 75). Admittance: inverse of impedance; susceptance: its imaginary part, letter B; polar conversion: reciprocal magnitude, negated angle; reactance to susceptance: reciprocal.</p></div><div class="anchor review"><p><span class="anchor-lead">E5C</span> Rectangular: X axis resistive, Y axis reactive; pure resistance on the horizontal axis; pure capacitive 100 ohms = 0 - j100; 50 - j25 = 50 ohms resistance in series with 25 ohms capacitive reactance. Polar: magnitude and phase angle; pure inductive = +90 degrees; polar coordinates display circuit phase angle. Phasor diagram: phase relationships at a given frequency. Frequency response graphs: logarithmic Y axis. Figure E5-1: compute reactance, sign it, locate the point.</p></div><div class="anchor review"><p><span class="anchor-lead">E5D</span> Skin effect: RF current crowds the surface, resistance rises with frequency; it is the main film-capacitor RF loss; larger conductor diameter increases electrical length. Self-resonance: nominal plus parasitic reactance; in inductors, inter-turn capacitance. Electrolytics fail at RF from parasitic inductance. Short leads at VHF: minimize inductive reactance; short microwave connections: reduce phase shift. Reactive power: voltage and current 90 degrees apart; ideal L and C store energy without dissipation; reactive power is wattless and nonproductive. 100 ohms R in series with 100 ohms XL at 1 A: 100 watts real power.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>The boxed formula earned its box: you can now compute a resonant frequency, its bandwidth from Q, the phase angle of any RLC combination, and the real power hiding inside a complex impedance, and you can write any of it in rectangular or polar form as the job demands. ELI the ICE man rides along for free.</p>
+<p>Module 4 spends this vocabulary in the parts drawers: semiconductor physics, the full diode family, logic families, ferrites with their physics attached, RF packaging, and the electro-optics that switch your amplifier without touching it.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (E-S1, E-S2): sweep one of your antennas with a NanoVNA and read the R ± jX display against this module: find the frequency where X crosses zero, note the sign of X on either side, and compute the antenna&#x27;s approximate Q from the bandwidth between its half-power SWR points. The analyzer has been speaking Section 3.3 all along.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 3 complete</button>
+    <div class="pager"><a class="navlink" href="extra-module-02.html">Previous module</a><a class="navlink" href="extra-module-04.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-extra-m03";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 3 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

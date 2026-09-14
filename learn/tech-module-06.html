@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course, Module 6: Modes, Digital, and Space | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-tech.html"><svg class="rank" width="17" height="9" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Technician course</a>
+  <span>Module 6 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Technician Course, Module 6: Modes, Digital, and Space</h1>
+  <p class="covers">Covers NCVEC 2026-2030 Technician Pool, Subelement T8 (Signals and Emissions). Four questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray sets a kitchen timer on the bench. &quot;In forty minutes a satellite the size of a shoebox comes over the horizon, and we are going to work somebody through it with a handheld and this antenna I made from a tape measure. Before it rises, you need to understand what a mode actually is.&quot;</p></div>
+<section class="module-section" id="s6-1"><h2><span class="secnum">6.1</span>FM, SSB, and the Price of Bandwidth</h2><p><strong>Modulation</strong>, from Module 5, is combining your voice with an RF carrier. The different ways of doing it are called modes, and each one trades fidelity, bandwidth, and convenience differently.</p>
+<p><strong>FM (frequency modulation)</strong> varies the carrier&#x27;s frequency with your voice. It is the mode of repeaters and mobile radio because it is punchy, noise-resistant, and effortless to tune. FM or PM is what VHF and UHF voice repeaters use, and it is also the modulation used for VHF packet radio. Its costs: an FM voice signal is wide, occupying between 10 and 15 kHz, and FM receivers capture only one signal at a time. When two FM stations transmit at once, the stronger one wins and the weaker vanishes, which is FM&#x27;s disadvantage compared with SSB.</p>
+<p><strong>SSB (single sideband)</strong> is a form of amplitude modulation with the carrier and one sideband stripped away, leaving all the transmitter&#x27;s energy in a single 3 kHz slice of voice. That narrow bandwidth is SSB&#x27;s advantage over FM, and it is why SSB is the voice mode for long-distance weak-signal work on VHF and UHF. The convention: <strong>upper sideband (USB)</strong> is used on 10-meter HF, VHF, and UHF SSB. The price of SSB is that it is harder to tune, which is why your radio has an RIT knob.</p>
+<p><strong>CW (Morse code)</strong> is the bandwidth champion at roughly 150 Hz, the narrowest signal of the common modes. At the other extreme, analog fast-scan TV swallows about 6 MHz, an entire band&#x27;s worth.</p>
+<p>Ray&#x27;s ladder, narrowest to widest: <strong>CW (150 Hz), SSB (3 kHz), FM (10 to 15 kHz), fast-scan TV (6 MHz).</strong> Bandwidth is spectrum rent. Pay only for what the message needs.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T8A)</span> SSB is a form of amplitude modulation. FM or PM: VHF/UHF repeaters and VHF packet. SSB: long-distance weak-signal VHF/UHF voice, and narrower bandwidth than FM. USB on 10-meter HF, VHF, and UHF. Bandwidths: CW about 150 Hz (narrowest), SSB about 3 kHz, FM voice 10 to 15 kHz, fast-scan TV about 6 MHz. FM disadvantage: only one signal received at a time. SSB disadvantage: harder to tune.</p></aside><section class="check" id="check-6.1"><h3>Knowledge Check 6.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. Which mode is standard on VHF and UHF voice repeaters?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>SSB</button><button class="opt" data-letter="b"><span class="letter">b</span>AM</button><button class="opt" data-letter="c"><span class="letter">c</span>FM or PM</button><button class="opt" data-letter="d"><span class="letter">d</span>CW</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Rank these by bandwidth, narrowest first:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>FM, SSB, CW</button><button class="opt" data-letter="b"><span class="letter">b</span>CW, SSB, FM</button><button class="opt" data-letter="c"><span class="letter">c</span>SSB, CW, FM</button><button class="opt" data-letter="d"><span class="letter">d</span>CW, FM, SSB</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Which sideband is the convention above 10 meters?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Lower sideband</button><button class="opt" data-letter="b"><span class="letter">b</span>Upper sideband</button><button class="opt" data-letter="c"><span class="letter">c</span>Either, chosen daily by band plan</button><button class="opt" data-letter="d"><span class="letter">d</span>Both transmitted together</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-2"><h2><span class="secnum">6.2</span>Working the Birds</h2><p>The timer is down to twenty minutes, so Ray briefs you like a mission.</p>
+<p>Amateur satellites are repeaters in the sky. Most are <strong>LEO</strong> satellites: Low Earth Orbit, circling the planet with a period of around 100 minutes, which means each pass over your head lasts only ten or fifteen. A <strong>satellite tracking program</strong> tells you when: it shows maps of the satellite&#x27;s real-time position, the time, azimuth, and elevation of each pass from start to peak to end, and even the apparent frequency including Doppler shift. All of that. What you feed the program is the satellite&#x27;s <strong>Keplerian elements</strong>, the numbers describing its orbit.</p>
+<p><strong>Doppler shift</strong> is the observed change in signal frequency caused by the relative motion between the satellite and your station: frequency reads high as the bird approaches, slides low as it recedes, and you tune along with it.</p>
+<p>The frequency plan is named by band pairs. A satellite in <strong>U/V mode</strong> has its uplink in the 70-centimeter band and its downlink in the 2-meter band. Satellites carry FM, SSB, and CW/data transponders, so the answer to &quot;what modes do amateur satellites use&quot; is all of them. Every satellite also transmits a <strong>beacon</strong>, a transmission containing status information, and the telemetry it carries describes the health and status of the satellite. Anyone is permitted to receive that telemetry, licensed or not.</p>
+<p>Etiquette matters more on a satellite than anywhere else, because the transponder&#x27;s power is shared among every station using it. Excessive uplink power blocks access by other users. The self-check: your own signal on the downlink should be about as strong as the beacon. Louder than the beacon means you are hogging the bird.</p>
+<p>Two last details. <strong>Spin fading</strong> is the slow flutter caused by the rotation of the satellite and its antennas. And who may be the control operator of a station transmitting through a satellite? Any amateur allowed to transmit on the uplink frequency. Your Technician license is a satellite license.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T8B)</span> LEO: Low Earth Orbit, period around 100 minutes. Tracking programs provide maps, pass times/azimuth/elevation, and Doppler-corrected frequencies (all of these), and take Keplerian elements as input. Doppler shift: frequency change from relative motion. U/V mode: 70 cm uplink, 2 m downlink. Satellites use SSB, FM, and CW/data (all). Beacon: transmission containing satellite status; telemetry reports health and status; anyone may receive it. Excessive uplink power blocks other users; correct uplink power makes your downlink about equal to the beacon. Spin fading: rotation of the satellite and its antennas. Control operator: any amateur allowed to transmit on the uplink frequency.</p></aside><section class="check" id="check-6.2"><h3>Knowledge Check 6.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Your downlink signal is much louder than the satellite&#x27;s beacon. What should you do?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Nothing, louder is better</button><button class="opt" data-letter="b"><span class="letter">b</span>Reduce your uplink power, since you are blocking other users</button><button class="opt" data-letter="c"><span class="letter">c</span>Switch to lower sideband</button><button class="opt" data-letter="d"><span class="letter">d</span>Report the beacon for low power</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What does U/V mode mean?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Ultraviolet transmission mode</button><button class="opt" data-letter="b"><span class="letter">b</span>Uplink on 70 cm, downlink on 2 meters</button><button class="opt" data-letter="c"><span class="letter">c</span>Uplink varies with Doppler</button><button class="opt" data-letter="d"><span class="letter">d</span>Universal voice mode</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Who may operate through an amateur satellite?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Extra class licensees only</button><button class="opt" data-letter="b"><span class="letter">b</span>Any amateur allowed to transmit on the uplink frequency</button><button class="opt" data-letter="c"><span class="letter">c</span>AMSAT members only</button><button class="opt" data-letter="d"><span class="letter">d</span>Stations with FCC space endorsements</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-3"><h2><span class="secnum">6.3</span>Games Hams Play</h2><p>The satellite pass succeeds: two contacts in nine minutes with a tape-measure antenna. Ray grins and asks what grid you are in. Time to learn the hobby&#x27;s recreation department.</p>
+<p>A <strong>grid locator</strong> is a letter-number designator assigned to a geographic location. The planet is diced into grid squares, and exchanging them is standard currency in VHF work and contests.</p>
+<p><strong>Contesting</strong> is the activity of contacting as many stations as possible during a specified period. Good contest practice is efficiency: send only the minimum information needed for identification and the required exchange. Nobody in a contest wants your weather report.</p>
+<p><strong>Radio direction finding</strong> is the method used to locate sources of noise interference or jamming, and its sporting form is the hidden transmitter hunt, or foxhunt. The essential tool is a directional antenna, which is exactly why Ray&#x27;s tape-measure beam exists: cheap, bendable, and perfect for chasing signals through the woods.</p>
+<p>Then there is the internet, which hams absorbed rather than resisted:</p>
+<ul><li><strong>VoIP</strong> (Voice Over Internet Protocol) is delivering voice communications over the internet using digital techniques.</li><li>The <strong>IRLP</strong> (Internet Radio Linking Project) connects amateur systems like repeaters via the internet, and you access an IRLP node over the air using DTMF tones, the touch-tones from Module 9&#x27;s radios.</li><li><strong>EchoLink</strong> lets an amateur transmit through a distant repeater without using a radio to initiate the connection, from a computer or phone app. Before using it you must register your call sign and provide proof of license.</li><li>A station that connects other amateur stations to the internet is called a <strong>gateway</strong>.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T8C)</span> Grid locator: letter-number designator for a geographic location. Contesting: contact as many stations as possible in a set period; send only the minimum needed for ID and exchange. Radio direction finding locates noise or jamming sources; a directional antenna is the tool for hidden transmitter hunts. VoIP: voice over the internet by digital techniques. IRLP: connects repeaters via the internet, accessed with DTMF. EchoLink: transmit through a repeater without initiating by radio; requires call sign registration with proof of license. Gateway: station connecting amateurs to the internet.</p></aside><section class="check" id="check-6.3"><h3>Knowledge Check 6.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="a"><p class="qtext">1. A jamming signal keeps appearing on the local repeater&#x27;s input. What technique locates it?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Radio direction finding with a directional antenna</button><button class="opt" data-letter="b"><span class="letter">b</span>Raising the repeater&#x27;s squelch</button><button class="opt" data-letter="c"><span class="letter">c</span>Adding CTCSS to the output</button><button class="opt" data-letter="d"><span class="letter">d</span>Doppler correction</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What is exchanged in &quot;FM05&quot; or &quot;EM74&quot; during a VHF contest?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Repeater access codes</button><button class="opt" data-letter="b"><span class="letter">b</span>Grid locators identifying geographic position</button><button class="opt" data-letter="c"><span class="letter">c</span>Serial equipment numbers</button><button class="opt" data-letter="d"><span class="letter">d</span>Encrypted check-ins</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. What must you do before using EchoLink?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Upgrade to General</button><button class="opt" data-letter="b"><span class="letter">b</span>Buy a node license</button><button class="opt" data-letter="c"><span class="letter">c</span>Register your call sign and provide proof of license</button><button class="opt" data-letter="d"><span class="letter">d</span>Pass a VoIP certification</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-4"><h2><span class="secnum">6.4</span>The Digital Revolution</h2><p>Last section of the module, and it is the one that has changed fastest. Ray opens a laptop, plugs it into the radio, and the waterfall display fills with stripes of signal.</p>
+<p>&quot;Every stripe is a conversation,&quot; he says. &quot;Most of them are too weak for your ears.&quot;</p>
+<p><strong>FT8</strong> is the star: a digital mode capable of low signal-to-noise operation, decoding signals literally below the noise your ear could use. It lives in the <strong>WSJT-X software suite</strong>, which also supports Earth-Moon-Earth, meteor scatter, and weak-signal propagation beacons. All of those, from the same free program.</p>
+<p>The older workhorses each contribute a concept the exam tests:</p>
+<ul><li><strong>CW</strong> is simply another name for Morse code transmission, the original digital mode.</li><li><strong>PSK</strong> stands for Phase Shift Keying, modulating by shifting the carrier&#x27;s phase.</li><li><strong>Packet radio</strong> sends data in bundles that include a header with the destination call sign, a checksum permitting error detection, and automatic repeat request in case of error. All of these.</li><li>That last idea has its own name: <strong>ARQ</strong> is the error correction method in which the receiving station detects errors and requests a retransmission.</li><li><strong>APRS</strong> (Automatic Packet Reporting System) provides real-time tactical digital communications along with a map showing station locations, and it can carry GPS position data, text messages, and weather data. All of these.</li></ul>
+<p>Digital voice gets one technical definition: <strong>DMR</strong> is a technique that time-multiplexes two digital voice signals on a single 12.5 kHz repeater channel, two conversations sharing one frequency by taking turns thousands of times a second. You will program and use DMR in Modules 8 and 9; here, just own what it is.</p>
+<p>Two image and network definitions close it out. <strong>NTSC</strong> is the analog fast-scan color TV signal standard. And an amateur radio <strong>mesh network</strong> is a data network using commercial Wi-Fi equipment with modified firmware, hams reflashing off-the-shelf routers into license-band data networks.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (T8D)</span> FT8: digital mode capable of low signal-to-noise operation. WSJT-X supports EME, meteor scatter, and propagation beacons (all). CW: Morse code. PSK: Phase Shift Keying. Packet includes destination header, checksum for error detection, and ARQ (all). ARQ: receiver detects errors and requests retransmission. APRS: tactical real-time communications with mapped positions; carries GPS position, text, and weather (all). DMR: two voice signals time-multiplexed on one 12.5 kHz channel. NTSC: analog fast-scan color TV. Mesh network: commercial Wi-Fi gear with modified firmware. Digital modes include packet, IEEE 802.11, and FT8 (all).</p></aside><section class="check" id="check-6.4"><h3>Knowledge Check 6.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What makes FT8 remarkable?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>It carries full-fidelity voice</button><button class="opt" data-letter="b"><span class="letter">b</span>It decodes signals at very low signal-to-noise ratios</button><button class="opt" data-letter="c"><span class="letter">c</span>It requires no license</button><button class="opt" data-letter="d"><span class="letter">d</span>It works only on 2 meters</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. In ARQ error correction, what happens when the receiving station detects an error?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The packet is silently discarded</button><button class="opt" data-letter="b"><span class="letter">b</span>It requests a retransmission</button><button class="opt" data-letter="c"><span class="letter">c</span>It guesses the missing bits</button><button class="opt" data-letter="d"><span class="letter">d</span>The frequency changes automatically</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is an amateur mesh network built from?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Surplus military encryption gear</button><button class="opt" data-letter="b"><span class="letter">b</span>Commercial Wi-Fi equipment with modified firmware</button><button class="opt" data-letter="c"><span class="letter">c</span>Repurposed cable TV amplifiers</button><button class="opt" data-letter="d"><span class="letter">d</span>Satellite dishes</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">T8A</span> SSB is a form of amplitude modulation. FM or PM: VHF/UHF repeaters and VHF packet. SSB: long-distance weak-signal VHF/UHF voice, and narrower bandwidth than FM. USB on 10-meter HF, VHF, and UHF. Bandwidths: CW about 150 Hz (narrowest), SSB about 3 kHz, FM voice 10 to 15 kHz, fast-scan TV about 6 MHz. FM disadvantage: only one signal received at a time. SSB disadvantage: harder to tune.</p></div><div class="anchor review"><p><span class="anchor-lead">T8B</span> LEO: Low Earth Orbit, period around 100 minutes. Tracking programs provide maps, pass times/azimuth/elevation, and Doppler-corrected frequencies (all of these), and take Keplerian elements as input. Doppler shift: frequency change from relative motion. U/V mode: 70 cm uplink, 2 m downlink. Satellites use SSB, FM, and CW/data (all). Beacon: transmission containing satellite status; telemetry reports health and status; anyone may receive it. Excessive uplink power blocks other users; correct uplink power makes your downlink about equal to the beacon. Spin fading: rotation of the satellite and its antennas. Control operator: any amateur allowed to transmit on the uplink frequency.</p></div><div class="anchor review"><p><span class="anchor-lead">T8C</span> Grid locator: letter-number designator for a geographic location. Contesting: contact as many stations as possible in a set period; send only the minimum needed for ID and exchange. Radio direction finding locates noise or jamming sources; a directional antenna is the tool for hidden transmitter hunts. VoIP: voice over the internet by digital techniques. IRLP: connects repeaters via the internet, accessed with DTMF. EchoLink: transmit through a repeater without initiating by radio; requires call sign registration with proof of license. Gateway: station connecting amateurs to the internet.</p></div><div class="anchor review"><p><span class="anchor-lead">T8D</span> FT8: digital mode capable of low signal-to-noise operation. WSJT-X supports EME, meteor scatter, and propagation beacons (all). CW: Morse code. PSK: Phase Shift Keying. Packet includes destination header, checksum for error detection, and ARQ (all). ARQ: receiver detects errors and requests retransmission. APRS: tactical real-time communications with mapped positions; carries GPS position, text, and weather (all). DMR: two voice signals time-multiplexed on one 12.5 kHz channel. NTSC: analog fast-scan color TV. Mesh network: commercial Wi-Fi gear with modified firmware. Digital modes include packet, IEEE 802.11, and FT8 (all).</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>You can now choose a mode by its bandwidth and purpose, brief a satellite pass like Ray briefed you, speak the language of grids, contests, and foxhunts, and explain the digital modes that dominate the modern bands. The tape-measure antenna that worked the satellite is also the foxhunt weapon, which tells you something about this hobby: the same physics keeps showing up wearing different hats.</p>
+<p>Module 7 is about the most important piece of gear you own, the one that is not electronic at all: the antenna.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (T-S4): install WSJT-X or a satellite tracking app and just watch. Decode FT8 with a receiver, or track one satellite pass on the map. Receiving costs nothing and requires no license, and it builds the station instincts before the first transmission.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 6 complete</button>
+    <div class="pager"><a class="navlink" href="tech-module-05.html">Previous module</a><a class="navlink" href="tech-module-07.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-tech-m06";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 6 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

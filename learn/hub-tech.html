@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Technician Course | K4DIA</title>
+<style>:root { --accent: #B4530A; --accent-dark: #8A3F07; --tint: #FBF2EA; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55; }
+.bar { background: var(--accent); color: #fff; padding: .55rem 1rem;
+  display: flex; justify-content: space-between; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1.1rem 4rem; }
+.coursehead { display: flex; align-items: center; gap: .9rem; margin: .8rem 0 .3rem; }
+h1 { font-family: Georgia, serif; font-size: 1.9rem; margin: 0; }
+.lede { color: var(--muted); margin: 0 0 1.2rem; }
+.progress { background: var(--tint); border-radius: 8px; padding: .8rem 1rem;
+  margin-bottom: 1.6rem; font-weight: 600; color: var(--accent-dark); }
+.progress .track { height: 8px; background: #fff; border: 1px solid var(--rule);
+  border-radius: 99px; margin-top: .5rem; overflow: hidden; }
+.progress .fill { height: 100%; width: 0; background: var(--accent); border-radius: 99px; }
+ol.modules { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+ol.modules a { display: flex; align-items: center; gap: .9rem; text-decoration: none;
+  color: var(--ink); background: #fff; border: 1.5px solid var(--rule);
+  border-radius: 10px; padding: .8rem .95rem; }
+ol.modules a:hover { border-color: var(--accent); }
+.num { flex: 0 0 2.1rem; height: 2.1rem; border-radius: 50%; border: 2px solid var(--accent);
+  color: var(--accent-dark); font-weight: 700; display: grid; place-items: center; }
+li.done .num { background: var(--ok); border-color: var(--ok); color: #fff; }
+li.done .num::before { content: "\2713"; }
+li.done .num span { display: none; }
+.mtitle { font-weight: 600; }
+.msub { color: var(--muted); font-size: .87rem; }
+.next-up { font-size: .8rem; font-weight: 700; color: var(--accent-dark); margin-left: auto; }
+.foot { margin-top: 1.8rem; color: var(--muted); font-size: .9rem; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar"><a href="index.html">&#8592; K4DIA courses</a><span>Technician</span></div>
+<main>
+<div class="coursehead"><svg class="rank" width="30" height="16" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#B4530A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h1>The Technician Course</h1></div>
+<p class="lede">Ten modules with Ray on the workbench. The exam is 35 questions; passing is 26. The course teaches the radio, and the exam follows.</p>
+<div class="progress">
+  <span id="ptext">0 of 10 modules complete</span>
+  <div class="track"><div class="fill" id="pfill"></div></div>
+</div>
+<ol class="modules" id="modlist"><li data-m="01"><a href="tech-module-01.html"><span class="num"><span>1</span></span><span><span class="mtitle">The Rules of the Road</span><br><span class="msub">Subelement T1</span></span></a></li><li data-m="02"><a href="tech-module-02.html"><span class="num"><span>2</span></span><span><span class="mtitle">The Wave</span><br><span class="msub">Subelement T3</span></span></a></li><li data-m="03"><a href="tech-module-03.html"><span class="num"><span>3</span></span><span><span class="mtitle">Electricity You Can Use</span><br><span class="msub">Subelement T5</span></span></a></li><li data-m="04"><a href="tech-module-04.html"><span class="num"><span>4</span></span><span><span class="mtitle">The Parts Bin</span><br><span class="msub">Subelement T6</span></span></a></li><li data-m="05"><a href="tech-module-05.html"><span class="num"><span>5</span></span><span><span class="mtitle">Inside the Radio</span><br><span class="msub">Subelement T7</span></span></a></li><li data-m="06"><a href="tech-module-06.html"><span class="num"><span>6</span></span><span><span class="mtitle">Modes, Digital, and Space</span><br><span class="msub">Subelement T8</span></span></a></li><li data-m="07"><a href="tech-module-07.html"><span class="num"><span>7</span></span><span><span class="mtitle">Antennas and Feed Lines</span><br><span class="msub">Subelement T9</span></span></a></li><li data-m="08"><a href="tech-module-08.html"><span class="num"><span>8</span></span><span><span class="mtitle">Setting Up the Station</span><br><span class="msub">Subelement T4</span></span></a></li><li data-m="09"><a href="tech-module-09.html"><span class="num"><span>9</span></span><span><span class="mtitle">On the Air</span><br><span class="msub">Subelement T2</span></span></a></li><li data-m="10"><a href="tech-module-10.html"><span class="num"><span>10</span></span><span><span class="mtitle">Nobody Gets Hurt</span><br><span class="msub">Subelement T0</span></span></a></li></ol>
+<p class="foot">Progress is saved in this browser only. Finish all ten, then <a href="practice-tech.html" style="color: var(--accent-dark); font-weight: 700;">take the practice exam</a>.</p>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  var done = 0, firstOpen = null;
+  document.querySelectorAll("#modlist li").forEach(function (li) {
+    if (localStorage.getItem("k4dia-tech-m" + li.dataset.m) === "done") {
+      li.classList.add("done"); done++;
+    } else if (!firstOpen) { firstOpen = li; }
+  });
+  if (firstOpen && done > 0) {
+    var tag = document.createElement("span");
+    tag.className = "next-up"; tag.textContent = "Next up";
+    firstOpen.querySelector("a").appendChild(tag);
+  }
+  document.getElementById("ptext").textContent = done + " of 10 modules complete";
+  document.getElementById("pfill").style.width = (done * 10) + "%";
+})();
+</script>
+</body>
+</html>

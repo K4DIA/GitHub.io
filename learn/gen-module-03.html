@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 3: Electricity, Round Two | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 3 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 3: Electricity, Round Two</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G5 (Electrical Principles). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray sets an antenna tuner on the bench with its lid off. Inside: two big air-variable capacitors and a fat rotary inductor. &quot;At Technician you learned that this box matches impedances,&quot; he says. &quot;Today you learn how. Three ideas: reactance, resonance, and the honest way to measure power. Bring a calculator, and relax. Every formula in this module is multiply, divide, or square.&quot;</p></div>
+<section class="module-section" id="s3-1"><h2><span class="secnum">3.1</span>Reactance, Impedance, and Resonance</h2><p>Resistance opposes all current equally. AC gets opposed by something extra: <strong>reactance</strong>, the opposition to alternating current caused by capacitance or inductance. It is measured in <strong>ohms</strong>, like resistance, and it wears the letter <strong>X</strong>.</p>
+<p>The two flavors pull in opposite directions as frequency changes:</p>
+<ul><li>An <strong>inductor&#x27;s</strong> reactance <strong>increases</strong> as frequency increases. The coil fights change, and higher frequency is faster change.</li><li>A <strong>capacitor&#x27;s</strong> reactance <strong>decreases</strong> as frequency increases. The faster the alternation, the less time the plates have to charge up and push back.</li></ul>
+<p>One goes up while the other comes down, which means for any L and C pair there is exactly one frequency where they meet. That meeting is <strong>resonance</strong>: the inductive and capacitive reactances cancel. In a <strong>series</strong> LC circuit, resonance makes the impedance <strong>very low</strong>, a wide-open door at one frequency. (Its mirror image, the parallel LC circuit, presents a very high impedance at resonance, the tuned circuits from your Technician course.)</p>
+<p><strong>Impedance</strong> now gets its formal definition: the ratio of voltage to current, the total opposition combining resistance and reactance, in ohms. Its inverse has a name the exam checks: <strong>admittance</strong>.</p>
+<p>And matching impedances, the antenna tuner&#x27;s job? The rules bless several tools: a transformer, a Pi-network (that capacitor-inductor-capacitor arrangement in Ray&#x27;s tuner), or even a length of transmission line. All of these. The lidless tuner on the bench is a Pi-network with knobs, and you now know what the knobs move.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G5A)</span> Reactance: opposition to AC from capacitance or inductance, measured in ohms, symbol X. Inductive reactance rises with frequency; capacitive reactance falls. Series LC at resonance: very low impedance. Resonance: inductive and capacitive reactance cancel. Impedance: the ratio of voltage to current. Admittance: the inverse of impedance. Impedance matching at RF: transformer, Pi-network, or a transmission line length (all of these).</p></aside><section class="check" id="check-3.1"><h3>Knowledge Check 3.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What is reactance?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Opposition to DC caused by resistance</button><button class="opt" data-letter="b"><span class="letter">b</span>Opposition to AC caused by capacitance or inductance</button><button class="opt" data-letter="c"><span class="letter">c</span>The inverse of impedance</button><button class="opt" data-letter="d"><span class="letter">d</span>Energy stored in a magnetic field</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What happens in a series LC circuit at resonance?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Impedance becomes very high</button><button class="opt" data-letter="b"><span class="letter">b</span>Impedance becomes very low</button><button class="opt" data-letter="c"><span class="letter">c</span>Current stops entirely</button><button class="opt" data-letter="d"><span class="letter">d</span>Voltage and current become equal</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">3. As frequency increases, an inductor&#x27;s reactance:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Increases</button><button class="opt" data-letter="b"><span class="letter">b</span>Decreases</button><button class="opt" data-letter="c"><span class="letter">c</span>Stays constant</button><button class="opt" data-letter="d"><span class="letter">d</span>Becomes negative</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-2"><h2><span class="secnum">3.2</span>Honest Power: dB, RMS, and PEP</h2><p>Three measurement ideas separate operators who know their numbers from operators who repeat them.</p>
+<p><strong>Decibels</strong> carry over from Technician with the same anchor: <strong>3 dB is a factor of two</strong> in power, up or down. New precision point: a loss of just <strong>1 dB</strong> costs you <strong>20.6 percent</strong> of your power. One dB sounds like nothing; a fifth of your power is not nothing. That number is why feed line choices matter.</p>
+<p><strong>Power math</strong> now runs three formulas instead of one. You know P = I x E. Ohm&#x27;s Law substitution gives the other two: <strong>P = E² / R</strong> and <strong>P = I² x R</strong>. Pick whichever matches the numbers you have:</p>
+<ul><li>400 volts DC across an 800-ohm load: P = 400² / 800 = 160,000 / 800 = <strong>200 watts</strong>.</li><li>A 12-volt bulb drawing 0.2 amps: P = 12 x 0.2 = <strong>2.4 watts</strong>.</li><li>7.0 milliamps through 1,250 ohms: P = 0.007² x 1250 = <strong>about 61 milliwatts</strong>.</li></ul>
+<p><strong>RMS</strong> answers a question you have never thought to ask: when we say &quot;120 volts AC,&quot; which voltage do we mean? The wave swings continuously, peaking far above 120. The answer: the <strong>RMS (root-mean-square)</strong> value, defined as the AC value that produces the same power dissipation in a resistor as a DC voltage of the same value. RMS is the honest average for power purposes, and the wall socket&#x27;s 120 is an RMS number.</p>
+<p>For sine waves, the conversions are fixed gears:</p>
+<ul><li>Peak = RMS x 1.414</li><li>Peak-to-peak = RMS x 2.828</li><li>RMS = Peak x 0.707</li></ul>
+<p>Drill them: 120 V RMS is <strong>339.4 V peak-to-peak</strong> (yes, the wall socket swings that far). A 17-volt-peak sine wave is <strong>12 V RMS</strong>.</p>
+<p><strong>PEP</strong>, peak envelope power, is the FCC&#x27;s chosen yardstick from Module 1, so learn to compute it: PEP is the power at the peak of the modulation envelope, calculated from the peak voltage using RMS. The recipe for a sine wave across a load: peak-to-peak, divide by 2 for peak, multiply by 0.707 for RMS, square it, divide by the resistance.</p>
+<ul><li>200 V peak-to-peak across 50 ohms: peak = 100, RMS = 70.7, PEP = 70.7² / 50 = <strong>100 watts</strong>.</li><li>500 V peak-to-peak across 50 ohms: peak = 250, RMS = 176.75, PEP = 176.75² / 50 = <strong>625 watts</strong>.</li></ul>
+<p>Run it backward too: a dummy load dissipating 1200 watts at 50 ohms has an RMS voltage of the square root of (1200 x 50) = <strong>245 volts</strong>.</p>
+<p>One conceptual freebie finishes the group: for an <strong>unmodulated carrier</strong> (a steady tone, key held down), the envelope never varies, so the ratio of PEP to average power is exactly <strong>1.00</strong>. Average power 1060 watts means PEP 1060 watts. The distinction between PEP and average only appears when modulation makes the envelope move.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G5B)</span> 3 dB = factor of 2 in power; 1 dB loss = 20.6 percent. Parallel branch currents add to the total. P = E²/R and P = I²R: 400 V into 800 ohms = 200 W; 12 V at 0.2 A = 2.4 W; 7 mA through 1250 ohms = 61 mW. RMS: the AC value dissipating the same power as equal DC. 120 V RMS = 339.4 V peak-to-peak; 17 V peak = 12 V RMS. PEP of 200 V p-p across 50 ohms = 100 W; of 500 V p-p = 625 W. 1200 W in 50 ohms = 245 V RMS. Unmodulated carrier: PEP-to-average ratio is 1.00, so 1060 W average = 1060 W PEP.</p></aside><section class="check" id="check-3.2"><h3>Knowledge Check 3.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. A 1 dB feed line loss costs approximately what fraction of your power?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>1 percent</button><button class="opt" data-letter="b"><span class="letter">b</span>10 percent</button><button class="opt" data-letter="c"><span class="letter">c</span>20.6 percent</button><button class="opt" data-letter="d"><span class="letter">d</span>50 percent</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="d"><p class="qtext">2. What is the RMS voltage of household 120 VAC expressed as peak-to-peak?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>120 volts</button><button class="opt" data-letter="b"><span class="letter">b</span>169.7 volts</button><button class="opt" data-letter="c"><span class="letter">c</span>240 volts</button><button class="opt" data-letter="d"><span class="letter">d</span>339.4 volts</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Your amplifier produces an unmodulated carrier with 1060 watts average power. What is the PEP?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>530 watts</button><button class="opt" data-letter="b"><span class="letter">b</span>1060 watts</button><button class="opt" data-letter="c"><span class="letter">c</span>1500 watts</button><button class="opt" data-letter="d"><span class="letter">d</span>2120 watts</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s3-3"><h2><span class="secnum">3.3</span>Components in Teams, and the Transformer&#x27;s Secret</h2><p>At Technician you learned series and parallel circuits. Now the component math that goes with them, and the good news is there are only two patterns, worn by three components.</p>
+<p><strong>Resistors and inductors use the same pattern:</strong> values add in series, and combine to less than the smallest in parallel.</p>
+<ul><li>Inductors in series: 20 mH + 50 mH = <strong>70 mH</strong>. Want more inductance? Add an inductor <strong>in series</strong>.</li><li>Inductors in parallel: three 10 mH inductors = 10/3 = <strong>3.3 mH</strong>.</li><li>Resistors in parallel: 100 and 200 ohms give (100 x 200)/(100 + 200) = <strong>67 ohms</strong>. Three resistors of 10, 20, and 50 ohms: add the reciprocals (0.1 + 0.05 + 0.02 = 0.17), flip it: <strong>5.9 ohms</strong>.</li></ul>
+<p><strong>Capacitors run the pattern backward:</strong> they add in <strong>parallel</strong>, and shrink in series.</p>
+<ul><li>In parallel: 5 nF + 5 nF + 750 pF = <strong>10.75 nF</strong> (10,750 pF, minding the prefixes from Technician). Want more capacitance? Add a capacitor <strong>in parallel</strong>.</li><li>In series: three 100 µF capacitors = <strong>33.3 µF</strong>; a 20 µF and a 50 µF in series = (20 x 50)/(20 + 50) = <strong>14.3 µF</strong>.</li></ul>
+<p>Ray&#x27;s memory hook: capacitance is plate area, and paralleling capacitors is just building a bigger plate.</p>
+<p>Then the transformer, which earns its own respect. Why does a voltage appear on the secondary at all? <strong>Mutual inductance</strong>: the primary&#x27;s changing magnetic field induces voltage in the secondary through the shared core. Everything else is ratios:</p>
+<ul><li><strong>Voltage follows the turns ratio.</strong> 120 VAC into a 500-turn primary with a 1500-turn secondary: ratio 3, output <strong>360 volts</strong>.</li><li>The transformer has no idea which side you labeled primary. Feed a signal into the secondary of a 4:1 step-down and it becomes a step-up: the voltage is <strong>multiplied by 4</strong>.</li><li><strong>Current runs opposite to voltage</strong>, which is why the low-voltage winding of a step-up transformer uses the <strong>larger wire</strong>: to carry its higher current.</li><li><strong>Impedance follows the turns ratio squared.</strong> That square is the transformer&#x27;s secret, and it is how a small transformer performs impedance magic: matching a 600-ohm antenna feed point to 50-ohm coax needs an impedance ratio of 12, so a turns ratio of the square root of 12, which is about <strong>3.5 to 1</strong>.</li></ul>
+<p>File that last one next to your EFHW&#x27;s matching transformer: an end-fed half-wave presents a few thousand ohms, and a 49:1 impedance transformer is just a <strong>7:1 turns ratio</strong> doing exactly this arithmetic. The mystery box at the end of your wire has been running Module 3 all along.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G5C)</span> Transformer secondary voltage comes from mutual inductance. Inductors add in series (20 + 50 = 70 mH); parallel inductors shrink (three 10 mH = 3.3 mH). Parallel resistors: 100 || 200 = 67 ohms; 10 || 20 || 50 = 5.9 ohms. Capacitors add in parallel (5 nF + 5 nF + 750 pF = 10.75 nF); shrink in series (three 100 µF = 33.3 µF; 20 and 50 µF = 14.3 µF). More capacitance: parallel capacitor. More inductance: series inductor. 500:1500 turns with 120 V in = 360 V out. A reversed 4:1 step-down multiplies by 4. Step-up primary uses larger wire for its higher current. Impedance ratio is turns ratio squared: 600 to 50 ohms = 3.5:1 turns.</p></aside><section class="check" id="check-3.3"><h3>Knowledge Check 3.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. What is the total inductance of a 20 mH and a 50 mH inductor in series?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>14.3 mH</button><button class="opt" data-letter="b"><span class="letter">b</span>35 mH</button><button class="opt" data-letter="c"><span class="letter">c</span>70 mH</button><button class="opt" data-letter="d"><span class="letter">d</span>1000 mH</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. To increase a circuit&#x27;s capacitance, you add a capacitor:</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>In series</button><button class="opt" data-letter="b"><span class="letter">b</span>In parallel</button><button class="opt" data-letter="c"><span class="letter">c</span>Through a diode</button><button class="opt" data-letter="d"><span class="letter">d</span>Across the inductor</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">3. What turns ratio matches a 600-ohm feed point to 50-ohm coax?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>12 to 1</button><button class="opt" data-letter="b"><span class="letter">b</span>144 to 1</button><button class="opt" data-letter="c"><span class="letter">c</span>3.5 to 1</button><button class="opt" data-letter="d"><span class="letter">d</span>24 to 1</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G5A</span> Reactance: opposition to AC from capacitance or inductance, measured in ohms, symbol X. Inductive reactance rises with frequency; capacitive reactance falls. Series LC at resonance: very low impedance. Resonance: inductive and capacitive reactance cancel. Impedance: the ratio of voltage to current. Admittance: the inverse of impedance. Impedance matching at RF: transformer, Pi-network, or a transmission line length (all of these).</p></div><div class="anchor review"><p><span class="anchor-lead">G5B</span> 3 dB = factor of 2 in power; 1 dB loss = 20.6 percent. Parallel branch currents add to the total. P = E²/R and P = I²R: 400 V into 800 ohms = 200 W; 12 V at 0.2 A = 2.4 W; 7 mA through 1250 ohms = 61 mW. RMS: the AC value dissipating the same power as equal DC. 120 V RMS = 339.4 V peak-to-peak; 17 V peak = 12 V RMS. PEP of 200 V p-p across 50 ohms = 100 W; of 500 V p-p = 625 W. 1200 W in 50 ohms = 245 V RMS. Unmodulated carrier: PEP-to-average ratio is 1.00, so 1060 W average = 1060 W PEP.</p></div><div class="anchor review"><p><span class="anchor-lead">G5C</span> Transformer secondary voltage comes from mutual inductance. Inductors add in series (20 + 50 = 70 mH); parallel inductors shrink (three 10 mH = 3.3 mH). Parallel resistors: 100 || 200 = 67 ohms; 10 || 20 || 50 = 5.9 ohms. Capacitors add in parallel (5 nF + 5 nF + 750 pF = 10.75 nF); shrink in series (three 100 µF = 33.3 µF; 20 and 50 µF = 14.3 µF). More capacitance: parallel capacitor. More inductance: series inductor. 500:1500 turns with 120 V in = 360 V out. A reversed 4:1 step-down multiplies by 4. Step-up primary uses larger wire for its higher current. Impedance ratio is turns ratio squared: 600 to 50 ohms = 3.5:1 turns.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>The tuner&#x27;s lid can go back on: you know that its capacitors and inductor form an adjustable matching network, that resonance is reactances cancelling, and that impedance transformation is turns ratios squared. You can also compute power three ways, convert RMS to peak and back, and calculate PEP the way the FCC measures it.</p>
+<p>Module 4 restocks the parts bin at General depth: diode threshold voltages, capacitor personalities, MOSFETs, ferrites, and the last few vacuum tubes still worth knowing.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (G-S1, G-S2): if you own an EFHW transformer, put an ohmmeter and then an antenna analyzer on it and reconcile what you measure with the 49:1 arithmetic. Then measure your dummy load&#x27;s resistance and calculate what RMS voltage 100 watts puts across it. Numbers you have verified are numbers you will not forget.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 3 complete</button>
+    <div class="pager"><a class="navlink" href="gen-module-02.html">Previous module</a><a class="navlink" href="gen-module-04.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m03";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 3 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

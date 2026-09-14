@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>Extra Course, Module 4: Semiconductors and the Deep Parts Bin | K4DIA</title>
+<style>:root { --accent: #4A4494; --accent-dark: #37326E; --tint: #F0EFF8; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-extra.html"><svg class="rank" width="17" height="20" viewBox="0 0 20 24.0" aria-label="Level 3 mark" role="img"><path d="M3 21.0 L10 14.0 L17 21.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Extra course</a>
+  <span>Module 4 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>Extra Course, Module 4: Semiconductors and the Deep Parts Bin</h1>
+  <p class="covers">Covers NCVEC 2024-2028 Extra Pool, Subelement E6 (Circuit Components). Six questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray sets a single silicon diode on the bench next to a sliver of circuit board dense with parts smaller than rice. &quot;Same physics in both,&quot; he says. &quot;Extra components is where we finally open the crystal itself: what the electrons and holes are doing, why each diode family exists, how logic thinks, what ferrite actually is, why microwave parts look the way they do, and how light became a circuit element. Six drawers. Deep ones.&quot;</p></div>
+<section class="module-section" id="s4-1"><h2><span class="secnum">4.1</span>Inside the Crystal</h2><p>Semiconductor physics in four moves:</p>
+<ul><li><strong>Doping</strong> creates the personalities. <strong>N-type</strong> material contains excess free electrons (donor impurities gave them). An <strong>acceptor impurity</strong> adds <strong>holes</strong> instead, creating P-type. Current is electrons and holes trading places, and every semiconductor device is an arrangement of N against P.</li><li><strong>The junction.</strong> Reverse-bias a PN diode and it does not conduct because the applied voltage pulls holes and electrons apart, <strong>widening the depletion region</strong>, an insulating no-man&#x27;s-land at the junction. Forward bias collapses it, and a silicon NPN transistor shows it is biased on by a base-to-emitter voltage of approximately <strong>0.6 to 0.7 volts</strong>, the silicon threshold from the General course now doing diagnostic duty: probe Vbe, read the truth.</li><li><strong>The bipolar transistor, specified.</strong> Its <strong>beta</strong> is the change in collector current with respect to the change in base current, the current gain as a ratio of changes. Its speed limit has a name: the <strong>alpha cutoff frequency</strong>, where grounded-base current gain falls to 0.7 of its 1 kHz value.</li><li><strong>The FET family.</strong> A FET&#x27;s gate presents <strong>much higher DC input impedance</strong> than a bipolar transistor&#x27;s base, the insulated-gate construction from the General course paying off as near-zero input current. A <strong>depletion-mode FET</strong> conducts between source and drain <strong>with no gate voltage applied</strong>; you bias it to reduce current, the opposite of the enhancement-mode parts in your radio&#x27;s finals. And the static-electricity vulnerability from General gets its cure: <strong>Zener diodes connected between a MOSFET&#x27;s gate and its source or drain protect the gate from static damage</strong>, sacrificial clamps built into nearly every modern MOSFET.</li></ul>
+<p>Materials matter at the extremes: <strong>gallium arsenide</strong> serves in <strong>microwave circuits</strong>, where silicon runs out of speed. Hold that thought for Section 4.5.</p>
+<p><em>Website note: this page will include the E6-1 symbol figure (FET variants) redrawn with labeled and quiz versions.</em></p><figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E6-1: Transistor Symbols (pool numbering)</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="145.0" cy="123.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="143.0" y1="105.0" x2="143.0" y2="141.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="143.0" y1="109.0" x2="161.0" y2="109.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="161.0" y1="109.0" x2="161.0" y2="81.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="143.0" y1="137.0" x2="161.0" y2="137.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="161.0" y1="137.0" x2="161.0" y2="165.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="90.0" y1="137.0" x2="143.0" y2="137.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="123.0,137.0 131.6,131.8 131.6,142.2" fill="black" stroke="none"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<text x="145.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">P-Channel JFET</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="395.0" cy="123.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="393.0" y1="105.0" x2="393.0" y2="141.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="393.0" y1="109.0" x2="411.0" y2="109.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="109.0" x2="411.0" y2="81.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="393.0" y1="137.0" x2="411.0" y2="137.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="137.0" x2="411.0" y2="165.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="340.0" y1="137.0" x2="393.0" y2="137.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="391.0,137.0 382.4,142.2 382.4,131.8" fill="black" stroke="none"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<text x="395.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">N-Channel JFET</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="645.0" cy="123.0" r="30.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="647.0" y1="101.0" x2="647.0" y2="113.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="647.0" y1="117.0" x2="647.0" y2="129.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="647.0" y1="133.0" x2="647.0" y2="145.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="647.0" y1="107.0" x2="663.0" y2="107.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="663.0" y1="107.0" x2="663.0" y2="79.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="647.0" y1="139.0" x2="663.0" y2="139.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="663.0" y1="139.0" x2="663.0" y2="167.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="647.0" y1="123.0" x2="663.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="663.0" y1="123.0" x2="663.0" y2="139.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="659.0,123.0 665.9,118.9 665.9,127.1" fill="black" stroke="none"/>
+<line x1="637.0" y1="107.0" x2="637.0" y2="139.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="590.0" y1="139.0" x2="637.0" y2="139.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<text x="645.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">P-Channel MOSFET</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="145.0" cy="273.0" r="30.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="147.0" y1="251.0" x2="147.0" y2="263.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="147.0" y1="267.0" x2="147.0" y2="279.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="147.0" y1="283.0" x2="147.0" y2="295.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="147.0" y1="257.0" x2="163.0" y2="257.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="163.0" y1="257.0" x2="163.0" y2="229.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="147.0" y1="289.0" x2="163.0" y2="289.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="163.0" y1="289.0" x2="163.0" y2="317.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="147.0" y1="273.0" x2="163.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="163.0" y1="273.0" x2="163.0" y2="289.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="149.0,273.0 142.1,277.1 142.1,268.9" fill="black" stroke="none"/>
+<line x1="137.0" y1="255.0" x2="137.0" y2="271.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="137.0" y1="275.0" x2="137.0" y2="291.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="90.0" y1="263.0" x2="137.0" y2="263.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="90.0" y1="283.0" x2="137.0" y2="283.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<text x="145.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">N-Channel Dual-Gate MOSFET</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="395.0" cy="273.0" r="30.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="397.0" y1="251.0" x2="397.0" y2="263.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="397.0" y1="267.0" x2="397.0" y2="279.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="397.0" y1="283.0" x2="397.0" y2="295.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="397.0" y1="257.0" x2="413.0" y2="257.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="413.0" y1="257.0" x2="413.0" y2="229.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="397.0" y1="289.0" x2="413.0" y2="289.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="413.0" y1="289.0" x2="413.0" y2="317.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="397.0" y1="273.0" x2="413.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="413.0" y1="273.0" x2="413.0" y2="289.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="399.0,273.0 392.1,277.1 392.1,268.9" fill="black" stroke="none"/>
+<line x1="387.0" y1="257.0" x2="387.0" y2="289.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="340.0" y1="289.0" x2="387.0" y2="289.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<text x="395.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">N-Channel MOSFET</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="645.0" cy="273.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="635.0" y1="255.0" x2="635.0" y2="291.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="590.0" y1="273.0" x2="635.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="635.0" y1="265.0" x2="659.0" y2="251.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="659.0" y1="251.0" x2="659.0" y2="231.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="635.0" y1="281.0" x2="659.0" y2="295.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="659.0" y1="295.0" x2="659.0" y2="315.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="656.0,293.0 646.0,293.1 651.2,284.2" fill="black" stroke="none"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="645.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">NPN Transistor</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg><figcaption>Figure E6-1 with pool numbering</figcaption></figure>
+<details class="fig-quiz"><summary>Quiz yourself: identify the transistors by number</summary><div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E6-1: Symbol Quiz (pool numbering)</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="145.0" cy="135.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="143.0" y1="117.0" x2="143.0" y2="153.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="143.0" y1="121.0" x2="161.0" y2="121.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="161.0" y1="121.0" x2="161.0" y2="93.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="143.0" y1="149.0" x2="161.0" y2="149.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="161.0" y1="149.0" x2="161.0" y2="177.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="90.0" y1="149.0" x2="143.0" y2="149.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="123.0,149.0 131.6,143.8 131.6,154.2" fill="black" stroke="none"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="395.0" cy="135.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="393.0" y1="117.0" x2="393.0" y2="153.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="393.0" y1="121.0" x2="411.0" y2="121.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="121.0" x2="411.0" y2="93.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="393.0" y1="149.0" x2="411.0" y2="149.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="149.0" x2="411.0" y2="177.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="340.0" y1="149.0" x2="393.0" y2="149.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="391.0,149.0 382.4,154.2 382.4,143.8" fill="black" stroke="none"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="645.0" cy="135.0" r="30.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="647.0" y1="113.0" x2="647.0" y2="125.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="647.0" y1="129.0" x2="647.0" y2="141.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="647.0" y1="145.0" x2="647.0" y2="157.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="647.0" y1="119.0" x2="663.0" y2="119.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="663.0" y1="119.0" x2="663.0" y2="91.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="647.0" y1="151.0" x2="663.0" y2="151.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="663.0" y1="151.0" x2="663.0" y2="179.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="647.0" y1="135.0" x2="663.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="663.0" y1="135.0" x2="663.0" y2="151.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="659.0,135.0 665.9,130.9 665.9,139.1" fill="black" stroke="none"/>
+<line x1="637.0" y1="119.0" x2="637.0" y2="151.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="590.0" y1="151.0" x2="637.0" y2="151.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="145.0" cy="285.0" r="30.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="147.0" y1="263.0" x2="147.0" y2="275.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="147.0" y1="279.0" x2="147.0" y2="291.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="147.0" y1="295.0" x2="147.0" y2="307.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="147.0" y1="269.0" x2="163.0" y2="269.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="163.0" y1="269.0" x2="163.0" y2="241.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="147.0" y1="301.0" x2="163.0" y2="301.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="163.0" y1="301.0" x2="163.0" y2="329.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="147.0" y1="285.0" x2="163.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="163.0" y1="285.0" x2="163.0" y2="301.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="149.0,285.0 142.1,289.1 142.1,280.9" fill="black" stroke="none"/>
+<line x1="137.0" y1="267.0" x2="137.0" y2="283.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="137.0" y1="287.0" x2="137.0" y2="303.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="90.0" y1="275.0" x2="137.0" y2="275.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="90.0" y1="295.0" x2="137.0" y2="295.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="395.0" cy="285.0" r="30.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="397.0" y1="263.0" x2="397.0" y2="275.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="397.0" y1="279.0" x2="397.0" y2="291.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="397.0" y1="295.0" x2="397.0" y2="307.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="397.0" y1="269.0" x2="413.0" y2="269.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="413.0" y1="269.0" x2="413.0" y2="241.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="397.0" y1="301.0" x2="413.0" y2="301.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="413.0" y1="301.0" x2="413.0" y2="329.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="397.0" y1="285.0" x2="413.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="413.0" y1="285.0" x2="413.0" y2="301.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="399.0,285.0 392.1,289.1 392.1,280.9" fill="black" stroke="none"/>
+<line x1="387.0" y1="269.0" x2="387.0" y2="301.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="340.0" y1="301.0" x2="387.0" y2="301.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<circle cx="645.0" cy="285.0" r="28.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="635.0" y1="267.0" x2="635.0" y2="303.0" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="590.0" y1="285.0" x2="635.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="635.0" y1="277.0" x2="659.0" y2="263.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="659.0" y1="263.0" x2="659.0" y2="243.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="635.0" y1="293.0" x2="659.0" y2="307.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="659.0" y1="307.0" x2="659.0" y2="327.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="656.0,305.0 646.0,305.1 651.2,296.2" fill="black" stroke="none"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="395.0" y="364.0" font-size="13" text-anchor="middle" font-weight="normal" fill="#444" font-style="italic">Identify each numbered symbol. Answer key: extra-fig-e6-1</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg></div></details><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E6A)</span> N-type: excess free electrons; acceptor impurity: adds holes. Reverse bias: widens the depletion region, blocking conduction. NPN biased on: Vbe about 0.6 to 0.7 V. Beta: change in collector current over change in base current. Alpha cutoff frequency: grounded-base gain down to 0.7 of the 1 kHz value. FET gate: higher DC input impedance than bipolar. Depletion-mode FET: conducts with zero gate voltage. Gate-protection Zeners: guard against static. Gallium arsenide: microwave circuits.</p></aside><section class="check" id="check-4.1"><h3>Knowledge Check 4.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What does reverse bias do to a PN junction?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Collapses the depletion region</button><button class="opt" data-letter="b"><span class="letter">b</span>Widens the depletion region, preventing conduction</button><button class="opt" data-letter="c"><span class="letter">c</span>Converts it to N-type throughout</button><button class="opt" data-letter="d"><span class="letter">d</span>Raises its forward voltage drop</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What is a transistor&#x27;s beta?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Collector-to-base breakdown voltage</button><button class="opt" data-letter="b"><span class="letter">b</span>The change in collector current with respect to the change in base current</button><button class="opt" data-letter="c"><span class="letter">c</span>The frequency where gain falls to 0.7</button><button class="opt" data-letter="d"><span class="letter">d</span>Emitter efficiency</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why are Zener diodes built between a MOSFET&#x27;s gate and source?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>To set the operating bias</button><button class="opt" data-letter="b"><span class="letter">b</span>To protect the gate from static damage</button><button class="opt" data-letter="c"><span class="letter">c</span>To increase gain</button><button class="opt" data-letter="d"><span class="letter">d</span>To linearize the transfer curve</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s4-2"><h2><span class="secnum">4.2</span>The Diode Family Reunion</h2><p>At Technician a diode was a one-way valve. At Extra, it is a family where each member evolved for one job:</p>
+<ul><li><strong>Zener:</strong> maintains a <strong>constant voltage drop under varying current</strong>, run deliberately in reverse breakdown as a voltage reference. The regulator circuits of Module 5 stand on it.</li><li><strong>Schottky:</strong> a <strong>metal-semiconductor junction</strong> (no P material at all), prized for its <strong>lower forward voltage drop</strong> than silicon, which makes it the better power-supply rectifier (less voltage lost means less heat), and its speed makes it the standard <strong>VHF/UHF mixer and detector</strong> diode.</li><li><strong>Varactor:</strong> a diode designed as a <strong>voltage-controlled capacitor</strong>, the reverse-biased depletion region (Section 4.1&#x27;s widening no-man&#x27;s-land) used as a variable-plate spacing. Every synthesized VFO tunes with one.</li><li><strong>PIN:</strong> an intrinsic layer between P and N gives it <strong>low junction capacitance</strong>, making it the solid-state <strong>RF switch</strong>, and as a variable attenuator its attenuation is controlled by its <strong>forward DC bias current</strong>. Your transceiver&#x27;s T/R switching is PIN diodes doing relay work with no moving parts.</li><li><strong>Point-contact:</strong> the antique that survives as an <strong>RF detector</strong>, a whisker on a crystal, literally the crystal set&#x27;s crystal.</li><li><strong>LED:</strong> its forward voltage drop is determined by the semiconductor&#x27;s <strong>band gap</strong>, which is also why color and voltage travel together: red LEDs drop less than blue because their photons carry less energy. The Technician &quot;varies by type&quot; answer, explained at last.</li></ul>
+<p>One failure mode covers them all: a junction diode subjected to excessive current fails from <strong>excessive junction temperature</strong>. Diodes do not die of amperes; they die of the heat amperes make.</p>
+<p><em>Website note: E6-2 (diode symbols) gets the same labeled/quiz treatment.</em></p><figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E6-2: Diode Symbols (pool numbering)</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="90.0" y1="123.0" x2="131.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="131.0,109.0 131.0,137.0 157.0,123.0" fill="black" stroke="none"/>
+<line x1="157.0" y1="109.0" x2="157.0" y2="137.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="157.0" y1="123.0" x2="200.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<text x="145.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">Junction Diode</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="340.0" y1="123.0" x2="381.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="381.0,109.0 381.0,137.0 407.0,123.0" fill="black" stroke="none"/>
+<line x1="407.0" y1="109.0" x2="407.0" y2="137.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="109.0" x2="400.0" y2="104.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="137.0" x2="414.0" y2="142.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="123.0" x2="450.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<text x="395.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">Zener Diode</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="590.0" y1="123.0" x2="629.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="629.0,109.0 629.0,137.0 653.0,123.0" fill="black" stroke="none"/>
+<line x1="653.0" y1="109.0" x2="653.0" y2="137.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="661.0" y1="109.0" x2="661.0" y2="137.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="661.0" y1="123.0" x2="700.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<text x="645.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">Varactor Diode</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="90.0" y1="273.0" x2="131.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="131.0,259.0 131.0,287.0 157.0,273.0" fill="black" stroke="none"/>
+<line x1="157.0" y1="259.0" x2="157.0" y2="287.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="157.0" y1="273.0" x2="200.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="143.0" y1="253.0" x2="155.0" y2="241.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="155.0,241.0 153.3,247.8 148.2,242.7" fill="black" stroke="none"/>
+<line x1="153.0" y1="247.0" x2="165.0" y2="235.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="165.0,235.0 163.3,241.8 158.2,236.7" fill="black" stroke="none"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<text x="145.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">LED</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="340.0" y1="273.0" x2="381.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="381.0,259.0 381.0,287.0 407.0,273.0" fill="black" stroke="none"/>
+<line x1="407.0" y1="259.0" x2="407.0" y2="287.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="259.0" x2="400.0" y2="259.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="287.0" x2="400.0" y2="287.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="273.0" x2="450.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<text x="395.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">Tunnel Diode</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="590.0" y1="273.0" x2="631.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="631.0,259.0 631.0,287.0 657.0,273.0" fill="black" stroke="none"/>
+<line x1="657.0" y1="259.0" x2="657.0" y2="287.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<path d="M 657.0 259.0 L 664.0 259.0 L 664.0 265.0" fill="none" stroke="black" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 657.0 287.0 L 650.0 287.0 L 650.0 281.0" fill="none" stroke="black" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="657.0" y1="273.0" x2="700.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="645.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">Schottky Diode</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg><figcaption>Figure E6-2 with pool numbering</figcaption></figure>
+<details class="fig-quiz"><summary>Quiz yourself: identify the diodes by number</summary><div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E6-2: Symbol Quiz (pool numbering)</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="90.0" y1="135.0" x2="131.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="131.0,121.0 131.0,149.0 157.0,135.0" fill="black" stroke="none"/>
+<line x1="157.0" y1="121.0" x2="157.0" y2="149.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="157.0" y1="135.0" x2="200.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="340.0" y1="135.0" x2="381.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="381.0,121.0 381.0,149.0 407.0,135.0" fill="black" stroke="none"/>
+<line x1="407.0" y1="121.0" x2="407.0" y2="149.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="121.0" x2="400.0" y2="116.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="149.0" x2="414.0" y2="154.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="135.0" x2="450.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="590.0" y1="135.0" x2="629.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="629.0,121.0 629.0,149.0 653.0,135.0" fill="black" stroke="none"/>
+<line x1="653.0" y1="121.0" x2="653.0" y2="149.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="661.0" y1="121.0" x2="661.0" y2="149.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="661.0" y1="135.0" x2="700.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="90.0" y1="285.0" x2="131.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="131.0,271.0 131.0,299.0 157.0,285.0" fill="black" stroke="none"/>
+<line x1="157.0" y1="271.0" x2="157.0" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="157.0" y1="285.0" x2="200.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="143.0" y1="265.0" x2="155.0" y2="253.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="155.0,253.0 153.3,259.8 148.2,254.7" fill="black" stroke="none"/>
+<line x1="153.0" y1="259.0" x2="165.0" y2="247.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="165.0,247.0 163.3,253.8 158.2,248.7" fill="black" stroke="none"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="340.0" y1="285.0" x2="381.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="381.0,271.0 381.0,299.0 407.0,285.0" fill="black" stroke="none"/>
+<line x1="407.0" y1="271.0" x2="407.0" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="271.0" x2="400.0" y2="271.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="299.0" x2="400.0" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<line x1="407.0" y1="285.0" x2="450.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<line x1="590.0" y1="285.0" x2="631.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<polygon points="631.0,271.0 631.0,299.0 657.0,285.0" fill="black" stroke="none"/>
+<line x1="657.0" y1="271.0" x2="657.0" y2="299.0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<path d="M 657.0 271.0 L 664.0 271.0 L 664.0 277.0" fill="none" stroke="black" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 657.0 299.0 L 650.0 299.0 L 650.0 293.0" fill="none" stroke="black" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="657.0" y1="285.0" x2="700.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="395.0" y="364.0" font-size="13" text-anchor="middle" font-weight="normal" fill="#444" font-style="italic">Identify each numbered symbol. Answer key: extra-fig-e6-2</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg></div></details><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E6B)</span> Zener: constant voltage under varying current. Schottky: metal-semiconductor junction, lower forward drop, best rectifier choice, VHF/UHF mixer/detector. Varactor: voltage-controlled capacitor. PIN: low junction capacitance, RF switch; attenuation set by forward DC bias current. Point-contact: RF detector. LED forward drop: set by band gap. Overcurrent kills diodes via excessive junction temperature.</p></aside><section class="check" id="check-4.2"><h3>Knowledge Check 4.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why is a Schottky diode the better power supply rectifier?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Higher reverse breakdown</button><button class="opt" data-letter="b"><span class="letter">b</span>Lower forward voltage drop, wasting less power as heat</button><button class="opt" data-letter="c"><span class="letter">c</span>Constant voltage in reverse</button><button class="opt" data-letter="d"><span class="letter">d</span>Higher junction capacitance</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. Which diode is a voltage-controlled capacitor?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Zener</button><button class="opt" data-letter="b"><span class="letter">b</span>PIN</button><button class="opt" data-letter="c"><span class="letter">c</span>Varactor</button><button class="opt" data-letter="d"><span class="letter">d</span>Point-contact</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What actually destroys a diode carrying excessive current?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Electron depletion</button><button class="opt" data-letter="b"><span class="letter">b</span>Excessive junction temperature</button><button class="opt" data-letter="c"><span class="letter">c</span>Reverse recovery</button><button class="opt" data-letter="d"><span class="letter">d</span>Band gap collapse</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s4-3"><h2><span class="secnum">4.3</span>How Logic Thinks</h2><p>The digital drawer, from families to fragments:</p>
+<p><strong>Families.</strong> <strong>CMOS</strong> keeps its General-course crown for <strong>lowest power consumption</strong>, and gains an explanation for its famous noise immunity: its input switching threshold sits at about <strong>half the supply voltage</strong>, the widest possible margin from both rails. <strong>BiCMOS</strong> hybridizes: the <strong>high input impedance of CMOS with the low output impedance of bipolar transistors</strong>, each technology contributing its best terminal.</p>
+<p><strong>Building blocks:</strong></p>
+<ul><li>A <strong>comparator</strong> changes its output state when the input <strong>crosses the threshold voltage</strong>, and <strong>hysteresis</strong> (two thresholds, one for each direction) exists to <strong>prevent input noise from causing unstable output signals</strong>. Without it, a slowly drifting input chatters the output; with it, the decision sticks.</li><li><strong>Tri-state logic</strong> outputs offer <strong>0, 1, and high impedance</strong>, the third state letting many devices share one bus by electrically stepping aside.</li><li>A <strong>pull-up or pull-down resistor</strong> connects to the positive or negative supply to <strong>establish a voltage when an input or output would otherwise float</strong>. Floating inputs are noise antennas; the resistor gives them an opinion.</li><li>Gate symbols (Figure E6-3): <strong>NAND</strong>, <strong>NOR</strong>, and the <strong>NOT</strong> inverter, the AND/OR shapes from your General course wearing the inversion bubble.</li></ul>
+<p><strong>The programmable frontier:</strong> a <strong>field-programmable gate array (FPGA)</strong> is configured using a <strong>hardware description language (HDL)</strong>. You do not wire an FPGA; you describe the circuit in text and the chip becomes it, which is how one part on an SDR board can be a filter today and a modem tomorrow.</p>
+<p><em>Website note: E6-3 (logic symbols) joins the figure package.</em></p><figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E6-3: Logic Gate Symbols (pool numbering)</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 117.0 99.0 L 117.0 147.0 L 143.0 147.0 A 24 24 0 0 0 143.0 99.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="97.0" y1="111.0" x2="117.0" y2="111.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="97.0" y1="135.0" x2="117.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="167.0" y1="123.0" x2="193.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<text x="145.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">AND</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 367.0 99.0 L 367.0 147.0 L 393.0 147.0 A 24 24 0 0 0 393.0 99.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="347.0" y1="111.0" x2="367.0" y2="111.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="347.0" y1="135.0" x2="367.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="423.0" cy="123.0" r="6.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="429.0" y1="123.0" x2="443.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<text x="395.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">NAND</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 615.0 99.0 Q 629.0 123.0 615.0 147.0 Q 649.0 145.0 673.0 123.0 Q 649.0 101.0 615.0 99.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="597.0" y1="111.0" x2="620.0" y2="111.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="597.0" y1="135.0" x2="620.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="673.0" y1="123.0" x2="693.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<text x="645.0" y="196.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">OR</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 115.0 249.0 Q 129.0 273.0 115.0 297.0 Q 149.0 295.0 173.0 273.0 Q 149.0 251.0 115.0 249.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="97.0" y1="261.0" x2="120.0" y2="261.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="97.0" y1="285.0" x2="120.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="179.0" cy="273.0" r="6.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="185.0" y1="273.0" x2="193.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<text x="145.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">NOR</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<polygon points="373.0,253.0 373.0,293.0 409.0,273.0" fill="none" stroke="black" stroke-width="2"/>
+<circle cx="415.0" cy="273.0" r="6.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="347.0" y1="273.0" x2="373.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="421.0" y1="273.0" x2="443.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<text x="395.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">NOT (Inverter)</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 615.0 249.0 Q 629.0 273.0 615.0 297.0 Q 649.0 295.0 673.0 273.0 Q 649.0 251.0 615.0 249.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 607.0 249.0 Q 621.0 273.0 607.0 297.0" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="597.0" y1="261.0" x2="620.0" y2="261.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="597.0" y1="285.0" x2="620.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="673.0" y1="273.0" x2="693.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="645.0" y="346.0" font-size="15" text-anchor="middle" font-weight="bold" fill="black">Exclusive OR (XOR)</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg><figcaption>Figure E6-3 with pool numbering</figcaption></figure>
+<details class="fig-quiz"><summary>Quiz yourself: identify the gates by number</summary><div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 390" font-family="Helvetica, Arial, sans-serif">
+<rect width="790" height="390" fill="white"/>
+<text x="395.0" y="34.0" font-size="22" text-anchor="middle" font-weight="bold" fill="black">Extra Figure E6-3: Gate Quiz (pool numbering)</text>
+<rect x="26.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 117.0 111.0 L 117.0 159.0 L 143.0 159.0 A 24 24 0 0 0 143.0 111.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="97.0" y1="123.0" x2="117.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="97.0" y1="147.0" x2="117.0" y2="147.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="167.0" y1="135.0" x2="193.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">1</text>
+<rect x="276.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 367.0 111.0 L 367.0 159.0 L 393.0 159.0 A 24 24 0 0 0 393.0 111.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="347.0" y1="123.0" x2="367.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="347.0" y1="147.0" x2="367.0" y2="147.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="423.0" cy="135.0" r="6.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="429.0" y1="135.0" x2="443.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">2</text>
+<rect x="526.0" y="64.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 615.0 111.0 Q 629.0 135.0 615.0 159.0 Q 649.0 157.0 673.0 135.0 Q 649.0 113.0 615.0 111.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="597.0" y1="123.0" x2="620.0" y2="123.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="597.0" y1="147.0" x2="620.0" y2="147.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="673.0" y1="135.0" x2="693.0" y2="135.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="86.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="91.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">3</text>
+<rect x="26.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 115.0 261.0 Q 129.0 285.0 115.0 309.0 Q 149.0 307.0 173.0 285.0 Q 149.0 263.0 115.0 261.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="97.0" y1="273.0" x2="120.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="97.0" y1="297.0" x2="120.0" y2="297.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="179.0" cy="285.0" r="6.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="185.0" y1="285.0" x2="193.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="46.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="46.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">4</text>
+<rect x="276.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<polygon points="373.0,265.0 373.0,305.0 409.0,285.0" fill="none" stroke="black" stroke-width="2"/>
+<circle cx="415.0" cy="285.0" r="6.0" fill="none" stroke="black" stroke-width="2"/>
+<line x1="347.0" y1="285.0" x2="373.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="421.0" y1="285.0" x2="443.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="296.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="296.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">5</text>
+<rect x="526.0" y="214.0" width="238.0" height="142.0" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+<path d="M 615.0 261.0 Q 629.0 285.0 615.0 309.0 Q 649.0 307.0 673.0 285.0 Q 649.0 263.0 615.0 261.0 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 607.0 261.0 Q 621.0 285.0 607.0 309.0" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="597.0" y1="273.0" x2="620.0" y2="273.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="597.0" y1="297.0" x2="620.0" y2="297.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<line x1="673.0" y1="285.0" x2="693.0" y2="285.0" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<circle cx="546.0" cy="236.0" r="13.0" fill="black" stroke="black" stroke-width="2"/>
+<text x="546.0" y="241.0" font-size="15" text-anchor="middle" font-weight="bold" fill="white">6</text>
+<text x="395.0" y="364.0" font-size="13" text-anchor="middle" font-weight="normal" fill="#444" font-style="italic">Identify each numbered symbol. Answer key: extra-fig-e6-3</text>
+<text x="776.0" y="380.0" font-size="11" text-anchor="end" font-weight="normal" fill="#666">© 2026 Anthony Pelfanio, K4DIA</text>
+</svg></div></details><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E6C)</span> CMOS: lowest power; noise immunity from a switching threshold near half the supply. BiCMOS: CMOS input impedance plus bipolar output impedance. Comparator: output changes at the threshold; hysteresis prevents noise-induced instability. Tri-state: 0, 1, high impedance. Pull-up/pull-down resistor: establishes a voltage on an otherwise open input or output. FPGA: designed with a hardware description language. Figure E6-3: NAND, NOR, NOT symbols.</p></aside><section class="check" id="check-4.3"><h3>Knowledge Check 4.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why does a comparator include hysteresis?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>To increase gain</button><button class="opt" data-letter="b"><span class="letter">b</span>To prevent input noise from making the output unstable</button><button class="opt" data-letter="c"><span class="letter">c</span>To match input impedance</button><button class="opt" data-letter="d"><span class="letter">d</span>To allow AC coupling</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What are the three states of tri-state logic?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>0, 1, and undefined</button><button class="opt" data-letter="b"><span class="letter">b</span>0, 1, and high impedance</button><button class="opt" data-letter="c"><span class="letter">c</span>Low, medium, high</button><button class="opt" data-letter="d"><span class="letter">d</span>True, false, inverted</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. How is an FPGA&#x27;s configuration designed?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>With Karnaugh maps</button><button class="opt" data-letter="b"><span class="letter">b</span>With a hardware description language</button><button class="opt" data-letter="c"><span class="letter">c</span>With assembly code</button><button class="opt" data-letter="d"><span class="letter">d</span>With an auto-router only</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s4-4"><h2><span class="secnum">4.4</span>Iron, Ferrite, and the Singing Crystal</h2><p>The magnetic drawer, with its physics finally attached:</p>
+<ul><li>The core property that determines an inductor&#x27;s inductance is the material&#x27;s <strong>permeability</strong>, its appetite for magnetic flux. Insert <strong>brass</strong> into a coil and inductance <strong>decreases</strong>, the diamagnetic tuning slug running the effect backward.</li><li>Push too much flux and the core <strong>saturates</strong>: inductor saturation is caused by <strong>operation at excessive magnetic flux</strong>, the core&#x27;s appetite exceeded, inductance collapsing, distortion blooming.</li><li><strong>Ferrite versus powdered iron</strong>, the choice on every toroid order form: ferrite&#x27;s high permeability means <strong>fewer turns for a given inductance</strong>; powdered iron&#x27;s virtue is the <strong>highest temperature stability</strong> of its magnetic characteristics. Winding economy versus drift, chosen per job.</li><li>Solid iron cores waste power in <strong>eddy currents</strong>, so transformer cores are built of <strong>thin laminated layers</strong> to interrupt them. The toroid&#x27;s advantage repeats from the General course: it <strong>confines the magnetic field within the core</strong>.</li><li>Ferrite&#x27;s small-parts career continues: <strong>ferrite beads</strong> serve as <strong>VHF and UHF parasitic suppressors</strong> at the terminals of HF amplifier transistors, absorbing the frequencies where the amplifier would rather oscillate. Module 5&#x27;s parasitic suppression, purchased for pennies.</li></ul>
+<p>Then the drawer&#x27;s oddest resident: <strong>piezoelectricity</strong>, the characteristic of materials that <strong>generate a voltage when stressed and flex when a voltage is applied</strong>. Squeeze it, get volts; apply volts, it moves. A <strong>quartz crystal</strong> is a piezoelectric slab whose mechanical resonance is electrically accessible, and its equivalent circuit is a <strong>series RLC in parallel with a shunt capacitance</strong> (the electrodes and stray). That equivalent circuit has a spectacular property: the effective Q reaches values no wound inductor approaches, which is why crystals discipline every frequency standard you own, from the DDS reference of your transceiver to the wristwatch timing your FT8 slots.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E6D)</span> Permeability determines inductance; brass inserted in a coil decreases it. Saturation: excessive magnetic flux. Ferrite: fewer turns needed; powdered iron: best temperature stability. Laminated cores: reduce eddy current loss. Toroids confine the field. Ferrite beads: VHF/UHF parasitic suppressors on HF amplifier transistors. Piezoelectricity: voltage from stress, flexing from voltage. Quartz crystal equivalent: series RLC paralleled by shunt capacitance.</p></aside><section class="check" id="check-4.4"><h3>Knowledge Check 4.4</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Which core material property sets an inductor&#x27;s inductance?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Permittivity</button><button class="opt" data-letter="b"><span class="letter">b</span>Permeability</button><button class="opt" data-letter="c"><span class="letter">c</span>Resistivity</button><button class="opt" data-letter="d"><span class="letter">d</span>Reluctance</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What causes inductor core saturation?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Too low a frequency</button><button class="opt" data-letter="b"><span class="letter">b</span>Operation at excessive magnetic flux</button><button class="opt" data-letter="c"><span class="letter">c</span>Too many turns</button><button class="opt" data-letter="d"><span class="letter">d</span>Skin effect in the winding</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is the equivalent circuit of a quartz crystal?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Parallel RLC only</button><button class="opt" data-letter="b"><span class="letter">b</span>Series RLC in parallel with a shunt capacitance</button><button class="opt" data-letter="c"><span class="letter">c</span>A transformer with a tuned secondary</button><button class="opt" data-letter="d"><span class="letter">d</span>A pure capacitance with high Q</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s4-5"><h2><span class="secnum">4.5</span>Built for Gigahertz</h2><p>RF construction is a fight against Module 3&#x27;s parasitics, and this drawer holds the weapons.</p>
+<p><strong>Materials first.</strong> Gallium arsenide earns its microwave role through <strong>higher electron mobility</strong>: its electrons simply move faster than silicon&#x27;s. For MMICs pushing higher still, <strong>gallium nitride</strong> supports the highest frequencies. The exotic crystals exist because speed is a material property.</p>
+<p><strong>The MMIC, characterized.</strong> The General course named it; the Extra pool specifies it: MMICs offer <strong>controlled gain, low noise figure, and constant input and output impedance across their specified frequency range</strong>. All of that, in a part costing a few dollars. The supporting numbers: the standard MMIC input and output impedance is <strong>50 ohms</strong> (matched to everything by design), a typical low-noise UHF preamplifier noise figure is around <strong>0.5 dB</strong>, connections are made with <strong>microstrip</strong> transmission line etched on the board, and DC power arrives <strong>through a resistor and/or RF choke connected to the output lead</strong>, riding in on the same pin the RF leaves by.</p>
+<p><strong>Packaging is electrical design.</strong> The <strong>DIP</strong> (dual in-line package, two rows of pins on opposite sides) is the classic <strong>through-hole</strong> part, and it is banished from UHF work for one reason: <strong>excessive lead length</strong>, every pin a Module 3 parasitic inductor. The cure is <strong>surface-mount technology</strong>, whose RF advantages stack: smaller circuit area, shorter traces, and less parasitic inductance and capacitance per component. All of these. The rice-grain parts on Ray&#x27;s board sliver are not miniaturization for its own sake; they are parasitics starved to death.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E6E)</span> GaAs: higher electron mobility for UHF and up; GaN: highest-frequency MMICs. MMICs: controlled gain, low noise figure, constant impedances (all); 50-ohm input and output; about 0.5 dB NF for a low-noise UHF preamp; microstrip interconnect; power via resistor/RF choke on the output lead. DIP: through-hole, dual in-line pins; unusable at UHF from excessive lead length. Surface mount: smaller area, shorter traces, lower parasitics (all).</p></aside><section class="check" id="check-4.5"><h3>Knowledge Check 4.5</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. Why is gallium arsenide used above UHF?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Lower cost than silicon</button><button class="opt" data-letter="b"><span class="letter">b</span>Higher electron mobility</button><button class="opt" data-letter="c"><span class="letter">c</span>Better heat conduction</button><button class="opt" data-letter="d"><span class="letter">d</span>Simpler doping</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="a"><p class="qtext">2. What is the standard input and output impedance of MMICs?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>50 ohms</button><button class="opt" data-letter="b"><span class="letter">b</span>75 ohms</button><button class="opt" data-letter="c"><span class="letter">c</span>300 ohms</button><button class="opt" data-letter="d"><span class="letter">d</span>450 ohms</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why are DIP packages avoided at UHF?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Conductive epoxy</button><button class="opt" data-letter="b"><span class="letter">b</span>Excessive lead length and its parasitic inductance</button><button class="opt" data-letter="c"><span class="letter">c</span>Poor heat dissipation</button><button class="opt" data-letter="d"><span class="letter">d</span>Pin count limits</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s4-6"><h2><span class="secnum">4.6</span>Light as a Circuit Element</h2><p>The last drawer converts between photons and electrons, both directions.</p>
+<p><strong>Light in, electricity out:</strong></p>
+<ul><li>In a <strong>photovoltaic cell</strong>, <strong>photons</strong> are absorbed, and the <strong>photovoltaic effect</strong> is the conversion of light to electrical energy. The engineering sheet: the most common material is <strong>silicon</strong>, a fully illuminated cell produces about <strong>0.5 volts</strong> open-circuit (the same number your General solar section used), and a cell&#x27;s <strong>efficiency</strong> is the relative fraction of light converted to current.</li><li><strong>Photoconductive</strong> material takes the passive route: shine light on it and its <strong>resistance decreases</strong>. The common photoconductive devices are made of <strong>crystalline semiconductor</strong>, and every light-activated sensor descends from this effect.</li></ul>
+<p><strong>Light as a messenger:</strong></p>
+<ul><li>An <strong>optoisolator</strong> (optocoupler) is most commonly an <strong>LED and a phototransistor</strong> facing each other across a gap. Its purpose in circuits controlling 120 VAC: providing <strong>electrical isolation between the control circuit and the circuit being switched</strong>. Nothing crosses the gap but photons, so a fault on the mains side cannot reach the microcontroller. The <strong>solid-state relay</strong> packages this into a drop-in replacement: semiconductors implementing the functions of an electromechanical relay, no coil, no contacts, no arc.</li><li>An <strong>optical shaft encoder</strong> detects rotation by <strong>interrupting a light source with a patterned wheel</strong>, and it is the part under your transceiver&#x27;s VFO knob. The big knob has not touched a variable capacitor in decades; it has been chopping light beams and reporting the count to the DDS, which is as fitting a place as any to end the components course: even the tuning knob is optoelectronics now.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (E6F)</span> Photovoltaic: photons absorbed; light converted to electrical energy; silicon; about 0.5 V open-circuit; efficiency is the fraction of light converted. Photoconductive material: resistance decreases in light; made of crystalline semiconductor. Optoisolator: LED plus phototransistor; provides electrical isolation for AC control. Solid-state relay: semiconductor implementation of a relay. Optical shaft encoder: patterned wheel interrupting a light source.</p></aside><section class="check" id="check-4.6"><h3>Knowledge Check 4.6</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What happens to photoconductive material in light?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Resistance increases</button><button class="opt" data-letter="b"><span class="letter">b</span>Resistance decreases</button><button class="opt" data-letter="c"><span class="letter">c</span>It generates 0.5 volts</button><button class="opt" data-letter="d"><span class="letter">d</span>It becomes reflective</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Why pair an optoisolator with circuits switching 120 VAC?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Impedance matching</button><button class="opt" data-letter="b"><span class="letter">b</span>Electrical isolation between control and switched circuits</button><button class="opt" data-letter="c"><span class="letter">c</span>Lower switching losses</button><button class="opt" data-letter="d"><span class="letter">d</span>Faster response than relays</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. How does an optical shaft encoder sense rotation?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>By varying a capacitor</button><button class="opt" data-letter="b"><span class="letter">b</span>By a patterned wheel interrupting a light source</button><button class="opt" data-letter="c"><span class="letter">c</span>By magnetic reluctance</button><button class="opt" data-letter="d"><span class="letter">d</span>By brush contacts on a coded drum</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">E6A</span> N-type: excess free electrons; acceptor impurity: adds holes. Reverse bias: widens the depletion region, blocking conduction. NPN biased on: Vbe about 0.6 to 0.7 V. Beta: change in collector current over change in base current. Alpha cutoff frequency: grounded-base gain down to 0.7 of the 1 kHz value. FET gate: higher DC input impedance than bipolar. Depletion-mode FET: conducts with zero gate voltage. Gate-protection Zeners: guard against static. Gallium arsenide: microwave circuits.</p></div><div class="anchor review"><p><span class="anchor-lead">E6B</span> Zener: constant voltage under varying current. Schottky: metal-semiconductor junction, lower forward drop, best rectifier choice, VHF/UHF mixer/detector. Varactor: voltage-controlled capacitor. PIN: low junction capacitance, RF switch; attenuation set by forward DC bias current. Point-contact: RF detector. LED forward drop: set by band gap. Overcurrent kills diodes via excessive junction temperature.</p></div><div class="anchor review"><p><span class="anchor-lead">E6C</span> CMOS: lowest power; noise immunity from a switching threshold near half the supply. BiCMOS: CMOS input impedance plus bipolar output impedance. Comparator: output changes at the threshold; hysteresis prevents noise-induced instability. Tri-state: 0, 1, high impedance. Pull-up/pull-down resistor: establishes a voltage on an otherwise open input or output. FPGA: designed with a hardware description language. Figure E6-3: NAND, NOR, NOT symbols.</p></div><div class="anchor review"><p><span class="anchor-lead">E6D</span> Permeability determines inductance; brass inserted in a coil decreases it. Saturation: excessive magnetic flux. Ferrite: fewer turns needed; powdered iron: best temperature stability. Laminated cores: reduce eddy current loss. Toroids confine the field. Ferrite beads: VHF/UHF parasitic suppressors on HF amplifier transistors. Piezoelectricity: voltage from stress, flexing from voltage. Quartz crystal equivalent: series RLC paralleled by shunt capacitance.</p></div><div class="anchor review"><p><span class="anchor-lead">E6E</span> GaAs: higher electron mobility for UHF and up; GaN: highest-frequency MMICs. MMICs: controlled gain, low noise figure, constant impedances (all); 50-ohm input and output; about 0.5 dB NF for a low-noise UHF preamp; microstrip interconnect; power via resistor/RF choke on the output lead. DIP: through-hole, dual in-line pins; unusable at UHF from excessive lead length. Surface mount: smaller area, shorter traces, lower parasitics (all).</p></div><div class="anchor review"><p><span class="anchor-lead">E6F</span> Photovoltaic: photons absorbed; light converted to electrical energy; silicon; about 0.5 V open-circuit; efficiency is the fraction of light converted. Photoconductive material: resistance decreases in light; made of crystalline semiconductor. Optoisolator: LED plus phototransistor; provides electrical isolation for AC control. Solid-state relay: semiconductor implementation of a relay. Optical shaft encoder: patterned wheel interrupting a light source.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>Six drawers, fully opened: the crystal&#x27;s physics, a diode for every job, logic with its families and fragments, magnetics with permeability attached, gigahertz construction, and light wired into the circuit. The habit this module installs is the Extra version of the General course&#x27;s &quot;which one and why&quot;: you now pick parts by mechanism.</p>
+<p>Module 5 is the course&#x27;s biggest: eight exam questions of practical circuits, assembling these parts into amplifiers, filters, power supplies, modulators, op-amps, oscillators, and the software-defined signal chain.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (E-S3): the homebrew requirement starts here. Order the kit or start the scratch build now, because Modules 5 through 8 each land harder with an iron in your hand. When it arrives, identify every Section 4.2 diode and every Section 4.5 package on the board before soldering anything.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 4 complete</button>
+    <div class="pager"><a class="navlink" href="extra-module-03.html">Previous module</a><a class="navlink" href="extra-module-05.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-extra-m04";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 4 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>

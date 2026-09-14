@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png">
+<title>General Course, Module 6: Signals, Sidebands, and Digital | K4DIA</title>
+<style>:root { --accent: #1E6E5C; --accent-dark: #155043; --tint: #EDF5F2; --paper: #FBFBF8; --ink: #20232A; --muted: #5C6470; --rule: #E3E1DA; --ok: #1E7A46; --no: #B3372F; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif; line-height: 1.65; font-size: 1.06rem; }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--accent); color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; font-size: .92rem; }
+.bar a { color: #fff; text-decoration: none; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem; }
+.bar .rank { flex: 0 0 auto; }
+main { max-width: 44rem; margin: 0 auto; padding: 1.4rem 1.1rem 4rem; }
+header.module h1 { font-size: 1.9rem; line-height: 1.2; margin: 1rem 0 .4rem; }
+header.module .covers { font-family: system-ui, sans-serif; color: var(--muted);
+  font-size: .93rem; margin: 0 0 1rem; }
+.intro p:first-of-type { font-size: 1.13rem; }
+.module-section { border-top: 1px solid var(--rule); margin-top: 2.4rem; padding-top: 1.6rem; }
+.module-section h2 { font-size: 1.45rem; margin: 0 0 1rem; }
+.secnum { font-family: system-ui, sans-serif; color: var(--accent-dark);
+  font-size: 1rem; font-weight: 700; display: block; letter-spacing: .02em; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: .45rem 0; }
+blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+.anchor { background: var(--tint); border-left: 4px solid var(--accent);
+  padding: .9rem 1.05rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+  font-family: system-ui, sans-serif; font-size: .97rem; line-height: 1.55; }
+.anchor p { margin: 0; }
+.anchor-lead { font-weight: 700; color: var(--accent-dark); }
+.fig { margin: 1.5rem 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; }
+figcaption { font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
+details.fig-quiz { margin: 1.2rem 0; font-family: system-ui, sans-serif; }
+details.fig-quiz summary { cursor: pointer; font-weight: 600; color: var(--accent-dark);
+  padding: .6rem .9rem; background: var(--tint); border-radius: 6px; }
+.check { font-family: system-ui, sans-serif; background: #fff; border: 1px solid var(--rule);
+  border-radius: 10px; padding: 1.1rem 1.15rem 1.3rem; margin: 1.7rem 0 .4rem; }
+.check h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.check-hint { color: var(--muted); font-size: .88rem; margin: 0 0 .9rem; }
+.q { margin-top: 1rem; }
+.qtext { font-weight: 600; margin: 0 0 .55rem; }
+.opts { display: grid; gap: .5rem; }
+.opt { display: flex; align-items: baseline; gap: .6rem; width: 100%;
+  text-align: left; font: inherit; font-size: .97rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: .55rem .75rem; cursor: pointer; }
+.opt .letter { font-weight: 700; color: var(--accent-dark); }
+.opt:hover { border-color: var(--accent); }
+.q.done .opt { cursor: default; opacity: .75; }
+.q.done .opt.right { border-color: var(--ok); background: #EAF5EE; opacity: 1; }
+.q.done .opt.picked-wrong { border-color: var(--no); background: #FAEDEC; opacity: 1; }
+.verdict { font-weight: 600; margin: .5rem 0 0; }
+.verdict.ok { color: var(--ok); }
+.verdict.no { color: var(--no); }
+details.review { margin: 2.6rem 0 0; font-family: system-ui, sans-serif; }
+details.review > summary { cursor: pointer; font-weight: 700; font-size: 1.02rem;
+  color: var(--accent-dark); padding: .8rem 1rem; background: var(--tint); border-radius: 8px; }
+details.review .anchor { margin: .8rem 0 0; }
+.closing { border-top: 1px solid var(--rule); margin-top: 2.6rem; padding-top: 1.5rem; }
+.skills { font-family: system-ui, sans-serif; font-size: .95rem; background: #fff;
+  border: 1px dashed var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.skills p { margin: 0; }
+.finish { font-family: system-ui, sans-serif; display: flex; flex-direction: column;
+  gap: 1rem; align-items: flex-start; margin-top: 2.2rem; }
+#complete { font: inherit; font-weight: 700; font-size: 1rem; color: #fff;
+  background: var(--accent); border: 0; border-radius: 8px; padding: .75rem 1.2rem; cursor: pointer; }
+#complete.done { background: var(--ok); }
+.pager { display: flex; justify-content: space-between; width: 100%; }
+.navlink { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .opt { transition: border-color .12s ease, background .12s ease; }
+}
+.copyright { font-family: system-ui, sans-serif; color: var(--muted); font-size: .8rem;
+  margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="hub-gen.html"><svg class="rank" width="17" height="15" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> General course</a>
+  <span>Module 6 of 10</span>
+</div>
+<main>
+<header class="module">
+  <h1>General Course, Module 6: Signals, Sidebands, and Digital</h1>
+  <p class="covers">Covers NCVEC 2023-2027 General Pool, Subelement G8 (Signals and Emissions). Three questions on your exam come from this material.</p>
+</header>
+<div class="intro"><p>Ray puts the waterfall display on the big monitor and tunes slowly across 20 meters. Fat wavering voice signals, thin steady RTTY rails, the tidy stripes of FT8, one ugly signal splattering across three kilohertz. &quot;Every signal on this screen is a decision somebody made about how to attach information to a carrier,&quot; he says. &quot;By the end of tonight you will read this screen like text. Including knowing exactly whose signal is the ugly one, and why.&quot;</p></div>
+<section class="module-section" id="s6-1"><h2><span class="secnum">6.1</span>The Ways Information Rides a Wave</h2><p>There are only three properties of a carrier you can vary, so there are only three great families of modulation:</p>
+<ul><li><strong>Amplitude modulation</strong> varies the <strong>instantaneous power level</strong> of the RF signal. Its visual definition on a scope: the <strong>modulation envelope</strong>, the waveform created by connecting the peak values of the modulated signal. AM&#x27;s refined child is <strong>single sideband</strong>, still the <strong>narrowest-bandwidth phone emission</strong>, which is why it owns HF voice.</li><li><strong>Frequency modulation</strong> changes the <strong>instantaneous frequency</strong> of the wave to convey information.</li><li><strong>Phase modulation</strong> changes the <strong>phase angle</strong>. FM and PM are close cousins, and one construction detail proves it: a <strong>reactance modulator</strong> connected to a transmitter&#x27;s RF amplifier stage produces <strong>phase modulation</strong>.</li></ul>
+<p>Digital modes just automate these levers. <strong>Direct binary FSK</strong> is generated by changing an oscillator&#x27;s frequency directly with a digital control signal, machine fingers on the frequency lever. <strong>FT8</strong> uses <strong>8-tone frequency shift keying</strong>, eight distinct tones instead of two. And <strong>QPSK</strong> works the phase lever with precision: digital data transmitted as 0-, 90-, 180-, and 270-degree phase shifts, each shift representing a <strong>pair of bits</strong>. The exam adds that QPSK31 is sideband sensitive, includes error correction, and occupies about the same bandwidth as BPSK31: all of these.</p>
+<p>Now the ugly signal on Ray&#x27;s waterfall. <strong>Overmodulation</strong> (too much audio drive) causes <strong>excessive bandwidth</strong>: your 3 kHz conversation smeared across your neighbors&#x27; frequencies. On a scope it appears as <strong>flat-topping</strong>, distortion from excessive drive or speech levels where the envelope peaks slam into the amplifier&#x27;s ceiling and shear off flat. Loud is not the goal; clean is the goal. Module 8&#x27;s ALC discussion will show you the knob that prevents it.</p>
+<p>Two engineering terms close the group, borrowed from the microwave world and increasingly on HF digital lips:</p>
+<ul><li>A <strong>link budget</strong>: the sum of transmit power and antenna gains, minus system losses, as seen at the receiver. It is the accounting sheet for whether a path can work.</li><li><strong>Link margin</strong>: the difference between the received power level and the minimum required signal level at the receiver&#x27;s input. Budget is the plan; margin is the surplus.</li></ul><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G8A)</span> AM varies instantaneous power; the envelope connects the peaks of the modulated signal. SSB: narrowest phone bandwidth. FM changes instantaneous frequency; PM changes phase angle; a reactance modulator on the RF amplifier stage produces phase modulation. Direct FSK: digital signal moves the oscillator frequency directly. FT8: 8-tone FSK. QPSK: 0/90/180/270-degree shifts carrying bit pairs; QPSK31 is sideband sensitive, error correcting, and BPSK31-sized (all). Overmodulation: excessive bandwidth; flat-topping: distortion from excessive drive. Link budget: TX power plus gains minus losses at the receiver. Link margin: received power minus minimum required level.</p></aside><section class="check" id="check-6.1"><h3>Knowledge Check 6.1</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="c"><p class="qtext">1. What does amplitude modulation vary?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>The phase angle of the carrier</button><button class="opt" data-letter="b"><span class="letter">b</span>The instantaneous frequency</button><button class="opt" data-letter="c"><span class="letter">c</span>The instantaneous power level of the RF signal</button><button class="opt" data-letter="d"><span class="letter">d</span>The symbol rate</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. Your SSB signal shows flat-topping on a monitor scope. What causes it?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Insufficient microphone gain</button><button class="opt" data-letter="b"><span class="letter">b</span>Excessive drive or speech levels</button><button class="opt" data-letter="c"><span class="letter">c</span>A cold solder joint in the filter</button><button class="opt" data-letter="d"><span class="letter">d</span>Low battery voltage</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. What is link margin?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Transmit power minus antenna gain</button><button class="opt" data-letter="b"><span class="letter">b</span>The received power level minus the minimum required signal level at the receiver</button><button class="opt" data-letter="c"><span class="letter">c</span>The sum of all system losses</button><button class="opt" data-letter="d"><span class="letter">d</span>Receiver sensitivity plus 3 dB</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-2"><h2><span class="secnum">6.2</span>Mixers, Bandwidth, and the Signals You Did Not Mean to Make</h2><p>Module 5 introduced the mixer; now the numbers. Feed a mixer two signals and its output contains their <strong>sum and difference</strong> frequencies. That act of mixing has a proper name, <strong>heterodyning</strong>, and it is how a receiver converts any signal to its intermediate frequency: the <strong>local oscillator</strong> is the mixer input that gets tuned, steering whichever incoming frequency you want onto the fixed IF.</p>
+<p>The design has one famous blind spot: a signal at <strong>twice the IF</strong> away from your desired signal also mixes to the same IF. That unwanted guest is the <strong>image response</strong>, and rejecting images is a chief job of the filtering ahead of the mixer.</p>
+<p>FM transmitters for VHF often generate their signal at a low frequency and use a <strong>multiplier</strong> stage, which produces a harmonic of the lower-frequency signal, to reach the operating frequency. Multiplication scales everything, including deviation, which sets up the exam&#x27;s arithmetic: a 146.52 MHz transmitter with 5 kHz deviation built on a 12.21 MHz oscillator (a 12x multiplication) needs oscillator deviation of 5000/12 = <strong>416.7 Hz</strong>.</p>
+<p>Bandwidth rules to carry:</p>
+<ul><li>FM bandwidth is approximately twice the sum of deviation and modulating frequency: 5 kHz deviation with 3 kHz audio occupies 2 x (5 + 3) = <strong>16 kHz</strong>.</li><li>For digital modes, <strong>higher symbol rates require wider bandwidth</strong>. Speed costs spectrum, always.</li><li>On receive, matching receiver bandwidth to the mode&#x27;s bandwidth yields the <strong>best signal-to-noise ratio</strong>, the reason behind Module 8 of the Technician course telling you to pick 2400 Hz for SSB.</li><li>And know your mode&#x27;s <strong>duty cycle</strong>: some modes (FT8, RTTY, anything key-down continuous) have duty cycles high enough to exceed a transmitter&#x27;s average power rating. A rig rated 100 watts SSB is rated for voice&#x27;s peaks-and-valleys; run it at 100 watts of continuous FT8 and you are cooking the finals. Turn it down.</li></ul>
+<p>Finally, the signals you did not mean to make. <strong>Intermodulation</strong> is the process where two signals combine in a non-linear circuit to produce unwanted spurious outputs. The products that land closest to the original frequencies, and therefore cause the most trouble, are the <strong>odd-order</strong> products, with <strong>2F1 - F2</strong> as the classic third-order example. When two strong signals visit one overloaded circuit, their intermod children move in next door to everyone.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G8B)</span> Mixer output: sum and difference; mixing is heterodyning; the local oscillator is tuned to produce the IF. Image response: interference from a signal twice the IF away. Multiplier: generates a harmonic to reach the operating frequency; 5 kHz deviation at 146.52 MHz from a 12.21 MHz oscillator needs 416.7 Hz deviation. FM bandwidth: 2 x (deviation + modulating frequency) = 16 kHz for 5 and 3. Higher symbol rate: wider bandwidth. Matched receiver bandwidth: best SNR. High duty cycle modes can exceed the transmitter&#x27;s average power rating. Intermodulation: nonlinear mixing making spurious outputs; odd-order products (like 2F1 - F2) fall closest to the originals.</p></aside><section class="check" id="check-6.2"><h3>Knowledge Check 6.2</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. What frequencies appear at a mixer&#x27;s output?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Only the sum of the inputs</button><button class="opt" data-letter="b"><span class="letter">b</span>The sum and difference of the input frequencies</button><button class="opt" data-letter="c"><span class="letter">c</span>The average of the inputs</button><button class="opt" data-letter="d"><span class="letter">d</span>The inputs unchanged</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="c"><p class="qtext">2. What is the total bandwidth of an FM signal with 5 kHz deviation and 3 kHz modulating audio?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>5 kHz</button><button class="opt" data-letter="b"><span class="letter">b</span>8 kHz</button><button class="opt" data-letter="c"><span class="letter">c</span>16 kHz</button><button class="opt" data-letter="d"><span class="letter">d</span>3 kHz</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. Why reduce power when running FT8 on a 100-watt SSB radio?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>FCC rules cap digital modes at 30 watts</button><button class="opt" data-letter="b"><span class="letter">b</span>FT8&#x27;s high duty cycle can exceed the transmitter&#x27;s average power rating</button><button class="opt" data-letter="c"><span class="letter">c</span>FT8 decodes better at low power</button><button class="opt" data-letter="d"><span class="letter">d</span>The tuner cannot match digital signals</button></div><p class="verdict" hidden></p></div></section></section><section class="module-section" id="s6-3"><h2><span class="secnum">6.3</span>Reading the Waterfall</h2><p>Back to the big monitor, and the vocabulary to read it.</p>
+<p>First, the display itself: on a <strong>waterfall</strong>, frequency runs <strong>horizontally</strong>, signal strength is shown by <strong>intensity</strong> (color or brightness), and time flows <strong>vertically</strong>. Every mode paints a recognizable texture on it, and one diagnostic pattern the exam checks: <strong>vertical lines appearing on either side of a data or RTTY signal mean overmodulation</strong>, Section 6.1&#x27;s sin rendered visible.</p>
+<p>The digital modes each contribute their exam facts:</p>
+<ul><li><strong>RTTY</strong> uses <strong>Baudot code</strong>, a 5-bit code with additional start and stop bits, and FSK&#x27;s two frequencies are named <strong>mark and space</strong>. If RTTY will not decode despite looking right, the causes are reversed mark and space, wrong baud rate, or wrong sideband. All of these.</li><li><strong>PSK31</strong> sends characters in <strong>Varicode</strong>, where common letters get short codes. The catch: <strong>uppercase letters use longer Varicode sequences and slow the transmission</strong>. PSK31 etiquette is lowercase for a reason.</li><li><strong>FT8</strong> is the narrow-band mode that decodes at <strong>very low signal-to-noise ratios</strong>, and its signal reports are literal: a report of <strong>+3 means a signal-to-noise ratio of +3 dB referenced to a 2.5 kHz bandwidth</strong>. Machine-honest numbers instead of the flattering S9.</li><li><strong>WSPR</strong> is the specialist: a low-power <strong>beacon mode for assessing HF propagation</strong>, the automated descendant of Module 1&#x27;s beacon network.</li></ul>
+<p>Error handling comes in two philosophies:</p>
+<ul><li><strong>ARQ</strong>, from your Technician course, now with protocol detail: a <strong>NAK</strong> response means the receiver is requesting retransmission of a packet, and if excessive transmission attempts still fail, <strong>the connection is dropped</strong>.</li><li><strong>FEC</strong>, forward error correction, skips the conversation: the transmitter sends <strong>redundant information along with the data</strong>, and the receiver repairs errors on its own. FT8&#x27;s resilience lives here.</li></ul>
+<p>Packet structure repeats one Technician fact with sharper aim: the <strong>header</strong> carries the routing and handling information. And mesh networks earn their resilience honestly: <strong>if one node fails, a packet can still reach its target via alternate nodes</strong>.</p>
+<p>Digital voice closes the module with a list to memorize as a set: <strong>DMR, D-STAR, and System Fusion</strong> are the digital voice modes. You programmed two of them at Technician; now you can name the family.</p><aside class="anchor"><p><span class="anchor-lead">Exam Anchor (G8C)</span> Waterfall: frequency horizontal, strength as intensity, time vertical; vertical lines flanking a digital signal = overmodulation. Baudot: 5-bit code plus start and stop bits. FSK frequencies: mark and space; failed RTTY decode: reversed mark/space, wrong baud rate, or wrong sideband (all). PSK31 Varicode: uppercase is longer and slower. FT8 decodes at very low SNR; a +3 report = +3 dB SNR in 2.5 kHz bandwidth. WSPR: low-power propagation-assessment beacon mode. ARQ: NAK requests retransmission; excessive failed attempts drop the connection. FEC: redundant information transmitted with the data. Packet header: routing and handling. Mesh: alternate nodes route around failures. Digital voice: DMR, D-STAR, System Fusion.</p></aside><section class="check" id="check-6.3"><h3>Knowledge Check 6.3</h3><p class="check-hint">Tap an answer. In your own words first, then check yourself.</p><div class="q" data-answer="b"><p class="qtext">1. On a waterfall display, how are frequency, strength, and time arranged?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Frequency vertical, strength horizontal, time as intensity</button><button class="opt" data-letter="b"><span class="letter">b</span>Frequency horizontal, strength as intensity, time vertical</button><button class="opt" data-letter="c"><span class="letter">c</span>Frequency as intensity, strength vertical, time horizontal</button><button class="opt" data-letter="d"><span class="letter">d</span>All three on the horizontal axis</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">2. What does an FT8 report of +3 mean?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>Three S-units above S9</button><button class="opt" data-letter="b"><span class="letter">b</span>Signal-to-noise ratio of +3 dB in a 2.5 kHz bandwidth</button><button class="opt" data-letter="c"><span class="letter">c</span>Three decodes in a row</button><button class="opt" data-letter="d"><span class="letter">d</span>3 watts received power</button></div><p class="verdict" hidden></p></div><div class="q" data-answer="b"><p class="qtext">3. How does forward error correction let a receiver fix errors?</p><div class="opts"><button class="opt" data-letter="a"><span class="letter">a</span>By requesting retransmission</button><button class="opt" data-letter="b"><span class="letter">b</span>By transmitting redundant information with the data</button><button class="opt" data-letter="c"><span class="letter">c</span>By using a parity bit alone</button><button class="opt" data-letter="d"><span class="letter">d</span>By raising transmit power</button></div><p class="verdict" hidden></p></div></section></section>
+<details class="review">
+  <summary>Review: every Exam Anchor from this module</summary>
+  <div class="anchor review"><p><span class="anchor-lead">G8A</span> AM varies instantaneous power; the envelope connects the peaks of the modulated signal. SSB: narrowest phone bandwidth. FM changes instantaneous frequency; PM changes phase angle; a reactance modulator on the RF amplifier stage produces phase modulation. Direct FSK: digital signal moves the oscillator frequency directly. FT8: 8-tone FSK. QPSK: 0/90/180/270-degree shifts carrying bit pairs; QPSK31 is sideband sensitive, error correcting, and BPSK31-sized (all). Overmodulation: excessive bandwidth; flat-topping: distortion from excessive drive. Link budget: TX power plus gains minus losses at the receiver. Link margin: received power minus minimum required level.</p></div><div class="anchor review"><p><span class="anchor-lead">G8B</span> Mixer output: sum and difference; mixing is heterodyning; the local oscillator is tuned to produce the IF. Image response: interference from a signal twice the IF away. Multiplier: generates a harmonic to reach the operating frequency; 5 kHz deviation at 146.52 MHz from a 12.21 MHz oscillator needs 416.7 Hz deviation. FM bandwidth: 2 x (deviation + modulating frequency) = 16 kHz for 5 and 3. Higher symbol rate: wider bandwidth. Matched receiver bandwidth: best SNR. High duty cycle modes can exceed the transmitter&#x27;s average power rating. Intermodulation: nonlinear mixing making spurious outputs; odd-order products (like 2F1 - F2) fall closest to the originals.</p></div><div class="anchor review"><p><span class="anchor-lead">G8C</span> Waterfall: frequency horizontal, strength as intensity, time vertical; vertical lines flanking a digital signal = overmodulation. Baudot: 5-bit code plus start and stop bits. FSK frequencies: mark and space; failed RTTY decode: reversed mark/space, wrong baud rate, or wrong sideband (all). PSK31 Varicode: uppercase is longer and slower. FT8 decodes at very low SNR; a +3 report = +3 dB SNR in 2.5 kHz bandwidth. WSPR: low-power propagation-assessment beacon mode. ARQ: NAK requests retransmission; excessive failed attempts drop the connection. FEC: redundant information transmitted with the data. Packet header: routing and handling. Mesh: alternate nodes route around failures. Digital voice: DMR, D-STAR, System Fusion.</p></div>
+</details>
+<section class="closing">
+  <h2>Before you move on</h2>
+  <p>Look at the waterfall now: the SSB signals with their ragged voice texture, RTTY&#x27;s twin rails of mark and space, FT8&#x27;s disciplined stripes, and yes, the flat-topping offender with the telltale sidebars, whose problem you can now name, diagnose, and politely mention. The screen reads like text, as promised.</p>
+<p>Module 7 is the one HF operators argue about most and enjoy most: antennas, from the honest dipole to the Yagi, and the feed line math that connects them.</p>
+<p><em>© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</em></p>
+  <aside class="skills"><p>Skills Track tie-in (G-S4): make three FT8 contacts and read each received report as the engineering statement it is. Then transmit a short WSPR session at one watt and check the map of who heard you. One evening of literal-numbered reports recalibrates an operator&#x27;s whole sense of what a signal is.</p></aside>
+  <div class="finish">
+    <button id="complete" type="button">Mark module 6 complete</button>
+    <div class="pager"><a class="navlink" href="gen-module-05.html">Previous module</a><a class="navlink" href="gen-module-07.html">Next module</a></div>
+  </div>
+</section>
+<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".q").forEach(function (q) {
+    var answer = q.dataset.answer;
+    var verdict = q.querySelector(".verdict");
+    q.querySelectorAll(".opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (q.classList.contains("done")) return;
+        q.classList.add("done");
+        var right = q.querySelector('.opt[data-letter="' + answer + '"]');
+        if (right) right.classList.add("right");
+        if (btn.dataset.letter === answer) {
+          verdict.textContent = "Correct.";
+          verdict.classList.add("ok");
+        } else {
+          btn.classList.add("picked-wrong");
+          verdict.textContent = "Not quite. The answer is " + answer + ".";
+          verdict.classList.add("no");
+        }
+        verdict.hidden = false;
+      });
+    });
+  });
+  var key = "k4dia-gen-m06";
+  var btn = document.getElementById("complete");
+  function paint() {
+    if (localStorage.getItem(key) === "done") {
+      btn.classList.add("done");
+      btn.textContent = "Module 6 complete";
+    }
+  }
+  btn.addEventListener("click", function () { localStorage.setItem(key, "done"); paint(); });
+  paint();
+})();
+</script>
+</body>
+</html>
