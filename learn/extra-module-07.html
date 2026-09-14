@@ -89,6 +89,16 @@ a { color: inherit; }
 .site-foot p { margin: 0; }
 .site-foot > a { font: 600 .68rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
   text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+.foot-meta { flex: 1 0 100%; display: flex; flex-wrap: wrap; gap: .5rem 1.8rem;
+  align-items: baseline; margin-top: .5rem; padding-top: 1rem;
+  border-top: 1px solid rgba(217,208,182,.18);
+  font: 400 .62rem/1.5 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--sand-dim); }
+.foot-meta a { color: var(--sand); text-decoration: none;
+  border-bottom: 1px solid rgba(217,208,182,.4); padding-bottom: 2px; }
+.foot-meta a:hover { color: #f0e9d6; }
+.foot-meta b, .foot-meta .visits * { font: inherit; font-weight: 600; color: #f0e9d6;
+  border: 0; background: none; padding: 0; }
 
 @media (max-width: 860px) {
   .masthead { grid-template-columns: 1fr auto; gap: 1rem; }
@@ -435,6 +445,10 @@ details.review .anchor { margin: .7rem 0 0; }
   </div>
   <p>&copy; 2026 Anthony Pelfanio, K4DIA. All rights reserved.</p>
   <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  <div class="foot-meta">
+    <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
+    <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
+  </div>
 </footer>
 <script>
 (function () {
@@ -458,6 +472,32 @@ details.review .anchor { margin: .7rem 0 0; }
       head.classList.remove("menu-open");
       toggle.setAttribute("aria-expanded", "false");
     }
+  });
+})();
+
+(function () {
+  var slot = document.getElementById("k4-mail");
+  if (slot) {
+    var user = "tony", host = "k4dia.com";
+    var a = document.createElement("a");
+    a.href = "mai" + "lto:" + user + "@" + host;
+    a.textContent = user + "@" + host;
+    slot.parentNode.replaceChild(a, slot);
+  }
+  var GC = "k4dia";
+  var box = document.getElementById("k4-visits");
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "//gc.zgo.at/count.js";
+  s.setAttribute("data-goatcounter", "https://" + GC + ".goatcounter.com/count");
+  document.head.appendChild(s);
+  if (!box) return;
+  s.addEventListener("load", function () {
+    if (!window.goatcounter || !window.goatcounter.visit_count) return;
+    window.goatcounter.visit_count({
+      append: "#k4-visits b", path: "TOTAL", type: "html", no_branding: true
+    });
+    box.hidden = false;
   });
 })();
 </script>

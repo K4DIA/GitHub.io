@@ -89,4 +89,38 @@
       targets.forEach(function (t) { if (t) seen.observe(t); });
     }
   }
+
+  // -- contact ------------------------------------------------------------
+  // Built at run time so the address is not sitting in the markup for
+  // harvesters. With scripting off the readable form stays put.
+  (function () {
+    var slot = document.getElementById("k4-mail");
+    if (!slot) return;
+    var user = "tony", host = "k4dia.com";
+    var a = document.createElement("a");
+    a.href = "mai" + "lto:" + user + "@" + host;
+    a.textContent = user + "@" + host;
+    slot.parentNode.replaceChild(a, slot);
+  })();
+
+  // -- visits -------------------------------------------------------------
+  // GoatCounter: no cookies, no personal data, and the same figures the
+  // dashboard shows. GC is the subdomain chosen at signup.
+  (function () {
+    var GC = "k4dia";
+    var box = document.getElementById("k4-visits");
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "//gc.zgo.at/count.js";
+    s.setAttribute("data-goatcounter", "https://" + GC + ".goatcounter.com/count");
+    document.head.appendChild(s);
+    if (!box) return;
+    s.addEventListener("load", function () {
+      if (!window.goatcounter || !window.goatcounter.visit_count) return;
+      window.goatcounter.visit_count({
+        append: "#k4-visits b", path: "TOTAL", type: "html", no_branding: true
+      });
+      box.hidden = false;
+    });
+  })();
 })();
