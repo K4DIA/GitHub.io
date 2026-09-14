@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://k4dia.com/sitemap.xml
