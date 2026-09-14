@@ -6,92 +6,230 @@
 <link rel="icon" href="favicon-32.png">
 <title>Learn Amateur Radio | K4DIA</title>
 <style>
+@font-face { font-family: "Plex Cond"; src: url("fonts/IBMPlexSansCondensed-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex Cond"; src: url("fonts/IBMPlexSansCondensed-SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex Sans"; src: url("fonts/IBMPlexSans-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex Sans"; src: url("fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap; }
+:root { --paper: #efe8da; --paper-warm: #e7dfcd; --paper-line: #d4c9ae; --ink: #1d1b17; --ink-soft: #262420; --ink-mid: #4a463d; --ink-faint: #666155; --rust: #b8501f; --rust-ink: #a1461b; --olive: #3f4732; --sand: #d9d0b6; --sand-dim: #cfcabe; --ok: #4a6b34; --ok-bg: #dfe4cf; --no: #8f2f22; --no-bg: #eeddd3; --mono: "Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; --sans: "Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; --display: "Plex Cond", "Helvetica Neue Condensed", Impact, sans-serif; --accent: #b8501f; --accent-dark: #963f16; }
 * { box-sizing: border-box; }
-body { margin: 0; background: #FBFBF8; color: #20232A;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55; }
-.bar { background: #20232A; color: #fff; padding: .55rem 1rem; font-size: .92rem;
-  display: flex; justify-content: space-between; }
-.bar a { color: #fff; text-decoration: none; font-weight: 600; }
-main { max-width: 44rem; margin: 0 auto; padding: 2rem 1.1rem 4rem; }
-h1 { font-family: Georgia, serif; font-size: 2.1rem; line-height: 1.15; margin: 0 0 .5rem; }
-.lede { color: #5C6470; font-size: 1.05rem; margin: 0 0 1.6rem; }
-.how { background: #fff; border: 1.5px solid #E3E1DA; border-radius: 10px;
-  padding: 1rem 1.1rem .4rem; margin: 0 0 2rem; }
-.how h2 { font-family: Georgia, serif; font-size: 1.2rem; margin: 0 0 .6rem; }
-.courses { display: grid; gap: .9rem; }
-.course { display: block; text-decoration: none; color: #20232A; background: #fff;
-  border: 1.5px solid #E3E1DA; border-left: 6px solid var(--ca);
-  border-radius: 10px; padding: 1rem 1.1rem; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+img, svg { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.masthead { position: sticky; top: 0; z-index: 40; display: grid;
+  grid-template-columns: auto 1fr auto; align-items: center; gap: 2rem;
+  padding: .85rem clamp(1.1rem, 3.4vw, 3rem);
+  background: rgba(239,232,218,.94); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--paper-line); }
+.brand { display: flex; align-items: center; gap: .95rem; text-decoration: none; }
+.brand-logo { display: block; height: 2.05rem; width: auto; }
+.brand-lines { display: grid; gap: .18rem; padding-left: .95rem;
+  border-left: 1px solid var(--paper-line);
+  font: 400 .58rem/1.25 var(--mono); letter-spacing: .17em;
+  text-transform: uppercase; color: var(--ink-faint); }
+.mainnav { display: flex; justify-content: center; gap: clamp(1.2rem, 3vw, 2.6rem); }
+.mainnav a { position: relative; padding: .35rem 0;
+  font: 600 .74rem/1 var(--mono); letter-spacing: .19em;
+  text-transform: uppercase; text-decoration: none; color: var(--ink); }
+.mainnav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.15rem;
+  height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .18s ease; }
+.mainnav a:hover::after, .mainnav a.is-here::after { transform: scaleX(1); }
+.masthead-tag { display: grid; gap: .2rem; justify-items: end; padding-top: .35rem;
+  border-top: 1px solid var(--paper-line); text-align: right; }
+.masthead-tag strong { font: 600 .68rem/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; }
+.masthead-tag span { font: 400 .55rem/1 var(--mono); letter-spacing: .15em;
+  text-transform: uppercase; color: var(--ink-faint); }
+.menu-toggle { display: none; width: 44px; height: 40px; align-content: center; gap: 5px;
+  padding: 0 9px; background: transparent; border: 1px solid var(--paper-line); cursor: pointer; }
+.menu-toggle span { display: block; height: 2px; background: var(--ink);
+  transition: transform .2s, opacity .2s; }
+.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mainnav-mobile { display: none; }
+
+.crumb { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
+  margin: 0 0 1.1rem; font: 400 .62rem/1 var(--mono); letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ink-faint); }
+.crumb a { color: var(--accent-dark); text-decoration: none; }
+.crumb a:hover { text-decoration: underline; }
+.crumb .sep { color: var(--paper-line); }
+.crumb .rank { display: inline-flex; }
+
+.eyebrow { margin: 0 0 .5rem; font: 600 .68rem/1.2 var(--mono); letter-spacing: .22em;
+  text-transform: uppercase; color: var(--accent-dark); }
+.btn { display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.5rem;
+  font: 600 .74rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease; }
+.btn-solid { background: var(--accent); color: #fbf6ea; }
+.btn-solid:hover { background: var(--accent-dark); }
+.btn-quiet { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-quiet:hover { background: var(--ink); color: var(--paper); }
+
+.site-foot { display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap; padding: 2rem clamp(1.1rem, 3.4vw, 3rem);
+  background: var(--ink); color: var(--sand-dim); font: 400 .78rem/1.5 var(--sans); }
+.foot-call { display: flex; align-items: center; gap: .9rem; }
+.foot-logo { display: block; height: 1.6rem; width: auto; }
+.foot-call span { font: 400 .58rem/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; }
+.site-foot p { margin: 0; }
+.site-foot > a { font: 600 .68rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+
+@media (max-width: 860px) {
+  .masthead { grid-template-columns: 1fr auto; gap: 1rem; }
+  .mainnav, .masthead-tag { display: none; }
+  .menu-toggle { display: grid; }
+  .brand-lines { display: none; }
+  .mainnav-mobile { display: none; background: var(--ink); color: var(--sand);
+    border-bottom: 1px solid rgba(0,0,0,.4); }
+  .menu-open + .mainnav-mobile { display: grid; }
+  .mainnav-mobile a { display: grid; grid-template-columns: 2.4rem 1fr; gap: .6rem;
+    padding: 1rem clamp(1.1rem, 3.4vw, 3rem); text-decoration: none;
+    font: 600 .78rem/1 var(--mono); letter-spacing: .18em; text-transform: uppercase;
+    border-bottom: 1px solid rgba(217,208,182,.14); }
+  .mainnav-mobile a i { font-style: normal; color: var(--sand-dim); }
+  .site-foot { justify-content: flex-start; }
+}
+
+main { max-width: 44rem; margin: 0 auto;
+  padding: clamp(1.6rem,4vw,2.6rem) clamp(1.1rem,3.4vw,3rem) clamp(3rem,7vw,4.5rem); }
+h1 { margin: .2rem 0 0; font: 700 clamp(2rem,5vw,3.4rem)/.94 var(--display);
+  letter-spacing: .01em; text-transform: uppercase; }
+.lede { max-width: 42rem; margin: 1.2rem 0 2.1rem; font-size: clamp(1rem,1.7vw,1.16rem);
+  line-height: 1.65; color: var(--ink-mid); }
+.how { background: var(--paper-warm); border: 1px solid var(--paper-line);
+  padding: 1.1rem 1.2rem .7rem; margin: 0 0 2.2rem; }
+.how h2 { margin: 0 0 .9rem; font: 700 1.1rem/1.1 var(--display);
+  letter-spacing: .04em; text-transform: uppercase; }
+.courses { display: grid; gap: .7rem; }
+.course { display: block; text-decoration: none; color: var(--ink); background: var(--paper-warm);
+  border: 1px solid var(--paper-line); border-left: 4px solid var(--ca); padding: 1.1rem 1.2rem; }
 .course:hover { border-color: var(--ca); }
-.chead { display: flex; align-items: center; gap: .7rem; }
-.course h2 { font-family: Georgia, serif; margin: 0; font-size: 1.35rem; }
-.course p { margin: .5rem 0 .8rem; color: #444A54; font-size: .96rem; }
-.cprog { height: 7px; background: var(--ct); border-radius: 99px; overflow: hidden; }
-.cfill { height: 100%; width: 0; background: var(--ca); border-radius: 99px; }
-.cmeta { display: inline-block; margin-top: .5rem; font-size: .85rem; font-weight: 600;
-  color: var(--cad); }
-.ladder { margin-top: 2rem; color: #5C6470; font-size: .92rem; }
-:focus-visible { outline: 3px solid #20232A; outline-offset: 2px; }
-.copyright { color: #5C6470; font-size: .8rem; margin-top: 3rem;
-  border-top: 1px solid #E3E1DA; padding-top: 1rem; }
+.chead { display: flex; align-items: center; gap: .85rem; }
+.course h2 { margin: 0; font: 700 1.5rem/1 var(--display); letter-spacing: .02em; text-transform: uppercase; }
+.course p { margin: .75rem 0 1rem; font-size: .99rem; line-height: 1.65; color: var(--ink-soft); }
+.cprog { height: 6px; background: var(--paper); border: 1px solid var(--paper-line); overflow: hidden; }
+.cfill { height: 100%; width: 0; background: var(--ca); }
+.cmeta { display: inline-block; margin-top: .65rem; font: 600 .62rem/1 var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; color: var(--cad); }
+.ladder { margin-top: 2.2rem; font-size: .95rem; color: var(--ink-mid); }
 </style>
 </head>
 <body>
-<div class="bar"><a href="/">K4DIA</a><span>Amateur radio education</span></div>
+<header class="masthead" id="top">
+  <a class="brand" href="../">
+    <img class="brand-logo" src="logo.png" width="640" height="166" alt="K4DIA" decoding="async">
+    <span class="brand-lines"><span>Field &middot; Build &middot; Learn</span><span>Radio brings people together</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Primary"><a href="index.html" class="is-here">Learn</a><a href="../#projects">Projects</a><a href="../#tools">Tools</a><a href="../downloads/">Downloads</a><a href="../#articles">Articles</a><a href="../#notes">Notes</a></nav>
+  <div class="masthead-tag"><strong>Amateur Radio</strong><span>Licensed is not the same as ready</span></div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens"><a href="index.html"><i>01</i> Learn</a><a href="../#projects"><i>02</i> Projects</a><a href="../#tools"><i>03</i> Tools</a><a href="../downloads/"><i>04</i> Downloads</a><a href="../#articles"><i>05</i> Articles</a><a href="../#notes"><i>06</i> Notes</a></nav>
 <main>
+<p class="eyebrow">K4DIA Learn</p>
 <h1>Learn the radio, not just the answers.</h1>
 <p class="lede">Three courses, one per license level. Story-driven modules, exam anchors that tell you exactly what is tested, and skills tracks that make you ready, not just licensed.</p>
 <section class="how"><h2>How this works</h2><svg viewBox="0 0 640 250" role="img" aria-label="How this works: learn, check, practice, test, with misses looping back to the lesson" style="width:100%;height:auto;display:block;">
-<defs><marker id="hw-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5C6470" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<g font-family="system-ui, sans-serif">
-<rect x="24" y="40" width="130" height="64" rx="10" fill="#fff" stroke="#E3E1DA" stroke-width="1.5"/>
-<text x="89" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#20232A">1. Learn</text>
-<text x="89" y="88" text-anchor="middle" font-size="12" fill="#5C6470">story modules</text>
-<line x1="156" y1="72" x2="174" y2="72" stroke="#5C6470" stroke-width="1.5" marker-end="url(#hw-arr)"/>
-<rect x="178" y="40" width="130" height="64" rx="10" fill="#fff" stroke="#E3E1DA" stroke-width="1.5"/>
-<text x="243" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#20232A">2. Check</text>
-<text x="243" y="88" text-anchor="middle" font-size="12" fill="#5C6470">every section</text>
-<line x1="310" y1="72" x2="328" y2="72" stroke="#5C6470" stroke-width="1.5" marker-end="url(#hw-arr)"/>
-<rect x="332" y="40" width="130" height="64" rx="10" fill="#fff" stroke="#E3E1DA" stroke-width="1.5"/>
-<text x="397" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#20232A">3. Practice</text>
-<text x="397" y="88" text-anchor="middle" font-size="12" fill="#5C6470">the full exam</text>
-<line x1="464" y1="72" x2="482" y2="72" stroke="#5C6470" stroke-width="1.5" marker-end="url(#hw-arr)"/>
-<rect x="486" y="40" width="130" height="64" rx="10" fill="#fff" stroke="#E3E1DA" stroke-width="1.5"/>
-<text x="551" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#20232A">4. Test</text>
-<text x="551" y="88" text-anchor="middle" font-size="12" fill="#5C6470">VE session</text>
-<path d="M397 106 L397 150 L89 150 L89 110" fill="none" stroke="#5C6470" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#hw-arr)"/>
-<text x="243" y="172" text-anchor="middle" font-size="12" fill="#5C6470">miss one? it links you straight back to the lesson</text>
+<defs><marker id="hw-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#666155" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g font-family="Plex Sans, -apple-system, sans-serif">
+<rect x="24" y="40" width="130" height="64" rx="10" fill="#efe8da" stroke="#d4c9ae" stroke-width="1.5"/>
+<text x="89" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#1d1b17">1. Learn</text>
+<text x="89" y="88" text-anchor="middle" font-size="12" fill="#666155">story modules</text>
+<line x1="156" y1="72" x2="174" y2="72" stroke="#666155" stroke-width="1.5" marker-end="url(#hw-arr)"/>
+<rect x="178" y="40" width="130" height="64" rx="10" fill="#efe8da" stroke="#d4c9ae" stroke-width="1.5"/>
+<text x="243" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#1d1b17">2. Check</text>
+<text x="243" y="88" text-anchor="middle" font-size="12" fill="#666155">every section</text>
+<line x1="310" y1="72" x2="328" y2="72" stroke="#666155" stroke-width="1.5" marker-end="url(#hw-arr)"/>
+<rect x="332" y="40" width="130" height="64" rx="10" fill="#efe8da" stroke="#d4c9ae" stroke-width="1.5"/>
+<text x="397" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#1d1b17">3. Practice</text>
+<text x="397" y="88" text-anchor="middle" font-size="12" fill="#666155">the full exam</text>
+<line x1="464" y1="72" x2="482" y2="72" stroke="#666155" stroke-width="1.5" marker-end="url(#hw-arr)"/>
+<rect x="486" y="40" width="130" height="64" rx="10" fill="#efe8da" stroke="#d4c9ae" stroke-width="1.5"/>
+<text x="551" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#1d1b17">4. Test</text>
+<text x="551" y="88" text-anchor="middle" font-size="12" fill="#666155">VE session</text>
+<path d="M397 106 L397 150 L89 150 L89 110" fill="none" stroke="#666155" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#hw-arr)"/>
+<text x="243" y="172" text-anchor="middle" font-size="12" fill="#666155">miss one? it links you straight back to the lesson</text>
 <path d="M536 200 L551 186 L566 200" fill="none" stroke="#B4530A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M536 180 L551 166 L566 180" fill="none" stroke="#1E6E5C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M536 160 L551 146 L566 160" fill="none" stroke="#4A4494" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="551" y="226" text-anchor="middle" font-size="12" fill="#5C6470">pass, then climb</text>
+<text x="551" y="226" text-anchor="middle" font-size="12" fill="#666155">pass, then climb</text>
 </g>
 </svg></section>
 <div class="courses">
 <a class="course tech" href="hub-tech.html"
-   style="--ca: #B4530A; --cad: #8A3F07; --ct: #FBF2EA;">
+   style="--ca: #B4530A; --cad: #8A3F07;">
   <div class="chead"><svg class="rank" width="27" height="15" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#B4530A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h2>Technician</h2></div>
   <p>Start here. The license that puts you on the air, and the course that makes you ready to use it.</p>
   <div class="cprog" data-key="k4dia-tech"><div class="cfill"></div></div>
   <span class="cmeta" data-meta="k4dia-tech">10 modules</span>
 </a>
 <a class="course gen" href="hub-gen.html"
-   style="--ca: #1E6E5C; --cad: #155043; --ct: #EDF5F2;">
+   style="--ca: #1E6E5C; --cad: #155043;">
   <div class="chead"><svg class="rank" width="27" height="24" viewBox="0 0 20 17.5" aria-label="Level 2 mark" role="img"><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#1E6E5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#1E6E5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h2>General</h2></div>
   <p>HF opens end to end. Propagation, the parts bin, and the world on the other side of sunset.</p>
   <div class="cprog" data-key="k4dia-gen"><div class="cfill"></div></div>
   <span class="cmeta" data-meta="k4dia-gen">10 modules</span>
 </a>
 <a class="course extra" href="hub-extra.html"
-   style="--ca: #4A4494; --cad: #37326E; --ct: #F0EFF8;">
+   style="--ca: #4A4494; --cad: #37326E;">
   <div class="chead"><svg class="rank" width="27" height="32" viewBox="0 0 20 24.0" aria-label="Level 3 mark" role="img"><path d="M3 21.0 L10 14.0 L17 21.0" fill="none" stroke="#4A4494" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14.5 L10 7.5 L17 14.5" fill="none" stroke="#4A4494" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#4A4494" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h2>Extra</h2></div>
   <p>Every privilege there is. Then the VE table and an Elmer's chair, where you hand it to the next operator.</p>
   <div class="cprog" data-key="k4dia-extra"><div class="cfill"></div></div>
   <span class="cmeta" data-meta="k4dia-extra">10 modules</span>
 </a></div>
 <p class="ladder">One chevron per level. Earn all three, then take a seat at the VE table.</p>
-<footer class="copyright">© 2026 Anthony Pelfanio, K4DIA. All rights reserved.</footer>
 </main>
+<footer class="site-foot">
+  <div class="foot-call">
+    <img class="foot-logo" src="logo-light.png" width="640" height="166" alt="K4DIA" loading="lazy" decoding="async">
+    <span>Amateur Radio</span>
+  </div>
+  <p>&copy; 2026 Anthony Pelfanio, K4DIA. All rights reserved.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+</footer>
+<script>
+(function () {
+  var head = document.querySelector(".masthead");
+  var toggle = document.querySelector(".menu-toggle");
+  var mobile = document.getElementById("mainnav-mobile");
+  if (!head || !toggle || !mobile) return;
+  toggle.addEventListener("click", function () {
+    var open = head.classList.toggle("menu-open");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  });
+  mobile.addEventListener("click", function (e) {
+    if (e.target.closest("a")) {
+      head.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && head.classList.contains("menu-open")) {
+      head.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+})();
+</script>
 <script>
 (function () {
   document.querySelectorAll(".cprog").forEach(function (p) {
