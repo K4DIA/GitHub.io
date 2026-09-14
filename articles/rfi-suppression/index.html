@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stop the hash: RFI suppression for switching supplies | K4DIA</title>
+<meta name="description" content="Switching supplies are cheap, small, and they hash all over HF. The two-sided suppression plan I run at my station, and the one filter rating that catches people out.">
+<link rel="canonical" href="https://k4dia.com/articles/rfi-suppression/">
+<meta property="og:site_name" content="K4DIA">
+<meta property="og:url" content="https://k4dia.com/articles/rfi-suppression/">
+<link rel="preload" href="../../fonts/IBMPlexSansCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" type="image/png" sizes="32x32" href="../../brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../brand/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Stop the hash: RFI suppression for switching supplies">
+<meta property="og:description" content="Switching supplies are cheap, small, and they hash all over HF. The two-sided suppression plan I run at my station, and the one filter rating that catches people out.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://k4dia.com/articles/rfi-suppression/rfi-card.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <img class="brand-logo" src="../../brand/logo.png" width="640" height="166"
+         alt="K4DIA" fetchpriority="high" decoding="async">
+    <span class="brand-lines"><span>Field &middot; Build &middot; Learn</span><span>Radio brings people together</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../learn/">Learn</a>
+    <a href="../../#projects">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#articles" class="is-here">Articles</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag"><strong>Amateur Radio</strong><span>Curiosity &middot; Experimentation &middot; Real connections</span></div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../learn/"><i>01</i> Learn</a>
+  <a href="../../#projects"><i>02</i> Projects</a>
+  <a href="../../#tools"><i>03</i> Tools</a>
+  <a href="../../downloads/"><i>04</i> Downloads</a>
+  <a href="../../#articles"><i>05</i> Articles</a>
+  <a href="../../#notes"><i>06</i> Notes</a>
+</nav>
+
+<main id="main">
+
+  <article class="article">
+
+    <figure class="article-hero">
+      <img src="rfi-suppression-plan.png" width="1600" height="1205" alt="Hand-drawn station diagram in two parts. Part A, the DC side: a switching power supply feeds a mix 31 ferrite choke, then a bypass capacitor to RF ground, then an EMI and RFI line filter, then the radio, labelled clean DC. Part B, the AC side: the mains cord passes through a second mix 31 choke before reaching the switching supply. A notes panel lists the mix 31 range, five to eight turns per toroid, short capacitor and ground leads, and choking both sides of a noisy supply.">
+      <figcaption>The plan: choke both sides, bypass to RF ground, filter
+        before the radio. Not to scale, field sketch.</figcaption>
+    </figure>
+
+    <header class="articlehead">
+      <p class="crumb"><a href="../../#articles">Articles</a> <span aria-hidden="true">/</span> Station notes</p>
+      <p class="eyebrow">Station notes</p>
+      <h1>Stop the hash</h1>
+      <p class="pagelede">Switching supplies are cheap, small, and they hash
+        all over HF. Here is the two-sided suppression plan I run at my
+        station, and the one filter rating that catches people out.</p>
+      <p class="byline"><span>By Tony Pelfanio, K4DIA</span><span>September 2026</span><span>About 3 minutes</span></p>
+    </header>
+
+    <div class="prose">
+
+      <p>A lot of us run Mean Well LRS-series or similar switching supplies
+        now. 350 watts, small, cheap, and they work. The tradeoff is switching
+        noise, and on HF it shows up as hash across the bands.</p>
+
+      <p>Below is the suppression plan I run at my station. Two sides to it.</p>
+
+      <h2>DC side, supply to radio</h2>
+
+      <p>Mix 31 ferrite choke on the DC leads right at the supply, then a
+        bypass capacitor to RF ground, then an EMI/RFI line filter ahead of the
+        radio. Clean DC out.</p>
+
+      <h2>AC side, mains to supply</h2>
+
+      <p>A second mix 31 choke on the AC cord. A noisy supply radiates in both
+        directions, so choke both sides.</p>
+
+      <h2>Notes from doing this more than once</h2>
+
+      <ul>
+        <li>Mix 31 is the right ferrite for this job. Fair-Rite specifies
+          the material for EMI suppression from 1 MHz up to 500 MHz, and the
+          part of that range which matters for switching hash on HF sits at
+          the bottom end of it.</li>
+        <li>Wind 5 to 8 turns through each toroid if the cord diameter allows.
+          Turns matter more than toroid count.</li>
+        <li>Keep the capacitor and ground leads as short as you can. A long
+          ground lead is an inductor pretending to help.</li>
+      </ul>
+
+      <h2>Sourcing the line filter</h2>
+
+      <p>You do not need to buy one new. Nearly every piece of dead
+        mains-powered electronics has one at the power inlet. Dead PC supplies,
+        microwaves, printers, and washing machines are all donors. If you would
+        rather buy, eBay and the usual online parts houses have them for $15 to
+        $20. And if you would rather build, the filter is simple enough to lay
+        out yourself on perfboard in a small metal enclosure.</p>
+
+      <p><strong>Leave microwaves alone unless you know how to discharge the
+        high-voltage capacitor.</strong> It holds a lethal charge after the
+        oven is unplugged, and it does not care that you only came for the
+        filter at the inlet.</p>
+
+      <figure class="photo">
+        <img src="line-filter-label.jpg" width="900" height="1200" loading="lazy" alt="The label on a Corcom 20EK1 EMI filter, reading 20 amps at 120 or 250 volts, 50 to 60 hertz, with a separate line reading 16 amps at 40 degrees C, 250 volts AC. Below it a schematic of the filter and the component values: two 0.440 millihenry inductors, two 0.1 microfarad X capacitors, two 0.0028 microfarad Y capacitors and a 1.5 megohm bleeder resistor.">
+        <figcaption>Read the whole label. This one says 20 amps across the
+          top and 16 amps at 40 degrees C further down. The second number is
+          the one that matters in a warm shack.</figcaption>
+      </figure>
+
+      <div class="warning">
+        <p class="lead">The warning, because this is where people get burned</p>
+        <p>Match the filter's current rating to your load. The amperage rating
+          is the spec that matters. This supply can deliver 23 amps, and a 100
+          watt HF radio draws 20 or more on transmit. Most inlet filters you
+          salvage from small appliances are rated 3 to 10 amps, sized for the
+          appliance they came out of, and running your radio's full draw
+          through one will overheat the windings. Check the label and pick a
+          filter rated at or above what your rig actually pulls, with margin if
+          your shack runs warm, since current ratings derate in heat.</p>
+        <p>What you do NOT need is a DC-rated filter. The common-mode choke
+          does not care: its two windings carry equal and opposite current, so
+          the core sees the same cancellation on DC as it does on AC, and a
+          250 VAC rating is enormous next to 13.8 volts. The voltage rating is
+          not your constraint. The current rating is.</p>
+      </div>
+
+      <p>Stop the hash before it reaches the receiver and the bands get a lot
+        quieter.</p>
+
+      <p>What is your noise floor doing? If you have fought this fight with a
+        different supply, I would like to hear what worked. Drop me a line.</p>
+
+      <p>73,<br>K4DIA</p>
+
+      <h2 class="refs-head">References</h2>
+      <ol class="refs">
+        <li>Fair-Rite Products, 31 material data sheet. Describes 31 as a MnZn
+          ferrite designed for EMI suppression from as low as 1 MHz up to
+          500 MHz, without the dimensional resonance limits of conventional
+          MnZn materials.
+          <a href="https://www.fair-rite.com/31-material-data-sheet/" rel="nofollow noopener" target="_blank">fair-rite.com</a></li>
+        <li>Corcom 20EK1 filter, pictured above. The label carries both
+          ratings: 20 A at 120/250 V across the top, and 16 A at 40 degrees C
+          below it.</li>
+      </ol>
+
+    </div>
+
+  </article>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call">
+    <img class="foot-logo" src="../../brand/logo-light.png" width="640" height="166"
+         alt="K4DIA" loading="lazy" decoding="async">
+    <span>Amateur Radio</span>
+  </div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  <div class="foot-meta">
+    <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
+    <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+</body>
+</html>

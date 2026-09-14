@@ -1178,6 +1178,25 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   text-transform: uppercase;
 }
 .prose q { quotes: "\201C" "\201D"; font-style: italic; }
+/* A boxed caution inside an article: same warm panel and rust rule the
+   course pages use for an Exam Anchor, so the two read as one system. */
+.prose .warning {
+  background: var(--paper-warm);
+  border: 1px solid var(--paper-line);
+  border-left: 3px solid var(--rust);
+  padding: 1.15rem 1.3rem;
+  margin: 2rem 0;
+}
+.prose .warning p { margin: 0 0 .9rem; font-size: .98rem; line-height: 1.65; }
+.prose .warning p:last-child { margin-bottom: 0; }
+.prose .warning .lead {
+  font: 600 .7rem/1.5 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rust-ink);
+}
+.prose .photo { margin: 2rem 0; }
+
 .prose .kicker {
   margin-top: 1.8rem;
   padding-left: 1.1rem;
