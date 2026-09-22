@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://k4dia.com/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -248,6 +248,16 @@
   <url>
     <loc>https://k4dia.com/projects/radioberry/</loc>
     <lastmod>2026-09-14</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://k4dia.com/rf-workbench/embed-example.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://k4dia.com/rf-workbench/</loc>
+    <lastmod>2026-09-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embedding example – Sideband RF Workbench</title>
+<style>
+  body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: #f4f5f7; color: #15202A; }
+  header, footer { padding: 16px 24px; }
+  /* Option A (recommended): a fixed-height window. The workbench keeps its own sticky search bar and category menu. */
+  .rf-frame { display: block; width: 100%; height: 100vh; border: 0; }
+  /* Option B: grow the iframe to the full page height (see the script below). Sticky navigation will scroll with your page instead. */
+</style>
+</head>
+<body>
+<header><h1>My site</h1><p>Your own header and navigation go here.</p></header>
+
+<!-- Copy from here ============================================ -->
+<iframe class="rf-frame" src="index.html" title="Sideband RF Workbench – RF and circuit calculators" loading="lazy"></iframe>
+<!-- ============================================= to here -->
+
+<!-- Optional, for Option B only: auto-resize the iframe to its content.
+     The workbench posts its height to the parent page whenever it changes. -->
+<script>
+  /*
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.type === 'sideband-height') {
+      document.querySelector('.rf-frame').style.height = e.data.height + 'px';
+    }
+  });
+  */
+</script>
+
+<footer><p>Your own footer.</p></footer>
+</body>
+</html>
