@@ -1491,3 +1491,195 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
 }
 .shot-credit a { color: var(--rust-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
 .shot-credit a:hover { color: var(--rust-deep); }
+
+
+/* ===================================================================== */
+/* DEPTH PASS                                                            */
+/* Elevation and edge-lighting for the flat windows and features, so the */
+/* cards, tool rows and CTAs float the way the hero faceplate does and   */
+/* the way the bench software reads. Nothing here touches a hue: every   */
+/* value is the ink / black / white alpha already used by .panel and     */
+/* .index-row. Appended as its own block so the diff is a clean add and  */
+/* the whole treatment lifts out in one piece if it is ever unwanted.    */
+/* --------------------------------------------------------------------- */
+
+:root {
+  /* Raised on a paper ground: lit top edge, a hair of shade at the foot,
+     a tight contact shadow and a wide ambient one. Ink-valued, never black,
+     to sit right on the warm grounds. */
+  --lift-paper:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(29,27,23,.05),
+    0 2px 4px -2px rgba(29,27,23,.16),
+    0 12px 26px -12px rgba(29,27,23,.26);
+  --lift-paper-hi:
+    inset 0 1px 0 rgba(255,255,255,.70),
+    inset 0 -1px 0 rgba(29,27,23,.06),
+    0 5px 10px -3px rgba(29,27,23,.20),
+    0 26px 48px -14px rgba(29,27,23,.34);
+
+  /* Raised on an olive or ink ground: the same read as an index-row key,
+     highlight off the top, shadow under the foot, thrown wide beneath. */
+  --raise-dark:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.36),
+    0 2px 4px rgba(0,0,0,.26),
+    0 12px 24px -10px rgba(0,0,0,.50);
+  --raise-dark-hi:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -1px 0 rgba(0,0,0,.40),
+    0 4px 8px rgba(0,0,0,.30),
+    0 24px 42px -12px rgba(0,0,0,.60);
+
+  /* A top-lit sheen laid over an existing fill. Applied as background-image
+     so it stacks on top of the fill colour and leaves it exactly as set. */
+  --sheen-paper: linear-gradient(180deg,
+    rgba(255,255,255,.50), rgba(255,255,255,0) 42%, rgba(29,27,23,.022));
+  --sheen-dark: linear-gradient(180deg,
+    rgba(255,255,255,.06), rgba(255,255,255,0) 34%, rgba(0,0,0,.14));
+}
+
+/* --- light paper cards: lift them off the sheet ---------------------- */
+.card,
+.artcard,
+.ruleset,
+.expect,
+.partsgroups details,
+.article-hero,
+.warn,
+.prose .warning {
+  background-image: var(--sheen-paper);
+  box-shadow: var(--lift-paper);
+  transition:
+    box-shadow .18s ease,
+    transform .18s ease,
+    border-color .18s ease,
+    background-color .18s ease;
+}
+
+/* The two that read as pickable get a real hover lift; the reading boxes
+   stay put, just raised. */
+.card:hover,
+.artcard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--lift-paper-hi);
+}
+.card:active,
+.artcard:active { transform: translateY(-1px); }
+
+/* --- the drawing frame inside a card reads as a recessed screen ------ */
+/* Photographs opt out on purpose (they are a cut-out on the paper, not a
+   framed shot), so this only touches the empty placeholder frames. */
+.shot:not(.has-photo) {
+  box-shadow: inset 0 1px 3px rgba(29,27,23,.08);
+}
+
+/* --- dark boxes on the olive / ink grounds: raised keys -------------- */
+.tool-row,
+.tests article,
+.steps li,
+.ranked li {
+  background-image: var(--sheen-dark);
+  box-shadow: var(--raise-dark);
+  transition:
+    box-shadow .18s ease,
+    transform .18s ease,
+    background-color .15s ease;
+}
+/* Only the tool rows are links, so only they lift on hover. The existing
+   rule still darkens the fill; this adds the movement and the shadow. */
+a.tool-row:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--raise-dark-hi);
+}
+a.tool-row:active { transform: translateY(0); }
+
+/* --- the calc note reads as recessed, to play off the raised cards --- */
+.calc {
+  box-shadow:
+    inset 0 2px 5px rgba(29,27,23,.10),
+    inset 0 -1px 0 rgba(255,255,255,.40);
+}
+
+/* --- sticky masthead floats over the page as it scrolls -------------- */
+.masthead {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.50),
+    0 6px 20px -14px rgba(29,27,23,.40);
+}
+
+/* --- filled call-to-action buttons get a pressable, lit face --------- */
+.btn-solid,
+.dlbtn,
+.readmore {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 2px 4px -1px rgba(29,27,23,.30),
+    0 8px 18px -8px rgba(29,27,23,.40);
+  transition:
+    background .15s ease,
+    color .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease,
+    transform .12s ease;
+}
+.btn-solid:hover,
+.dlbtn:hover,
+.readmore:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 4px 8px -2px rgba(29,27,23,.35),
+    0 14px 26px -10px rgba(29,27,23,.50);
+}
+.btn-solid:active,
+.dlbtn:active,
+.readmore:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.35);
+}
+
+/* Motion is a nicety, not the point. With it turned off the elevation all
+   stays; only the lift on hover is dropped. */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .artcard:hover,
+  .card:active,
+  .artcard:active,
+  a.tool-row:hover,
+  a.tool-row:active,
+  .btn-solid:hover,
+  .dlbtn:hover,
+  .readmore:hover,
+  .btn-solid:active,
+  .dlbtn:active,
+  .readmore:active { transform: none; }
+}
+
+/* --- document cover thumbnails on the file lists ------------------- */
+/* The left meta column of a filelist row carries a rendered first-page
+   cover, so a shelf of manuals reads as one. The cover keeps its own
+   proportions (no crop) and sits in a narrower column than the plain
+   spec-sheet rows, with the page/size meta stacked beneath it. */
+.filelist li:has(.doc-cover) { grid-template-columns: 7rem minmax(0, 1fr); align-items: start; }
+.filelist li:has(.doc-cover) .fmeta { grid-auto-flow: row; align-content: start; gap: .55rem; }
+.doc-cover {
+  display: block; width: 100%; height: auto;
+  background: var(--paper-warm);
+  border: 1px solid var(--paper-line);
+  box-shadow:
+    0 2px 4px -2px rgba(29,27,23,.18),
+    0 14px 28px -14px rgba(29,27,23,.30);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+a.doc-cover-link { display: block; }
+a.doc-cover-link:hover .doc-cover,
+a.doc-cover-link:focus-visible .doc-cover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 5px 10px -3px rgba(29,27,23,.22),
+    0 26px 48px -16px rgba(29,27,23,.38);
+}
+@media (prefers-reduced-motion: reduce) {
+  a.doc-cover-link:hover .doc-cover, a.doc-cover-link:focus-visible .doc-cover { transform: none; }
+}
