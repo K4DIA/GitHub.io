@@ -146,6 +146,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://k4dia.com/learn/neets/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://k4dia.com/learn/practice-extra.html</loc>
     <lastmod>2026-09-14</lastmod>
     <priority>0.6</priority>
