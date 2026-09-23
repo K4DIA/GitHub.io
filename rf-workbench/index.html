@@ -15,8 +15,8 @@
 :root{
   /* Only the page background takes the K4DIA desert; the calculators keep their own colours. */
   --ground:#efe8da; --panel:#FBFCFD; --well:#F0F3F6; --ink:#15202A; --ink2:#33414E; --muted:#5B6976;
-  --line:#CBD3DA; --line2:#E1E6EB; --accent:#A9500C; --accent-soft:#F7E8DA; --trace:#1C63A0; --trace2:#0D7A6E; --trace3:#7E48AE;
-  --good:#23724A; --warn:#8C5F0B; --bad:#B0302F; --good-bg:#E1F0E6; --warn-bg:#F6ECD4; --bad-bg:#F6DFDF;
+  --line:#CBD3DA; --line2:#E1E6EB; --accent:#E4571A; --accent-soft:#FBE6D5; --trace:#2563EB; --trace2:#0EA88C; --trace3:#8B34E0;
+  --good:#16A34A; --warn:#E08A0B; --bad:#EF3E36; --good-bg:#DCF6E4; --warn-bg:#FDEECB; --bad-bg:#FCDEDC;
   --cu:#C47733; --diel:#D5E5CD; --dline:#9DBB90; --metal:#8C98A4; --earth:#D9CDB8; --sky:#EAF1F7;
   --shadow:inset 0 1px 0 rgba(255,255,255,.6),0 2px 4px -2px rgba(21,32,42,.10),0 14px 28px -14px rgba(21,32,42,.22);
   --shadow-hi:inset 0 1px 0 rgba(255,255,255,.75),0 5px 10px -3px rgba(21,32,42,.16),0 26px 48px -16px rgba(21,32,42,.32);
@@ -182,7 +182,7 @@ svg text{font-family:var(--f-mono)}
 .chart .ax{stroke:var(--line);stroke-width:1.2;fill:none}
 .chart text{font-size:10px;fill:var(--muted)}
 .chart .axl{fill:var(--ink2);font-weight:500}
-.tr1,.tr2,.tr3,.tr4,.trd{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.tr1,.tr2,.tr3,.tr4,.trd{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
 .tr1{stroke:var(--trace)} .tr2{stroke:var(--trace2)} .tr3{stroke:var(--accent)} .tr4{stroke:var(--trace3)}
 .trd{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4}
 .ar1{fill:color-mix(in srgb,var(--trace) 14%,transparent);stroke:none}
@@ -289,6 +289,11 @@ svg text{font-family:var(--f-mono)}
 .totop svg{width:20px;height:20px}
 @media (prefers-reduced-motion:reduce){.totop{transition:opacity .2s}.totop:hover{transform:none}}
 
+/* ---------- realistic metallic PCB cross-sections ---------- */
+.cu{fill:url(#cuGrad);stroke:#6f4318;stroke-width:.6}
+.diel{fill:url(#fr4Grad);stroke:#8f9a5f;stroke-width:1}
+.metal{fill:url(#metalGrad)}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media (max-width:560px){
   .top-in{flex-wrap:wrap}
@@ -312,6 +317,21 @@ svg text{font-family:var(--f-mono)}
 <path d="M14.7 0.0L3.9 16.7 M309.1 0.0L316.7 5.2 M333.2 16.7L316.7 5.2 M3.9 16.7L0.0 24.1 M333.2 16.7L333.3 16.8 M350.0 29.4L333.3 16.8 M355.3 33.3L350.0 29.4 M355.3 33.3L366.7 42.8 M375.8 50.0L366.7 42.8 M375.8 50.0L383.3 56.8 M395.1 66.7L383.3 56.8 M1416.7 66.3L1414.7 66.7 M1433.3 63.5L1416.7 66.3 M1450.0 61.2L1433.3 63.5 M1466.7 59.6L1450.0 61.2 M1483.3 58.5L1466.7 59.6 M1500.0 58.0L1483.3 58.5 M1516.7 58.2L1500.0 58.0 M1533.3 58.9L1516.7 58.2 M1550.0 60.2L1533.3 58.9 M1566.7 62.1L1550.0 60.2 M1583.3 64.7L1566.7 62.1 M1593.7 66.7L1583.3 64.7 M395.1 66.7L400.0 71.4 M413.5 83.3L400.0 71.4 M1350.0 83.2L1349.6 83.3 M1366.7 78.2L1350.0 83.2 M1383.3 73.6L1366.7 78.2 M1400.0 69.7L1383.3 73.6 M1414.7 66.7L1400.0 69.7 M1593.7 66.7L1600.0 67.9 M413.5 83.3L416.7 86.6 M431.4 100.0L416.7 86.6 M1316.7 95.0L1303.9 100.0 M1333.3 88.9L1316.7 95.0 M1349.6 83.3L1333.3 88.9 M431.4 100.0L433.3 101.9 M449.6 116.7L433.3 101.9 M1266.7 116.1L1265.4 116.7 M1283.3 108.7L1266.7 116.1 M1300.0 101.6L1283.3 108.7 M1303.9 100.0L1300.0 101.6 M449.6 116.7L450.0 117.0 M466.7 131.5L450.0 117.0 M469.1 133.3L466.7 131.5 M1233.3 131.8L1230.2 133.3 M1250.0 123.9L1233.3 131.8 M1265.4 116.7L1250.0 123.9 M469.1 133.3L483.3 144.4 M491.6 150.0L483.3 144.4 M1200.0 148.1L1195.9 150.0 M1216.7 140.0L1200.0 148.1 M1230.2 133.3L1216.7 140.0 M491.6 150.0L500.0 155.4 M516.7 164.5L500.0 155.4 M521.2 166.7L516.7 164.5 M1166.7 163.6L1159.5 166.7 M1183.3 156.0L1166.7 163.6 M1195.9 150.0L1183.3 156.0 M6.4 183.3L0.0 171.2 M521.2 166.7L533.3 171.9 M550.0 177.9L533.3 171.9 M566.7 182.8L550.0 177.9 M568.9 183.3L566.7 182.8 M1116.7 182.9L1115.4 183.3 M1133.3 177.2L1116.7 182.9 M1150.0 170.7L1133.3 177.2 M1159.5 166.7L1150.0 170.7 M6.4 183.3L16.7 198.8 M17.5 200.0L16.7 198.8 M568.9 183.3L583.3 186.6 M600.0 189.7L583.3 186.6 M616.7 192.1L600.0 189.7 M633.3 194.0L616.7 192.1 M650.0 195.4L633.3 194.0 M666.7 196.5L650.0 195.4 M683.3 197.4L666.7 196.5 M700.0 198.0L683.3 197.4 M716.7 198.4L700.0 198.0 M733.3 198.8L716.7 198.4 M750.0 199.0L733.3 198.8 M766.7 199.2L750.0 199.0 M783.3 199.4L766.7 199.2 M800.0 199.6L783.3 199.4 M816.7 199.9L800.0 199.6 M822.8 200.0L816.7 199.9 M1033.3 199.9L1032.4 200.0 M1050.0 198.0L1033.3 199.9 M1066.7 195.4L1050.0 198.0 M1083.3 192.0L1066.7 195.4 M1100.0 187.9L1083.3 192.0 M1115.4 183.3L1100.0 187.9 M17.5 200.0L32.0 216.7 M822.8 200.0L833.3 200.2 M850.0 200.5L833.3 200.2 M866.7 200.9L850.0 200.5 M883.3 201.2L866.7 200.9 M900.0 201.6L883.3 201.2 M916.7 202.0L900.0 201.6 M933.3 202.4L916.7 202.0 M950.0 202.6L933.3 202.4 M966.7 202.7L950.0 202.6 M983.3 202.5L966.7 202.7 M1000.0 202.1L983.3 202.5 M1016.7 201.2L1000.0 202.1 M1032.4 200.0L1016.7 201.2 M32.0 216.7L33.3 218.1 M50.0 232.8L33.3 218.1 M50.8 233.3L50.0 232.8 M50.8 233.3L66.7 244.3 M76.9 250.0L66.7 244.3 M76.9 250.0L83.3 253.5 M100.0 260.7L83.3 253.5 M116.7 266.4L100.0 260.7 M117.8 266.7L116.7 266.4 M117.8 266.7L133.3 270.7 M150.0 273.9L133.3 270.7 M166.7 276.1L150.0 273.9 M183.3 277.4L166.7 276.1 M200.0 278.0L183.3 277.4 M216.7 278.1L200.0 278.0 M233.3 277.7L216.7 278.1 M250.0 277.2L233.3 277.7 M266.7 276.8L250.0 277.2 M283.3 276.6L266.7 276.8 M300.0 277.2L283.3 276.6 M316.7 279.1L300.0 277.2 M333.3 283.0L316.7 279.1 M334.2 283.3L333.3 283.0 M334.2 283.3L350.0 290.7 M361.7 300.0L350.0 290.7 M361.7 300.0L366.7 305.7 M373.6 316.7L366.7 305.7 M373.6 316.7L379.9 333.3 M379.9 333.3L383.2 350.0 M383.2 350.0L383.3 351.6 M384.4 366.7L383.3 351.6 M384.4 366.7L384.2 383.3 M383.3 394.1L382.9 400.0 M384.2 383.3L383.3 394.1 M382.9 400.0L380.8 416.7 M380.8 416.7L378.0 433.3 M378.0 433.3L374.8 450.0 M374.8 450.0L371.2 466.7 M371.2 466.7L367.4 483.3 M366.7 486.2L363.2 500.0 M367.4 483.3L366.7 486.2 M363.2 500.0L358.9 516.7 M358.9 516.7L354.6 533.3 M354.6 533.3L350.4 550.0 M350.0 551.7L346.1 566.7 M350.4 550.0L350.0 551.7 M346.1 566.7L341.9 583.3 M341.9 583.3L338.0 600.0 M338.0 600.0L334.4 616.7 M333.3 621.8L330.9 633.3 M334.4 616.7L333.3 621.8 M330.9 633.3L327.8 650.0 M327.8 650.0L325.1 666.7 M325.1 666.7L322.9 683.3 M322.9 683.3L321.3 700.0 M321.3 700.0L320.2 716.7 M320.2 716.7L319.7 733.3 M319.7 733.3L319.9 750.0 M319.9 750.0L320.8 766.7 M320.8 766.7L322.4 783.3 M322.4 783.3L324.8 800.0 M324.8 800.0L328.1 816.7 M328.1 816.7L332.3 833.3 M332.3 833.3L333.3 836.6 M337.3 850.0L333.3 836.6 M337.3 850.0L343.2 866.7 M343.2 866.7L350.0 882.8 M350.2 883.3L350.0 882.8 M350.2 883.3L358.0 900.0" fill="none" stroke="#8d7f63" stroke-width="1.6" opacity="0.50"/>
 <path d="M33.3 16.2L32.9 16.7 M48.9 0.0L33.3 16.2 M250.5 0.0L266.7 10.4 M275.8 16.7L266.7 10.4 M32.9 16.7L21.8 33.3 M275.8 16.7L283.3 22.6 M296.5 33.3L283.3 22.6 M16.7 43.4L13.7 50.0 M21.8 33.3L16.7 43.4 M296.5 33.3L300.0 36.7 M313.9 50.0L300.0 36.7 M13.7 50.0L8.3 66.7 M313.9 50.0L316.7 53.2 M328.8 66.7L316.7 53.2 M8.3 66.7L5.1 83.3 M328.8 66.7L333.3 73.1 M341.2 83.3L333.3 73.1 M5.1 83.3L4.0 100.0 M341.2 83.3L350.0 98.1 M351.3 100.0L350.0 98.1 M1483.3 98.8L1466.8 100.0 M1500.0 98.2L1483.3 98.8 M1516.7 98.3L1500.0 98.2 M1533.3 99.1L1516.7 98.3 M1543.8 100.0L1533.3 99.1 M4.0 100.0L4.9 116.7 M351.3 100.0L359.4 116.7 M1383.3 115.9L1380.9 116.7 M1400.0 111.5L1383.3 115.9 M1416.7 107.7L1400.0 111.5 M1433.3 104.5L1416.7 107.7 M1450.0 101.9L1433.3 104.5 M1466.7 100.0L1450.0 101.9 M1466.8 100.0L1466.7 100.0 M1543.8 100.0L1550.0 100.5 M1566.7 102.7L1550.0 100.5 M1583.3 105.6L1566.7 102.7 M1600.0 109.1L1583.3 105.6 M4.9 116.7L7.8 133.3 M359.4 116.7L364.7 133.3 M1333.3 133.1L1332.8 133.3 M1350.0 126.8L1333.3 133.1 M1366.7 121.1L1350.0 126.8 M1380.9 116.7L1366.7 121.1 M7.8 133.3L12.7 150.0 M364.7 133.3L366.7 147.3 M367.2 150.0L366.7 147.3 M1300.0 147.5L1294.5 150.0 M1316.7 140.1L1300.0 147.5 M1332.8 133.3L1316.7 140.1 M12.7 150.0L16.7 159.3 M20.1 166.7L16.7 159.3 M366.7 156.5L365.9 166.7 M367.2 150.0L366.7 156.5 M1266.7 163.6L1260.6 166.7 M1283.3 155.4L1266.7 163.6 M1294.5 150.0L1283.3 155.4 M20.1 166.7L30.2 183.3 M365.9 166.7L359.5 183.3 M1233.3 180.7L1228.2 183.3 M1250.0 172.1L1233.3 180.7 M1260.6 166.7L1250.0 172.1 M30.2 183.3L33.3 187.5 M44.0 200.0L33.3 187.5 M350.0 194.3L344.6 200.0 M359.5 183.3L350.0 194.3 M1200.0 197.5L1194.6 200.0 M1216.7 189.3L1200.0 197.5 M1228.2 183.3L1216.7 189.3 M44.0 200.0L50.0 206.0 M62.7 216.7L50.0 206.0 M333.3 207.6L318.3 216.7 M344.6 200.0L333.3 207.6 M1166.7 212.3L1155.0 216.7 M1183.3 205.3L1166.7 212.3 M1194.6 200.0L1183.3 205.3 M62.7 216.7L66.7 219.6 M83.3 229.9L66.7 219.6 M90.5 233.3L83.3 229.9 M283.3 231.5L278.3 233.3 M300.0 224.9L283.3 231.5 M316.7 217.4L300.0 224.9 M318.3 216.7L316.7 217.4 M616.7 232.6L607.6 233.3 M633.3 231.3L616.7 232.6 M650.0 230.2L633.3 231.3 M666.7 229.1L650.0 230.2 M683.3 228.2L666.7 229.1 M700.0 227.3L683.3 228.2 M716.7 226.6L700.0 227.3 M733.3 226.0L716.7 226.6 M750.0 225.5L733.3 226.0 M766.7 225.1L750.0 225.5 M783.3 224.9L766.7 225.1 M800.0 224.9L783.3 224.9 M816.7 225.0L800.0 224.9 M833.3 225.3L816.7 225.0 M850.0 225.7L833.3 225.3 M866.7 226.4L850.0 225.7 M883.3 227.2L866.7 226.4 M900.0 228.1L883.3 227.2 M916.7 229.2L900.0 228.1 M933.3 230.3L916.7 229.2 M950.0 231.5L933.3 230.3 M966.7 232.7L950.0 231.5 M976.5 233.3L966.7 232.7 M1100.0 231.1L1083.7 233.3 M1116.7 227.9L1100.0 231.1 M1133.3 223.7L1116.7 227.9 M1150.0 218.5L1133.3 223.7 M1155.0 216.7L1150.0 218.5 M90.5 233.3L100.0 237.7 M116.7 243.4L100.0 237.7 M133.3 247.5L116.7 243.4 M149.1 250.0L133.3 247.5 M216.7 248.5L204.5 250.0 M233.3 245.5L216.7 248.5 M250.0 241.7L233.3 245.5 M266.7 237.0L250.0 241.7 M278.3 233.3L266.7 237.0 M516.7 247.5L509.6 250.0 M533.3 243.0L516.7 247.5 M550.0 239.8L533.3 243.0 M566.7 237.4L550.0 239.8 M583.3 235.5L566.7 237.4 M600.0 234.0L583.3 235.5 M607.6 233.3L600.0 234.0 M976.5 233.3L983.3 233.8 M1000.0 234.7L983.3 233.8 M1016.7 235.3L1000.0 234.7 M1033.3 235.6L1016.7 235.3 M1050.0 235.5L1033.3 235.6 M1066.7 234.8L1050.0 235.5 M1083.3 233.4L1066.7 234.8 M1083.7 233.3L1083.3 233.4 M149.1 250.0L150.0 250.1 M166.7 251.4L150.0 250.1 M183.3 251.5L166.7 251.4 M200.0 250.5L183.3 251.5 M204.5 250.0L200.0 250.5 M483.3 264.7L481.1 266.7 M500.0 254.1L483.3 264.7 M509.6 250.0L500.0 254.1 M481.1 266.7L466.9 283.3 M466.7 283.7L457.7 300.0 M466.9 283.3L466.7 283.7 M457.7 300.0L450.9 316.7 M450.0 318.9L445.1 333.3 M450.9 316.7L450.0 318.9 M445.1 333.3L439.8 350.0 M439.8 350.0L434.8 366.7 M433.3 371.3L429.8 383.3 M434.8 366.7L433.3 371.3 M429.8 383.3L424.9 400.0 M424.9 400.0L419.9 416.7 M416.7 427.6L415.0 433.3 M419.9 416.7L416.7 427.6 M415.0 433.3L409.9 450.0 M409.9 450.0L404.9 466.7 M400.0 483.3L400.0 483.3 M404.9 466.7L400.0 483.3 M400.0 483.3L394.9 500.0 M394.9 500.0L390.0 516.7 M390.0 516.7L385.2 533.3 M383.3 540.2L380.5 550.0 M385.2 533.3L383.3 540.2 M380.5 550.0L376.0 566.7 M376.0 566.7L371.7 583.3 M371.7 583.3L367.8 600.0 M366.7 605.2L364.0 616.7 M367.8 600.0L366.7 605.2 M364.0 616.7L360.6 633.3 M360.6 633.3L357.6 650.0 M357.6 650.0L355.1 666.7 M355.1 666.7L353.1 683.3 M353.1 683.3L351.6 700.0 M351.6 700.0L350.7 716.7 M350.7 716.7L350.4 733.3 M350.4 733.3L350.7 750.0 M350.7 750.0L351.8 766.7 M351.8 766.7L353.5 783.3 M353.5 783.3L356.0 800.0 M356.0 800.0L359.4 816.7 M359.4 816.7L363.7 833.3 M363.7 833.3L366.7 842.7 M368.9 850.0L366.7 842.7 M368.9 850.0L374.9 866.7 M1333.3 859.7L1318.4 866.7 M1350.0 855.4L1333.3 859.7 M1366.7 855.1L1350.0 855.4 M1383.3 859.8L1366.7 855.1 M1394.4 866.7L1383.3 859.8 M374.9 866.7L382.1 883.3 M1300.0 877.0L1291.0 883.3 M1316.7 867.4L1300.0 877.0 M1318.4 866.7L1316.7 867.4 M1394.4 866.7L1400.0 870.3 M1412.7 883.3L1400.0 870.3 M382.1 883.3L383.3 885.9 M390.2 900.0L383.3 885.9 M1266.7 899.7L1266.3 900.0 M1283.3 888.1L1266.7 899.7 M1291.0 883.3L1283.3 888.1 M1412.7 883.3L1416.7 887.6 M1425.1 900.0L1416.7 887.6" fill="none" stroke="#8d7f63" stroke-width="0.8" opacity="0.30"/>
 <path d="M83.3 7.7L69.3 16.7 M100.0 0.4L83.3 7.7 M101.3 0.0L100.0 0.4 M182.2 0.0L183.3 0.3 M200.0 6.3L183.3 0.3 M216.7 14.1L200.0 6.3 M221.4 16.7L216.7 14.1 M66.7 18.6L51.6 33.3 M69.3 16.7L66.7 18.6 M221.4 16.7L233.3 24.2 M246.1 33.3L233.3 24.2 M50.0 35.3L40.3 50.0 M51.6 33.3L50.0 35.3 M246.1 33.3L250.0 36.7 M264.4 50.0L250.0 36.7 M33.3 64.7L32.5 66.7 M40.3 50.0L33.3 64.7 M264.4 50.0L266.7 52.7 M278.4 66.7L266.7 52.7 M32.5 66.7L28.2 83.3 M278.4 66.7L283.3 74.7 M288.9 83.3L283.3 74.7 M28.2 83.3L26.3 100.0 M288.9 83.3L296.1 100.0 M26.3 100.0L27.0 116.7 M296.1 100.0L300.0 116.5 M300.0 116.7L300.0 116.5 M27.0 116.7L30.0 133.3 M300.0 116.7L300.7 133.3 M30.0 133.3L33.3 143.4 M35.8 150.0L33.3 143.4 M300.0 137.1L297.6 150.0 M300.7 133.3L300.0 137.1 M1433.3 147.9L1423.6 150.0 M1450.0 144.9L1433.3 147.9 M1466.7 142.7L1450.0 144.9 M1483.3 141.2L1466.7 142.7 M1500.0 140.5L1483.3 141.2 M1516.7 140.6L1500.0 140.5 M1533.3 141.4L1516.7 140.6 M1550.0 143.0L1533.3 141.4 M1566.7 145.3L1550.0 143.0 M1583.3 148.5L1566.7 145.3 M1589.7 150.0L1583.3 148.5 M35.8 150.0L44.7 166.7 M297.6 150.0L290.1 166.7 M1383.3 161.4L1368.3 166.7 M1400.0 156.1L1383.3 161.4 M1416.7 151.6L1400.0 156.1 M1423.6 150.0L1416.7 151.6 M1589.7 150.0L1600.0 152.5 M44.7 166.7L50.0 174.1 M57.7 183.3L50.0 174.1 M283.3 175.4L276.8 183.3 M290.1 166.7L283.3 175.4 M1333.3 181.4L1329.1 183.3 M1350.0 174.0L1333.3 181.4 M1366.7 167.3L1350.0 174.0 M1368.3 166.7L1366.7 167.3 M57.7 183.3L66.7 192.2 M76.5 200.0L66.7 192.2 M266.7 191.9L255.9 200.0 M276.8 183.3L266.7 191.9 M1300.0 198.0L1296.1 200.0 M1316.7 189.4L1300.0 198.0 M1329.1 183.3L1316.7 189.4 M76.5 200.0L83.3 204.8 M100.0 213.7L83.3 204.8 M107.6 216.7L100.0 213.7 M233.3 211.8L221.0 216.7 M250.0 203.4L233.3 211.8 M255.9 200.0L250.0 203.4 M1266.7 216.3L1265.9 216.7 M1283.3 207.1L1266.7 216.3 M1296.1 200.0L1283.3 207.1 M107.6 216.7L116.7 219.9 M133.3 223.9L116.7 219.9 M150.0 226.1L133.3 223.9 M166.7 226.5L150.0 226.1 M183.3 225.3L166.7 226.5 M200.0 222.5L183.3 225.3 M216.7 218.1L200.0 222.5 M221.0 216.7L216.7 218.1 M1250.0 225.8L1236.1 233.3 M1265.9 216.7L1250.0 225.8 M750.0 249.6L743.9 250.0 M766.7 248.7L750.0 249.6 M783.3 248.2L766.7 248.7 M800.0 247.9L783.3 248.2 M816.7 247.9L800.0 247.9 M833.3 248.3L816.7 247.9 M850.0 248.9L833.3 248.3 M866.7 249.8L850.0 248.9 M869.1 250.0L866.7 249.8 M1216.7 243.7L1203.2 250.0 M1233.3 234.9L1216.7 243.7 M1236.1 233.3L1233.3 234.9 M633.3 264.4L623.7 266.7 M650.0 261.1L633.3 264.4 M666.7 258.3L650.0 261.1 M683.3 255.8L666.7 258.3 M700.0 253.8L683.3 255.8 M716.7 252.1L700.0 253.8 M733.3 250.7L716.7 252.1 M743.9 250.0L733.3 250.7 M869.1 250.0L883.3 251.0 M900.0 252.4L883.3 251.0 M916.7 254.0L900.0 252.4 M933.3 255.9L916.7 254.0 M950.0 257.9L933.3 255.9 M966.7 260.1L950.0 257.9 M983.3 262.5L966.7 260.1 M1000.0 264.8L983.3 262.5 M1013.7 266.7L1000.0 264.8 M1166.7 263.9L1156.1 266.7 M1183.3 258.4L1166.7 263.9 M1200.0 251.5L1183.3 258.4 M1203.2 250.0L1200.0 251.5 M583.3 278.4L571.0 283.3 M600.0 272.9L583.3 278.4 M616.7 268.3L600.0 272.9 M623.7 266.7L616.7 268.3 M1013.7 266.7L1016.7 267.1 M1033.3 269.2L1016.7 267.1 M1050.0 271.0L1033.3 269.2 M1066.7 272.5L1050.0 271.0 M1083.3 273.4L1066.7 272.5 M1100.0 273.6L1083.3 273.4 M1116.7 272.9L1100.0 273.6 M1133.3 271.2L1116.7 272.9 M1150.0 268.2L1133.3 271.2 M1156.1 266.7L1150.0 268.2 M550.0 293.6L539.8 300.0 M566.7 285.2L550.0 293.6 M571.0 283.3L566.7 285.2 M533.3 304.5L518.7 316.7 M539.8 300.0L533.3 304.5 M516.7 318.6L503.1 333.3 M518.7 316.7L516.7 318.6 M500.0 337.1L490.7 350.0 M503.1 333.3L500.0 337.1 M483.3 361.4L480.3 366.7 M490.7 350.0L483.3 361.4 M480.3 366.7L471.2 383.3 M466.7 392.3L463.0 400.0 M471.2 383.3L466.7 392.3 M463.0 400.0L455.5 416.7 M450.0 429.7L448.5 433.3 M455.5 416.7L450.0 429.7 M448.5 433.3L441.8 450.0 M441.8 450.0L435.5 466.7 M433.3 472.7L429.5 483.3 M435.5 466.7L433.3 472.7 M429.5 483.3L423.6 500.0 M423.6 500.0L418.1 516.7 M416.7 521.3L412.8 533.3 M418.1 516.7L416.7 521.3 M412.8 533.3L407.7 550.0 M407.7 550.0L403.0 566.7 M400.0 578.2L398.6 583.3 M403.0 566.7L400.0 578.2 M398.6 583.3L394.4 600.0 M394.4 600.0L390.7 616.7 M390.7 616.7L387.4 633.3 M387.4 633.3L384.5 650.0 M383.3 658.2L382.1 666.7 M384.5 650.0L383.3 658.2 M382.1 666.7L380.1 683.3 M380.1 683.3L378.7 700.0 M378.7 700.0L377.9 716.7 M377.9 716.7L377.7 733.3 M377.7 733.3L378.2 750.0 M378.2 750.0L379.4 766.7 M379.4 766.7L381.4 783.3 M381.4 783.3L383.3 794.8 M384.2 800.0L383.3 794.8 M1333.3 798.1L1331.2 800.0 M1350.0 788.6L1333.3 798.1 M1366.7 784.4L1350.0 788.6 M1383.3 785.5L1366.7 784.4 M1400.0 792.4L1383.3 785.5 M1409.8 800.0L1400.0 792.4 M384.2 800.0L387.7 816.7 M1316.7 811.5L1311.8 816.7 M1331.2 800.0L1316.7 811.5 M1409.8 800.0L1416.7 805.5 M1426.0 816.7L1416.7 805.5 M387.7 816.7L392.1 833.3 M1300.0 827.5L1294.9 833.3 M1311.8 816.7L1300.0 827.5 M1426.0 816.7L1433.3 826.0 M1437.7 833.3L1433.3 826.0 M392.1 833.3L397.6 850.0 M1283.3 844.6L1278.5 850.0 M1294.9 833.3L1283.3 844.6 M1437.7 833.3L1447.0 850.0 M397.6 850.0L400.0 856.3 M404.0 866.7L400.0 856.3 M1266.7 861.4L1261.7 866.7 M1278.5 850.0L1266.7 861.4 M1447.0 850.0L1450.0 855.7 M1454.7 866.7L1450.0 855.7 M404.0 866.7L411.4 883.3 M1250.0 877.3L1243.8 883.3 M1261.7 866.7L1250.0 877.3 M1454.7 866.7L1461.6 883.3 M411.4 883.3L416.7 893.6 M420.0 900.0L416.7 893.6 M1233.3 892.1L1224.1 900.0 M1243.8 883.3L1233.3 892.1 M1461.6 883.3L1466.7 896.4 M1467.9 900.0L1466.7 896.4" fill="none" stroke="#8d7f63" stroke-width="0.8" opacity="0.30"/></svg></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="cuGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F6CB86"/><stop offset=".16" stop-color="#E3A659"/>
+    <stop offset=".5" stop-color="#C87C36"/><stop offset=".82" stop-color="#A9631F"/>
+    <stop offset="1" stop-color="#8C4E17"/>
+  </linearGradient>
+  <linearGradient id="fr4Grad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#D7CB8B"/><stop offset="1" stop-color="#B6A85F"/>
+  </linearGradient>
+  <linearGradient id="metalGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#DEE3E9"/><stop offset=".5" stop-color="#B4BBC3"/>
+    <stop offset="1" stop-color="#8E959E"/>
+  </linearGradient>
+</defs></svg>
 
 <header class="k4-mast">
   <a class="k4-brand" href="/" aria-label="K4DIA home">
@@ -568,7 +588,7 @@ function xsec(kind,L){
     case 'rwg': {s=`<rect x="60" y="22" width="240" height="108" fill="none" stroke="var(--metal)" stroke-width="7"/>`;for(let i=1;i<12;i++){const x=64+i*232/12,a=sin(PI*i/12);s+=`<path class="fld-e" d="M${x},${76-44*a}V${76+44*a}" opacity="${0.35+0.65*a}"/><path class="fld-e" d="M${x-3},${76-44*a+5}l3,-5l3,5" opacity="${0.35+0.65*a}"/>`;}s+=dimH(60,300,12,'a '+L.a)+dimV(318,22,130,'b '+L.b)+`<text class="dt2" x="66" y="146">TE₁₀ E-field</text>`;break;}
     case 'cwg': {s=`<circle cx="180" cy="76" r="60" fill="none" stroke="var(--metal)" stroke-width="7"/>`;for(let i=-4;i<=4;i++){const x=180+i*12,hh2=sqrt(max(0,56*56-(i*12)**2))*cos(i/4.6*PI/2);s+=`<path class="fld-e" d="M${x},${76-hh2}V${76+hh2}" opacity="${0.35+0.65*cos(i/4.6*PI/2)}"/>`;}s+=dimH(124,236,8,'2a '+L.D)+`<text class="dt2" x="252" y="140">TE₁₁ E-field</text>`;break;}
   }
-  return `<svg viewBox="0 0 360 ${kind==='bcss'?140:150}" role="img" aria-label="Cross-section">${s}</svg>`;
+  return `<svg viewBox="0 0 400 ${kind==='bcss'?140:150}" role="img" aria-label="Cross-section">${s}</svg>`;
 }
 
 /* Smith chart */
@@ -749,21 +769,21 @@ def({id:'spectrum',cat:'prop',full:true,title:'Spectrum Locator',
 def({id:'linkbudget',cat:'prop',wide:true,title:'Link Budget',
   blurb:'Follow the signal from transmitter to receiver through every gain and loss. See the received level and the fade margin you have left.',
   keys:'received power rx level fade margin system gain eirp path loss',
-  inputs:[N('pt','Transmit power','dBm',20),N('lt','Tx feeder & connector loss','dB',1),N('gt','Tx antenna gain','dBi',23),N('f','Frequency','freq',5.8,'GHz'),N('d','Path length','dist',10,'km'),N('lx','Other losses (rain, foliage, body)','dB',3),N('gr','Rx antenna gain','dBi',23),N('lr','Rx feeder & connector loss','dB',1),N('sens','Receiver sensitivity','dBm',-82)],
-  outputs:[O('prx','Received signal level','dBm',{big:true,d:1}),O('margin','Fade margin','dB',{d:1}),O('eirp','EIRP','dBm',{d:1}),O('eirpw','EIRP (watts)','pow'),O('fspl','Free-space path loss','dB',{d:1}),O('prxw','Received power','pow'),O('dmax','Range at 0 dB margin','dist')],
-  calc(v){const {pt,lt,gt,f,d,lx,gr,lr,sens}=v;if(!ok(pt,lt,gt,lx,gr,lr)||!pos(f,d))return {};
-    const fspl=FSPL(d,f),eirp=pt-lt+gt,prx=eirp-fspl-lx+gr-lr,r={prx,eirp,eirpw:dBm2W(eirp),fspl,prxw:dBm2W(prx)};
+  inputs:[S('ptu','Transmit power in',[['dBm',0],['watts',1]],0),N('ptd','Transmit power','dBm',20,null,{show:v=>v.ptu!==1}),N('pt','Transmit power','pow',0.1,'W',{show:v=>v.ptu===1}),N('lt','Tx feeder & connector loss','dB',1),N('gt','Tx antenna gain','dBi',23),N('f','Frequency','freq',5.8,'GHz'),N('d','Path length','dist',10,'km'),N('lx','Other losses (rain, foliage, body)','dB',3),N('gr','Rx antenna gain','dBi',23),N('lr','Rx feeder & connector loss','dB',1),N('sens','Receiver sensitivity','dBm',-82)],
+  outputs:[O('ptxdbm','Transmit power','dBm',{d:1}),O('ptxw','Transmit power','pow'),O('prx','Received signal level','dBm',{big:true,d:1}),O('margin','Fade margin','dB',{d:1}),O('eirp','EIRP','dBm',{d:1}),O('eirpw','EIRP (watts)','pow'),O('fspl','Free-space path loss','dB',{d:1}),O('prxw','Received power','pow'),O('dmax','Range at 0 dB margin','dist')],
+  calc(v){const pt=v.ptu===1?(pos(v.pt)?W2dBm(v.pt):NaN):v.ptd;const {lt,gt,f,d,lx,gr,lr,sens}=v;if(!ok(pt,lt,gt,lx,gr,lr)||!pos(f,d))return {};
+    const fspl=FSPL(d,f),eirp=pt-lt+gt,prx=eirp-fspl-lx+gr-lr,r={ptxdbm:pt,ptxw:dBm2W(pt),prx,eirp,eirpw:dBm2W(eirp),fspl,prxw:dBm2W(prx)};
     if(isN(sens)){r.margin=prx-sens;r.dmax=d*undB20(r.margin);
       r._status=r.margin>=20?['good','Robust: 20 dB or more of margin rides out deep multipath fades.']:r.margin>=10?['good','Healthy: typical fixed-link margin.']:r.margin>=0?['warn','Marginal: the link closes, but fades will cause dropouts.']:['bad',`Link fails. It is ${fix(-r.margin,1)} dB short of the receiver sensitivity.`];}
     return r;},
   viz(v,r){if(!isN(r.prx))return '';
-    const st=[['Tx out',v.pt],['Feeder',v.pt-v.lt],['EIRP',r.eirp],['Path',r.eirp-r.fspl],['Other',r.eirp-r.fspl-v.lx],['Rx ant',r.eirp-r.fspl-v.lx+v.gr],['Rx in',r.prx]];
+    const P=r.ptxdbm;const st=[['Tx out',P],['Feeder',P-v.lt],['EIRP',r.eirp],['Path',r.eirp-r.fspl],['Other',r.eirp-r.fspl-v.lx],['Rx ant',r.eirp-r.fspl-v.lx+v.gr],['Rx in',r.prx]];
     const ys=st.map(s=>s[1]).concat(isN(v.sens)?[v.sens]:[]);const [a,b]=yRange(ys,{pad:0.14});
     return chart({w:720,h:250,m:{l:52,b:30,t:18},x:{min:-0.3,max:6.3,ticks:[0,1,2,3,4,5,6],fmt:i=>st[i]?st[i][0]:''},y:{min:a,max:b,label:'dBm'},
       series:[{pts:st.map((s,i)=>[i,s[1]]),cls:'tr1',fill:'ar1'}],hl:isN(v.sens)?[{y:v.sens,label:`Rx sensitivity ${fix(v.sens,1)} dBm`,left:true}]:[],
       mk:st.map((s,i)=>({x:i,y:s[1],label:fix(s[1],1),side:i<4?'r':'l'})),aria:'Signal level through the link'});},
-  fx:['EIRP = P<sub>tx</sub> − L<sub>tx</sub> + G<sub>tx</sub>','FSPL = 20·log₁₀(4π·d·f / c)','P<sub>rx</sub> = EIRP − FSPL − L<sub>other</sub> + G<sub>rx</sub> − L<sub>rx</sub>','Margin = P<sub>rx</sub> − Sensitivity'],
-  notes:'Assumes clear line of sight with the first Fresnel zone unobstructed. Use the Fresnel, Hata or knife-edge cards when the path is not clear.'
+  fx:['P<sub>tx</sub>(dBm) = 30 + 10·log₁₀(P<sub>tx</sub> in W)','EIRP = P<sub>tx</sub> − L<sub>tx</sub> + G<sub>tx</sub>','FSPL = 20·log₁₀(4π·d·f / c)','P<sub>rx</sub> = EIRP − FSPL − L<sub>other</sub> + G<sub>rx</sub> − L<sub>rx</sub>','Margin = P<sub>rx</sub> − Sensitivity'],
+  notes:'Transmit power can be entered in dBm or watts; feeder, connector, path and gain figures stay in dB, as is normal. Assumes clear line of sight with the first Fresnel zone unobstructed. Use the Fresnel, Hata or knife-edge cards when the path is not clear.'
 });
 
 def({id:'fspl',cat:'prop',title:'Free Space Path Loss',
@@ -1397,6 +1417,244 @@ def({id:'reflatt',cat:'atten',title:'Reflection Attenuator',
   viz(v,r){if(!r._r)return '';return SC.svg(400,160,`<rect class="blk" x="130" y="24" width="140" height="72" rx="4"/><text class="sl" x="200" y="56" text-anchor="middle">3 dB 90°</text><text class="sl" x="200" y="70" text-anchor="middle">hybrid</text>${SC.t(40,40,'In','end')}${SC.w(40,40,130,40)}${SC.t(360,40,'Out')}${SC.w(270,40,360,40)}${SC.w(160,96,160,104)}${SC.el('R',160,104,160,140,'',oh(r._r),'l')}${SC.gnd(160,140)}${SC.w(240,96,240,104)}${SC.el('R',240,104,240,140,'',oh(r._r),'r')}${SC.gnd(240,140)}<text class="sl" x="134" y="128" text-anchor="end">R</text><text class="sl" x="256" y="128">R</text>`,'Reflection attenuator');},
   fx:['|Γ| = 10<sup>−A/20</sup>','R = Z₀·(1 − |Γ|)/(1 + |Γ|)   or   Z₀·(1 + |Γ|)/(1 − |Γ|)']
 });
+/* ================= ANTENNAS & MATCHING (extra) ================= */
+const LM=x=>`${fmtNum(x,3)} m`;
+const LMi=x=>`${fmtNum(x,3)} m · ${fmtNum(x/0.0254,3)} in`;
+function antTable(head,rows){return {html:`<div class="tbw"><table class="tb"><thead><tr>${head.map((h,i)=>`<th${i?' class="r"':''}>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${i?' class="r"':''}>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`};}
+
+/* ---- Yagi-Uda ---- */
+def({id:'yagi',cat:'ant',wide:true,title:'Yagi-Uda Designer',
+  blurb:'Starting element lengths and boom spacings for a Yagi with a reflector, a driven element and any number of directors, plus an estimated gain. Trim the driven element for match and optimise in a modeller.',
+  keys:'yagi uda antenna director reflector driven element gain beam boom design ham vhf uhf front to back',
+  inputs:[N('f','Design frequency','freq',146,'MHz'),S('nd','Directors',[1,2,3,4,5,6,8,10,12,15].map(k=>[String(k),k]),3),N('k','Velocity / end-effect factor','',0.95)],
+  outputs:[O('gain','Estimated gain','dBi',{big:true,d:1}),O('boom','Boom length','mft'),O('ne','Elements','',{txt:true}),O('tbl','Element lengths and boom positions','',{blk:true})],
+  calc(v){if(!pos(v.f,v.k))return {};const lam=C0/v.f,nd=v.nd;
+    const Lr=0.495*lam*v.k,Ld=0.473*lam*v.k,Ldir=0.440*lam*v.k;
+    const sRD=0.15*lam,sD1=0.18*lam,sDD=0.25*lam;
+    let p=0;const rows=[['Reflector',LMi(Lr),'0']];p+=sRD;rows.push(['Driven',LMi(Ld),LM(p)]);p+=sD1;
+    for(let i=1;i<=nd;i++){rows.push(['Director '+i,LMi(Ldir),LM(p)]);if(i<nd)p+=sDD;}
+    const boom=p,BL=boom/lam,gain=11.4+10*log10(BL+0.2);
+    return {gain,boom,ne:`${nd+2} total: 1 reflector, 1 driven, ${nd} director${nd>1?'s':''}`,tbl:antTable(['Element','Length','Boom position'],rows),_lam:lam,_Lr:Lr,_Ld:Ld,_Ldir:Ldir,_boom:boom,_nd:nd,_sRD:sRD,_sD1:sD1,_sDD:sDD};},
+  viz(v,r){if(!r._lam)return '';const W=720,H=180,x0=44,x1=W-30,y=96,sc=(x1-x0)/(r._boom||1),maxL=r._Lr;
+    const el=(len,xx,col)=>{const h=len/maxL*56;return `<line x1="${xx.toFixed(1)}" y1="${(y-h).toFixed(1)}" x2="${xx.toFixed(1)}" y2="${(y+h).toFixed(1)}" style="stroke:${col};stroke-width:3.4;stroke-linecap:round"/>`;};
+    let acc=0,s=`<line x1="${x0}" y1="${y}" x2="${(x0+r._boom*sc).toFixed(1)}" y2="${y}" style="stroke:var(--metal);stroke-width:4;stroke-linecap:round"/>`;
+    s+=el(r._Lr,x0,'var(--trace3)');acc+=r._sRD;s+=el(r._Ld,x0+acc*sc,'var(--accent)');acc+=r._sD1;
+    for(let i=0;i<r._nd;i++){s+=el(r._Ldir,x0+acc*sc,'var(--trace)');if(i<r._nd-1)acc+=r._sDD;}
+    s+=`<text class="dt2" x="${x0}" y="${y+74}">reflector</text><text class="dt2" x="${x0+r._sRD*sc}" y="${y-64}">driven</text><text class="dt2" x="${x1}" y="${y+74}" text-anchor="end">directors →</text>`;
+    return SC.svg(W,H,s,'Yagi boom layout, top view');},
+  fx:['Reflector ≈ 0.495·λ·K,  Driven ≈ 0.473·λ·K,  Directors ≈ 0.440·λ·K','Spacings: R→DE ≈ 0.15λ,  DE→D1 ≈ 0.18λ,  D→D ≈ 0.25λ','Gain(dBi) ≈ 11.4 + 10·log₁₀(boom/λ + 0.2)   (rough estimate)'],
+  notes:'These are thin-wire starting dimensions. Thicker elements need a small length correction, and the driven element is always trimmed for lowest SWR. Finish the design in a NEC modeller such as 4nec2 or EZNEC.'
+});
+
+/* ---- J-Pole & Slim Jim ---- */
+def({id:'jpole',cat:'ant',wide:true,title:'J-Pole & Slim Jim',
+  blurb:'End-fed half-wave antenna with an integrated quarter-wave matching stub. Gives the classic J-Pole and the folded Slim Jim dimensions for your band.',
+  keys:'j-pole jpole slim jim end fed half wave matching stub 2m vhf uhf antenna copper pipe',
+  inputs:[N('f','Frequency','freq',146,'MHz'),N('vf','Velocity factor (tube / wire)','',0.95)],
+  outputs:[O('jl','J-Pole: long radiator','mft',{big:true}),O('js','J-Pole: matching stub','mft'),O('jf','J-Pole: feed tap from bottom','mft'),O('jg','Conductor spacing','mft'),O('sl','Slim Jim: overall length','mft',{big:true}),O('sr','Slim Jim: radiator (folded ½λ)','mft'),O('ss','Slim Jim: matching stub','mft'),O('sf','Slim Jim: feed tap from bottom','mft')],
+  calc(v){if(!pos(v.f,v.vf))return {};const lam=C0/v.f;
+    return {jl:0.75*lam*v.vf,js:0.25*lam*v.vf,jf:0.025*lam,jg:0.02*lam,
+      sl:0.75*lam*v.vf,sr:0.5*lam*v.vf,ss:0.25*lam*v.vf,sf:0.025*lam,_lam:lam,_vf:v.vf};},
+  viz(v,r){if(!r._lam)return '';const lam=r._lam,vf=r._vf,W=420,H=250,scale=180/(0.75*lam*vf),bx=120,by=H-24;
+    const jl=0.75*lam*vf*scale,js=0.25*lam*vf*scale,gap=26;
+    let s=`<line class="cu" x1="${bx}" y1="${by}" x2="${bx}" y2="${by-jl}" style="stroke-width:5"/>`;
+    s+=`<line class="cu" x1="${bx+gap}" y1="${by}" x2="${bx+gap}" y2="${by-js}" style="stroke-width:5"/>`;
+    s+=`<line class="cu" x1="${bx}" y1="${by}" x2="${bx+gap}" y2="${by}" style="stroke-width:5"/>`;
+    const fy=by-0.025*lam*scale;s+=`<circle cx="${bx}" cy="${fy}" r="4" style="fill:var(--accent)"/><circle cx="${bx+gap}" cy="${fy}" r="4" style="fill:var(--accent)"/><text class="dt" x="${bx+gap+10}" y="${fy+4}">feed 50 Ω</text>`;
+    s+=`<text class="dt2" x="${bx-8}" y="${by-jl+4}" text-anchor="end">radiator</text><text class="dt2" x="${bx+gap+8}" y="${by-js+4}">stub</text><text class="dt" x="${bx-8}" y="${by-jl/2}" text-anchor="end">${LM(0.75*lam*vf)}</text>`;
+    return SC.svg(W,H,s,'J-Pole outline');},
+  fx:['λ = c/f','J-Pole: radiator ≈ 0.75·λ·VF,  stub ≈ 0.25·λ·VF,  feed ≈ 0.025λ up','Slim Jim: overall ≈ 0.75·λ·VF, radiator ≈ 0.5·λ·VF, stub ≈ 0.25·λ·VF'],
+  notes:'VF ≈ 0.95 for copper pipe or wire, a little lower for insulated wire. Move the feed tap up or down a few millimetres for the lowest SWR. The Slim Jim gives a touch more gain and a lower angle than the J-Pole.'
+});
+
+/* ---- End-Fed Half-Wave & random wire ---- */
+def({id:'efhw',cat:'ant',wide:true,title:'End-Fed Half-Wave & Random Wire',
+  blurb:'Half-wave wire length for an EFHW on any band and its harmonics, plus the classic non-resonant random-wire lengths that stay clear of high-impedance points.',
+  keys:'efhw end fed half wave random wire length magic lengths multiband antenna 49:1 9:1 unun harmonic',
+  inputs:[N('f','Band / frequency','freq',7.1,'MHz'),N('k','Wire velocity factor','',0.96)],
+  outputs:[O('hw','Half-wave length','mft',{big:true}),O('harm','Also a half-wave multiple on','',{txt:true}),O('rec','Recommended random-wire lengths','',{blk:true})],
+  calc(v){if(!pos(v.f,v.k))return {};const lam=C0/v.f,hw=lam/2*v.k;
+    const harm=[2,3,4].map(n=>`${fmtNum(v.f*n/1e6,4)} MHz (${n}×)`).join(', ');
+    const feet=[29,35.5,41,58,71,84,107,119,148,203,347,407,423];
+    const rows=feet.map(ft=>[`${ft} ft`,`${fmtNum(ft*0.3048,2)} m`]);
+    return {hw,harm,rec:antTable(['Length (ft)','Length (m)'],rows),_lam:lam};},
+  viz(v,r){if(!r._lam)return '';const W=720,H=90,x0=40,x1=W-40,y=44;
+    let s=`<line class="cu" x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" style="stroke-width:4"/><circle cx="${x0}" cy="${y}" r="5" style="fill:var(--accent)"/><rect x="${x0-30}" y="${y-14}" width="24" height="28" rx="3" class="blk"/><text class="dt2" x="${x0-18}" y="${y+4}" text-anchor="middle">49:1</text><text class="dt" x="${(x0+x1)/2}" y="${y-10}" text-anchor="middle">${LM(r.hw)} half-wave wire</text><text class="dt2" x="${x1}" y="${y-10}" text-anchor="end">far end (high Z)</text>`;
+    return SC.svg(W,H,s,'End-fed half-wave');},
+  fx:['Half-wave ≈ 0.5·λ·K   (≈ 143·K / f<sub>MHz</sub> metres)','An EFHW is also a half-wave multiple on 2f, 3f, 4f … so it works on harmonically related bands'],
+  notes:'An EFHW is fed at a high-impedance point through a 49:1 (2401:50) transformer. The random-wire lengths above are chosen to avoid being a half-wave multiple on the HF bands, so a 9:1 unun and a tuner see a manageable impedance. Avoid lengths near a half-wavelength on any band you use.'
+});
+
+/* ---- Helical (axial mode) ---- */
+def({id:'helix',cat:'ant',wide:true,title:'Helical Antenna (Axial Mode)',
+  blurb:'Circularly-polarised axial-mode helix: circumference, pitch, turns, gain, beamwidth, axial ratio, feed impedance and reflector size.',
+  keys:'helical antenna axial mode helix circular polarization satellite turns pitch gain kraus reflector',
+  inputs:[N('f','Frequency','freq',1575,'MHz'),N('cl','Circumference C / λ','',1.0),N('a','Pitch angle','°',13),N('n','Number of turns','',10)],
+  outputs:[O('g','Gain (estimate)','dBi',{big:true,d:1}),O('C','Circumference','mft'),O('D','Coil diameter','mft'),O('S','Turn spacing (pitch)','mft'),O('len','Axial length','mft'),O('bw','Half-power beamwidth','°',{d:1}),O('ar','Axial ratio','',{d:3}),O('z','Feed impedance (approx)','Ω',{d:0}),O('gp','Reflector diameter (≥0.8λ)','mft')],
+  calc(v){if(!pos(v.f,v.cl,v.n)||!isN(v.a))return {};const lam=C0/v.f,C=v.cl*lam,D=C/PI,S=C*tan(rad(v.a)),sl=S/lam;
+    let _w='';if(v.cl<0.75||v.cl>1.33)_w='Axial mode needs C/λ roughly 0.75–1.33; outside that range the pattern breaks up.';
+    const g=10*log10(15*v.cl*v.cl*v.n*sl),bw=52/(v.cl*sqrt(v.n*sl)),ar=(2*v.n+1)/(2*v.n),z=140*v.cl;
+    return {g,C,D,S,len:v.n*S,bw,ar,z,gp:max(0.8*lam,D*1.15),_w:_w?[_w]:null,_lam:lam,_n:v.n};},
+  viz(v,r){if(!r._lam)return '';const W=720,H=190,x0=110,y=95,turns=min(r._n,14),coilW=Math.min(560,turns*38),ry=48,step=coilW/turns;
+    let d=`M${x0},${y}`;for(let i=0;i<=turns*24;i++){const t=i/24,ang=t*TAU,px=x0+t*step,py=y-ry*sin(ang);d+=` L${px.toFixed(1)},${py.toFixed(1)}`;}
+    let s=`<line x1="${x0-16}" y1="${y-64}" x2="${x0-16}" y2="${y+64}" style="stroke:var(--metal);stroke-width:6;stroke-linecap:round"/><text class="dt2" x="${x0-24}" y="${y+80}" text-anchor="middle">reflector</text>`;
+    s+=`<path d="${d}" style="fill:none;stroke:var(--cu);stroke-width:3.4;stroke-linejoin:round"/>`;
+    if(r._n>14)s+=`<text class="dt2" x="${x0+coilW+10}" y="${y+4}">… ${r._n} turns</text>`;
+    s+=`<text class="dt" x="${x0+coilW/2}" y="${y+80}" text-anchor="middle">${r._n} turns, ${fix(v.a,0)}° pitch</text>`;
+    return SC.svg(W,H,s,'Axial-mode helix, side view');},
+  fx:['C = (C/λ)·λ,   D = C/π,   S = C·tan(α)','Gain(dBi) ≈ 10·log₁₀(15·(C/λ)²·N·S/λ)   (Kraus)','HPBW ≈ 52 / ((C/λ)·√(N·S/λ)),   AR = (2N+1)/2N,   Z ≈ 140·(C/λ) Ω'],
+  notes:'The Kraus gain formula is optimistic beyond about 12–15 turns. Mount the helix over a ground plane or cup reflector at least 0.8λ across and match the roughly 140 Ω feed to 50 Ω.'
+});
+
+/* ---- Log-Periodic Dipole Array ---- */
+def({id:'lpda',cat:'ant',wide:true,title:'Log-Periodic Dipole Array (LPDA)',
+  blurb:'Carrel design of a wideband LPDA: number of elements, apex angle, boom length and the length and spacing of every dipole from τ and σ.',
+  keys:'log periodic dipole array lpda wideband antenna tau sigma carrel design directional',
+  inputs:[N('f1','Lowest frequency','freq',50,'MHz'),N('f2','Highest frequency','freq',1300,'MHz'),N('tau','Scale factor τ','',0.88),N('sig','Spacing factor σ','',0.05)],
+  outputs:[O('ne','Elements N','',{big:true,txt:true}),O('alpha','Apex half-angle α','°',{d:2}),O('boom','Boom length','mft'),O('l1','Longest element (½λ at f₁)','mft'),O('gest','Typical directivity','',{txt:true}),O('tbl','Element lengths and spacings','',{blk:true})],
+  calc(v){if(!pos(v.f1,v.f2,v.tau,v.sig)||v.f2<=v.f1||v.tau>=1||v.tau<=0.7)return {};
+    const alpha=atan((1-v.tau)/(4*v.sig)),Bar=1.1+7.7*pow(1-v.tau,2)/tan(alpha),Bs=(v.f2/v.f1)*Bar,N=ceil(1+ln(Bs)/ln(1/v.tau));
+    const lamMax=C0/v.f1,L1=lamMax/2;let R=(L1/2)/tan(alpha);const P=[];for(let n=0;n<N;n++){P.push({len:L1*pow(v.tau,n),R});R*=v.tau;}
+    const boom=P[0].R-P[N-1].R,rows=[];for(let n=0;n<N;n++){const d=n<N-1?(P[n].R-P[n+1].R):0;rows.push(['#'+(n+1),LM(P[n].len),n<N-1?LM(d):'—']);}
+    const gest=v.tau>=0.92?'10–11 dBi':v.tau>=0.88?'8.5–10 dBi':v.tau>=0.84?'7.5–8.5 dBi':'6.5–7.5 dBi';
+    return {ne:`${N} dipoles`,alpha:deg(alpha),boom,l1:L1,gest,tbl:antTable(['Element','Length','Spacing to next'],rows),_P:P,_boom:boom,_L1:L1};},
+  viz(v,r){if(!r._P)return '';const W=720,H=210,x0=40,x1=W-20,y=110,sc=(x1-x0)/(r._boom||1),maxL=r._L1;
+    let s=`<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" style="stroke:var(--metal);stroke-width:3"/>`;const R0=r._P[0].R;
+    for(const p of r._P){const xx=x0+(R0-p.R)*sc,h=p.len/maxL*74;s+=`<line x1="${xx.toFixed(1)}" y1="${(y-h).toFixed(1)}" x2="${xx.toFixed(1)}" y2="${(y+h).toFixed(1)}" style="stroke:var(--trace);stroke-width:2.6;stroke-linecap:round"/>`;}
+    s+=`<text class="dt2" x="${x0}" y="${y+92}">longest (f₁)</text><text class="dt2" x="${x1}" y="${y+92}" text-anchor="end">shortest (f₂), feed →</text>`;
+    return SC.svg(W,H,s,'LPDA element layout');},
+  fx:['α = atan[(1 − τ)/(4σ)]','B<sub>s</sub> = (f₂/f₁)·[1.1 + 7.7(1−τ)²·cot α],   N = 1 + ln(B<sub>s</sub>)/ln(1/τ)','Lₙ = L₁·τⁿ⁻¹,   spacing dₙ = R<sub>n</sub> − R<sub>n+1</sub>,   Rₙ₊₁ = τ·Rₙ'],
+  notes:'Element lengths and spacings follow the Carrel design. Feed at the short (high-frequency) end with a phase-reversing boom line, characteristic impedance about 50–75 Ω. Add a little length for element diameter and trim.'
+});
+
+/* ---- Pyramidal / Conical Horn ---- */
+def({id:'horn',cat:'ant',wide:true,title:'Horn Antenna (Pyramidal / Conical)',
+  blurb:'Gain, beamwidths and optimum flare length of a pyramidal or conical horn from its aperture, or the aperture needed for a target gain.',
+  keys:'horn antenna pyramidal conical gain aperture flare waveguide microwave beamwidth',
+  inputs:[S('m','Type',[['Pyramidal',0],['Conical',1]],0),N('f','Frequency','freq',10,'GHz'),N('aE','Aperture height a_E (E-plane)','len',7,'cm',{show:v=>v.m===0}),N('aH','Aperture width a_H (H-plane)','len',9,'cm',{show:v=>v.m===0}),N('dia','Aperture diameter','len',8,'cm',{show:v=>v.m===1}),N('eff','Aperture efficiency','%',51)],
+  outputs:[O('g','Gain','dBi',{big:true,d:1}),O('bwe','Beamwidth (E-plane)','°',{d:1}),O('bwh','Beamwidth (H-plane)','°',{d:1}),O('le','Optimum axial length (E)','len'),O('lh','Optimum axial length (H)','len'),O('sq','Square aperture for +3 dB more','',{txt:true})],
+  calc(v){if(!pos(v.f,v.eff))return {};const lam=C0/v.f,e=v.eff/100;
+    if(v.m===1){if(!pos(v.dia))return {};const g=dB10(e*pow(PI*v.dia/lam,2)),bw=70*lam/v.dia;
+      return {g,bwe:bw,bwh:bw,le:v.dia*v.dia/(3*lam),lh:v.dia*v.dia/(3*lam),_lam:lam,_type:1,_ap:[v.dia]};}
+    if(!pos(v.aE,v.aH))return {};const A=v.aE*v.aH,g=dB10(e*4*PI*A/(lam*lam));
+    return {g,bwe:56*lam/v.aE,bwh:67*lam/v.aH,le:v.aE*v.aE/(3*lam),lh:v.aH*v.aH/(2*lam),sq:'about '+fmtNum(sqrt(2)*max(v.aE,v.aH)*100,3)+' cm per side',_lam:lam,_type:0,_ap:[v.aH,v.aE]};},
+  viz(v,r){if(!r._lam)return '';const W=420,H=210,x0=60,cy=105,wg=26,mouth=r._type===1?r._ap[0]:r._ap[0],sc=Math.min(150/mouth,150/r._lam),mh=Math.min(150,mouth*sc),L=170;
+    const wy=22;let s=`<rect class="metal" x="${x0}" y="${cy-wg/2}" width="46" height="${wg}"/>`;
+    s+=`<path class="metal" d="M${x0+46},${cy-wg/2} L${x0+46+L},${cy-mh/2} L${x0+46+L},${cy+mh/2} L${x0+46},${cy+wg/2} Z" style="opacity:.9"/>`;
+    s+=`<line x1="${x0+46+L}" y1="${cy-mh/2}" x2="${x0+46+L}" y2="${cy+mh/2}" style="stroke:var(--ink2);stroke-width:1.4"/>`;
+    s+=`<text class="dt" x="${x0+46+L/2}" y="${cy+mh/2+22}" text-anchor="middle">${r._type===1?'Ø '+fmtNum(mouth*100,3)+' cm':fmtNum(r._ap[0]*100,3)+' cm'}</text><text class="dt2" x="${x0}" y="${cy-wg/2-6}">waveguide</text>`;
+    return SC.svg(W,H,s,'Horn profile');},
+  fx:['Pyramidal: G = ε·4π·a<sub>E</sub>·a<sub>H</sub> / λ²','Conical: G = ε·(π·D/λ)²   (ε ≈ 0.51 optimum)','HPBW<sub>E</sub> ≈ 56λ/a<sub>E</sub>,  HPBW<sub>H</sub> ≈ 67λ/a<sub>H</sub>,  optimum L ≈ a²/(2–3 λ)'],
+  notes:'Aperture efficiency of an optimum-gain horn is about 51 %. Longer horns reach higher efficiency (up to ~80 %) because the aperture phase error is smaller. Feed from the matching rectangular or circular waveguide.'
+});
+
+/* ---- Phased array / beam steering ---- */
+def({id:'phasedarray',cat:'ant',wide:true,title:'Phased Array & Beam Steering',
+  blurb:'Progressive phase shift and time delay to steer a uniform linear array to a chosen angle, with the resulting beamwidth, directivity and array-factor pattern.',
+  keys:'phased array beam steering progressive phase shift beamforming linear array grating beamwidth directivity',
+  inputs:[N('f','Frequency','freq',3,'GHz'),N('n','Number of elements','',8),N('d','Element spacing','',0.5),S('du','Spacing unit',[['λ',0],['mm',1]],0),N('th','Steer angle from broadside','°',30)],
+  outputs:[O('ph','Phase shift per element','°',{big:true,d:1}),O('dt','Time delay per element','time'),O('bw','Half-power beamwidth','°',{d:2}),O('dir','Directivity (est.)','dBi',{d:1}),O('gl','Grating lobe','',{txt:true})],
+  calc(v){if(!pos(v.f,v.n)||!isN(v.th)||!pos(v.d))return {};const lam=C0/v.f,d=v.du===1?v.d/1000:v.d*lam,dl=d/lam,th=rad(v.th);
+    const beta=-360*dl*sin(th),dt=d*sin(th)/C0,bwr=0.886*lam/(v.n*d*cos(th)),bw=deg(bwr),dir=dB10(v.n*2*dl>0?2*v.n*dl:v.n);
+    const glOK=dl<=1/(1+abs(sin(th)));
+    return {ph:beta,dt:abs(dt),bw:isFinite(bw)?bw:NaN,dir:dB10(2*v.n*dl),gl:glOK?`None (spacing ≤ ${fmtNum(1/(1+abs(sin(th))),3)}λ limit)`:`Present: spacing exceeds ${fmtNum(1/(1+abs(sin(th))),3)}λ`,_n:v.n,_dl:dl,_th:th,_beta:beta};},
+  viz(v,r){if(!isN(r._beta))return '';const N=r._n,dl=r._dl,beta=rad(r._beta);const angs=sweep(-90,90,361);
+    const af=angs.map(a=>{const psi=TAU*dl*sin(rad(a))+beta;const s=abs(sin(N*psi/2)),den=abs(sin(psi/2));const A=den<1e-6?N:s/den;return [a,20*log10(max(A/N,1e-3))];});
+    return chart({w:720,h:230,x:{min:-90,max:90,ticks:[-90,-60,-30,0,30,60,90],label:'angle from broadside (°)'},y:{min:-40,max:2,label:'dB',ticks:[-40,-30,-20,-10,-3,0]},series:[{pts:af,fill:'ar1'}],vl:[{x:v.th}],hl:[{y:-3,cls:'hl2',lcls:'hll2'}],aria:'Array factor pattern'});},
+  fx:['β = −(2π·d/λ)·sin θ₀   (progressive phase, per element)','Δt = d·sin θ₀ / c   (true time delay)','HPBW ≈ 0.886·λ / (N·d·cos θ₀),   D ≈ 10·log₁₀(2N·d/λ) dBi'],
+  notes:'Phase steering is frequency-dependent and squints with frequency; true time delay does not. Directivity is the uniform-array estimate for d ≈ λ/2. Watch the grating-lobe limit as you widen spacing or scan further.'
+});
+
+/* ---- Grating lobe ---- */
+def({id:'grating',cat:'ant',title:'Grating Lobe Limit',
+  blurb:'Maximum element spacing before grating lobes appear for a given scan angle, and the angle any grating lobe would sit at.',
+  keys:'grating lobe element spacing array scan angle lambda maximum spacing aliasing',
+  inputs:[N('f','Frequency','freq',3,'GHz'),N('th','Maximum scan angle','°',45),N('d','Element spacing','',0.6,null,{opt:true}),S('du','Spacing unit',[['λ',0],['mm',1]],0)],
+  outputs:[O('dmax','Max spacing (no grating lobe)','',{big:true,txt:true}),O('dmaxmm','Max spacing','mft'),O('stat','Your spacing','',{txt:true}),O('gla','Grating lobe angle','',{txt:true})],
+  calc(v){if(!pos(v.f)||!isN(v.th))return {};const lam=C0/v.f,lim=1/(1+abs(sin(rad(v.th))));
+    const r={dmax:`${fmtNum(lim,3)} λ`,dmaxmm:lim*lam};
+    if(pos(v.d)){const dl=v.du===1?v.d/1000/lam:v.d;if(dl<=lim){r.stat=`${fmtNum(dl,3)}λ — OK, below the ${fmtNum(lim,3)}λ limit`;r._info=['No grating lobe for scans up to this angle.'];}
+      else{const sg=sin(rad(v.th))-1/dl;r.stat=`${fmtNum(dl,3)}λ — exceeds the ${fmtNum(lim,3)}λ limit`;r.gla=abs(sg)<=1?`${fmtNum(deg(asin(sg)),1)}° from broadside`:'beyond real space';r._warn=['A grating lobe appears at this spacing and scan angle.'];}}
+    return r;},
+  fx:['No grating lobe while  d/λ ≤ 1 / (1 + |sin θ<sub>scan</sub>|)','Grating lobe angle:  sin θ<sub>g</sub> = sin θ₀ − λ/d'],
+  notes:'For a broadside array (no scan) the limit is one wavelength; half-wavelength spacing is the safe default that allows scanning to the horizon.'
+});
+
+/* ---- Dielectric Resonator Antenna (cylindrical) ---- */
+def({id:'dra',cat:'ant',wide:true,title:'Dielectric Resonator Antenna',
+  blurb:'Resonant frequency and radiation Q of a cylindrical dielectric resonator antenna in the broadside HEM₁₁δ mode, from its permittivity and dimensions.',
+  keys:'dielectric resonator antenna dra ceramic cylindrical hem11 resonant frequency permittivity mongia',
+  inputs:[N('er','Dielectric constant εr','',10),N('a','Radius a','len',5,'mm'),N('h','Height h','len',5,'mm')],
+  outputs:[O('f','Resonant frequency (HEM₁₁δ)','freq',{big:true}),O('q','Radiation Q','',{d:1}),O('bw','Impedance bandwidth (S≤2)','%',{d:1}),O('ratio','Aspect ratio a/h','',{d:3})],
+  calc(v){if(!pos(v.er,v.a,v.h))return {};const ah=v.a/(2*v.h);
+    const ka=(6.324/sqrt(v.er+2))*(0.27+0.36*ah+0.02*ah*ah);const f=ka*C0/(TAU*v.a);
+    const q=0.01007*pow(v.er,1.3)*ka*(1+100*Math.exp(-2.05*(v.a/(2*v.h)*(0.5-0.0125*v.a/(2*v.h)))));
+    const bw=q>0?(2-1)/(sqrt(2)*q)*100:NaN;
+    return {f,q,bw,ratio:v.a/v.h};},
+  fx:['ka = (6.324/√(εr+2))·[0.27 + 0.36(a/2h) + 0.02(a/2h)²]','f = ka·c / (2π·a)   (Mongia / Kishk, HEM₁₁δ)','BW = (s − 1) / (Q·√s)   at VSWR s'],
+  notes:'A semi-empirical model (Mongia and Kishk) accurate to a few percent for 0.4 < a/h < 6 and εr from about 8 to 40. Higher εr shrinks the antenna but narrows the bandwidth. Feed by a probe or a slot in the ground plane.'
+});
+
+/* ================= MATCHING (extra) ================= */
+
+/* ---- Single-stub tuner ---- */
+def({id:'stub',cat:'match',wide:true,title:'Single-Stub Tuner',
+  blurb:'Match a complex load with one shunt stub: the distance from the load to the stub and the stub length, for a short- or open-circuit stub, both solutions.',
+  keys:'single stub tuner matching shunt stub short open transmission line smith distance length',
+  inputs:[N('z0','Line impedance Z₀','Ω',50),N('R','Load resistance R','Ω',25),N('X','Load reactance X','Ω',-40),N('f','Frequency','freq',146,'MHz'),N('vf','Velocity factor','',0.66),S('st','Stub type',[['Short-circuit',0],['Open-circuit',1]],0)],
+  outputs:[O('d1','Distance d (solution 1)','',{big:true,txt:true}),O('l1','Stub length (solution 1)','',{txt:true}),O('d2','Distance d (solution 2)','',{txt:true}),O('l2','Stub length (solution 2)','',{txt:true})],
+  calc(v){if(!pos(v.z0,v.f,v.vf)||!ok(v.R,v.X)||v.R<=0)return {};
+    const zl=[v.R/v.z0,v.X/v.z0];// normalized
+    // reflection coeff
+    const gd=[(zl[0]-1),(zl[1])],gden=[(zl[0]+1),(zl[1])];
+    const g=cx.div(gd,gden);const gm=hypot(g[0],g[1]),gp=atan2(g[1],g[0]);
+    const lamG=v.vf*C0/v.f;const outs=[];
+    // two d solutions where real part of admittance = 1
+    for(const sgn of [1,-1]){
+      // solve using standard formulas
+      const R=v.R/v.z0,Xn=v.X/v.z0;
+      let t;const A=R;const denom=R-1;
+      if(Math.abs(R-1)<1e-9){t=-Xn/2;}else{const disc=R*((1-R)*(1-R)+Xn*Xn);t=(Xn+sgn*sqrt(disc))/(R-1);}
+      let d=atan(t)/TAU;if(d<0)d+=0.5; // in wavelengths (0..0.5)
+      // stub susceptance to cancel
+      const num=R*R*t-(1-Xn*t)*(Xn+t),den=R*R+(Xn+t)*(Xn+t);const B=num/den; // normalized susceptance at that point (b of load side)
+      // stub must provide -B
+      let l;const bs=-B;
+      if(v.st===0){ // short stub: b=-cot(2π l) -> for shunt short stub Y=-j cot(betal); susceptance = -cot; set -cot(2πl)=bs
+        l=-atan(1/bs)/TAU;}
+      else{ l=atan(bs)/TAU;}
+      if(l<0)l+=0.5;
+      outs.push({d,l});
+    }
+    const fmt=w=>`${fmtNum(w,4)} λ · ${LM(w*lamG)}`;
+    return {d1:fmt(outs[0].d),l1:fmt(outs[0].l),d2:fmt(outs[1].d),l2:fmt(outs[1].l),_lamG:lamG,_o:outs};},
+  viz(v,r){if(!r._o)return '';const o=r._o[0],W=440,H=160,y=60,x0=30,load=W-40,sx=load-90;
+    let s=`${SC.t(x0,y,'Z₀','end')}${SC.w(x0,y,sx,y)}${SC.dot(sx,y)}${SC.w(sx,y,load,y)}<rect class="blk" x="${load-6}" y="${y-16}" width="34" height="32" rx="3"/><text class="sl" x="${load+11}" y="${y+4}" text-anchor="middle">Z<tspan dy="3" font-size="8">L</tspan></text>`;
+    s+=`${SC.w(sx,y,sx,y+56)}<rect class="blk" x="${sx-16}" y="${y+56}" width="32" height="18" rx="2"/><text class="sl" x="${sx}" y="${y+68}" text-anchor="middle">${v.st===0?'short':'open'}</text>`;
+    s+=`<text class="dt" x="${(sx+load)/2}" y="${y-10}" text-anchor="middle">d = ${fmtNum(o.d,4)} λ</text><text class="dt" x="${sx+22}" y="${y+40}">stub ${fmtNum(o.l,4)} λ</text>`;
+    return SC.svg(W,H,s,'Single-stub tuner');},
+  fx:['Place a shunt stub a distance d from the load where the line admittance is Y = Y₀(1 + jb)','Stub susceptance −b cancels the imaginary part','Short stub: b = −cot(2πℓ/λ);  open stub: b = tan(2πℓ/λ)'],
+  notes:'Lengths are in guided wavelengths (λ·VF). Two spacing/length pairs match any load; the one with the shorter lengths usually gives the wider bandwidth. Verify on the Smith Chart card.'
+});
+
+/* ---- Common-mode choke / current balun ---- */
+def({id:'choke',cat:'match',wide:true,title:'RF Choke / Current Balun',
+  blurb:'Air-wound coax choke (ugly balun): the number of turns of coiled coax needed to reach a target common-mode choking reactance, and its inductance.',
+  keys:'rf choke current balun common mode choke ugly balun coax coil 1:1 feedline choke air core',
+  inputs:[N('f','Frequency','freq',14.2,'MHz'),N('dia','Coil diameter','len',110,'mm'),N('od','Coax outer diameter','len',10.3,'mm'),N('xt','Target choking reactance','Ω',1000)],
+  outputs:[O('nt','Turns needed','',{big:true,d:0}),O('L','Coil inductance','ind'),O('x','Reactance at f','Ω',{d:0}),O('len','Coax used','mft')],
+  calc(v){if(!pos(v.f,v.dia,v.od,v.xt))return {};const w=TAU*v.f,r=v.dia/2,mu0=4e-7*PI;
+    // solenoid: L = mu0 * N^2 * A / len, len = N*od  => L = mu0 * N * A / od ; X=wL -> N = X*od/(w*mu0*A)
+    const A=PI*r*r,N=v.xt*v.od/(w*mu0*A);const Nr=max(1,Math.round(N));const L=mu0*Nr*A/v.od,x=w*L,coax=Nr*PI*v.dia;
+    let _w='';if(Nr<3)_w='Very few turns; an air choke is weak here. Use a ferrite-core choke (type 31 or 43) for a compact, high-impedance current balun.';
+    return {nt:Nr,L,x,len:coax,_w:_w?[_w]:null,_dia:v.dia,_nt:Nr};},
+  viz(v,r){if(!r._nt)return '';const W=520,H=150,x0=90,y=75,turns=min(r._nt,16),coilW=min(360,turns*24),ry=40,step=coilW/max(turns,1);
+    let d=`M${x0},${y}`;for(let i=0;i<=turns*24;i++){const t=i/24,ang=t*TAU,px=x0+t*step,py=y-ry*sin(ang);d+=` L${px.toFixed(1)},${py.toFixed(1)}`;}
+    let s=`<path d="${d}" style="fill:none;stroke:var(--ink2);stroke-width:4;stroke-linejoin:round"/><text class="dt" x="${x0+coilW/2}" y="${y+64}" text-anchor="middle">${r._nt} turns of coax, ${fix(v.dia*1000,0)} mm coil</text>`;
+    return SC.svg(W,H,s,'Coax choke coil');},
+  fx:['Solenoid: L ≈ μ₀·N²·A/ℓ,   with coil length ℓ = N·(coax OD)','So L ≈ μ₀·N·A / OD   and   X = 2πf·L','Turns: N ≈ X·OD / (2πf·μ₀·A),   A = π(dia/2)²'],
+  notes:'An air-wound coax coil is the simple "ugly balun". Its choking is reactive and narrowband. For broadband, high-impedance current baluns use several turns of coax on a type 31 (HF) or type 43 (VHF) ferrite core, which add resistance as well as reactance.'
+});
 /* ================= TRANSMISSION LINES & PCB ================= */
 function msHJ(w,h,t,er){let we=w;if(t>0)we=w+(t/PI)*(1+ln(w/h>=1/(2*PI)?2*h/t:4*PI*w/t));const u=we/h,u0=w/h;
   const ee=(er+1)/2+(er-1)/2*(pow(1+12/u0,-0.5)+(u0<1?0.04*pow(1-u0,2):0));
@@ -1967,11 +2225,23 @@ def({id:'lorentz',cat:'phys',wide:true,title:'Lorentz Force',
   outputs:[O('F','|F|','force',{big:true}),O('fv','F vector (x, y, z)','',{txt:true}),O('fe','Electric part |qE|','force'),O('fm','Magnetic part |q v×B|','force'),O('a','Acceleration','m/s²',{n:4}),O('rc','Cyclotron radius','len'),O('fc','Cyclotron frequency','freq')],
   calc(v){const q=v.q,V=[v.vx,v.vy,v.vz],E=[v.ex,v.ey,v.ez],B=[v.bx,v.by,v.bz];if(!ok(q,...V,...E,...B))return {};const cr=[V[1]*B[2]-V[2]*B[1],V[2]*B[0]-V[0]*B[2],V[0]*B[1]-V[1]*B[0]],F=E.map((e,i)=>q*(e+cr[i])),mag=a=>hypot(...a);
     const r={F:mag(F),fv:`(${F.map(x=>engS(x,'force',3)).join(', ')})`,fe:abs(q)*mag(E),fm:abs(q)*mag(cr),_F:F,_V:V,_E:E,_B:B};const bm=mag(B);if(pos(v.m)){r.a=r.F/v.m;if(bm>0){const vpar=(V[0]*B[0]+V[1]*B[1]+V[2]*B[2])/bm,vperp=sqrt(max(0,mag(V)**2-vpar*vpar));r.rc=v.m*vperp/(abs(q)*bm);r.fc=abs(q)*bm/(TAU*v.m);}}return r;},
-  viz(v,r){if(!r._F)return '';const W=720,H=240,ox=360,oy=140,P=([x,y,z])=>[ox+(x-y)*0.866*80,oy+(x+y)*0.5*80-z*80];const nrm=a=>{const m=hypot(...a);return m>0?a.map(x=>x/m):null;};
-    let s=`<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Force vectors, isometric">`;for(const [ax,l] of [[[1.3,0,0],'x'],[[0,1.3,0],'y'],[[0,0,1.3],'z']]){const [x,y]=P(ax);s+=`<line class="gl" x1="${ox}" y1="${oy}" x2="${x}" y2="${y}" style="stroke:var(--line);stroke-width:1.2"/><text x="${x+4}" y="${y+4}">${l}</text>`;}
-    const arr=(a,cls,lab)=>{const u=nrm(a);if(!u)return '';const [x,y]=P(u),ang=atan2(y-oy,x-ox);return `<line class="${cls}" x1="${ox}" y1="${oy}" x2="${x}" y2="${y}" style="stroke-width:2.6"/><path class="${cls}" d="M${x},${y}l${-10*cos(ang-0.4)},${-10*sin(ang-0.4)}l${10*cos(ang-0.4)-10*cos(ang+0.4)},${10*sin(ang-0.4)-10*sin(ang+0.4)}z"/><text x="${x+8*cos(ang)}" y="${y+8*sin(ang)+4}" class="mkl" text-anchor="${cos(ang)<0?'end':'start'}">${lab}</text>`;};
+  viz(v,r){if(!r._F)return '';const W=720,H=270,ox=300,oy=158,SC=76,G=1.45;
+    const P=([x,y,z])=>[+(ox+(x-y)*0.866*SC).toFixed(1),+(oy+(x+y)*0.5*SC-z*SC).toFixed(1)];
+    const pt=a=>P(a).join(',');const nrm=a=>{const m=hypot(...a);return m>0?a.map(x=>x/m):null;};
+    let s=`<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Force and field vectors in 3D">`;
+    // ground plane (z = 0) for depth, with grid
+    s+=`<path d="M${pt([-G,-G,0])}L${pt([G,-G,0])}L${pt([G,G,0])}L${pt([-G,G,0])}Z" style="fill:color-mix(in srgb,var(--ink) 6%,transparent);stroke:var(--line);stroke-width:1"/>`;
+    let g='';for(let i=-1;i<=1;i++){g+=`<line x1="${P([i,-G,0])[0]}" y1="${P([i,-G,0])[1]}" x2="${P([i,G,0])[0]}" y2="${P([i,G,0])[1]}"/><line x1="${P([-G,i,0])[0]}" y1="${P([-G,i,0])[1]}" x2="${P([G,i,0])[0]}" y2="${P([G,i,0])[1]}"/>`;}
+    s+=`<g style="stroke:var(--line2);stroke-width:1;fill:none">${g}</g>`;
+    // vertical reference pillar at the origin
+    s+=`<line x1="${P([0,0,0])[0]}" y1="${P([0,0,0])[1]}" x2="${P([0,0,1.6])[0]}" y2="${P([0,0,1.6])[1]}" style="stroke:var(--line);stroke-width:1.1;stroke-dasharray:3 3"/>`;
+    const o=P([0,0,0]);
+    const axis=(a,l)=>{const [x,y]=P(a),ang=atan2(y-o[1],x-o[0]);return `<line x1="${o[0]}" y1="${o[1]}" x2="${x}" y2="${y}" style="stroke:var(--muted);stroke-width:1.4"/><path d="M${x},${y}l${-8*cos(ang-0.45)},${-8*sin(ang-0.45)}l${8*cos(ang-0.45)-8*cos(ang+0.45)},${8*sin(ang-0.45)-8*sin(ang+0.45)}z" style="fill:var(--muted)"/><text x="${x+5*cos(ang)}" y="${y+5*sin(ang)+4}" class="axl">${l}</text>`;};
+    s+=axis([1.55,0,0],'x')+axis([0,1.55,0],'y')+axis([0,0,1.7],'z');
+    const arr=(a,cls,lab)=>{const u=nrm(a);if(!u)return '';const [x,y]=P(u),fl=P([u[0],u[1],0]),ang=atan2(y-o[1],x-o[0]);
+      return `<line x1="${x}" y1="${y}" x2="${fl[0]}" y2="${fl[1]}" style="stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;opacity:.55"/><line class="${cls}" x1="${o[0]}" y1="${o[1]}" x2="${x}" y2="${y}" style="stroke-width:3.2"/><path class="${cls}" d="M${x},${y}l${-11*cos(ang-0.4)},${-11*sin(ang-0.4)}l${11*cos(ang-0.4)-11*cos(ang+0.4)},${11*sin(ang-0.4)-11*sin(ang+0.4)}z"/><text x="${x+9*cos(ang)}" y="${y+9*sin(ang)+4}" class="mkl" text-anchor="${cos(ang)<0?'end':'start'}">${lab}</text>`;};
     s+=arr(r._E,'vec-e','E')+arr(r._V,'vec-v','v')+arr(r._B,'vec-b','B')+arr(r._F,'vec-f','F');
-    s+=`<text x="16" y="20">Directions only (unit vectors), isometric view</text>`;return s+'</svg>';},
+    s+=`<text x="16" y="20" class="axl">Directions only (unit vectors), 3D view</text>`;return s+'</svg>';},
   fx:['F = q(E + v × B)','r<sub>c</sub> = m·v<sub>⊥</sub> / (|q|·B),   f<sub>c</sub> = |q|B / (2πm)'],
   notes:'Defaults are a proton at 200 km/s. For an electron use q = −1 e and m = 9.109×10⁻³¹ kg.'
 });
@@ -1997,12 +2267,34 @@ def({id:'snell',cat:'phys',wide:true,title:'Snell’s Law',
     const r={n1,n2,t1,t2,crit:pos(n1,n2)&&n1>n2?deg(asin(n2/n1)):NaN,v1:C0/n1,v2:C0/n2,_tir:tir};
     if(tir)r._status=['warn','Total internal reflection: the ray does not enter medium 2.'];else if(!(n1>n2))r._info=['No critical angle, because n₁ ≤ n₂.'];
     if(isN(t2)&&pos(n1,n2)&&isN(t1)){const c1=cos(rad(t1)),c2=cos(rad(t2)),rsv=((n1*c1-n2*c2)/(n1*c1+n2*c2))**2,rpv=((n1*c2-n2*c1)/(n1*c2+n2*c1))**2;r.rs=`${fix(rsv*100,2)} % / ${fix(rpv*100,2)} %`;}return r;},
-  viz(v,r){const {n1,n2,t1,t2}=r;if(!pos(n1,n2)||!isN(t1))return '';const W=720,H=240,cx=360,cy=120,L=120;const a1=rad(t1);
-    let s=`<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Ray diagram"><rect x="0" y="0" width="${W}" height="${cy}" style="fill:color-mix(in srgb,var(--trace) ${min(40,(n1-1)*40+4)}%,transparent)"/><rect x="0" y="${cy}" width="${W}" height="${H-cy}" style="fill:color-mix(in srgb,var(--trace) ${min(40,(n2-1)*40+4)}%,transparent)"/><line x1="0" x2="${W}" y1="${cy}" y2="${cy}" style="stroke:var(--ink2)"/><line class="trd" x1="${cx}" x2="${cx}" y1="10" y2="${H-10}"/><text x="16" y="22" class="mkl">n₁ = ${fmtNum(n1,4)}</text><text x="16" y="${H-12}" class="mkl">n₂ = ${fmtNum(n2,4)}</text>`;
-    s+=`<line class="tr3" x1="${cx-L*sin(a1)}" y1="${cy-L*cos(a1)}" x2="${cx}" y2="${cy}" style="stroke-width:2.6"/>`;
-    if(isN(t2)){const a2=rad(t2);s+=`<line class="tr1" x1="${cx}" y1="${cy}" x2="${cx+L*sin(a2)}" y2="${cy+L*cos(a2)}" style="stroke-width:2.6"/><text x="${cx+12}" y="${cy+46}">θ₂ ${fix(t2,1)}°</text>`;}
-    s+=`<line class="${r._tir?'tr3':'trd'}" x1="${cx}" y1="${cy}" x2="${cx+L*sin(a1)}" y2="${cy-L*cos(a1)}" style="${r._tir?'stroke-width:2.6':''}"/><text x="${cx-12}" y="${cy-40}" text-anchor="end">θ₁ ${fix(t1,1)}°</text>`;
-    if(r._tir)s+=`<text x="${cx+L*sin(a1)+8}" y="${cy-L*cos(a1)}" class="mkl">total internal reflection</text>`;return s+'</svg>';},
+  viz(v,r){const {n1,n2,t1,t2}=r;if(!pos(n1,n2)||!isN(t1))return '';
+    const W=720,H=270,cx=290,cy=150,DX=150,DY=-58,TH=74,HX=185,L=116,a1=rad(t1);
+    const P=(x,y,z)=>[+(cx+x+z*DX).toFixed(1),+(cy-y+z*DY).toFixed(1)];
+    const quad=(ps,fill,st)=>`<path d="M${ps.map(p=>P(...p).join(',')).join('L')}Z" style="fill:${fill};stroke:${st||'none'};stroke-width:1"/>`;
+    const t1c=`color-mix(in srgb,var(--trace) ${min(34,(n1-1)*36+5)}%,transparent)`,t2c=`color-mix(in srgb,var(--trace2) ${min(42,(n2-1)*30+10)}%,transparent)`;
+    let s=`<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Refraction, 3D view">`;
+    // lower medium n2: right side + front
+    s+=quad([[HX,-TH,0],[HX,0,0],[HX,0,1],[HX,-TH,1]],t2c);
+    s+=quad([[-HX,-TH,0],[HX,-TH,0],[HX,0,0],[-HX,0,0]],t2c);
+    // upper medium n1: right side + top + front
+    s+=quad([[HX,0,0],[HX,TH,0],[HX,TH,1],[HX,0,1]],t1c);
+    s+=quad([[-HX,TH,0],[HX,TH,0],[HX,TH,1],[-HX,TH,1]],`color-mix(in srgb,var(--trace) 8%,transparent)`);
+    s+=quad([[-HX,0,0],[HX,0,0],[HX,TH,0],[-HX,TH,0]],t1c);
+    // interface plane
+    s+=quad([[-HX,0,0],[HX,0,0],[HX,0,1],[-HX,0,1]],`color-mix(in srgb,var(--ink) 7%,transparent)`,'var(--ink2)');
+    // normal (front)
+    s+=`<line x1="${P(0,TH,0)[0]}" y1="${P(0,TH,0)[1]}" x2="${P(0,-TH,0)[0]}" y2="${P(0,-TH,0)[1]}" class="trd"/>`;
+    const O=P(0,0,0),inc=P(-L*sin(a1),L*cos(a1),0),head=(p,ang,cls,fill)=>`<path class="${cls}" d="M${p[0]},${p[1]}l${-10*cos(ang-0.4)},${-10*sin(ang-0.4)}l${10*cos(ang-0.4)-10*cos(ang+0.4)},${10*sin(ang-0.4)-10*sin(ang+0.4)}z" style="fill:${fill}"/>`;
+    s+=`<line class="tr3" x1="${inc[0]}" y1="${inc[1]}" x2="${O[0]}" y2="${O[1]}" style="stroke-width:3.2"/>`+head(O,atan2(O[1]-inc[1],O[0]-inc[0]),'tr3','var(--accent)');
+    s+=`<text x="${P(-22,30,0)[0]}" y="${P(-22,30,0)[1]}" text-anchor="end" class="mkl">θ₁ ${fix(t1,1)}°</text>`;
+    if(isN(t2)){const a2=rad(t2),rf=P(L*sin(a2),-L*cos(a2),0),ang=atan2(rf[1]-O[1],rf[0]-O[0]);
+      s+=`<line class="tr1" x1="${O[0]}" y1="${O[1]}" x2="${rf[0]}" y2="${rf[1]}" style="stroke-width:3.2"/>`+head(rf,ang,'tr1','var(--trace)');
+      s+=`<text x="${P(16,-34,0)[0]}" y="${P(16,-34,0)[1]}" class="mkl">θ₂ ${fix(t2,1)}°</text>`;}
+    const ref=P(L*sin(a1),L*cos(a1),0);
+    s+=`<line class="${r._tir?'tr3':'trd'}" x1="${O[0]}" y1="${O[1]}" x2="${ref[0]}" y2="${ref[1]}" ${r._tir?'style="stroke-width:3.2"':''}/>`;
+    if(r._tir)s+=`<text x="${ref[0]+8}" y="${ref[1]-4}" class="mkl">total internal reflection</text>`;
+    s+=`<text x="16" y="24" class="mkl">n₁ = ${fmtNum(n1,4)}</text><text x="16" y="${H-14}" class="mkl">n₂ = ${fmtNum(n2,4)}</text>`;
+    return s+'</svg>';},
   fx:['n₁·sin θ₁ = n₂·sin θ₂','θ<sub>c</sub> = asin(n₂/n₁)   (n₁ > n₂)','Fresnel: r<sub>s</sub> = (n₁cosθ₁ − n₂cosθ₂)/(n₁cosθ₁ + n₂cosθ₂)'],
   notes:'Common indices: air 1.0003, water 1.333, glass 1.5, fibre core about 1.468, diamond 2.42.'
 });
