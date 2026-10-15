@@ -1,0 +1,74 @@
+{
+ "back": {
+  "cover": 1
+ },
+ "front": {
+  "contents": 2,
+  "copyright": 1,
+  "cover": 2,
+  "half_title": 2,
+  "title": 1
+ },
+ "measured_at_one_deployment": 5,
+ "parts": {
+  "band_plan": 1,
+  "colophon": 1,
+  "deployment_howto": 0,
+  "deployment_index": 1,
+  "go_kit": 1,
+  "how_to_use": 2,
+  "part_one": 1,
+  "part_three": 1,
+  "part_two": 2,
+  "repeaters": 1,
+  "this_station": 1
+ },
+ "per_deployment": 4,
+ "radios": {
+  "ft818": 2,
+  "ft857d": 2,
+  "ft891": 1,
+  "ft897d": 2,
+  "ft991a": 2,
+  "ic7000": 2,
+  "ic705": 2,
+  "ic706mk2": 2,
+  "ic7100": 2,
+  "ic7300": 2,
+  "kx2": 2,
+  "kx3": 2,
+  "xiegu_g90": 2,
+  "xiegu_x5105": 2,
+  "xiegu_x6100": 2
+ },
+ "records": {
+  "activations": 1,
+  "antennas": 4,
+  "battery": 1,
+  "dxcc": 1,
+  "equipment": 1,
+  "nets": 2,
+  "notes": 5,
+  "overflow": 4,
+  "qsl": 1,
+  "repairs": 2,
+  "was": 1
+ },
+ "reference": {
+  "ANT": 2,
+  "AWARDS": 1,
+  "BANDS": 3,
+  "CHECK": 2,
+  "FREQS": 1,
+  "GRID": 1,
+  "OPS": 3,
+  "PFX": 1,
+  "PHON": 2,
+  "POWER": 2,
+  "PROP": 2,
+  "SAFE": 2,
+  "SECT": 1,
+  "TIME": 1
+ },
+ "whole_book_with_every_card": 102
+}
