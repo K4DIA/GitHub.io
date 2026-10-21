@@ -810,27 +810,97 @@ P_BLURB = (
     "down the same day."
 )
 
-P_BODY = (
-    "FIELD RECORD is organized around the outing rather than the contact. "
-    "Twenty-six deployments, four pages each: a Site Record completed before "
-    "the first call, two sheets of contacts in the columns portable operation "
-    "requires, and a debrief written at the site. Part One is a field "
-    "reference compiled from primary sources for operators working away from "
-    "mains power. Part Three holds the station records that carry forward from "
-    "one volume to the next."
-)
+_ONES = ["zero", "one", "two", "three", "four", "five", "six", "seven",
+         "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+         "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+_TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy",
+         "eighty", "ninety"]
 
-P_BULLETS = [
-    "US band plan and privileges in color, including the 60 meter allocation "
-    "as revised in February 2026",
-    "South Carolina repeaters and nets, and a quick reference for the Icom "
-    "IC-706MKII",
-    "Antenna field math, coax loss, SWR tables, and power budget worksheets",
-    "RF exposure limits and the station evaluation required of every licensee",
-    "Propagation indices, grid squares, Q signals, prosigns, phonetics, and "
-    "ARRL sections",
-    "Activation requirements for POTA, SOTA and WWFF, keyed to the UTC day",
-]
+
+def _words(n):
+    """A small count in words, the way the cover has always said it."""
+    n = int(n)
+    if 0 <= n < 20:
+        return _ONES[n]
+    if n < 100:
+        t, o = divmod(n, 10)
+        return _TENS[t] + ("-" + _ONES[o] if o else "")
+    return str(n)
+
+
+def _list_names(names):
+    names = [n for n in names if n]
+    if not names:
+        return ""
+    if len(names) == 1:
+        return names[0]
+    return ", ".join(names[:-1]) + " and " + names[-1]
+
+
+def personal_back_copy(ndep, sec=None, place="", radios=(), ref_tags=()):
+    """The back cover copy for the book that was actually built.
+
+    The cover must never describe parts the operator left out, and it must
+    name their state and their radios, not the author's. sec is the Sections
+    object (None means everything), radios is a list of display names such as
+    "Icom IC-7100", ref_tags the Part One section tags that are in.
+    """
+    on = (lambda k: True) if sec is None else sec.on
+    tags = set(ref_tags or ())
+    if sec is None:
+        tags = {"BANDS", "ANT", "POWER", "SAFE", "PROP", "GRID", "PHON",
+                "SECT", "AWARDS", "OPS"}
+    has_log, has_p1, has_p3 = on("part_two"), on("part_one"), on("part_three")
+
+    body = "FIELD RECORD is organized around the outing rather than the contact. "
+    if has_log:
+        body += ("%s deployments, four pages each: a Site Record completed "
+                 "before the first call, two sheets of contacts in the columns "
+                 "portable operation requires, and a debrief written at the "
+                 "site. " % _words(ndep).capitalize())
+    else:
+        body += ("This copy is the field reference on its own, for an operator "
+                 "who keeps the log elsewhere. ")
+    if has_p1:
+        body += ("Part One is a field reference compiled from primary sources "
+                 "for operators working away from mains power. ")
+    if has_p3:
+        body += ("Part Three holds the station records that carry forward from "
+                 "one volume to the next.")
+    body = body.strip()
+
+    bullets = []
+    if has_p1:
+        if "BANDS" in tags:
+            bullets.append("US band plan and privileges in color, including "
+                           "the 60 meter allocation as revised in February 2026")
+        local = []
+        if on("repeaters") and place:
+            local.append("%s repeaters and nets" % place)
+        names = _list_names(list(radios))
+        if on("radios") and names:
+            local.append("%s for the %s" % (
+                "a quick reference card" if len(list(radios)) == 1
+                else "quick reference cards", names))
+        if local:
+            bullets.append(", and ".join(local) if len(local) == 2
+                           else local[0])
+        if "ANT" in tags or "POWER" in tags:
+            bullets.append("Antenna field math, coax loss, SWR tables, and "
+                           "power budget worksheets")
+        if "SAFE" in tags:
+            bullets.append("RF exposure limits and the station evaluation "
+                           "required of every licensee")
+        if tags & {"PROP", "GRID", "PHON", "SECT"}:
+            bullets.append("Propagation indices, grid squares, Q signals, "
+                           "prosigns, phonetics, and ARRL sections")
+        if "AWARDS" in tags:
+            bullets.append("Activation requirements for POTA, SOTA and WWFF, "
+                           "keyed to the UTC day")
+
+    meta = ("%d DEPLOYMENTS" % ndep) if has_log else "FIELD REFERENCE"
+    return dict(blurb=P_BLURB, body=body, bullets=bullets,
+                part_one=bool(has_p1 and bullets), meta=meta)
 
 
 def _p_panel(pw, ph):
@@ -908,7 +978,8 @@ def personal_front(c, pw, ph, ndep, byline=None):
                 1.4, GREY, align="r")
 
 
-def personal_back(c, pw, ph, ndep, pages, byline=None):
+def personal_back(c, pw, ph, ndep, pages, byline=None, copy=None):
+    cp = copy or personal_back_copy(ndep)
     x, y, w, h = _p_panel(pw, ph)
     m = 0.62 * inch
     ix, iy, iw, ih = x + m, y + m, w - 2 * m, h - 2 * m
@@ -924,10 +995,10 @@ def personal_back(c, pw, ph, ndep, pages, byline=None):
     bs, body = 17.0, 11.4
 
     def measure(bs, body):
-        t = len(wrap_lines(P_BLURB, SERIF_I, bs, iw)) * bs * 1.38 + bs * 0.85
-        t += len(wrap_lines(P_BODY, SERIF, body, iw)) * body * 1.52 + body * 1.3
-        t += body * 3.0
-        for b in P_BULLETS:
+        t = len(wrap_lines(cp['blurb'], SERIF_I, bs, iw)) * bs * 1.38 + bs * 0.85
+        t += len(wrap_lines(cp['body'], SERIF, body, iw)) * body * 1.52 + body * 1.3
+        t += body * 3.0 if cp['part_one'] else 0
+        for b in cp['bullets']:
             t += len(wrap_lines(b, SERIF, body, iw - 14)) * body * 1.42
             t += body * 0.45
         return t
@@ -942,26 +1013,27 @@ def personal_back(c, pw, ph, ndep, pages, byline=None):
     y2 = top - 34
     c.setFillColor(white)
     c.setFont(SERIF_I, bs)
-    for ln in wrap_lines(P_BLURB, SERIF_I, bs, iw):
+    for ln in wrap_lines(cp['blurb'], SERIF_I, bs, iw):
         c.drawString(ix, y2, ln)
         y2 -= bs * 1.38
     y2 -= bs * 0.85
 
     c.setFillColor(Color(0.80, 0.82, 0.84))
     c.setFont(SERIF, body)
-    for ln in wrap_lines(P_BODY, SERIF, body, iw):
+    for ln in wrap_lines(cp['body'], SERIF, body, iw):
         c.drawString(ix, y2, ln)
         y2 -= body * 1.52
     y2 -= body * 1.3
 
-    c.setStrokeColor(AMBER)
-    c.setLineWidth(1.4)
-    c.line(ix, y2 + body * 0.7, ix + iw * 0.26, y2 + body * 0.7)
-    y2 -= body * 0.9
-    fit_tracked(c, ix, y2, "IN PART ONE", COND_B, body * 0.94, iw, 2.0, AMBER)
-    y2 -= body * 2.1
+    if cp['part_one']:
+        c.setStrokeColor(AMBER)
+        c.setLineWidth(1.4)
+        c.line(ix, y2 + body * 0.7, ix + iw * 0.26, y2 + body * 0.7)
+        y2 -= body * 0.9
+        fit_tracked(c, ix, y2, "IN PART ONE", COND_B, body * 0.94, iw, 2.0, AMBER)
+        y2 -= body * 2.1
 
-    for b in P_BULLETS:
+    for b in cp['bullets']:
         c.setFillColor(AMBER)
         c.circle(ix + 2.2, y2 + body * 0.32, 1.5, stroke=0, fill=1)
         c.setFillColor(Color(0.86, 0.88, 0.90))
@@ -996,8 +1068,8 @@ def personal_back(c, pw, ph, ndep, pages, byline=None):
     for ln in wrap_lines(lic, SERIF, 8.6, iw):
         c.drawString(ix, yy, ln)
         yy -= 10.4
-    fit_tracked(c, ix, iy + 4, "%s  ·  %s  ·  %d DEPLOYMENTS  ·  "
-                "%d PAGES" % (M.IMPRINT.upper(), M.EDITION.upper(), ndep, pages),
+    fit_tracked(c, ix, iy + 4, "%s  ·  %s  ·  %s  ·  "
+                "%d PAGES" % (M.IMPRINT.upper(), M.EDITION.upper(), cp['meta'], pages),
                 COND, 8.4, iw, 1.3, Color(0.45, 0.47, 0.50))
 
 

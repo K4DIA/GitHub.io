@@ -243,8 +243,13 @@ def build(station, outpath, toc_in=None, pages_in=0, root=".",
         while bk.page % 2 == 1:
             bk.blank(kind="blind")
         bk.begin()
+        names = [" ".join(x for x in (cd.get("maker"), cd.get("name")) if x)
+                 for cd in cards]
         CV.personal_back(bk.c, t.W, t.H, ndep, pages_in or bk.page,
-                         byline=bk.byline)
+                         byline=bk.byline,
+                         copy=CV.personal_back_copy(
+                             ndep, sec=sec, place=st.place(), radios=names,
+                             ref_tags=getattr(sec, "reference", ())))
         bk.end_page(kind="blind", folio=False)
 
     n = bk.finish(pad_to_multiple=2)
