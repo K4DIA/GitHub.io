@@ -157,6 +157,7 @@
     ]
    },
    "key": "full",
+   "label": "Full book",
    "note": "Everything."
   },
   {
@@ -192,6 +193,7 @@
     ]
    },
    "key": "field",
+   "label": "Field",
    "note": "The reference you use on site, without the station records."
   },
   {
@@ -219,6 +221,7 @@
     "reference": []
    },
    "key": "log-only",
+   "label": "Log only",
    "note": "Covers, title, contents and the deployments."
   },
   {
@@ -261,7 +264,8 @@
     ]
    },
    "key": "reference-only",
-   "note": "Part One, with nothing to write in."
+   "label": "Reference only",
+   "note": "The field reference without the paper log. For operators who log on a computer and still want the manual on site."
   }
  ],
  "radios": [
@@ -355,8 +359,10 @@
    "blocks": [
     "Menu and panel keys",
     "Touch key rows",
+    "Filters",
     "Specifications",
     "Common operations",
+    "Fault finding",
     "Operating notes",
     "Computer control",
     "Station settings",
@@ -365,7 +371,7 @@
    "id": "ic7100",
    "maker": "Icom",
    "name": "IC-7100",
-   "verified": "Compiled from the Icom IC-7100 Instruction Manual and published specifications, September 2026. Not checked against a radio. Figures adjusted to the US model. The reset procedures could not be read and are left out."
+   "verified": "Compiled from the Icom IC-7100 Basic Manual (A7085H-1EX-6) and Service Manual (S-15008XZ-C1). Figures and band plans are for the USA version; other versions differ."
   },
   {
    "blocks": [

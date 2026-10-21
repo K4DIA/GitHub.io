@@ -297,6 +297,17 @@ SEC_POWER = dict(
         ("table", dict(head=["State", "Current", "Notes"],
                        rows=POWER_ROWS, w=[0.28, 0.18, 0.54],
                        align=['l', 'l', 'l'], size=7.4)),
+        ("note",
+         "Digital modes are not voice. FT8, RTTY and PSK send a continuous "
+         "full carrier for the whole transmission, and FT8 keys the "
+         "transmitter for about 13 seconds of every 15, so the finals never "
+         "get the rest that a voice duty cycle gives them. The 100 W digital "
+         "row above is the worst case for that reason. Most manufacturers "
+         "rate a radio for continuous-duty modes the same way they rate AM, "
+         "typically 25 to 50 W on a 100 W HF radio, and running digital at "
+         "the full SSB rating heats the finals and shortens their life. "
+         "Follow your radio's AM or RTTY rating for digital; it is on the "
+         "radio's quick reference card in Part One."),
         ("h3", "Runtime"),
         ("p",
          "Estimate an average current, not a peak. For a normal operating "

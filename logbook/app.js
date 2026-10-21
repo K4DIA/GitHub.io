@@ -55,7 +55,9 @@ function drawForm(c) {
     const b = document.createElement("button");
     b.type = "button";
     b.className = "preset";
-    b.textContent = p.key;
+    b.textContent = p.label || p.key;
+    b.dataset.key = p.key;
+    b.title = p.note || "";
     b.setAttribute("aria-pressed", p.key === "full" ? "true" : "false");
     b.addEventListener("click", () => applyPreset(p));
     $("presets").appendChild(b);
@@ -117,7 +119,7 @@ function setGroup(name, on) {
 
 function applyPreset(p) {
   document.querySelectorAll("#presets .preset").forEach((b) =>
-    b.setAttribute("aria-pressed", String(b.textContent === p.key)));
+    b.setAttribute("aria-pressed", String(b.dataset.key === p.key)));
   $("preset-note").textContent = p.note;
   group("parts").forEach((b) => { b.checked = !!p.include.parts[b.value]; });
   group("reference").forEach((b) => {

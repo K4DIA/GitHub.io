@@ -40,7 +40,16 @@ PRESET_NOTES = {
     "full": "Everything.",
     "log-only": "Covers, title, contents and the deployments.",
     "field": "The reference you use on site, without the station records.",
-    "reference-only": "Part One, with nothing to write in.",
+    "reference-only": ("The field reference without the paper log. For operators "
+                       "who log on a computer and still want the manual on site."),
+}
+
+# What the buttons say. Keys are stable; these are for people.
+PRESET_LABELS = {
+    "full": "Full book",
+    "field": "Field",
+    "log-only": "Log only",
+    "reference-only": "Reference only",
 }
 
 
@@ -66,7 +75,8 @@ def catalogue(root="."):
                       for x in A.SECTIONS_A + B.SECTIONS_B],
         "records": [{"key": k, "title": BLD.RECORD_TITLES[k]}
                     for k in BLD.RECORD_ORDER],
-        "presets": [{"key": k, "note": PRESET_NOTES.get(k, ""),
+        "presets": [{"key": k, "label": PRESET_LABELS.get(k, k),
+                     "note": PRESET_NOTES.get(k, ""),
                      "include": _preset_shape(k)}
                     for k in ("full", "field", "log-only", "reference-only")],
         "radios": radios(root),
