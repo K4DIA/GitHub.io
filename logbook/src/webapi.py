@@ -81,7 +81,9 @@ def catalogue(root="."):
                     for k in ("full", "field", "log-only", "reference-only")],
         "radios": radios(root),
         "limits": {"deployments": [1, 60], "pages_per_deployment": 4},
-        "defaults": {"license_class": "general", "deployments": 26,
+        # The counts a form offers. Any value inside the limits still builds.
+        "deployment_choices": [1, 3, 5, 10, 15, 20, 25, 30, 40, 50, 60],
+        "defaults": {"license_class": "general", "deployments": 25,
                      "trim": "personal", "color": True},
     }
 

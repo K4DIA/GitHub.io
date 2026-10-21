@@ -40,6 +40,11 @@ function drawForm(c) {
   c.license_classes.forEach((k) => lic.add(new Option(k.label, k.key)));
   lic.value = c.defaults.license_class;
 
+  const dep = $("deployments");
+  (c.deployment_choices || [1, 3, 5, 10, 15, 20, 25, 30, 40, 50, 60])
+    .forEach((n) => dep.add(new Option(String(n), String(n))));
+  dep.value = String(c.defaults.deployments);
+
   const st = $("state");
   st.add(new Option("Not saying", ""));
   c.states.forEach((s) => st.add(new Option(s.name, s.code)));
@@ -147,7 +152,7 @@ function config() {
       grid: $("grid").value.trim().toUpperCase(),
       club: $("club").value.trim(),
     },
-    book: { deployments: Number($("deployments").value) || 26 },
+    book: { deployments: Number($("deployments").value) || 25 },
     radios: picked("radios"),
     include: include,
   };

@@ -1,10 +1,23 @@
 {
  "defaults": {
   "color": true,
-  "deployments": 26,
+  "deployments": 25,
   "license_class": "general",
   "trim": "personal"
  },
+ "deployment_choices": [
+  1,
+  3,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  40,
+  50,
+  60
+ ],
  "license_classes": [
   {
    "key": "novice",
