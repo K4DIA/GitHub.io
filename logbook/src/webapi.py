@@ -65,6 +65,7 @@ def catalogue(root="."):
         "license_classes": [{"key": k, "label": CFG.CLASS_NAME[k]}
                             for k in CFG.CLASSES],
         "states": [{"code": c, "name": n,
+                    "fips": CFG.STATE_FIPS.get(c, ""),
                     "sections": CFG.STATE_SECTIONS.get(c, []),
                     "time_zone": CFG.STATE_TZ.get(c, "UTC")}
                    for c, n in sorted(CFG.STATE_NAMES.items(),

@@ -296,12 +296,16 @@
     any CSV with a column of output frequencies. Leave these empty and the
     repeater pages come through as ruled grids to fill in as you work the
     machines. The files are read in this tab and not uploaded.</p>
+  <p class="hint" id="rb-hint" hidden></p>
   <div class="grid">
     <label class="field"><span>Repeaters, CSV</span>
       <input type="file" id="repeaters" accept=".csv,text/csv"></label>
     <label class="field"><span>Nets, CSV</span>
       <input type="file" id="nets" accept=".csv,text/csv"></label>
   </div>
+  <label class="check"><input type="checkbox" id="rb-credit">
+    <span>The repeater file came from RepeaterBook. Prints their credit line
+    on the repeater pages, which their terms ask for.</span></label>
 </section>
 
 <div class="actions">

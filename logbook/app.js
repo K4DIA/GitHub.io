@@ -156,6 +156,9 @@ function config() {
     radios: picked("radios"),
     include: include,
   };
+  if ($("rb-credit").checked) {
+    c.data = { attribution: "Data courtesy of RepeaterBook.com." };
+  }
   if (state) c.station.state = state;
   const sec = $("arrl_section");
   if (!$("section-wrap").hidden && sec.value) c.station.arrl_section = sec.value;
@@ -233,6 +236,22 @@ function stateChanged() {
   $("state-note").textContent = s
     ? `ARRL section, time zone and the repeater heading follow ${s.name}.`
     : "Leave this blank and the section and repeater pages come through unheaded.";
+  const rb = $("rb-hint");
+  if (s && s.fips) {
+    const url = "https://www.repeaterbook.com/repeaters/index2.php?state_id="
+      + encodeURIComponent(s.fips) + "&country_code=US";
+    rb.innerHTML = "";
+    rb.append("Want your local machines filled in? Open ");
+    const a = document.createElement("a");
+    a.href = url; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = `${s.name} repeaters on RepeaterBook`;
+    rb.append(a);
+    rb.append(", sign in, use Export and pick CHIRP or CSV, then drop that file"
+      + " in the Repeaters field. It is your own export, for your own book.");
+    rb.hidden = false;
+  } else {
+    rb.hidden = true;
+  }
   changed();
 }
 

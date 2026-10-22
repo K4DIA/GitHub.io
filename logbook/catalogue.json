@@ -711,6 +711,7 @@
  "states": [
   {
    "code": "AL",
+   "fips": "01",
    "name": "Alabama",
    "sections": [
     "AL"
@@ -719,6 +720,7 @@
   },
   {
    "code": "AK",
+   "fips": "02",
    "name": "Alaska",
    "sections": [
     "AK"
@@ -727,6 +729,7 @@
   },
   {
    "code": "AS",
+   "fips": "60",
    "name": "American Samoa",
    "sections": [
     "PAC"
@@ -735,6 +738,7 @@
   },
   {
    "code": "AZ",
+   "fips": "04",
    "name": "Arizona",
    "sections": [
     "AZ"
@@ -743,6 +747,7 @@
   },
   {
    "code": "AR",
+   "fips": "05",
    "name": "Arkansas",
    "sections": [
     "AR"
@@ -751,6 +756,7 @@
   },
   {
    "code": "CA",
+   "fips": "06",
    "name": "California",
    "sections": [
     "SV",
@@ -767,6 +773,7 @@
   },
   {
    "code": "CO",
+   "fips": "08",
    "name": "Colorado",
    "sections": [
     "CO"
@@ -775,6 +782,7 @@
   },
   {
    "code": "CT",
+   "fips": "09",
    "name": "Connecticut",
    "sections": [
     "CT"
@@ -783,6 +791,7 @@
   },
   {
    "code": "DE",
+   "fips": "10",
    "name": "Delaware",
    "sections": [
     "DE"
@@ -791,6 +800,7 @@
   },
   {
    "code": "DC",
+   "fips": "11",
    "name": "District of Columbia",
    "sections": [
     "MDC"
@@ -799,6 +809,7 @@
   },
   {
    "code": "FL",
+   "fips": "12",
    "name": "Florida",
    "sections": [
     "NFL",
@@ -809,6 +820,7 @@
   },
   {
    "code": "GA",
+   "fips": "13",
    "name": "Georgia",
    "sections": [
     "GA"
@@ -817,6 +829,7 @@
   },
   {
    "code": "GU",
+   "fips": "66",
    "name": "Guam",
    "sections": [
     "PAC"
@@ -825,6 +838,7 @@
   },
   {
    "code": "HI",
+   "fips": "15",
    "name": "Hawaii",
    "sections": [
     "PAC"
@@ -833,6 +847,7 @@
   },
   {
    "code": "ID",
+   "fips": "16",
    "name": "Idaho",
    "sections": [
     "ID"
@@ -841,6 +856,7 @@
   },
   {
    "code": "IL",
+   "fips": "17",
    "name": "Illinois",
    "sections": [
     "IL"
@@ -849,6 +865,7 @@
   },
   {
    "code": "IN",
+   "fips": "18",
    "name": "Indiana",
    "sections": [
     "IN"
@@ -857,6 +874,7 @@
   },
   {
    "code": "IA",
+   "fips": "19",
    "name": "Iowa",
    "sections": [
     "IA"
@@ -865,6 +883,7 @@
   },
   {
    "code": "KS",
+   "fips": "20",
    "name": "Kansas",
    "sections": [
     "KS"
@@ -873,6 +892,7 @@
   },
   {
    "code": "KY",
+   "fips": "21",
    "name": "Kentucky",
    "sections": [
     "KY"
@@ -881,6 +901,7 @@
   },
   {
    "code": "LA",
+   "fips": "22",
    "name": "Louisiana",
    "sections": [
     "LA"
@@ -889,6 +910,7 @@
   },
   {
    "code": "ME",
+   "fips": "23",
    "name": "Maine",
    "sections": [
     "ME"
@@ -897,6 +919,7 @@
   },
   {
    "code": "MD",
+   "fips": "24",
    "name": "Maryland",
    "sections": [
     "MDC"
@@ -905,6 +928,7 @@
   },
   {
    "code": "MA",
+   "fips": "25",
    "name": "Massachusetts",
    "sections": [
     "EMA",
@@ -914,6 +938,7 @@
   },
   {
    "code": "MI",
+   "fips": "26",
    "name": "Michigan",
    "sections": [
     "MI"
@@ -922,6 +947,7 @@
   },
   {
    "code": "MN",
+   "fips": "27",
    "name": "Minnesota",
    "sections": [
     "MN"
@@ -930,6 +956,7 @@
   },
   {
    "code": "MS",
+   "fips": "28",
    "name": "Mississippi",
    "sections": [
     "MS"
@@ -938,6 +965,7 @@
   },
   {
    "code": "MO",
+   "fips": "29",
    "name": "Missouri",
    "sections": [
     "MO"
@@ -946,6 +974,7 @@
   },
   {
    "code": "MT",
+   "fips": "30",
    "name": "Montana",
    "sections": [
     "MT"
@@ -954,6 +983,7 @@
   },
   {
    "code": "NE",
+   "fips": "31",
    "name": "Nebraska",
    "sections": [
     "NE"
@@ -962,6 +992,7 @@
   },
   {
    "code": "NV",
+   "fips": "32",
    "name": "Nevada",
    "sections": [
     "NV"
@@ -970,6 +1001,7 @@
   },
   {
    "code": "NH",
+   "fips": "33",
    "name": "New Hampshire",
    "sections": [
     "NH"
@@ -978,6 +1010,7 @@
   },
   {
    "code": "NJ",
+   "fips": "34",
    "name": "New Jersey",
    "sections": [
     "NNJ",
@@ -987,6 +1020,7 @@
   },
   {
    "code": "NM",
+   "fips": "35",
    "name": "New Mexico",
    "sections": [
     "NM"
@@ -995,6 +1029,7 @@
   },
   {
    "code": "NY",
+   "fips": "36",
    "name": "New York",
    "sections": [
     "WNY",
@@ -1006,6 +1041,7 @@
   },
   {
    "code": "NC",
+   "fips": "37",
    "name": "North Carolina",
    "sections": [
     "NC"
@@ -1014,6 +1050,7 @@
   },
   {
    "code": "ND",
+   "fips": "38",
    "name": "North Dakota",
    "sections": [
     "ND"
@@ -1022,6 +1059,7 @@
   },
   {
    "code": "MP",
+   "fips": "69",
    "name": "Northern Mariana Islands",
    "sections": [
     "PAC"
@@ -1030,6 +1068,7 @@
   },
   {
    "code": "OH",
+   "fips": "39",
    "name": "Ohio",
    "sections": [
     "OH"
@@ -1038,6 +1077,7 @@
   },
   {
    "code": "OK",
+   "fips": "40",
    "name": "Oklahoma",
    "sections": [
     "OK"
@@ -1046,6 +1086,7 @@
   },
   {
    "code": "OR",
+   "fips": "41",
    "name": "Oregon",
    "sections": [
     "OR"
@@ -1054,6 +1095,7 @@
   },
   {
    "code": "PA",
+   "fips": "42",
    "name": "Pennsylvania",
    "sections": [
     "EPA",
@@ -1063,6 +1105,7 @@
   },
   {
    "code": "PR",
+   "fips": "72",
    "name": "Puerto Rico",
    "sections": [
     "PR"
@@ -1071,6 +1114,7 @@
   },
   {
    "code": "RI",
+   "fips": "44",
    "name": "Rhode Island",
    "sections": [
     "RI"
@@ -1079,6 +1123,7 @@
   },
   {
    "code": "SC",
+   "fips": "45",
    "name": "South Carolina",
    "sections": [
     "SC"
@@ -1087,6 +1132,7 @@
   },
   {
    "code": "SD",
+   "fips": "46",
    "name": "South Dakota",
    "sections": [
     "SD"
@@ -1095,6 +1141,7 @@
   },
   {
    "code": "TN",
+   "fips": "47",
    "name": "Tennessee",
    "sections": [
     "TN"
@@ -1103,6 +1150,7 @@
   },
   {
    "code": "TX",
+   "fips": "48",
    "name": "Texas",
    "sections": [
     "NTX",
@@ -1113,6 +1161,7 @@
   },
   {
    "code": "VI",
+   "fips": "78",
    "name": "US Virgin Islands",
    "sections": [
     "VI"
@@ -1121,6 +1170,7 @@
   },
   {
    "code": "UT",
+   "fips": "49",
    "name": "Utah",
    "sections": [
     "UT"
@@ -1129,6 +1179,7 @@
   },
   {
    "code": "VT",
+   "fips": "50",
    "name": "Vermont",
    "sections": [
     "VT"
@@ -1137,6 +1188,7 @@
   },
   {
    "code": "VA",
+   "fips": "51",
    "name": "Virginia",
    "sections": [
     "VA"
@@ -1145,6 +1197,7 @@
   },
   {
    "code": "WA",
+   "fips": "53",
    "name": "Washington",
    "sections": [
     "EWA",
@@ -1154,6 +1207,7 @@
   },
   {
    "code": "WV",
+   "fips": "54",
    "name": "West Virginia",
    "sections": [
     "WV"
@@ -1162,6 +1216,7 @@
   },
   {
    "code": "WI",
+   "fips": "55",
    "name": "Wisconsin",
    "sections": [
     "WI"
@@ -1170,6 +1225,7 @@
   },
   {
    "code": "WY",
+   "fips": "56",
    "name": "Wyoming",
    "sections": [
     "WY"
