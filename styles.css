@@ -1703,3 +1703,13 @@ a.doc-cover-link:focus-visible .doc-cover {
 @media (prefers-reduced-motion: reduce) {
   a.doc-cover-link:hover .doc-cover, a.doc-cover-link:focus-visible .doc-cover { transform: none; }
 }
+
+/* ------------------------------------------------------- discuss on GitHub */
+.discuss { background: var(--ink); color: var(--paper); display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: clamp(1.5rem,4vw,3rem); align-items: center; }
+.discuss .eyebrow { color: var(--sand); }
+.discuss h2 { color: #f0e9d6; margin: 0 0 .8rem; }
+.discuss p { max-width: 40rem; color: #cfc7b4; font-size: .96rem; line-height: 1.6; margin: 0; }
+.discuss-actions { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: flex-end; }
+.crumb-sep { color: var(--ink-faint); margin: 0 .2rem; }
+.crumb-discuss { color: var(--rust-ink); }
+@media (max-width: 720px) { .discuss { grid-template-columns: 1fr; } .discuss-actions { justify-content: flex-start; } }
