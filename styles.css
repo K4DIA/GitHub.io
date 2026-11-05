@@ -1713,3 +1713,6 @@ a.doc-cover-link:focus-visible .doc-cover {
 .crumb-sep { color: var(--ink-faint); margin: 0 .2rem; }
 .crumb-discuss { color: var(--rust-ink); }
 @media (max-width: 720px) { .discuss { grid-template-columns: 1fr; } .discuss-actions { justify-content: flex-start; } }
+.photo.tall img { aspect-ratio: auto; }
+.twocol .photo img { max-width: none; }
+.twocol.even { grid-template-columns: 1fr 1fr; align-items: start; }

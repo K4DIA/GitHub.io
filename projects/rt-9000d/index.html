@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunair RT-9000D back to life | K4DIA</title>
+<meta name="description" content="A dead Sunair RT-9000D government HF transceiver, six hours on the bench, and a fault that came down to one open switch contact on the volume control. With a first look inside its LPA-9600 kilowatt amplifier.">
+<link rel="canonical" href="https://k4dia.com/projects/rt-9000d/">
+<meta property="og:site_name" content="K4DIA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sunair RT-9000D back to life">
+<meta property="og:description" content="A dead government HF transceiver, six hours on the bench, and a fault that came down to one open switch contact.">
+<meta property="og:url" content="https://k4dia.com/projects/rt-9000d/">
+<meta property="og:image" content="https://k4dia.com/brand/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../brand/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <img class="brand-logo" src="../../brand/logo.png" width="640" height="166"
+         alt="K4DIA" fetchpriority="high" decoding="async">
+    <span class="brand-lines"><span>Field &middot; Build &middot; Learn</span><span>Radio brings people together</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../learn/">Learn</a>
+    <a href="../../#projects" class="is-here">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#articles">Articles</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag"><strong>Amateur Radio</strong><span>Curiosity &middot; Experimentation &middot; Real connections</span></div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../learn/"><i>01</i> Learn</a>
+  <a href="../../#projects"><i>02</i> Projects</a>
+  <a href="../../#tools"><i>03</i> Tools</a>
+  <a href="../../downloads/"><i>04</i> Downloads</a>
+  <a href="../../#articles"><i>05</i> Articles</a>
+  <a href="../../#notes"><i>06</i> Notes</a>
+</nav>
+
+<main id="main">
+  <section class="pagehead">
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> RT-9000D <span class="crumb-sep" aria-hidden="true">&middot;</span> <a class="crumb-discuss" href="#discuss">Discuss on GitHub</a></p>
+    <p class="eyebrow">Restoration / HF <span class="cstat-inline">Repaired, baseline next</span></p>
+    <h1>Sunair RT-9000D<br>back to life</h1>
+    <p class="pagelede">A dead professional HF transceiver, six hours on the
+      bench, and a fault that turned out to be a single switch contact, now
+      replaced. The radio came as a set with its automatic coupler and, later, a kilowatt
+      amplifier, all of it a few months outdoors before it reached me. This is
+      the first entry: getting it to turn on, what the bench says so far, and
+      a first look inside the amplifier.</p>
+  </section>
+
+  <section class="section photosec">
+    <figure class="photo wide">
+      <img src="rt9000d-hero.webp" width="1600" height="800"
+           alt="Front panel of the Sunair RT-9000 on a granite counter: a dark display at left with five soft keys under it, a keypad of channel, mode, power and ALE buttons, the volume, squelch and tuning knobs, a ventilation grille and the RT-9000 Digital HF/SSB Transceiver nameplate."
+           loading="lazy" decoding="async">
+      <figcaption><strong>RT-9000D front panel.</strong> The volume knob is
+        off in this shot; the on/off switch lives on the back of that
+        control, which is where this whole story ends up.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section specstrip">
+    <dl class="specs">
+      <div><dt>Radio</dt><dd>Sunair RT-9000D, Fort Lauderdale</dd></div>
+      <div><dt>Coverage</dt><dd>1.6 to 30 MHz, 125 W SSB, 128 channels, ALE ready</dd></div>
+      <div><dt>Supply</dt><dd>28 V DC at up to 20 A, or 115/230 V AC internal</dd></div>
+      <div><dt>Companions</dt><dd>CU-9125 automatic coupler, LPA-9600 1 kW amplifier</dd></div>
+      <div><dt>Fault</dt><dd>Open power switch on the volume control, replaced with a NOS part</dd></div>
+      <div><dt>Manual</dt><dd>RT-9000B schematics, matching the D so far</dd></div>
+    </dl>
+  </section>
+
+  <section class="section">
+    <div class="prose narrow">
+
+      <h2>The radio</h2>
+
+      <p>The Sunair RT-9000 is a 125 W, 1.6 to 30 MHz HF/SSB transceiver
+        built in Fort Lauderdale for government, maritime and embassy service.
+        Mine is a D model: color display, 128 channels, ALE ready, and the
+        same 49 lb of aluminum and modular boards as the B and C before it. It
+        came as a set with a CU-9125 automatic antenna coupler and, later, an
+        LPA-9600 kilowatt amplifier, all of which had spent a few months
+        outdoors before I got them.</p>
+
+      <p>The radio runs on 28 VDC at up to 20 A, or on 115/230 VAC through
+        its own internal supply. Neither cord came with it, so the first job
+        was connectors: an MS3106A18-1S for the AC input (115 V is pins A and
+        G hot, C and E neutral, J ground) and an MS3106A16-11S for the DC
+        input. With a bench supply on the DC jack, the radio did nothing. No
+        display, no LEDs, no click.</p>
+
+      <h2>Following the power</h2>
+
+      <p>On AC there was a low hum from the rear of the chassis and nothing
+        else, which said the AC supply's transformer was alive and the problem
+        was downstream. The manual I have is for the Bravo, the RT-9000B, and
+        so far its schematics have matched this D model board for board,
+        connector for connector and signal for signal; nothing in the design
+        or in the troubleshooting has needed anything the B drawings do not
+        show. They made the path clear: everything in the radio turns on when
+        the DC switching regulator board, 1A5A1A1, closes its main relay K1,
+        and K1 is told to close by a ground on the ON/OFF line that comes from
+        the front panel.</p>
+
+      <p>From there it was half-split bracketing, the same way I was taught to
+        work a dead set: find the middle of the path between the thing that
+        works and the thing that does not, prove that point good or bad, and
+        you have thrown away half the circuit. Then split what is left. The
+        first split was the regulator board. +12 V was present, the relay coil
+        had voltage on one side and no return on the other, and the ON/OFF
+        line that should have been grounded by the front panel switch was
+        floating. Everything upstream of that line was fine; everything
+        downstream was waiting for it. The next split was the front panel
+        wiring versus the switch itself, and the switch lost.</p>
+
+      <figure class="photo tall">
+        <img src="dc-switching-regulator-board.webp" width="1200" height="1600"
+             alt="DC switching regulator board inside the chassis: a black Tyco relay, rows of electrolytic capacitors, three red toroidal inductors, a blue trimmer and the board's silkscreened reference designators."
+             loading="lazy" decoding="async">
+        <figcaption>DC switching regulator board 1A5A1A1. The Tyco T90 relay
+          at left is K1; its coil return is the ON/OFF line from the front
+          panel.</figcaption>
+      </figure>
+
+      <p>The ON/OFF line ends at the switch on the back of the volume
+        control. It read open in both positions. The identical switch on the
+        squelch control, the same CTS Type GC part, read correctly, which
+        ruled out the meter and the method. A jumper across the volume switch
+        terminals and the radio lit up, found its last channel, and went to
+        receive.</p>
+
+      <figure class="photo wide">
+        <img src="rt9000d-alive.webp" width="1600" height="1200"
+             alt="The RT-9000D front panel with the display lit: channel 00, receive, 14.25000 MHz in yellow, an S-meter scale, and the status line reading CW, AGC-S, 125 W, LCL, with PRESEL IN and GAIN HI on the soft keys. The fault lamp above the display is dark."
+             loading="lazy" decoding="async">
+        <figcaption><strong>First light.</strong> With the switch jumpered the
+          radio came up on channel 00 at 14.250 MHz, receive, 125 W, fault lamp
+          dark. Six hours for one open contact.</figcaption>
+      </figure>
+
+      <p>Six hours went into getting to that one open contact, most of it in
+        learning the radio. A new-old-stock pot bought online has since gone
+        in and the jumper is out. The squelch pot is the same part and would
+        have served as a stopgap.</p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="twocol even">
+      <figure class="photo tall">
+        <img src="volume-squelch-pots.webp" width="1200" height="1600"
+             alt="The back of the front panel board with two switched potentiometers side by side, their switch sections wired with white, black and purple leads, and the assembly number 8121045096 on the board."
+             loading="lazy" decoding="async">
+        <figcaption>Volume (left) and squelch controls, both CTS Type GC
+          switched pots on front panel assembly 8121045096.</figcaption>
+      </figure>
+      <figure class="photo tall">
+        <img src="volume-pot-switch-closeup.webp" width="1200" height="1600"
+             alt="Close-up of the two potentiometer cans, each marked CTS Type GC, 3 A 125 V AC, 1 A 250 V AC, with the switch terminals and their leads visible."
+             loading="lazy" decoding="async">
+        <figcaption>The switch section. Open in both positions; the squelch
+          twin next to it reads fine.</figcaption>
+      </figure>
+    </div>
+    <div class="warn" role="note" style="margin-top:1.6rem">
+      <span class="warn-tag">The part</span>
+      <p><strong>Switched potentiometer, 25 k&#8486; linear with an SPST switch,
+         3 A at 125 VAC.</strong> The can is marked CTS Type GC; the
+         new-old-stock replacement is a PEC KSU2531R24. The 3 A rating on the
+         can is the contact rating; in this radio the switch only handles the
+         logic-level ON/OFF line.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="prose narrow">
+
+      <h2>Built like a URC-94</h2>
+
+      <p>Six hours inside this radio kept sending me back to the
+        <a href="../mb-470/">URC-94</a>, which I spent years operating,
+        maintaining and repairing. They are different generations from
+        different companies, and the Sunair feels like it came out of the same
+        school. Every circuit is over-engineered in the way that military and
+        commercial HF gear used to be: margin in the parts, margin in the
+        heatsinking, nothing run near its limit. The power supply is the
+        clearest example. Lay the RT-9000's switching regulator and its
+        relay-gated turn-on next to the URC-94's supply and the design
+        philosophy is the same even though not one part is shared: a
+        regulated bus, a single point that enables everything, and protection
+        that fails the radio off rather than letting it cook.</p>
+
+      <p>The compartmentalization is the same too. Each function is its own
+        board in its own bay with its own reference designator, 1A5A1A1 for
+        the regulator and so on, so a fault lives in one place and the
+        schematics tell you which bay to open. Every bay is a shielded box,
+        every cable between bays is screened or filtered, and the EMI and RFI
+        control is built into the chassis rather than bolted on afterwards.
+        That is what makes half-split bracketing fast on a radio like this:
+        the design already draws the brackets for you.</p>
+
+      <p>Put it next to an Icom or a Yaesu and it is a different kind of
+        object. The amateur radios are excellent at what they are built for,
+        and they are built to a price and a weight. The Sunair is built to
+        keep working for twenty years in an embassy basement and to be fixed
+        by someone with a manual and a meter. Opening it up is the same wow I
+        had the first time inside a URC-94.</p>
+
+      <h2>What the bench says so far</h2>
+
+      <p>On 26 V the radio receives well and transmits SSB. Full 125 W
+        key-down wants 27 to 28 V, since the PA current limit sits at 17 A and
+        the margin disappears as the voltage drops. The spec is 28 V plus or
+        minus 15 percent, and a 28 V, 20 A supply is the right source. The
+        coupler needs its own 37-pin control cable from the radio's J6, which
+        is a project of its own and gets its own page.</p>
+
+      <h2>Numbers, not impressions</h2>
+
+      <p>Powering up is a milestone, not a measurement. The RT-9000D goes on
+        the IFR 2947 next for receiver sensitivity and line audio level,
+        frequency accuracy, transmitter output on each band with two-tone IMD
+        and harmonic content, and keying and ALC behavior through the rear J5
+        line audio interface.</p>
+
+      <p>To make that repeatable I am building a small interface box between
+        the radio and the 2947: a switched attenuator for mic and line level
+        injection, PTT keying, a load for the receive audio, and a DB-25 radio
+        port wired to the RT-9000's J5 pin map so the same cable serves the
+        test box, a remote head, or a modem later. The box, the cables and the
+        test procedure get their own write-up.</p>
+
+      <h2>The amplifier</h2>
+
+      <p>The companion unit is an LPA-9600, Sunair's 1 kW solid-state
+        amplifier: four 250 W RF decks on 48 V supplies, combined into a
+        nine-band relay-switched low-pass filter bank, driven by the radio's
+        125 W. It is strapped for 115 VAC and pulls about 30 A at full
+        key-down, so it gets a dedicated circuit before it gets keyed.</p>
+
+      <figure class="photo tall">
+        <img src="lpa-9600-front.webp" width="1200" height="1600"
+             alt="The LPA-9600 amplifier standing in the back of a car: a grey rack-mount case with a meter, a small display and keypad at the top, and a large air filter grille across the lower front."
+             loading="lazy" decoding="async">
+        <figcaption>LPA-9600. The meter reads each deck's voltage and current
+          from the keypad; the filter below is due for a wash.</figcaption>
+      </figure>
+
+      <p>Inside, the filter bank is immaculate and the RF decks are dirty but
+        intact: no corrosion, no heat damage, all four decks populated. It
+        gets a cleaning and a dry-out before the breaker goes on, then a
+        module-by-module check on its own meter.</p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="twocol even">
+      <figure class="photo tall">
+        <img src="lpa-9600-rf-decks.webp" width="1600" height="1200"
+             alt="Inside the amplifier: four RF deck modules in a row, each with toroids, heatsinks and ribbon and coax cables, with a wooden shipping brace at the right."
+             loading="lazy" decoding="async">
+        <figcaption>The four RF decks, each a push-pull MOSFET pair with its
+          own bias board, fed by the splitter coax and ribbon control
+          cables.</figcaption>
+      </figure>
+      <figure class="photo tall">
+        <img src="lpa-9600-filter-bank.webp" width="1200" height="1600"
+             alt="The low-pass filter bank: four rows of plug-in cards on a green motherboard, each carrying yellow and red toroidal inductors, silver mica capacitors and relays."
+             loading="lazy" decoding="async">
+        <figcaption>Nine plug-in filter cards on a relay motherboard. Yellow
+          cores are T-200-6, red are T-200-2, the blue parts are mica.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section terms">
+    <div>
+      <p class="eyebrow">Still to come</p>
+      <h2>What goes up next</h2>
+      <ul class="ticks wide">
+        <li>The RT-9000D to IFR 2947 test interface: the box, the cables and the procedure.</li>
+        <li>A measured baseline for the radio: sensitivity, frequency accuracy, output per band, two-tone IMD, harmonics.</li>
+        <li>The LPA-9600 after its dry-out: each deck on its own meter before the breaker goes on.</li>
+        <li>The 37-pin control cable from J6 to the CU-9125 coupler.</li>
+      </ul>
+      <p class="fineprint">What six hours on this radio taught me: trace the
+        enable path before the power path, because this radio had power
+        everywhere and was only missing permission; a matching part elsewhere
+        in the same chassis is the fastest meter check there is; and military
+        and commercial gear that lived outside usually comes back. Dry it,
+        inspect it, then power it.</p>
+    </div>
+  </section>
+
+  <section class="section discuss" id="discuss">
+    <div class="discuss-copy">
+      <p class="eyebrow">Questions, results, corrections</p>
+      <h2>Discuss this project on GitHub</h2>
+      <p>Built one, measured something different, or found a mistake? The
+         conversation for every page on this site lives in GitHub Discussions,
+         where it stays with the files. A GitHub account is all it takes.
+         Sign with your callsign.</p>
+    </div>
+    <div class="discuss-actions">
+      <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions/new/choose?title=Sunair%20RT-9000D%20back%20to%20life" rel="noopener">Start a discussion <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions" rel="noopener">Read the discussions</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call">
+    <img class="foot-logo" src="../../brand/logo-light.png" width="640" height="166"
+         alt="K4DIA" loading="lazy" decoding="async">
+    <span>Amateur Radio</span>
+  </div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  <div class="foot-meta">
+    <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
+    <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+</body>
+</html>
