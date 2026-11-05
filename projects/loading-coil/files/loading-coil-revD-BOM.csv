@@ -1,0 +1,37 @@
+Section,Item,Qty,Spec / use,Source,Est. USD
+Printed parts,Tripod hub,1,"revD_tripod_hub_PRINT.stl, 177 cm3. MJF PA12, or PETG/ASA at home, 6 walls, 40% infill minimum","JLC3DP MJF, or own printer",40 / 5
+Printed parts,Housing,1,"revD_sleeve_hub.stl, 156 cm3, printed standing, open end down",same,35 / 4
+Printed parts,Collar,1,"revD_collar.stl, 9 cm3, printed flat, internal thread",same,5 / 1
+Printed parts,Coil form,1,"revD_form.stl, 82 cm3, standing, 0.12 to 0.16 mm layers",same,25 / 3
+Printed parts,Swivel cap,1,"revD_swivel_cap.stl, 29 cm3",same,10 / 1
+Printed parts,Leg foot,3,"revD_leg_foot.stl, 99 cm3 each, top face on the bed",same,30 / 8
+Heat-set inserts,"3/8-16 x 1/2 in, 0.469 OD, 15/32 hole",3,"Brass, HI-316-WH; hub leg holes",Zoro 1GUA1 (25 pk),14
+Heat-set inserts,"1/4-20 x 1/2 in, 0.315 OD, 5/16 hole",6,"Brass, HI-420-WH; 3 in the hub top, 3 in the foot pockets",Zoro G3434347 (50 pk),12
+Heat-set inserts,"M5 x 9.5 long, 6.4 OD",1,Brass; hub boss rib for the set screw,ruthex / CNC Kitchen M5 pack,8
+Legs,1/2 in OD x 0.058 wall 6061-T6 tube,3,750 mm each (one 8 ft length covers it),"McMaster-Carr, OnlineMetals, Speedy Metals",25
+Legs,3/8-16 x 1-1/2 in stud,3,"Steel or stainless; 1 in epoxied into the tube top, 1/2 in showing. Or a 1-1/2 in bolt with the head cut off",hardware store,3
+Legs,Epoxy,1,"Structural, for the studs and the brass ring",hardware store,6
+Feet,M3 x 20 screw and nut,3,Pin through the foot cross hole and the tube,hardware store,2
+Feet,1/4-20 x 1-1/2 in hex bolt,3,Ballast bolt; the head is the foot,hardware store,2
+Feet,"1-1/4 in fender washers, 1/4 in hole",45,About 15 per foot fill the pocket (135 g). Or lead: cast in the pocket (300 g) or a 150 mm slug in each tube (125 g),hardware store,8
+Feet,1/4-20 rubber bumper foot,3,"Optional, in place of the ballast bolt on indoor floors",hardware store,4
+Feet,8 mm tent stake,3,Through the foot ears,camping,6
+Hub,"1/4-20 x 3/4 in stainless bolt, 2 washers, nut",1,Ground bolt: radials and coax shield on ring terminals under the head,hardware store,1
+Hub,"M5 x 16 set screw, nylon tip",1,Into the boss rib insert; stops the housing rotating only,McMaster-Carr,3
+Housing,Brass 3/8-24 coupling nut,1,"9/16 in AF, 1-1/8 in long; captive in the hex pocket; whip screws into it","McMaster-Carr, hardware store",4
+Housing,Brass 3/8-24 x 1/2 in bolt,1,"Inside bolt, with a 3/8 in ring terminal for the bus and the lining",hardware store,2
+Housing,"Copper foil tape, self-adhesive",1,Lines the bore above the stations,electronics / stained glass supply,8
+Ball stations (x7),5/32 in (3.97 mm) brass ball,7,"5 in the housing rim, 2 in the swivel cap","McMaster-Carr, bearing supply",5
+Ball stations (x7),Phosphor bronze or BeCu compression spring,7,4.0 OD x 0.55 wire x 25 free. Never music wire,"Lee Spring, Century Spring, or wound",15
+Ball stations (x7),"All-brass Schrader valve stem, .305-32 body thread",7,"TR416 or TR418 type, cut to 18 to 20 mm, valve core removed; the stem's own knurled nut is the lock nut","tire shop, Amazon",12
+Ball stations (x7),Metal Schrader valve cap,7,"Brass or nickel plated, not anodized aluminum; sets the preload",auto parts,5
+Ball stations (x7),"Ring terminal, 5/16 in stud, 18 to 22 AWG",7,"Under each lock nut, bused",electronics,3
+Ball stations (x7),.305-32 UNEF tap (tire valve stem tap),1,"Taps the seven printed bosses; 5/16-32 also works, slightly loose","Amazon, tool supply",15
+Swivel,K&S 1 in OD x 0.014 wall brass tube,1,"Cut 8 mm, onto the journal recess; the ring the two balls ride on",hobby shop,5
+Swivel,M3 x 10 self-tapping screw,2,"Retaining screws, tips in the journal groove",hardware store,1
+Swivel,SO-239 square flange,1,On the swivel cap foot,"DX Engineering, Amazon",4
+Swivel,#4 x 3/8 in self-tapping screw,4,SO-239 to the cap; one also takes the shield ring terminal,hardware store,1
+Winding,Bare tinned 18 AWG copper wire,9.5 m,80 turns plus tails,"Amazon, Remington",8
+Winding,"Bus wire, 18 AWG insulated",1.5 m,Five stations to the inside bolt; two stations to the SO-239 tail,on hand,1
+Antenna,Chameleon CHA SS17 whip,1,"17 ft, 3/8-24, 16.0 mm base","Chameleon, DX Engineering",on hand
+Antenna,Radial wire,4 to 8,Ring terminals on one end for the ground bolt,on hand,on hand

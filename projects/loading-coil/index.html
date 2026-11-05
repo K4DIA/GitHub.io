@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Printed whip loading coils | K4DIA</title>
+<meta name="description" content="Fully 3D-printed base-loading coils for a telescoping whip: a fixed unit, a twist-to-tune unit with ball contacts, and a tripod-hub unit for a 17 ft whip on 80 through 30 m. STL, STEP, generators, operating manual and bill of materials.">
+<link rel="canonical" href="https://k4dia.com/projects/loading-coil/">
+<meta property="og:site_name" content="K4DIA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Printed whip loading coils">
+<meta property="og:description" content="Fully 3D-printed base-loading coils for a telescoping whip: fixed, twist-to-tune, and a tripod-hub unit for a 17 ft whip. STL, STEP, manual and BOM.">
+<meta property="og:url" content="https://k4dia.com/projects/loading-coil/">
+<meta property="og:image" content="https://k4dia.com/brand/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../brand/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead" id="top">
+  <a class="brand" href="../../">
+    <img class="brand-logo" src="../../brand/logo.png" width="640" height="166"
+         alt="K4DIA" fetchpriority="high" decoding="async">
+    <span class="brand-lines"><span>Field &middot; Build &middot; Learn</span><span>Radio brings people together</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Primary">
+    <a href="../../learn/">Learn</a>
+    <a href="../../#projects" class="is-here">Projects</a>
+    <a href="../../#tools">Tools</a>
+    <a href="../../downloads/">Downloads</a>
+    <a href="../../#articles">Articles</a>
+    <a href="../../#notes">Notes</a>
+  </nav>
+  <div class="masthead-tag"><strong>Amateur Radio</strong><span>Curiosity &middot; Experimentation &middot; Real connections</span></div>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens">
+  <a href="../../learn/"><i>01</i> Learn</a>
+  <a href="../../#projects"><i>02</i> Projects</a>
+  <a href="../../#tools"><i>03</i> Tools</a>
+  <a href="../../downloads/"><i>04</i> Downloads</a>
+  <a href="../../#articles"><i>05</i> Articles</a>
+  <a href="../../#notes"><i>06</i> Notes</a>
+</nav>
+
+<main id="main">
+  <section class="pagehead">
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> Loading coils</p>
+    <p class="eyebrow">Antennas / 3D printed <span class="cstat-inline">Files ready, first build next</span></p>
+    <h1>Printed whip<br>loading coils</h1>
+    <p class="pagelede">A base-loading coil sits between the mount and a
+      telescoping whip and makes a short radiator resonate on a long band.
+      Three designs share one grooved-form construction: a fixed unit you tune
+      with the whip, a twist-to-tune unit with five ball contacts riding the
+      winding like a nut on a thread, and a tripod-hub unit that puts a 17 ft
+      whip on 80 through 30 m without moving anything that carries load. Every
+      part is printed except the hardware, and every file is below.</p>
+  </section>
+
+  <section class="section photosec">
+    <figure class="photo wide">
+      <img src="hub-render.webp" width="1200" height="600"
+           alt="Two shaded CAD renders of the rev D printed tripod hub. On the left, the hub from above: a round body with a tall central boss, three small insert holes on the top face, and K4DIA recessed into the face in each sector. On the right, the same hub from below, showing the 40 degree chamfer with an angled leg hole in it and the 41 mm bore straight through."
+           loading="lazy" decoding="async">
+      <figcaption><strong>Rev D tripod hub, as modelled.</strong> One printed
+        piece carries the three legs on brass inserts, the ground bolt for the
+        radials and the coax shield, and the housing that hangs through its
+        bore. The legs screw into a 40 degree chamfer, so the chamfer is the
+        seat and the holes point in and up, clear of the bore.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section specstrip">
+    <dl class="specs">
+      <div><dt>Bands</dt><dd>40, 20, 15 m on a short whip; 80 to 30 m on a 17 ft whip</dd></div>
+      <div><dt>Power</dt><dd>100 W SSB and CW in PETG; 50 W digital, or print ASA</dd></div>
+      <div><dt>Connectors</dt><dd>BNC or SO-239; 3/8-24 whip stud on rev D</dd></div>
+      <div><dt>Contacts</dt><dd>5/32 in brass balls on tire-valve stems, phosphor bronze springs</dd></div>
+      <div><dt>Files</dt><dd>STL in print orientation, STEP B-rep, parametric generators</dd></div>
+      <div><dt>Status</dt><dd>Modelled and checked; numbers calculated, not yet measured</dd></div>
+    </dl>
+  </section>
+
+  <section class="section">
+    <div class="warn" role="note">
+      <span class="warn-tag">Read first</span>
+      <p><strong>Every number on this page is calculated, not measured.</strong>
+         Expect a real coil to land within about 15 percent of the predicted
+         inductance; that is what the telescoping whip is for. At 100 W on
+         40 m there is about 2 kV across the coil and more at the whip tip.
+         Do not touch the whip, the sleeve or the bus wire while
+         transmitting, and keep the tip clear of people and anything
+         grounded.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">The idea</p><h2>Why a grooved form</h2></div>
+      <p class="sec-note">Spaced turns<br>Nothing to tie down</p>
+    </header>
+    <div class="prose narrow">
+      <p>The form is a hollow printed tube with a shallow half-round helical
+        groove in its outside wall. It is not a thread. The wire sits about
+        half its diameter in the groove and snaps in under tension; the groove
+        holds it and sets the spacing. Pitch is about 1.3 times the wire
+        diameter on purpose. Spaced turns lower the self-capacitance and the
+        turn-to-turn heating, so the coil runs cooler with higher Q. The cost
+        is about 15 percent less inductance per unit length than close-wound,
+        and the form is long enough to absorb that.</p>
+      <p>The form ODs match Schedule 40 pipe, 26.67 and 33.40 mm, so a piece of
+        PVC can stand in for a printed form in a pinch if you cut your own wire
+        holes. The end caps are sockets, not plugs: a 1 inch square SO-239
+        flange is wider across the corners than the form, so the cap slips over
+        the form and the flange sits entirely on the cap face. The wire enters
+        through a 2.2 mm radial hole molded into the form wall at each end of
+        the groove, runs into the bore and solders to the connector centre-pin
+        tail. The connector shells float. A conductor tying the two shells
+        together would run parallel to the winding and act as a shorted
+        turn.</p>
+      <p>At 100 W the RF current through a base-loading coil is around 2 A.
+        16 or 18 AWG at HF has an effective resistance of a fraction of an ohm
+        over this length, so the dissipation is low single-digit watts spread
+        over 75 to 100 mm of form. PETG, which softens at 75 to 80 C, handles
+        that at SSB and CW duty cycles. For FT8, RTTY or long key-down at
+        100 W, print in ASA or polycarbonate, or hold power to 50 W. The
+        thermal weak point is the solder joint at the connector tail, not the
+        winding. Never use carbon-fibre or any other conductive filament.</p>
+    </div>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">Rev B</p><h2>The fixed coil</h2></div>
+      <p class="sec-note">Two caps, one form<br>Tune with the whip</p>
+    </header>
+    <p class="hint">Grooved form, two end caps, a female connector at each
+      end. Wind as many turns as the band needs and leave the rest of the
+      groove empty. Stack one to three units with male-male adapters for the
+      lower bands. BNC or SO-239, 16 or 18 AWG enamelled wire.</p>
+    <figure class="drawing">
+      <img src="revb-schematic.webp" width="1400" height="1167"
+           alt="Rev B drawing. A dimensioned cross-section of the SO-239 version: a 105 mm printed form with a 75.6 mm grooved winding area, a 19 mm cap at each end with a 12 mm socket and 7 mm face, 119 mm cap to cap and about 151 mm overall with connectors. Below it, the electrical diagram shows up to three coils in series between the whip and the mount with male-male adapters between them, and a table of estimated inductance for the four form and wire versions."
+           loading="lazy" decoding="async">
+    </figure>
+    <div class="tablewrap">
+      <table class="bom">
+        <caption>Coil values, Wheeler formula, within about 10 percent. Partial fill means winding from one end and stopping.</caption>
+        <thead><tr><th scope="col">Version</th><th scope="col">Wire / pitch</th><th scope="col">Full groove</th><th scope="col">40 t</th><th scope="col">30 t</th><th scope="col">20 t</th><th scope="col">Wire needed</th></tr></thead>
+        <tbody>
+          <tr><td>BNC, OD 26.7</td><td>18 AWG / 1.40 mm</td><td>54 t: 25 &micro;H</td><td>18 &micro;H</td><td>13 &micro;H</td><td>8 &micro;H</td><td>4.9 m</td></tr>
+          <tr><td>BNC, OD 26.7</td><td>16 AWG / 1.70 mm</td><td>44 t: 17 &micro;H</td><td>15 &micro;H</td><td>11 &micro;H</td><td>7 &micro;H</td><td>4.0 m</td></tr>
+          <tr><td>SO-239, OD 33.4</td><td>18 AWG / 1.40 mm</td><td>54 t: 38 &micro;H</td><td>26 &micro;H</td><td>18 &micro;H</td><td>11 &micro;H</td><td>6.0 m</td></tr>
+          <tr><td>SO-239, OD 33.4</td><td>16 AWG / 1.70 mm</td><td>44 t: 25 &micro;H</td><td>23 &micro;H</td><td>16 &micro;H</td><td>10 &micro;H</td><td>5.0 m</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat">Print the caps face down at 0.2 mm with four perimeters;
+      the face is where the screws bite. Print the form standing at 0.12 to
+      0.16 mm so the groove comes out as a smooth half-round rather than a
+      staircase. PETG, or ASA for outdoor UV. PLA creeps in a hot car. No
+      supports on any part in the package.</p>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">Rev C</p><h2>The twist-to-tune unit</h2></div>
+      <p class="sec-note">One revolution<br>One turn of coil</p>
+    </header>
+    <p class="hint">The base is a rev B cap on a longer form wound with bare
+      tinned 18 AWG. The top of the coil floats. The whip connector is on a
+      sleeve that slides over the form, and five spring-loaded brass balls
+      near the bottom of the sleeve press into the valley between turns. Twist
+      the sleeve and the balls track the helix like a nut on a thread, one
+      turn per revolution. Turns below the balls are the antenna; turns above
+      are dead. Active turns are the ones you can see below the sleeve, so a
+      setting is repeatable by count.</p>
+    <figure class="drawing">
+      <img src="revc-schematic.webp" width="1600" height="1230"
+           alt="Rev C drawing. A cross-section of the 161 mm form inside the 169 mm sleeve, with the five ball stations at the sleeve bottom and the bus wire running up to the SO-239 on the sleeve face. Below it, one contact station exploded: the printed boss, the 5/32 inch brass ball, the spring, the brass valve stem, the lock nut with ring terminal, and the metal valve cap. At the bottom, the electrical diagram with the five balls bridging the active turns to the whip."
+           loading="lazy" decoding="async">
+    </figure>
+    <div class="twocol">
+      <div>
+        <p class="lead-p">Every moving metal part in a contact station is a
+          <strong>tire-valve part</strong>, bought at any auto parts
+          counter.</p>
+        <p>The printed boss is tapped .305-32 UNEF, the Schrader stem thread,
+          with a tire valve stem tap. A brass clamp-in stem cut to 18 to 20 mm
+          is the spring housing; it threads in until it bottoms on a shoulder
+          inside the boss. The ball drops in, the spring drops into the stem,
+          and a metal valve cap screws down until it bottoms. Pressure is set
+          by geometry, so there is nothing to adjust and nothing to
+          over-tighten, and any station opens for cleaning with the sleeve on
+          the form. Seated between two turns the ball sits 0.2 mm below the
+          wire crests, so it rides on copper, never on plastic.</p>
+        <p class="caveat">The spring is in the RF path, so its material
+          matters. Steel music wire is magnetic; at 14 MHz its skin depth is
+          about 5 &micro;m and a 12-coil spring presents about 4 &#8486;, which
+          is 3.4 W of heat for the set, inside plastic bosses that soften at
+          80 C. Phosphor bronze or beryllium copper springs present about
+          0.2 &#8486; each and 0.2 W for the set. Stainless 302 lands at
+          0.65 W and is acceptable at 50 W. Music wire, never.</p>
+      </div>
+      <ul class="ticks">
+        <li>Five stations at 72 degrees, each 0.4 mm further along the axis so all five sit in one helical valley</li>
+        <li>All five conductive and bused; any one failing is invisible electrically</li>
+        <li>5/32 in brass ball, 4.0 x 0.55 x 25 mm phosphor bronze spring, about 5 N per ball</li>
+        <li>Metal valve caps only. Anodised aluminium is an insulator</li>
+        <li>40 mm bearing land above the coil keeps the whip steady at every tap</li>
+        <li>Copper tape inside the sleeve shorts the dead turns, like a screwdriver antenna's mast</li>
+        <li>Twist, never shove. A hard axial push can skip a turn; twisting cannot</li>
+      </ul>
+    </div>
+    <div class="tablewrap">
+      <table class="bom">
+        <caption>What one turn does, 2.5 m whip. The sleeve picks the band; the whip picks the frequency.</caption>
+        <thead><tr><th scope="col">Band</th><th scope="col">Turns</th><th scope="col">One turn moves resonance</th><th scope="col">Same change at the whip</th><th scope="col">Whip sensitivity</th></tr></thead>
+        <tbody>
+          <tr><td>40 m</td><td>41</td><td>94 kHz</td><td>7.5 cm</td><td>13 kHz per cm</td></tr>
+          <tr><td>30 m</td><td>22</td><td>250 kHz</td><td>13 cm</td><td>19 kHz per cm</td></tr>
+          <tr><td>20 m</td><td>12</td><td>625 kHz</td><td>21 cm</td><td>30 kHz per cm</td></tr>
+          <tr><td>17 m</td><td>8</td><td>1.05 MHz</td><td>25 cm</td><td>43 kHz per cm</td></tr>
+          <tr><td>15 m</td><td>5</td><td>1.6 MHz</td><td>26 cm</td><td>63 kHz per cm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat">On 40 m a turn is a third of the band, so the sleeve
+      alone gets within reach of any frequency and the whip finishes. On 20 m
+      and above a single turn is wider than the band: set the turn count from
+      the manual, then do all the tuning with the whip. Record the turn count
+      and whip sections per band on the sleeve with a paint pen.</p>
+  </section>
+
+  <section class="section drawings">
+    <header class="sec-head">
+      <div><p class="eyebrow">Rev D</p><h2>The tripod-hub unit</h2></div>
+      <p class="sec-note">17 ft whip<br>80 through 30 m</p>
+    </header>
+    <p class="hint">Rev C put the whip on the moving part. Rev D turns that
+      around. A one-piece printed hub carries the tripod legs and the ground
+      bolt. The printed housing comes up through the hub from below, hangs
+      from a printed collar threaded onto its top, and carries the whip at
+      its top and the five balls at its bottom. The coil form screws up into the housing from below
+      and is turned by hand between the legs. Tuning moves nothing that is
+      loaded. Built around the Chameleon CHA SS17 whip: 17 ft, ten sections,
+      16 mm base, standard 3/8-24 stud. Any 17 ft stainless whip with the
+      same base fits, and a different base diameter is one parameter in the
+      generator.</p>
+    <figure class="drawing">
+      <img src="revd-schematic.webp" width="1560" height="1230"
+           alt="Rev D drawing. A dimensioned cross-section of the assembly: the hub with one leg angled out at 40 degrees, the 284 mm housing passing up through it and hanging from the threaded collar on the boss, with the whip base captured in its top and the five ball stations at its rim, the 249 mm coil form below with its fluted grip, and the swivel cap with its SO-239 at the bottom. Callouts give the set screw, ground bolt, bearing land, copper lining and the two swivel ball stations. Below, the electrical diagram from the coax through the swivel, the active turns and the five balls to the whip."
+           loading="lazy" decoding="async">
+    </figure>
+    <div class="twocol figs">
+      <figure class="drawing">
+        <img src="revd-exploded.webp" width="900" height="1200"
+             alt="Exploded view of the rev D parts in a vertical stack: the fluted collar at the top, the tripod hub below it, then the long housing with its threaded top and five station bosses at the bottom rim, the coil form with its winding, fluted grip and journal, and the swivel cap at the bottom."
+             loading="lazy" decoding="async">
+        <figcaption>Top to bottom: collar, hub, housing, form, swivel cap.
+          The housing goes up through the hub and the collar screws on from
+          above; everything below the hub hangs from that joint.</figcaption>
+      </figure>
+      <figure class="drawing">
+        <img src="revd-top-section.webp" width="2800" height="1400"
+             alt="Section through the housing top in the printed hub, labels in columns either side. Left: the printed collar threaded onto the housing at 3 mm pitch on the boss face, the 34 mm whip-base bore, the ground bolt in a 1/4-20 insert on the hub top with ring terminals under its head, the 40 degree chamfer seat, and the housing passing up through the hub bore. Right: the whip with its 3/8-24 stud, the M5 x 16 set screw through the boss rib into a 1 mm groove, the brass coupling nut captive in the hex pocket, the inside bolt with its ring terminal, and the bus hole 6 mm below the hub."
+             loading="lazy" decoding="async">
+        <figcaption>The joint that carries everything. The collar takes the
+          load; the set screw only stops rotation; the coupling nut goes in
+          from the bore before anything else.</figcaption>
+      </figure>
+    </div>
+    <div class="twocol">
+      <div>
+        <p class="lead-p">The electrical path is coax centre, swivel SO-239,
+          two balls on a brass ring, the bottom of the coil, the active turns,
+          five balls, bus wire, inside bolt, coupling nut, whip. <strong>Nothing
+          slides electrically except balls on copper.</strong></p>
+        <p>The whip's bending load goes from its base through the housing
+          wall into 65 mm of hub bore; the 3/8-24 stud only holds it down. Fully
+          extended, the SS17 puts 8 N&middot;m on its base at 20 mph and
+          18 N&middot;m at 30 mph against a base good for 45 to 80 N&middot;m.
+          Bearing stress on the whip bore at 30 mph is about 14 MPa against
+          50 allowable. The printed hub is forty times less stiff than
+          aluminium, so the whip sways more in gusts; it does not break.</p>
+        <p class="caveat">Tripod stability comes first. With 1.7 kg of
+          hardware on a 520 mm foot radius the free-standing tripod tips at
+          about 13 mph, 17 mph with 425 g of ballast in every foot. The stake
+          ears are what hold it above that. Ballast is for the days you do
+          not want to drive stakes.</p>
+      </div>
+      <ul class="ticks">
+        <li>Hub: 98 x 29 mm body, 52 x 36 boss, 41 mm bore; three 3/8-16 brass inserts in the chamfer face for the legs, three 1/4-20 on top</li>
+        <li>Housing: 284 mm, threaded at the top for the collar, with a 34 mm whip bore, a captive 3/8-24 coupling nut and copper tape above the stations</li>
+        <li>Collar: 52 mm, eight flutes, internal thread at 3 mm pitch, four turns engaged; it sits on the boss face and carries the load</li>
+        <li>Form: 80 turns of bare 18 AWG at 2.0 mm pitch, 42.8 &micro;H full, with a fluted grip and a brass journal ring</li>
+        <li>Swivel cap on the journal: the coax hangs still while the form turns</li>
+        <li>Legs: three 1/2 in x 0.058 wall 6061 tubes, 750 mm, with a 3/8-16 stud epoxied in the top</li>
+        <li>Printed feet with an angled socket, a ballast pocket and a stake ear</li>
+        <li>K4DIA recessed into the hub top and the housing; set your own text in the generator</li>
+      </ul>
+    </div>
+    <div class="tablewrap">
+      <table class="bom">
+        <caption>Bands with the 17 ft whip. Count active turns below the housing rim; one revolution of the form is one turn.</caption>
+        <thead><tr><th scope="col">Band</th><th scope="col">Needs</th><th scope="col">Active turns</th><th scope="col">One turn moves resonance</th><th scope="col">Whip sensitivity</th><th scope="col">Efficiency, 15 &#8486; ground</th></tr></thead>
+        <tbody>
+          <tr><td>80 m</td><td>40.4 &micro;H</td><td>76</td><td>25 kHz</td><td>3 kHz per cm</td><td>7 %</td></tr>
+          <tr><td>60 m</td><td>17.4 &micro;H</td><td>37</td><td>73 kHz</td><td>5 kHz per cm</td><td>15 %</td></tr>
+          <tr><td>40 m</td><td>8.8 &micro;H</td><td>21</td><td>163 kHz</td><td>7 kHz per cm</td><td>25 %</td></tr>
+          <tr><td>30 m</td><td>3.1 &micro;H</td><td>10</td><td>380 kHz</td><td>13 kHz per cm</td><td>43 %</td></tr>
+          <tr><td>20 m</td><td>none</td><td>1, form fully in</td><td></td><td></td><td>61 %</td></tr>
+          <tr><td>17 to 10 m</td><td>none</td><td>1</td><td colspan="3">Collapse the whip to a quarter wave: 4.14, 3.54, 3.01, 2.64 m</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="drawing">
+      <img src="foot-drawing.webp" width="2800" height="1720"
+           alt="Rev D leg foot drawing. A dimensioned section through the printed foot: a 46 mm body 70 mm tall with the leg tube in a 12.9 by 22 mm socket angled 40 degrees and entering 7 mm inboard of centre, a 3.4 mm cross hole for the M3 pin, a 36 by 26 mm ballast pocket underneath filled with fender washers on a 1/4-20 bolt whose head is the foot, a 1/4-20 heat-set insert in the pocket ceiling, and a full-height stake ear 16 mm out with a 9 mm vertical hole. Callouts are in a column on the right; dimensions on the left and below."
+           loading="lazy" decoding="async">
+    </figure>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Which band, which whip</p><h2>What a short whip needs</h2></div>
+      <p class="sec-note">Base loading<br>5 mm average whip radius</p>
+    </header>
+    <div class="prose narrow">
+      <p>A whip shorter than a quarter wave looks capacitive at the
+          feedpoint, and the coil cancels that capacitance. The shorter the
+          whip relative to the wavelength, the more inductance it takes, and
+          the less of the input power is radiated rather than burned in the
+          coil and the ground connection. On 15 m a 2.5 m whip is already
+          70 percent of a quarter wave and needs almost nothing. On 40 m the
+          same whip is 15 percent of a quarter wave and needs about
+          20 &micro;H, which is most of what rev C has.</p>
+      <p>The ground connection dominates the losses. With a coil Q around
+          150 and about 15 &#8486; of ground loss, a 2.5 m whip comes out near
+          6 percent on 40 m, 24 percent on 20 m and 43 percent on 15 m. Four to
+          eight radials of 3 to 5 m on the ground, or a counterpoise clipped
+          to the mount, is worth more than anything you can do to the coil.
+          On 40 m with a 1.5 m whip, efficiency drops to roughly 2 percent; it
+          works, but plan on CW or digital.</p>
+    </div>
+    <div class="tablewrap">
+      <table class="bom">
+        <caption>Inductance required</caption>
+        <thead><tr><th scope="col">Whip above coil</th><th scope="col">40 m</th><th scope="col">20 m</th><th scope="col">15 m</th></tr></thead>
+        <tbody>
+          <tr><td>1.2 m</td><td>38 &micro;H</td><td>9.3 &micro;H</td><td>3.9 &micro;H</td></tr>
+          <tr><td>1.5 m</td><td>32 &micro;H</td><td>7.6 &micro;H</td><td>3.1 &micro;H</td></tr>
+          <tr><td>2.0 m</td><td>25 &micro;H</td><td>5.6 &micro;H</td><td>2.1 &micro;H</td></tr>
+          <tr><td>2.5 m</td><td>20 &micro;H</td><td>4.3 &micro;H</td><td>1.3 &micro;H</td></tr>
+          <tr><td>3.0 m</td><td>17 &micro;H</td><td>3.3 &micro;H</td><td>0.7 &micro;H</td></tr>
+          <tr><td>3.5 m</td><td>14 &micro;H</td><td>2.5 &micro;H</td><td>none</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="drawing">
+      <img src="chart-inductance.webp" width="1152" height="672"
+           alt="Chart of inductance required against whip length above the coil for 40, 20 and 15 m. All three curves fall as the whip gets longer; the 40 m curve runs from about 38 microhenries at 1.2 m to 14 at 3.5 m, the 20 m curve from 9.3 to 2.5, and the 15 m curve reaches zero at 3.5 m where the whip is a quarter wave."
+           loading="lazy" decoding="async">
+    </figure>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div><p class="eyebrow">Rev D hardware</p><h2>What you buy</h2></div>
+      <p class="sec-note">Rough US retail<br>Late 2026</p>
+    </header>
+    <p class="hint">Eight printed parts and off-the-shelf hardware. Printed
+      parts run about 145 dollars at an MJF print service in PA12 or about 22
+      dollars of filament at home; hub and feet at six walls and 40 percent
+      infill minimum. The full list with sources, quantities and prices is in
+      the package as BOM.md and BOM.csv. The rev B and rev C lists are in the
+      README.</p>
+    <div class="tablewrap">
+      <table class="bom">
+        <thead><tr><th scope="col">Qty</th><th scope="col">Item</th><th scope="col">Specification</th><th scope="col">Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>8</td><td>Printed parts</td><td>Hub, housing, collar, form, swivel cap, three feet; MJF PA12 or PETG/ASA</td><td>Everything but the legs</td></tr>
+          <tr><td>7</td><td>Heat-set inserts, hub</td><td>3 x 3/8-16 (HI-316-WH), 3 x 1/4-20 (HI-420-WH), 1 x M5</td><td>Legs, ground bolt and spares, set screw</td></tr>
+          <tr><td>3</td><td>Heat-set inserts, feet</td><td>1/4-20</td><td>Ballast bolt</td></tr>
+          <tr><td>3</td><td>Legs</td><td>1/2 in x 0.058 wall 6061-T6 tube, 750 mm, 3/8-16 x 1-1/2 in stud epoxied in</td><td>Tripod</td></tr>
+          <tr><td>1</td><td>Ground bolt</td><td>1/4-20 x 3/4 in stainless, two washers, nut</td><td>Radials and coax shield on ring terminals</td></tr>
+          <tr><td>1</td><td>Coupling nut</td><td>Brass 3/8-24, 9/16 in AF, 1-1/8 in long</td><td>Captive in the housing; the whip screws into it</td></tr>
+          <tr><td>1</td><td>Inside bolt</td><td>Brass 3/8-24 x 1/2 in with a 3/8 in ring terminal</td><td>Bus and lining to the whip</td></tr>
+          <tr><td>1</td><td>Set screw</td><td>M5 x 16, nylon tipped</td><td>Stops the housing rotating</td></tr>
+          <tr><td>7</td><td>Ball stations</td><td>5/32 in brass ball, PB or BeCu spring 4.0 x 0.55 x 25, brass stem .305-32 cut to 18 to 20 mm, stem nut, metal cap, ring terminal</td><td>5 at the housing rim, 2 in the swivel cap</td></tr>
+          <tr><td>1</td><td>Brass ring</td><td>K&amp;S 1 in OD x 0.014 wall tube, cut 8 mm</td><td>Journal ring for the swivel</td></tr>
+          <tr><td>1</td><td>SO-239</td><td>Square flange, 4 x #4 self-tapping</td><td>On the swivel cap foot</td></tr>
+          <tr><td>1</td><td>Tap</td><td>.305-32 UNEF tire valve stem tap; 5/16-32 also works, slightly loose</td><td>Taps the seven printed bosses</td></tr>
+          <tr><td>1</td><td>Wire</td><td>Bare tinned 18 AWG, about 9.5 m, plus 1.5 m of insulated 18 AWG bus wire</td><td>80 turns; stations to the inside bolt and the SO-239 tail</td></tr>
+          <tr><td>1</td><td>Copper foil tape</td><td>Self-adhesive</td><td>Lines the housing bore above the stations</td></tr>
+          <tr><td>3 sets</td><td>Ballast and stakes</td><td>1/4-20 x 1-1/2 in bolt with 1-1/4 in fender washers, or lead; 8 mm tent stakes</td><td>Feet</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section files" id="files">
+    <header class="sec-head">
+      <div><p class="eyebrow">Take it with you</p><h2>Files</h2></div>
+      <p class="sec-note">Print it, build it<br>Measure it, tell me</p>
+    </header>
+    <p class="hint">All STLs are exported in print orientation with no
+      supports on any part. The STEP files are true B-rep solids with swept
+      helical grooves, for CAD edits; threads are not modelled and every
+      threaded hole is at tap-drill size. Each generator proves its output is
+      a closed, printable volume before writing it, and the QA script checks
+      every STL against its STEP solid and checks part-to-part fit, hole
+      depths against the inserts, and the leg angles read from the faces.</p>
+    <ul class="filelist">
+      <li>
+        <div class="fmeta"><span class="ftype">ZIP</span><span>113 files</span><span>33 MB</span></div>
+        <div>
+          <h3>Complete package</h3>
+          <p>Every STL and STEP for rev B, rev C and rev D, the machined
+             aluminium hub as an option, the parametric generators and the QA
+             script, the drawings, the operating manual, the README with
+             print settings and assembly, and the bill of materials.</p>
+          <a class="dlbtn" href="files/loading-coil-complete.zip" download>Download</a>
+        </div>
+      </li>
+      <li>
+        <div class="fmeta"><span class="ftype">PDF</span><span>7 pages</span><span>416 kB</span></div>
+        <div>
+          <h3>Operating and deployment manual</h3>
+          <p>Which band, which whip, how many turns. Sleeve settings for rev C
+             and turn counts for rev D, what one turn does on each band,
+             efficiency against a quarter wave, voltage and power, wind and
+             load limits, guying and radials.</p>
+          <a class="dlbtn" href="files/loading-coil-operating-manual.pdf" download>Download</a>
+        </div>
+      </li>
+      <li>
+        <div class="fmeta"><span class="ftype">PDF</span><span>24 pages</span><span>1.9 MB</span></div>
+        <div>
+          <h3>Rev D assembly manual</h3>
+          <p>A picture for every step, rendered from the same STLs you print,
+             with the hardware for the step in a box and a line of text only
+             where a picture cannot carry it. Inserts, legs and feet, tapping,
+             the housing internals, the seven ball stations, winding, the
+             swivel cap, final assembly, then the electrical checks and the
+             first tune-up.</p>
+          <a class="dlbtn" href="files/loading-coil-assembly-manual.pdf" download>Download</a>
+        </div>
+      </li>
+      <li>
+        <div class="fmeta"><span class="ftype">CSV</span><span>Rev D</span><span>4 kB</span></div>
+        <div>
+          <h3>Bill of materials</h3>
+          <p>Every printed part and every piece of hardware for the tripod-hub
+             unit, with sources and rough prices, for a spreadsheet.</p>
+          <a class="dlbtn" href="files/loading-coil-revD-BOM.csv" download>Download</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section terms">
+    <div>
+      <p class="eyebrow">Still to come</p>
+      <h2>What goes up next</h2>
+      <ul class="ticks wide">
+        <li>The first printed set, and the measured inductance against the Wheeler numbers above.</li>
+        <li>SWR sweeps per band with the turn counts that actually landed, on the SS17 and on a short whip.</li>
+        <li>How the ball stations wear, and whether the copper lining earns its keep.</li>
+        <li>One male end on the fixed unit, to do away with the adapters.</li>
+        <li>A weather lip on the cap for a heat-shrink sleeve over the winding.</li>
+      </ul>
+      <p class="fineprint">Revision history is in the README. Rev A, October
+        2026: end caps sized to real pipe and real connector flanges. Rev B:
+        printed grooved form. Rev C: tunable sleeve with five ball-contact
+        stations. Rev D, November 2026: tripod hub, swivel feed and the 80-turn
+        form for a 17 ft whip, then made all-printed with brass inserts, every
+        drawing callout measured against the STEP by script, and the housing
+        changed to enter from below and hang from a threaded printed collar. If you
+        build one, send a note to the address below with what you measured.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-call">
+    <img class="foot-logo" src="../../brand/logo-light.png" width="640" height="166"
+         alt="K4DIA" loading="lazy" decoding="async">
+    <span>Amateur Radio</span>
+  </div>
+  <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
+  <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  <div class="foot-meta">
+    <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
+    <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+</body>
+</html>

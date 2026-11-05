@@ -1090,6 +1090,26 @@ table.compare tr td:first-child { font-family: var(--sans); font-size: .84rem; c
   padding: 0;
   display: block;
 }
+.drawing img {
+  background: #ffffff;
+  border: 1px solid var(--paper-line);
+  padding: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.twocol + .tablewrap, .twocol + .drawing, .tablewrap + .drawing { margin-top: 2rem; }
+.terms h2 { margin-bottom: 1.2rem; }
+.twocol.figs { grid-template-columns: minmax(0,.5fr) minmax(0,1fr); align-items: start; margin-bottom: 2rem; }
+.twocol.figs .drawing { margin: 0; }
+.tablewrap table.bom caption {
+  text-align: left;
+  padding-bottom: .7rem;
+  font: 400 .62rem/1 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
 .drawing figcaption {
   margin-top: .7rem;
   font-size: .8rem;
