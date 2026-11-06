@@ -239,8 +239,81 @@
         the radio and the 2947: a switched attenuator for mic and line level
         injection, PTT keying, a load for the receive audio, and a DB-25 radio
         port wired to the RT-9000's J5 pin map so the same cable serves the
-        test box, a remote head, or a modem later. The box, the cables and the
-        test procedure get their own write-up.</p>
+        test box, a remote head, or a modem later. The drawings are below; the
+        build and the test procedure follow once the box is on the bench.</p>
+
+    </div>
+  </section>
+
+  <section class="section drawings" id="test-box">
+    <header class="sec-head">
+      <div><p class="eyebrow">Drawing K4DIA-2947-001, rev C</p><h2>Radio test interface box</h2></div>
+      <p class="sec-note">Five sheets<br>B size, 2026-11-06</p>
+    </header>
+    <p class="hint">One box between the IFR 2947 and whatever radio is under
+      test. Two all-metal BNCs take the generator out and the AF input; a
+      DB-25 on the other end plate takes one adapter cable at a time, wired to
+      the RT-9000's J5 pin order so the same port serves the rear J5, the
+      front U-229 jacks, or an IC-7100. S1 pads the generator to line, mic or
+      aux level, S2 and S3 key the radio, S4 selects a speaker load. RF never
+      passes through it. Sheet 1 is the schematic, 2 the list of materials,
+      3 the pad board, 4 the enclosure drilling, 5 the adapter cables and the
+      bench arrangement.</p>
+    <figure class="drawing">
+      <img src="testbox-schematic.webp" width="1825" height="1161"
+           alt="Sheet 1 of 5, schematic. Two BNC inputs J1 and J2 at the left; a pad network of R1a, R1b, R2, R3 and the Grayhill rotary S1 selecting line, mic, aux or open into a 10 microfarad non-polar blocking capacitor and out to DB-25 J3 pin 8; S2 momentary and S3 toggle across the PTT lines; S4 rotary selecting the 8.2 ohm, 620 ohm or spare speaker loads on J2. Notes on resistors, the switches, the pad, the load, grounding, the DB-25 contacts and the RF ports. Revision block A to C."
+           loading="lazy" decoding="async">
+      <figcaption>Sheet 1. Schematic. The pad is two separate L networks on J1;
+        line is direct, mic is about 40 dB down, aux about 21 dB. S4 never
+        puts two loads in parallel.</figcaption>
+    </figure>
+    <figure class="drawing">
+      <img src="testbox-lom.webp" width="1825" height="1161"
+           alt="Sheet 2 of 5, list of materials: 41 line items in three groups, the test interface box, the adapter cables and the bench jumpers and adapters, with reference designators, quantities, descriptions, manufacturers, part numbers and where used."
+           loading="lazy" decoding="async">
+      <figcaption>Sheet 2. List of materials, rev C. The box, three adapter
+        cables and the bench jumpers. Mil part numbers have commercial
+        equivalents listed.</figcaption>
+    </figure>
+    <figure class="drawing">
+      <img src="testbox-board.webp" width="1825" height="1161"
+           alt="Sheet 3 of 5, PAD1 board assembly, component side: a 0.1 inch grid of pads with the resistors, the blocking capacitor, labelled wire terminal pads and the J4 ten-pin header laid out and bused; a legend, build notes, the pad-to-part wire list and the J4 harness pin table."
+           loading="lazy" decoding="async">
+      <figcaption>Sheet 3. The pad board, component side, with the wire list
+        and the J4 harness pinout so the base plate pulls clear without
+        unsoldering.</figcaption>
+    </figure>
+    <figure class="drawing">
+      <img src="testbox-enclosure.webp" width="1825" height="1161"
+           alt="Sheet 4 of 5, enclosure: plan view of the base plate with the board, the two rotary switch bodies, LED, S2, S3 and R4 positioned; end plate A with the DB-25 cutout, end plate B with the two BNC holes; the U-channel top face drilling with hole centres for S1, S4, S3, S2 and the LED; arrangement notes."
+           loading="lazy" decoding="async">
+      <figcaption>Sheet 4. Jiuwu 150 x 105 x 55 aluminium case. The plate
+        that slides into the U channel is the base; the board and R4 mount on
+        it and slide out with it.</figcaption>
+    </figure>
+    <figure class="drawing">
+      <img src="testbox-cables.webp" width="1825" height="1161"
+           alt="Sheet 5 of 5, adapter cables and bench arrangement: the IFR 2947A, the test interface box and the two radios drawn as a bench layout with the AF jumpers and the RF path; below, the three adapter cables A, B and C with their DB-25 to radio-end pin tables and build notes."
+           loading="lazy" decoding="async">
+      <figcaption>Sheet 5. Bench arrangement and the three adapter cables:
+        C to the RT-9000D rear J5 (all 19 contacts), B to the front U-229
+        jacks, A to an IC-7100 RJ45 and 3.5 mm.</figcaption>
+    </figure>
+    <ul class="filelist">
+      <li>
+        <div class="fmeta"><span class="ftype">PDF</span><span>5 sheets</span><span>621 kB</span></div>
+        <div>
+          <h3>K4DIA-2947-001 rev C, full set</h3>
+          <p>Schematic, list of materials, board, enclosure and cables, B size
+             landscape, as drawn.</p>
+          <a class="dlbtn" href="files/K4DIA-2947-001-revC-test-interface-box.pdf" download>Download</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="prose narrow">
 
       <h2>The amplifier</h2>
 
@@ -291,7 +364,7 @@
       <p class="eyebrow">Still to come</p>
       <h2>What goes up next</h2>
       <ul class="ticks wide">
-        <li>The RT-9000D to IFR 2947 test interface: the box, the cables and the procedure.</li>
+        <li>The test interface box built, the three adapter cables made, and the test procedure.</li>
         <li>A measured baseline for the radio: sensitivity, frequency accuracy, output per band, two-tone IMD, harmonics.</li>
         <li>The LPA-9600 after its dry-out: each deck on its own meter before the breaker goes on.</li>
         <li>The 37-pin control cable from J6 to the CU-9125 coupler.</li>
