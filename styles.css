@@ -1683,6 +1683,9 @@ a.tool-row:active { transform: translateY(0); }
    spec-sheet rows, with the page/size meta stacked beneath it. */
 .filelist li:has(.doc-cover) { grid-template-columns: 7rem minmax(0, 1fr); align-items: start; }
 .filelist li:has(.doc-cover) .fmeta { grid-auto-flow: row; align-content: start; gap: .55rem; }
+/* A row without a cover, on a shelf that has them, keeps the same columns. */
+.filelist:has(.doc-cover) li { grid-template-columns: 7rem minmax(0, 1fr); align-items: start; }
+.filelist:has(.doc-cover) .fmeta { grid-auto-flow: row; align-content: start; gap: .55rem; }
 .doc-cover {
   display: block; width: 100%; height: auto;
   background: var(--paper-warm);
