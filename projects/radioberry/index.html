@@ -45,12 +45,13 @@
   <a href="../../downloads/"><i>04</i> Downloads</a>
   <a href="../../#articles"><i>05</i> Articles</a>
   <a href="../../#notes"><i>06</i> Notes</a>
+  <a href="../../about/"><i>07</i> About</a>
 </nav>
 
 <main id="main">
   <section class="pagehead">
     <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> RadioBerry V2 <span class="crumb-sep" aria-hidden="true">&middot;</span> <a class="crumb-discuss" href="#discuss">Discuss on GitHub</a></p>
-    <p class="eyebrow">SDR / Construction <span class="cstat-inline">Planning and parts</span></p>
+    <p class="pagestat"><span class="cstat-inline">Planning and parts</span></p>
     <h1>RadioBerry V2 Beta5<br>5 W portable HF radio</h1>
     <p class="pagelede">A self-contained HF software-defined radio in a Hammond
       instrument case: a Raspberry Pi 4 already on the shelf, a RadioBerry V2
@@ -95,7 +96,7 @@
 
   <section class="section drawings">
     <header class="sec-head">
-      <div><p class="eyebrow">What it looks like from the operator's chair</p><h2>Front panel</h2></div>
+      <div><h2>Front panel: display and VFO</h2></div>
       <p class="sec-note">Display centered<br>VFO to the right</p>
     </header>
     <figure class="drawing">
@@ -254,7 +255,7 @@
 
   <section class="section drawings">
     <header class="sec-head">
-      <div><p class="eyebrow">How the signal and the power move</p><h2>System architecture</h2></div>
+      <div><h2>How signal and power flow</h2></div>
     </header>
     <figure class="drawing">
       <svg viewBox="0 0 1120 640" role="img" aria-label="System block diagram in three bands. RF path, transmit left to right: RadioBerry V2 exciter, 3 to 5 watt PA, LPF bank, SWR bridge, antenna, with a dashed receive return that goes back through the filters and past the PA. Computer and front panel: the Raspberry Pi running piHPSDR, fed by a USB audio adapter and an RP2040 front panel controller, which also carries the 3 bit filter select line. Power: battery or external supply through a fused EXT OFF BAT selector into a 5 volt rail and a separate 8.4 volt rail for the PA alone.">
@@ -365,7 +366,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">The three parts that decide the build</p><h2>Key modules</h2></div>
+      <div><h2>Three modules that decide it</h2></div>
     </header>
 
     <article class="candidate">
@@ -459,7 +460,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">Which filter for which band</p><h2>Filter allocation</h2></div>
+      <div><h2>Which filter for which band</h2></div>
     </header>
     <div class="tablewrap">
       <table class="bom">
@@ -491,7 +492,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">The real VFO question</p><h2>A knob, not a mouse</h2></div>
+      <div><h2>A real VFO knob, not a mouse</h2></div>
     </header>
     <div class="twocol">
       <div>
@@ -517,7 +518,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">Everything, grouped</p><h2>Purchasing list</h2></div>
+      <div><h2>Everything to buy</h2></div>
       <p class="sec-note">One radio<br>Pi already owned</p>
     </header>
     <div class="partsgroups">
@@ -624,7 +625,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">Two rails, one selector</p><h2>Power architecture</h2></div>
+      <div><h2>Battery or supply, one switch</h2></div>
     </header>
     <div class="twocol">
       <div>
@@ -647,7 +648,7 @@
 
   <section class="section build">
     <header class="sec-head">
-      <div><p class="eyebrow">Keeping the noise out of the receiver</p><h2>RF and EMI practice</h2></div>
+      <div><h2>Keeping Pi noise out of the receiver</h2></div>
     </header>
     <div class="rulesets">
       <div class="ruleset"><h3>Layout</h3><ol>
@@ -675,7 +676,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">What is left to spend</p><h2>Cost</h2></div>
+      <div><h2>Cost: $805 to $955 complete</h2></div>
       <p class="sec-note">Excludes antenna, feed line, labor<br>and premium cosmetic machining</p>
     </header>
     <div class="tablewrap">
@@ -709,7 +710,7 @@
 
   <section class="section vna">
     <header class="sec-head">
-      <div><p class="eyebrow">Order of operations</p><h2>Buy, then build, then test</h2></div>
+      <div><h2>Buy, then build, then test</h2></div>
     </header>
     <div class="tests">
       <article>
@@ -766,7 +767,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">Where it stands</p><h2>Decided, and still open</h2></div>
+      <div><h2>Decided, and still open</h2></div>
     </header>
     <div class="twocol">
       <div>
@@ -803,7 +804,6 @@
 
   <section class="section terms">
     <div>
-      <p class="eyebrow">Where this lands</p>
       <h2>Bottom line</h2>
       <p>The $80 filter board is electrically well suited and is a cleaner
         answer than assembling the earlier QRP Labs filter system. The
@@ -834,7 +834,6 @@
 
   <section class="section discuss" id="discuss">
     <div class="discuss-copy">
-      <p class="eyebrow">Questions, results, corrections</p>
       <h2>Discuss this project on GitHub</h2>
       <p>Built one, measured something different, or found a mistake? The
          conversation for every page on this site lives in GitHub Discussions,
@@ -857,6 +856,7 @@
   <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
   <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
   <div class="foot-meta">
+    <span><a href="../../about/">About K4DIA</a></span>
     <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
     <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
   </div>

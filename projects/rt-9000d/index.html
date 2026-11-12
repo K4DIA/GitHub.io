@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sunair RT-9000D back to life | K4DIA</title>
+<title>A dead Sunair RT-9000D, fixed with a $25 part | K4DIA</title>
 <meta name="description" content="A dead Sunair RT-9000D government HF transceiver, six hours on the bench, and a fault that came down to one open switch contact on the volume control. With a first look inside its LPA-9600 kilowatt amplifier.">
 <link rel="canonical" href="https://k4dia.com/projects/rt-9000d/">
 <meta property="og:site_name" content="K4DIA">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sunair RT-9000D back to life">
+<meta property="og:title" content="A dead Sunair RT-9000D, fixed with a $25 part">
 <meta property="og:description" content="A dead government HF transceiver, six hours on the bench, and a fault that came down to one open switch contact.">
 <meta property="og:url" content="https://k4dia.com/projects/rt-9000d/">
 <meta property="og:image" content="https://k4dia.com/brand/og-card.png">
@@ -43,13 +43,14 @@
   <a href="../../downloads/"><i>04</i> Downloads</a>
   <a href="../../#articles"><i>05</i> Articles</a>
   <a href="../../#notes"><i>06</i> Notes</a>
+  <a href="../../about/"><i>07</i> About</a>
 </nav>
 
 <main id="main">
   <section class="pagehead">
     <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> RT-9000D <span class="crumb-sep" aria-hidden="true">&middot;</span> <a class="crumb-discuss" href="#discuss">Discuss on GitHub</a></p>
-    <p class="eyebrow">Restoration / HF <span class="cstat-inline">Repaired, baseline next</span></p>
-    <h1>Sunair RT-9000D<br>back to life</h1>
+    <p class="pagestat"><span class="cstat-inline">Repaired, baseline next</span></p>
+    <h1>A dead Sunair RT-9000D,<br>fixed with a $25 part</h1>
     <p class="pagelede">A dead professional HF transceiver, six hours on the
       bench, and a fault that turned out to be a single switch contact, now
       replaced. The radio came as a set with its automatic coupler and, later, a kilowatt
@@ -83,7 +84,7 @@
   <section class="section">
     <div class="prose narrow">
 
-      <h2>The radio</h2>
+      <h2>A 125 W government HF set, dead on arrival</h2>
 
       <p>The Sunair RT-9000 is a 125 W, 1.6 to 30 MHz HF/SSB transceiver
         built in Fort Lauderdale for government, maritime and embassy service.
@@ -100,7 +101,7 @@
         input. With a bench supply on the DC jack, the radio did nothing. No
         display, no LEDs, no click.</p>
 
-      <h2>Following the power</h2>
+      <h2>Tracing the fault to one open switch</h2>
 
       <p>On AC there was a low hum from the rear of the chassis and nothing
         else, which said the AC supply's transformer was alive and the problem
@@ -187,7 +188,7 @@
   <section class="section">
     <div class="prose narrow">
 
-      <h2>Built like a URC-94</h2>
+      <h2>Built like a URC-94, not like an Icom</h2>
 
       <p>Six hours inside this radio kept sending me back to the
         <a href="../mb-470/">URC-94</a>, which I spent years operating,
@@ -218,7 +219,7 @@
         by someone with a manual and a meter. Opening it up is the same wow I
         had the first time inside a URC-94.</p>
 
-      <h2>What the bench says so far</h2>
+      <h2>First results: it receives and transmits SSB</h2>
 
       <p>On 26 V the radio receives well and transmits SSB. Full 125 W
         key-down wants 27 to 28 V, since the PA current limit sits at 17 A and
@@ -227,7 +228,7 @@
         coupler needs its own 37-pin control cable from the radio's J6, which
         is a project of its own and gets its own page.</p>
 
-      <h2>Numbers, not impressions</h2>
+      <h2>Next, real measurements on the IFR 2947</h2>
 
       <p>Powering up is a milestone, not a measurement. The RT-9000D goes on
         the IFR 2947 next for receiver sensitivity and line audio level,
@@ -247,8 +248,8 @@
 
   <section class="section drawings" id="test-box">
     <header class="sec-head">
-      <div><p class="eyebrow">Drawing K4DIA-2947-001, rev C</p><h2>Radio test interface box</h2></div>
-      <p class="sec-note">Five sheets<br>B size, 2026-11-06</p>
+      <div><h2>A test box between the radio and the IFR 2947</h2></div>
+      <p class="sec-note">Drawing K4DIA-2947-001, rev C<br>Five sheets, B size, 2026-11-06</p>
     </header>
     <p class="hint">One box between the IFR 2947 and whatever radio is under
       test. Two all-metal BNCs take the generator out and the AF input; a
@@ -315,7 +316,7 @@
   <section class="section">
     <div class="prose narrow">
 
-      <h2>The amplifier</h2>
+      <h2>The LPA-9600 kilowatt amplifier: dirty but intact</h2>
 
       <p>The companion unit is an LPA-9600, Sunair's 1 kW solid-state
         amplifier: four 250 W RF decks on 48 V supplies, combined into a
@@ -361,7 +362,6 @@
 
   <section class="section terms">
     <div>
-      <p class="eyebrow">Still to come</p>
       <h2>What goes up next</h2>
       <ul class="ticks wide">
         <li>The test interface box built, the three adapter cables made, and the test procedure.</li>
@@ -380,7 +380,6 @@
 
   <section class="section discuss" id="discuss">
     <div class="discuss-copy">
-      <p class="eyebrow">Questions, results, corrections</p>
       <h2>Discuss this project on GitHub</h2>
       <p>Built one, measured something different, or found a mistake? The
          conversation for every page on this site lives in GitHub Discussions,
@@ -388,7 +387,7 @@
          Sign with your callsign.</p>
     </div>
     <div class="discuss-actions">
-      <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions/new/choose?title=Sunair%20RT-9000D%20back%20to%20life" rel="noopener">Start a discussion <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions/new/choose?title=A%20dead%20Sunair%20RT-9000D%2C%20fixed%20with%20a%20%2425%20part" rel="noopener">Start a discussion <span aria-hidden="true">&rarr;</span></a>
       <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions" rel="noopener">Read the discussions</a>
     </div>
   </section>
@@ -403,6 +402,7 @@
   <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
   <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
   <div class="foot-meta">
+    <span><a href="../../about/">About K4DIA</a></span>
     <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
     <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
   </div>

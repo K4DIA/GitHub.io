@@ -116,7 +116,9 @@ a { color: inherit; }
   .brand-lines { display: none; }
   .mainnav-mobile { display: none; background: var(--ink); color: var(--sand);
     border-bottom: 1px solid rgba(0,0,0,.4); }
-  .menu-open + .mainnav-mobile { display: grid; }
+  .menu-open + .mainnav-mobile { display: grid; position: fixed; left: 0; right: 0;
+    top: var(--mast-bottom, 4.5rem); z-index: 39;
+    max-height: calc(100vh - var(--mast-bottom, 4.5rem)); overflow-y: auto; }
   .mainnav-mobile a { display: grid; grid-template-columns: 2.4rem 1fr; gap: .6rem;
     padding: 1rem clamp(1.1rem, 3.4vw, 3rem); text-decoration: none;
     font: 600 .78rem/1 var(--mono); letter-spacing: .18em; text-transform: uppercase;
@@ -237,7 +239,7 @@ details.pool[open] > summary { margin-bottom: .7rem; }
     <span></span><span></span><span></span>
   </button>
 </header>
-<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens"><a href="index.html"><i>01</i> Learn</a><a href="../#projects"><i>02</i> Projects</a><a href="../#tools"><i>03</i> Tools</a><a href="../downloads/"><i>04</i> Downloads</a><a href="../#articles"><i>05</i> Articles</a><a href="../#notes"><i>06</i> Notes</a></nav>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens"><a href="index.html"><i>01</i> Learn</a><a href="../#projects"><i>02</i> Projects</a><a href="../#tools"><i>03</i> Tools</a><a href="../downloads/"><i>04</i> Downloads</a><a href="../#articles"><i>05</i> Articles</a><a href="../#notes"><i>06</i> Notes</a><a href="../about/"><i>07</i> About</a></nav>
 <main>
 <p class="crumb"><a href="index.html">Learn</a><span class="sep">/</span><a href="hub-tech.html"><span class="rank"><svg class="rank" width="14" height="8" viewBox="0 0 20 11.0" aria-label="Level 1 mark" role="img"><path d="M3 8.0 L10 1.0 L17 8.0" fill="none" stroke="#B4530A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Technician course</a><span class="sep">/</span><span>Module 5 of 10</span></p>
 <header class="module">
@@ -296,6 +298,7 @@ details.pool[open] > summary { margin-bottom: .7rem; }
   <p>&copy; 2026 Anthony Pelfanio, K4DIA. All rights reserved.</p>
   <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
   <div class="foot-meta">
+    <span><a href="../about/">About K4DIA</a></span>
     <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
     <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
   </div>
@@ -308,6 +311,7 @@ details.pool[open] > summary { margin-bottom: .7rem; }
   if (!head || !toggle || !mobile) return;
   toggle.addEventListener("click", function () {
     var open = head.classList.toggle("menu-open");
+    mobile.style.setProperty("--mast-bottom", Math.round(head.getBoundingClientRect().bottom) + "px");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });

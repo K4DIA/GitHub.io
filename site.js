@@ -11,6 +11,8 @@
   if (head && toggle && mobile) {
     toggle.addEventListener("click", function () {
       var open = head.classList.toggle("menu-open");
+      // pin the open menu to the bottom edge of the masthead
+      mobile.style.setProperty("--mast-bottom", Math.round(head.getBoundingClientRect().bottom) + "px");
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     });

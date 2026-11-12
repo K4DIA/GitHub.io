@@ -45,12 +45,13 @@
   <a href="../../downloads/"><i>04</i> Downloads</a>
   <a href="../../#articles"><i>05</i> Articles</a>
   <a href="../../#notes"><i>06</i> Notes</a>
+  <a href="../../about/"><i>07</i> About</a>
 </nav>
 
 <main id="main">
   <section class="pagehead">
     <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> Common-mode choke <span class="crumb-sep" aria-hidden="true">&middot;</span> <a class="crumb-discuss" href="#discuss">Discuss on GitHub</a></p>
-    <p class="eyebrow">RF / Feed line <span class="cstat-inline">Built</span></p>
+    <p class="pagestat"><span class="cstat-inline">Built</span></p>
     <h1>1:1 common-mode choke<br>on an FT240 core</h1>
     <p class="pagelede">An attic loop fed through an unbalanced tuner puts RF
       on the outside of the coax, and from there onto everything else in the
@@ -83,7 +84,7 @@
 
   <section class="section">
     <header class="sec-head">
-      <div><p class="eyebrow">What it is made of</p><h2>Bill of materials</h2></div>
+      <div><h2>Parts: one core, common hardware</h2></div>
       <p class="sec-note">Everything but the core<br>is hardware store stock</p>
     </header>
     <div class="tablewrap">
@@ -105,7 +106,7 @@
 
   <section class="section drawings">
     <header class="sec-head">
-      <div><p class="eyebrow">The part that matters</p><h2>Winding the core</h2></div>
+      <div><h2>Twelve turns, crossed over halfway</h2></div>
       <p class="sec-note">Twelve turns<br>Crossed over at the halfway point</p>
     </header>
     <p class="hint">The cross-over is the whole trick. Winding straight round
@@ -199,7 +200,7 @@
 
   <section class="section drawings">
     <header class="sec-head">
-      <div><p class="eyebrow">Into the box</p><h2>Assembly</h2></div>
+      <div><h2>Putting it in the box</h2></div>
     </header>
     <figure class="drawing">
       <svg viewBox="0 0 1120 700" role="img" aria-label="Enclosure assembly seen from above. A 4 inch square box with an N-type jack centred on each of two opposite walls, the wound toroid anchored in the middle by a zip tie passing through two holes in the backplate, a coax tail running from the core to each connector centre pin, and a shield lead going to a grounding lug under each connector mounting nut.">
@@ -355,7 +356,7 @@
 
   <section class="section drawings">
     <header class="sec-head">
-      <div><p class="eyebrow">Where it goes</p><h2>Installed position</h2></div>
+      <div><h2>Mount it at the tuner</h2></div>
       <p class="sec-note">At the tuner<br>Not at the radio</p>
     </header>
     <p class="hint">A choke works where the common-mode current is, which is at
@@ -436,10 +437,69 @@
     </figure>
   </section>
 
+  <section class="section drawings" id="air-wound">
+    <header class="sec-head">
+      <div><h2>The air-wound version, for more power</h2></div>
+      <p class="sec-note">13 turns of LMR-400<br>No core to heat</p>
+    </header>
+    <p class="hint">The same job can be done with no ferrite at all. Coil
+      enough coax and the outside of the shield becomes an inductor.
+      Common-mode current has to get through it; the signal inside the cable
+      does not notice. With no core there is nothing to saturate and nothing
+      to heat. The cost is size. I use this one in the same place as the
+      ferrite choke, at the tuner, and on the
+      <a href="../rt-9000d/">RT-9000D</a> and its coupler, where the power is
+      higher.</p>
+    <div class="twocol even">
+      <figure class="photo cutout">
+        <img src="air-choke-side.webp" width="1200" height="926"
+             alt="A single-layer coil of thirteen turns of black LMR-400 coax, close wound on a beige PVC cylinder, with rows of small zip ties down the side and an N connector on each tail."
+             loading="lazy" decoding="async">
+        <figcaption>Thirteen turns of LMR-400 Ultra Flex, close wound in one
+          layer on a 6.25 in PVC spindle.</figcaption>
+      </figure>
+      <figure class="photo cutout">
+        <img src="air-choke-top.webp" width="1200" height="915"
+             alt="The same coil seen from above, showing zip ties passing through holes in the wall of the PVC form to anchor the top turn, and the two tails leaving from opposite ends of the coil."
+             loading="lazy" decoding="async">
+        <figcaption>From above. The anchor ties pass through holes in the
+          form, and the tails leave from opposite ends of the coil.</figcaption>
+      </figure>
+    </div>
+    <div class="rulesets" style="margin-top:2rem">
+      <div class="ruleset">
+        <h3>What it is made of</h3>
+        <ol>
+          <li>Times Microwave LMR-400 Ultra Flex, with an N male on each end.</li>
+          <li>The form is the spindle from an empty Cat 6 cable spool: thin-wall PVC, 6.25 in diameter.</li>
+          <li>Zip ties, a few long ones for the anchors and a bag of small ones.</li>
+        </ol>
+      </div>
+      <div class="ruleset">
+        <h3>Winding it</h3>
+        <ol>
+          <li>Drill pairs of small holes through the wall of the form near each end for the anchor ties.</li>
+          <li>Leave a tail long enough to reach where it is going, then tie the cable to the form at one end.</li>
+          <li>Wind 13 turns in a single layer, each turn tight against the last. No turn rides over another.</li>
+          <li>Tie the last turn to the form at the other end.</li>
+          <li>Run rows of small ties down the outside, each one tying a turn to the next, so the winding cannot spread or shift.</li>
+          <li>Bring the two tails away from opposite ends of the coil and keep them apart.</li>
+        </ol>
+      </div>
+      <div class="ruleset">
+        <h3>The numbers</h3>
+        <ol>
+          <li>Thirteen turns at this diameter take about 23 ft of cable before the tails.</li>
+          <li>By Wheeler's formula the coil comes to about 23 &micro;H: roughly 500 &ohm; at 3.5 MHz and 1,000 &ohm; at 7 MHz.</li>
+          <li>Those figures are calculated, not measured. Higher up, the coil's own capacitance sets a resonance, so the upper bands need a sweep and not arithmetic.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <section class="section terms">
     <div>
-      <p class="eyebrow">Worth knowing</p>
-      <h2>Limits and checks</h2>
+      <h2>Limits, and how to check it</h2>
       <ul class="ticks wide">
         <li>Rated here for 120 W PEP across 80 through 10 m. Duty cycle matters: a long digital transmission heats a core that an SSB conversation never would.</li>
         <li>Mix 31 and Mix 43 behave differently across the band. Both are named in the parts list because either will work over this range, not because they are interchangeable everywhere.</li>
@@ -455,7 +515,6 @@
 
   <section class="section discuss" id="discuss">
     <div class="discuss-copy">
-      <p class="eyebrow">Questions, results, corrections</p>
       <h2>Discuss this project on GitHub</h2>
       <p>Built one, measured something different, or found a mistake? The
          conversation for every page on this site lives in GitHub Discussions,
@@ -478,6 +537,7 @@
   <p>Projects, code and field notes. Simple equipment, real people, farther together.</p>
   <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
   <div class="foot-meta">
+    <span><a href="../../about/">About K4DIA</a></span>
     <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
     <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
   </div>

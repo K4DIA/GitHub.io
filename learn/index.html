@@ -116,7 +116,9 @@ a { color: inherit; }
   .brand-lines { display: none; }
   .mainnav-mobile { display: none; background: var(--ink); color: var(--sand);
     border-bottom: 1px solid rgba(0,0,0,.4); }
-  .menu-open + .mainnav-mobile { display: grid; }
+  .menu-open + .mainnav-mobile { display: grid; position: fixed; left: 0; right: 0;
+    top: var(--mast-bottom, 4.5rem); z-index: 39;
+    max-height: calc(100vh - var(--mast-bottom, 4.5rem)); overflow-y: auto; }
   .mainnav-mobile a { display: grid; grid-template-columns: 2.4rem 1fr; gap: .6rem;
     padding: 1rem clamp(1.1rem, 3.4vw, 3rem); text-decoration: none;
     font: 600 .78rem/1 var(--mono); letter-spacing: .18em; text-transform: uppercase;
@@ -187,14 +189,12 @@ h1 { margin: .2rem 0 0; font: 700 clamp(2rem,5vw,3.4rem)/.94 var(--display);
     <span></span><span></span><span></span>
   </button>
 </header>
-<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens"><a href="index.html"><i>01</i> Learn</a><a href="../#projects"><i>02</i> Projects</a><a href="../#tools"><i>03</i> Tools</a><a href="../downloads/"><i>04</i> Downloads</a><a href="../#articles"><i>05</i> Articles</a><a href="../#notes"><i>06</i> Notes</a></nav>
+<nav class="mainnav-mobile" id="mainnav-mobile" aria-label="Primary, small screens"><a href="index.html"><i>01</i> Learn</a><a href="../#projects"><i>02</i> Projects</a><a href="../#tools"><i>03</i> Tools</a><a href="../downloads/"><i>04</i> Downloads</a><a href="../#articles"><i>05</i> Articles</a><a href="../#notes"><i>06</i> Notes</a><a href="../about/"><i>07</i> About</a></nav>
 <main>
-<p class="eyebrow">K4DIA Learn</p>
 <h1>Learn the radio, not just the answers.</h1>
 <p class="lede">Two shelves under one roof. A reference library of the manuals, standards and courses worth keeping on the bench, and three license courses that take you from your first callsign to Extra.</p>
 <div class="learn-split">
 <section class="learn-ref">
-<p class="eyebrow">The material</p>
 <h2 class="col-title">Reference shelf</h2>
 <p class="ref-lede">Military handbooks, standards of practice, service manuals and the full Navy electronics course. Public references, mirrored whole and free to download.</p>
 <div class="refcards">
@@ -211,7 +211,6 @@ h1 { margin: .2rem 0 0; font: 700 clamp(2rem,5vw,3.4rem)/.94 var(--display);
 </div>
 </section>
 <section class="learn-ham">
-<p class="eyebrow">Get licensed</p>
 <h2 class="col-title">License courses</h2>
 <section class="how"><h2>How this works</h2><svg viewBox="0 0 640 250" role="img" aria-label="How this works: learn, check, practice, test, with misses looping back to the lesson" style="width:100%;height:auto;display:block;">
 <defs><marker id="hw-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#666155" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
@@ -273,6 +272,7 @@ h1 { margin: .2rem 0 0; font: 700 clamp(2rem,5vw,3.4rem)/.94 var(--display);
   <p>&copy; 2026 Anthony Pelfanio, K4DIA. All rights reserved.</p>
   <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
   <div class="foot-meta">
+    <span><a href="../about/">About K4DIA</a></span>
     <span>Contact <span id="k4-mail">tony at k4dia dot com</span></span>
     <span class="visits" id="k4-visits" hidden>Visits <b></b></span>
   </div>
@@ -285,6 +285,7 @@ h1 { margin: .2rem 0 0; font: 700 clamp(2rem,5vw,3.4rem)/.94 var(--display);
   if (!head || !toggle || !mobile) return;
   toggle.addEventListener("click", function () {
     var open = head.classList.toggle("menu-open");
+    mobile.style.setProperty("--mast-bottom", Math.round(head.getBoundingClientRect().bottom) + "px");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
