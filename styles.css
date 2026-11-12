@@ -1870,3 +1870,14 @@ table.bom.ort-plain td.ort-mono { font-family: var(--mono); font-size: .9rem; }
 .ort-limits dd { margin: 0 0 1rem; font-size: .96rem; color: var(--ink-mid); }
 .ort-limits dd:last-child { margin-bottom: 0; }
 .ort-limits dd a { color: inherit; }
+
+/* ------------------------------------------- drawing sheets that open full size */
+.drawing > a { display: block; }
+.drawing > a:hover img, .drawing > a:focus-visible img { border-color: var(--ink-faint); }
+.pagestat .cstat-inline + .cstat-inline { margin-left: .5rem; }
+.pagestat .cstat-inline a { color: inherit; text-decoration: none; }
+.pagestat .cstat-inline a:hover { text-decoration: underline; }
+.drawings .tablewrap + .caveat { margin-top: 1.6rem; }
+.drawings .caveat + .hint { margin-top: 1.4rem; }
+table.bom.prc-two { min-width: 0; }
+table.bom.prc-two td:first-child { width: 32%; font-weight: 600; color: var(--ink); }

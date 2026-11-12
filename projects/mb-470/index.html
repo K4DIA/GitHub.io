@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MB-470 HF/UHF radio | K4DIA</title>
-<meta name="description" content="A superheterodyne HF through UHF radio designed from scratch since 2015, built on years of operating, maintaining and repairing the URC-94 and the GRC-171(V)2.">
+<title>PERMAN-FMR AN/PRC-736 HF through UHF radio | K4DIA</title>
+<meta name="description" content="A superheterodyne manpack radio for 1.5 to 470 MHz, designed from scratch since 2015 on years of operating, maintaining and repairing the URC-94 and the GRC-171(V)2. Formerly the MB-470. Block diagram, four sheets.">
 <link rel="canonical" href="https://k4dia.com/projects/mb-470/">
 <meta property="og:site_name" content="K4DIA">
 <meta property="og:type" content="website">
-<meta property="og:title" content="MB-470 HF/UHF radio">
-<meta property="og:description" content="A superheterodyne HF through UHF radio designed from scratch since 2015, built on years of operating, maintaining and repairing the URC-94 and the GRC-171(V)2.">
+<meta property="og:title" content="PERMAN-FMR AN/PRC-736 HF through UHF radio">
+<meta property="og:description" content="A superheterodyne manpack radio for 1.5 to 470 MHz, designed from scratch since 2015 on years of operating, maintaining and repairing the URC-94 and the GRC-171(V)2. Formerly the MB-470. Block diagram, four sheets.">
 <meta property="og:url" content="https://k4dia.com/projects/mb-470/">
 <meta property="og:image" content="https://k4dia.com/brand/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -48,37 +48,39 @@
 
 <main id="main">
   <section class="pagehead">
-    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> MB-470 <span class="crumb-sep" aria-hidden="true">&middot;</span> <a class="crumb-discuss" href="#discuss">Discuss on GitHub</a></p>
-    <p class="pagestat"><span class="cstat-inline">In design</span></p>
-    <h1>MB-470<br>HF through UHF</h1>
+    <p class="crumb"><a href="../../#projects">Projects</a> <span aria-hidden="true">/</span> PERMAN-FMR AN/PRC-736 <span class="crumb-sep" aria-hidden="true">&middot;</span> <a class="crumb-discuss" href="#discuss">Discuss on GitHub</a></p>
+    <p class="pagestat"><span class="cstat-inline">In design</span> <span class="cstat-inline"><a href="#block-diagram">New: the block diagram, 4 sheets</a></span></p>
+    <h1>PERMAN-FMR<br>AN/PRC-736</h1>
     <p class="pagelede">A radio of my own, drawn from scratch and deliberately
       superheterodyne rather than software defined. Ten years of sketching,
       calculating and revising, built on what I learned keeping a URC-94 and a
       GRC-171 running, and on what carrying a PRC-150 taught me about how a
       radio should sit in the hand.</p>
+    <p class="byline"><span>Personal Manpack, Field Maintenance Repairable</span><span>1.5 to 470 MHz</span><span>Formerly the MB-470</span></p>
   </section>
 
   <section class="section photosec">
     <figure class="photo wide">
       <img src="mb470-sheet.webp" width="1600" height="800"
-           alt="Design sheet for the MB-470. A black rack-eared transceiver seen from the front: an N-type antenna jack marked 50 ohm on the left with a GPS jack beside it, a backlit display reading MB-470, CH 001, 14.250.00 USB, TX 20W, a sixteen-key pad in the centre, CLR and SQL controls either side of it, PWR and CHAN knobs on the right, and circular AUX and MIC connectors at the lower corners. Below, three smaller views: front left perspective, right side, and rear showing the power connector marked 10 to 32 VDC and a finned heatsink."
+           alt="Earlier design render, made when the radio was still called the MB-470. A black rack-eared transceiver seen from the front: an N-type antenna jack marked 50 ohm on the left with a GPS jack beside it, a backlit display reading MB-470, CH 001, 14.250.00 USB, TX 20W, a sixteen-key pad in the centre, CLR and SQL controls either side of it, PWR and CHAN knobs on the right, and circular AUX and MIC connectors at the lower corners. Below, three smaller views: front left perspective, right side, and rear showing the power connector marked 10 to 32 VDC and a finned heatsink."
            loading="lazy" decoding="async">
-      <figcaption><strong>Design render, not a photograph.</strong> This is the
-        MB-470 as currently drawn. No unit has been built yet, which is exactly
-        what the last section of this page is about. The panel layout, the
-        connector choices and the case are all design decisions carried over
-        from the equipment described below.</figcaption>
+      <figcaption><strong>Design render, not a photograph.</strong> This is
+        the earlier case study, made when the radio was still called the
+        MB-470, and the display still says so. No unit has been built yet,
+        which is exactly what the last section of this page is about. Where
+        this render and the block diagram below disagree, the block diagram
+        is the current design.</figcaption>
     </figure>
   </section>
 
   <section class="section specstrip">
     <dl class="specs">
       <div><dt>Architecture</dt><dd>Superheterodyne, by choice</dd></div>
-      <div><dt>Coverage</dt><dd>HF through UHF</dd></div>
-      <div><dt>Started</dt><dd>2015</dd></div>
-      <div><dt>Stage</dt><dd>Design, moving to hardware</dd></div>
-      <div><dt>Panel, as drawn</dt><dd>N-type 50 &#8486;, GPS, AUX, MIC, 16-key pad</dd></div>
-      <div><dt>Supply, as drawn</dt><dd>10 to 32 V DC</dd></div>
+      <div><dt>Coverage</dt><dd>1.5 to 470 MHz</dd></div>
+      <div><dt>Modes</dt><dd>SSB, AM and FM</dd></div>
+      <div><dt>Receiver</dt><dd>Dual conversion, 70 MHz then 9 MHz</dd></div>
+      <div><dt>Transmit</dt><dd>20 W PEP</dd></div>
+      <div><dt>Stage</dt><dd>In design since 2015, not released for fabrication</dd></div>
     </dl>
   </section>
 
@@ -163,19 +165,142 @@
     </div>
   </section>
 
+  <section class="section drawings" id="block-diagram">
+    <header class="sec-head">
+      <div><h2>The whole radio on one sheet</h2></div>
+      <p class="sec-note">Drawing K4DIA-PRC736-001<br>Rev A, sheet 1 of 4</p>
+    </header>
+    <p class="hint">The radio has a new name and its first drawing set.
+      PERMAN-FMR stands for Personal Manpack, Field Maintenance Repairable.
+      The AN/PRC-736 number is my own, in the style of the sets this design
+      borrows from. It is not a government designation.</p>
+    <p class="hint">Sheet 1 is the detailed block diagram: the whole
+      transceiver in six signal bands, read left to right. Every block
+      carries its assembly and reference designator, so a block on this
+      sheet is a part you can put a finger on. The ten assemblies are listed
+      with their part counts at the bottom of the sheet.</p>
+    <figure class="drawing">
+      <a href="prc736-sheet-1.webp"><img src="prc736-sheet-1.webp" width="3400" height="2200"
+           alt="Sheet 1, detailed block diagram of the PERMAN-FMR AN/PRC-736. Six rows of labelled blocks run left to right: receive from the antenna to the first mixer, the 70 MHz and 9 MHz IF with detectors and audio, transmit from the microphone to the antenna with the true sidetone loop beneath it, the local oscillator and reference chain, control with the FM daughterboard and keying, and power, all linear from 13.8 V. Numbered notes are on the right, an assembly schedule with part counts along the bottom, and the title block in the lower right corner."
+           loading="lazy" decoding="async"></a>
+      <figcaption>Sheet 1 of 4. Select the sheet to open it full size.</figcaption>
+    </figure>
+    <div class="tablewrap">
+      <table class="bom ort-plain prc-two">
+        <caption>The six bands on sheet 1</caption>
+        <thead><tr><th scope="col">Band</th><th scope="col">What is in it</th></tr></thead>
+        <tbody>
+          <tr><td>Receive, antenna to first mixer</td><td>T/R relay, band select, PIN limiter, three-band LC preselector, PGA-103+ low-noise amplifier, buffer, 31.75 dB step attenuator, sub-band filter</td></tr>
+          <tr><td>Receive, IF and audio</td><td>Band-card attenuator and amplifier, first mixer to 70 MHz, diplexer, 70 MHz crystal roofing filter, second mixer to 9 MHz, eight-pole crystal ladder, AD603 AGC, product detector, audio</td></tr>
+          <tr><td>Transmit</td><td>Microphone input, codec and DSP, mic amplifier, balanced modulator at 9 MHz, SSB/FM select, transmit mixer, pre-driver, driver, two push-pull finals, low-pass filter bank</td></tr>
+          <tr><td>Local oscillator and reference</td><td>38.4 MHz VCTCXO, internal or external reference, ADF4351 for LO1, one Si5351C for LO2 and the BFO, a buffer on each output</td></tr>
+          <tr><td>Control, FM and keying</td><td>STM32H743 controller, preset memory, key in and key out, 24-way backplane, FM demodulator and squelch on their own daughterboard</td></tr>
+          <tr><td>Power</td><td>All linear from 13.8 V. The oscillator rail is regulated twice so the synthesiser sees two stages of rejection</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat"><strong>Not released for fabrication.</strong> Every
+      sheet says so, and sheet 1 says why: 312 of 2,396 net-bearing pins
+      have no pad on their board yet, four pin assignments disagree between
+      boards, and the preselector switch is specified as a part with too few
+      throws. The blocks are checked against the parts model each time the
+      sheet is built. The connections between them are my reading of the
+      design, not something derived from the netlist.</p>
+    <p class="hint"><a class="btn btn-quiet" href="K4DIA-PRC736-001.pdf">Download all four sheets, PDF, 0.3 MB <span aria-hidden="true">&rarr;</span></a></p>
+  </section>
+
+  <section class="section drawings" id="signal-path">
+    <header class="sec-head">
+      <div><h2>Receive and transmit, end to end</h2></div>
+      <p class="sec-note">26 stages in<br>17 stages out</p>
+    </header>
+    <p class="hint">Sheet 2 pulls the two paths apart. Receive runs 26
+      stages from the antenna to the audio codec. Transmit runs 17 from the
+      microphone to the antenna. The six blocks with a double border are the
+      same physical hardware in both chains, drawn twice so each chain reads
+      complete. Receive never passes through the low-pass filter bank. It
+      leaves the T/R relay for the band select and the wideband front end,
+      and only transmit goes through the filters.</p>
+    <figure class="drawing">
+      <a href="prc736-sheet-2.webp"><img src="prc736-sheet-2.webp" width="3400" height="2200"
+           alt="Sheet 2, signal path with transmit and receive separated. The receive chain runs in two rows of thirteen blocks from the antenna to the codec. The transmit chain runs in a row of thirteen blocks and a row of four from the microphone input to the antenna. Six blocks have a double border to mark hardware shared by both chains."
+           loading="lazy" decoding="async"></a>
+      <figcaption>Sheet 2 of 4. Select the sheet to open it full size.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section drawings" id="shared">
+    <header class="sec-head">
+      <div><h2>What the two paths share</h2></div>
+      <p class="sec-note">One control net<br>throws every switch</p>
+    </header>
+    <p class="hint">The eight-pole 9 MHz crystal ladder and the AD603 sit
+      between two transfer switches, so both paths use them. One net,
+      TR-CTL, throws both switches and the antenna relay together. There is
+      no state in which one end is transmitting and the other receiving. On
+      receive the AD603 is the AGC. On transmit the same part sets the
+      level. LO2 and the 9 MHz carrier both come from one Si5351C, so one
+      failed part takes out both paths at once. That is the cost of the
+      saving.</p>
+    <figure class="drawing">
+      <a href="prc736-sheet-3.webp"><img src="prc736-sheet-3.webp" width="3400" height="2200"
+           alt="Sheet 3, common hardware. In the centre a dashed box marks the shared 9 MHz segment: transfer switch, eight-pole crystal ladder, AD603 and a second transfer switch, with one control net joining the two switches. Receive enters from the second mixer and leaves to the product detector above the centre line; transmit enters from the balanced modulator and leaves to the SSB/FM select below it. Above, the reference oscillator feeds a fanout to LO1 and to the shared LO2 and BFO source. Below, the antenna connector and the T/R relay."
+           loading="lazy" decoding="async"></a>
+      <figcaption>Sheet 3 of 4. Select the sheet to open it full size.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section drawings" id="sidetone">
+    <header class="sec-head">
+      <div><h2>True sidetone, taken off the air</h2></div>
+      <p class="sec-note">Not an audio oscillator<br>An off-air monitor</p>
+    </header>
+    <p class="hint">Most modern radios do not do this. A conventional
+      sidetone is an oscillator in the audio chain. It confirms the key
+      closed and nothing else. This one taps the RF at the antenna node,
+      after the T/R relay and after the low-pass filters, pads it down,
+      gates it into the receive path, and lets the radio demodulate its own
+      transmission. Nothing else in the receiver is switched for it, so what
+      you hear is the receiver as it will behave on the next incoming
+      signal.</p>
+    <figure class="drawing">
+      <a href="prc736-sheet-4.webp"><img src="prc736-sheet-4.webp" width="3400" height="2200"
+           alt="Sheet 4, true sidetone. Three numbered rows: the transmit chain from the microphone to the radiating antenna; the sample path, tapped at the antenna node, through a 10 dB pad and a gate to the injection point; and the receive chain from the band select to the speaker or headset, where the radio demodulates its own transmission. A dashed box below lists what the operator hears and what each case proves."
+           loading="lazy" decoding="async"></a>
+      <figcaption>Sheet 4 of 4. Select the sheet to open it full size.</figcaption>
+    </figure>
+    <div class="tablewrap">
+      <table class="bom ort-plain prc-two">
+        <caption>What the operator hears, and what it proves</caption>
+        <thead><tr><th scope="col">In the headset</th><th scope="col">What it tells you</th></tr></thead>
+        <tbody>
+          <tr><td>Audio, present and clean</td><td>The modulator, the transmit mixer chain, the final and the filter bank are all passing modulation, and the whole receive chain is working.</td></tr>
+          <tr><td>Carrier but no audio</td><td>The transmitter is radiating and the modulation is not reaching it. Look at the microphone, the codec and the balanced modulator.</td></tr>
+          <tr><td>Nothing at all</td><td>Either nothing is being radiated or the receiver is dead. The forward power reading tells the two apart.</td></tr>
+          <tr><td>Distorted</td><td>Overdrive, flat-topping or an ALC fault, heard as it actually leaves the antenna and not as it leaves the modulator.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caveat">It is not free. The injection resistor costs about
+      0.4 dB of receive insertion loss, and that is paid on every receive,
+      transmitting or not. The gate is not optional either. Without it the
+      tap would be a path from the antenna to the receiver around the
+      preselector.</p>
+  </section>
+
   <section class="section terms">
     <div>
       <h2>What goes up next</h2>
       <ul class="ticks wide">
-        <li>The block diagram: the full signal chain, stage by stage, receive and transmit.</li>
+        <li>The receive cascade sheet: gain, noise figure and signal level, stage by stage.</li>
+        <li>The open-item register, and each item on it as it gets closed.</li>
         <li>Front panel and chassis drawings, including the hole schedule and the machined faceplate.</li>
-        <li>The band plan and the filter and mixer scheme behind HF through UHF coverage.</li>
-        <li>The sidetone path, taken off the transmit audio at the T/R switch rather than generated separately.</li>
+        <li>The band plan and the filter scheme on the four band-cards.</li>
         <li>A parts and cost breakdown as hardware starts getting bought.</li>
       </ul>
-      <p class="fineprint">This is the first entry on the MB-470, not the whole
-        of it. The design has been in progress since 2015 and the pages here
-        will follow it as it moves off paper.</p>
+      <p class="fineprint">The design has been in progress since 2015 and
+        this page follows it as it moves off paper. The radio was called the
+        MB-470 until November 2026.</p>
     </div>
   </section>
 
@@ -188,7 +313,7 @@
          Sign with your callsign.</p>
     </div>
     <div class="discuss-actions">
-      <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions/new/choose?title=MB-470%20HF/UHF%20radio" rel="noopener">Start a discussion <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions/new/choose?title=PERMAN-FMR%20AN/PRC-736" rel="noopener">Start a discussion <span aria-hidden="true">&rarr;</span></a>
       <a class="btn btn-onink" href="https://github.com/K4DIA/GitHub.io/discussions" rel="noopener">Read the discussions</a>
     </div>
   </section>
