@@ -1747,3 +1747,126 @@ a.doc-cover-link:focus-visible .doc-cover {
 @media (max-width: 700px) { .twocol.even:has(.cutout) { grid-template-columns: 1fr; } }
 .twocol .photo img { max-width: none; }
 .twocol.even { grid-template-columns: 1fr 1fr; align-items: start; }
+
+/* ------------------------------------------------ offline radio translator */
+/* Page parts for projects/radio-translator: the PTT timeline, the hookup
+   row, the language finder and the milestone list. */
+.ort { display: grid; gap: 1.4rem; }
+.ort p { margin: 0; max-width: 68ch; }
+.ort-mono { font-family: var(--mono); }
+.ort h3.ort-flow-title { margin: 0 0 .6rem; }
+.ort-dev .ort-label { font: 600 .7rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.ort-lang-tools label { font-size: .95rem; }
+table.bom.ort-plain { min-width: 34rem; }
+table.bom.ort-plain tr td:first-child { font-family: var(--sans); font-size: inherit; color: inherit; white-space: normal; }
+table.bom.ort-plain td.ort-mono { font-family: var(--mono); font-size: .9rem; }
+#why .ruleset p { margin: 0; font-size: .96rem; color: var(--ink-mid); }
+.pagehead .byline a { color: inherit; }
+.ort-mono { font-family: var(--mono); }
+.ort-flow { list-style: none; margin: 0; padding: 0; display: grid; }
+.ort-step {
+  display: grid; grid-template-columns: 92px 28px minmax(0, 1fr); column-gap: 14px;
+  align-items: start;
+}
+.ort-when { font: 600 0.78rem/1.3 var(--mono); color: var(--ink-mid); text-align: right; padding-top: 14px; font-variant-numeric: tabular-nums; }
+.ort-rail { position: relative; align-self: stretch; }
+.ort-rail::before { content: ""; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px; background: var(--paper-line); }
+.ort-step:first-child .ort-rail::before { top: 18px; }
+.ort-step:last-child .ort-rail::before { bottom: calc(100% - 18px); }
+.ort-dot {
+  position: relative; display: grid; place-items: center; width: 28px; height: 28px; margin-top: 8px; background: #f5f0e4; border: 2px solid var(--ink);
+  font: 600 0.75rem/1 var(--mono);
+}
+.ort-step.ort-radio .ort-dot { background: var(--rust); border-color: var(--rust); color: #f5f0e4; }
+.ort-step.ort-rx .ort-dot { border-color: var(--olive); color: var(--olive); }
+.ort-body { padding: 8px 0 20px; display: grid; gap: 4px; min-width: 0; }
+.ort-where {
+  justify-self: start; font: 600 0.68rem/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 6px; border: 1px solid var(--paper-line); color: var(--ink-mid);
+}
+.ort-step.ort-radio .ort-where { border-color: var(--rust); color: var(--rust); }
+.ort-step.ort-rx .ort-where { border-color: var(--olive); color: var(--olive); }
+.ort-body p { color: var(--ink-mid); font-size: 0.95rem; }
+.ort-body strong { font-weight: 600; color: var(--ink); }
+.ort-tool { font-family: var(--mono); font-size: 0.95em; color: var(--ink); }
+.ort-flows { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px 40px; }
+.ort-onair {
+  background: #f5f0e4; border: 1px solid var(--paper-line); border-left: 4px solid var(--rust);
+  padding: 18px 20px; display: grid; gap: 10px;
+}
+.ort-onair ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.ort-onair .ort-it { font-family: var(--mono); font-size: 0.95rem; }
+.ort-onair .ort-gloss { color: var(--ink-mid); font-size: 0.88rem; display: block; }
+.ort-hookup { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
+.ort-dev {
+  flex: 1 1 150px; min-width: 0; background: #f5f0e4; border: 1.5px solid var(--ink); padding: 14px; display: grid; gap: 4px; align-content: start;
+}
+.ort-dev.ort-pi { border-color: var(--rust); box-shadow: inset 0 0 0 1px var(--rust); }
+.ort-dev small { color: var(--ink-mid); font-size: 0.85rem; line-height: 1.4; }
+.ort-wire {
+  flex: 0 0 74px; display: grid; place-items: center; align-content: center; gap: 2px;
+  font: 600 0.7rem/1.2 var(--mono); color: var(--ink-mid); text-align: center;
+}
+.ort-wire::before { content: ""; width: 100%; height: 2px; background: var(--ink); }
+.ort-extra { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--ink-mid); font-size: 0.92rem; }
+.ort-none-built {
+  display: inline-flex; gap: 8px; align-items: center; font-weight: 600;
+  color: var(--olive);
+}
+.ort-none-built::before { content: "✓"; font-family: var(--mono); }
+.ort-lang-tools { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.ort-lang-tools input {
+  font: inherit; padding: 8px 10px; border: 1px solid var(--paper-line);
+  background: #f5f0e4; color: var(--ink); min-width: 0; width: min(280px, 100%);
+}
+.ort-langs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(165px, 100%), 1fr)); gap: 10px; }
+.ort-lang {
+  background: #f5f0e4; border: 1px solid var(--paper-line); padding: 12px 14px;
+  display: grid; gap: 6px; align-content: start; min-width: 0;
+}
+.ort-lang-top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.ort-lang .ort-native { font: 600 1.1rem/1.2 system-ui, "Noto Sans", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans JP", "Noto Sans SC", sans-serif; }
+.ort-lang .ort-code { font: 600 0.75rem/1 var(--mono); color: var(--ink-mid); }
+.ort-lang .ort-en { font-size: 0.82rem; color: var(--ink-mid); }
+.ort-lang .ort-disc { font: 0.85rem/1.4 system-ui, "Noto Sans", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans JP", "Noto Sans SC", sans-serif; border-top: 1px dashed var(--paper-line); padding-top: 6px; overflow-wrap: anywhere; }
+.ort-lang .ort-engine { font: 600 0.68rem/1 var(--mono); letter-spacing: 0.06em; color: var(--ink-mid); text-transform: uppercase; }
+.ort-lang.ort-home { border-color: var(--ink); }
+.ort-lang.ort-jtalk { border-color: var(--olive); }
+.ort-lang.ort-jtalk .ort-engine { color: var(--olive); }
+.ort-lang[hidden] { display: none; }
+.ort-note { color: var(--ink-mid); font-size: 0.9rem; max-width: 80ch; }
+.ort-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.ort-rule-card { border-top: 3px solid var(--ink); padding-top: 10px; display: grid; gap: 4px; }
+.ort-rule-card p { color: var(--ink-mid); font-size: 0.93rem; }
+.ort-estimate { border: 1px dashed var(--rust); background: rgba(184,80,31,.10); padding: 10px 14px; font-size: 0.92rem; max-width: 80ch; }
+.ort-milestones { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ort-milestones li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; }
+.ort-box {
+  width: 18px; height: 18px; border: 1.5px solid var(--ink); margin-top: 3px;
+  display: grid; place-items: center; font: 600 0.8rem/1 var(--mono);
+}
+.ort-done .ort-box { background: var(--ink); color: var(--paper); }
+.ort-milestones p { color: var(--ink-mid); font-size: 0.92rem; }
+@media (max-width: 760px) {
+  .ort-flows { grid-template-columns: minmax(0, 1fr); }
+  .ort-step { grid-template-columns: 64px 28px minmax(0, 1fr); column-gap: 10px; }
+  .ort-hookup { flex-direction: column; }
+  .ort-wire { flex-basis: 44px; grid-auto-flow: column; gap: 10px; justify-content: start; padding-left: 24px; }
+  .ort-wire::before { width: 2px; height: 32px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ort-lang { transition: border-color 0.15s; }
+  .ort-lang:hover { border-color: var(--rust); }
+}
+.ort-dot { border-radius: 50%; }
+.ort-story p { margin: 0 0 1.1em; font-size: 1.03rem; line-height: 1.72; color: var(--ink-mid); }
+.ort-story .ort-story-end { margin-bottom: 0; font-weight: 600; color: var(--ink); }
+.ort-limits { align-self: start; }
+.ort-limits dl { margin: 0; }
+.ort-limits dt {
+  margin: 0 0 .25rem; font: 600 .7rem/1.3 var(--mono); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--rust-ink);
+}
+.ort-limits dd { margin: 0 0 1rem; font-size: .96rem; color: var(--ink-mid); }
+.ort-limits dd:last-child { margin-bottom: 0; }
+.ort-limits dd a { color: inherit; }
